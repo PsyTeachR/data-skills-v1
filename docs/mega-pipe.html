@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 12 Mega pipe | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 12 Mega pipe | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/mega-pipe.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 12 Mega pipe | Data Skills">
+<meta name="twitter:description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="active" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="mega-pipe" class="section level1" number="12">
+<h1>
+<span class="header-section-number">12</span> Mega pipe<a class="anchor" aria-label="anchor" href="#mega-pipe"><i class="fas fa-link"></i></a>
+</h1>
+<div id="activity-1-set-up-4" class="section level3" number="12.0.1">
+<h3>
+<span class="header-section-number">12.0.1</span> Activity 1: Set-up<a class="anchor" aria-label="anchor" href="#activity-1-set-up-4"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder.</li>
+<li>Set the working directory to your Data Skills folder.</li>
+<li>Type and run the code that loads the <code>tidyverse</code> package.</li>
+<li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
+</ul>
+</div>
+<div id="activity-2-mega-pipe" class="section level3" number="12.0.2">
+<h3>
+<span class="header-section-number">12.0.2</span> Activity 2: Mega pipe<a class="anchor" aria-label="anchor" href="#activity-2-mega-pipe"><i class="fas fa-link"></i></a>
+</h3>
+<p>We're going to build on what you learned in Pipes and rewrite all of the code we did in Reshaping Data (which you can see below) using a pipe. As a reminder, the code:</p>
+<ul>
+<li>Transforms the data from wide-form to long-form</li>
+<li>Joins together the three objects by their common columns</li>
+<li>Calculates a total AQ score for each participant</li>
+</ul>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+                      names_to <span class="op">=</span> <span class="st">"Question"</span>,  
+                      values_to <span class="op">=</span> <span class="st">"Response"</span>,
+                      cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span>
+
+<span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span>
+
+<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
+
+<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Rewrite the above code using pipes <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. Make sure you have completed Pipes before you attempt this.</li>
+</ul>
+</div>
+<div id="activity-3-pipe-plot" class="section level3" number="12.0.3">
+<h3>
+<span class="header-section-number">12.0.3</span> Activity 3: Pipe plot<a class="anchor" aria-label="anchor" href="#activity-3-pipe-plot"><i class="fas fa-link"></i></a>
+</h3>
+<p>Now we've got our total AQ scores, let's use the pipe to make a graph.</p>
+<ul>
+<li>Take <code>AQ_all</code> <strong>then</strong> filter it leaving only female participants <strong>then</strong> use <code>ggplot()</code> to create a histogram of the total scores (you did this in Reshaping Data). If you've done it correctly, it should look like the below (you can change the colours if you like).</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<img src="12-more-pipes_files/figure-html/unnamed-chunk-2-1.png" alt="Histogram of scores for female participants" width="100%"><p class="caption">
+Figure 12.1: Histogram of scores for female participants
+</p>
+</div>
+<p>Remember this for your group project - rather than creating new objects for each graph you want to make you can just pipe the data you want to display straight into <code>ggplot()</code>.</p>
+</div>
+<div id="activity-4-aq-score-by-gender" class="section level3" number="12.0.4">
+<h3>
+<span class="header-section-number">12.0.4</span> Activity 4: AQ score by gender<a class="anchor" aria-label="anchor" href="#activity-4-aq-score-by-gender"><i class="fas fa-link"></i></a>
+</h3>
+<p><a href="https://www.autism.org.uk/about/what-is/gender.aspx">More men and boys are currently diagnosed as autistic than women and girls</a> and there is increasing evidence that there is an over-representation of <a href="https://www.ncbi.nlm.nih.gov/pubmed/31260907">transgender and nonbinary people</a> in those with autism spectrum disorder (ASD) or who meet the AQ cut-off score for ASD, therefore, it seems sensible to visualise AQ scores by gender (note that this dataset is simulated and that whilst the pattern of results is based on what we would expect from the evidence, these are not real data).</p>
+<ul>
+<li>Using the data in <code>AQ_all</code>, create a violin-boxplot of the total AQ scores by gender.</li>
+<li>Hint: <code>gender</code> should be on the x-axis, <code>total_score</code> should be on the y-axis.</li>
+<li>You can use a pipe if you want, but it doesn't make much difference in this activity.</li>
+</ul>
+<p>Look at the graph and answer the following questions:</p>
+<ul>
+<li>Which group has the lowest median total AQ score? <select class="webex-solveme" data-answer='["female"]'><option></option>
+<option>female</option>
+<option>male</option>
+<option>nonbinary</option></select>
+</li>
+<li>Which group has an outlier? <select class="webex-solveme" data-answer='["male"]'><option></option>
+<option>female</option>
+<option>male</option>
+<option>nonbinary</option></select>
+</li>
+<li>Which of the following do you think would be an accurate conclusion to draw from the plot? <select class="webex-solveme" data-answer="[&quot;Men and nonbinary people's scores did not differ much and both had higher AQ scores than wome&quot;]"><option></option>
+<option>Women had higher AQ scores than men or nonbinary people</option>
+<option>Men and nonbinary people's scores did not differ much and both had higher AQ scores than wome</option>
+<option>Men had higher AQ scores than nonbinary people who had higher scores than women</option></select>
+</li>
+</ul>
+</div>
+<div id="activity-5-bad-bar-plots" class="section level3" number="12.0.5">
+<h3>
+<span class="header-section-number">12.0.5</span> Activity 5: Bad bar plots<a class="anchor" aria-label="anchor" href="#activity-5-bad-bar-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>In the research methods lectures for Psych 1A, we talked about the importance of data visualisation and how different graphs might lead you to make very different conclusions about your data. For this reason, we've taught you how to make violin-boxplots because these show the true distribution of the data, however, it's useful to know how to make bad bar plots so that you can see the difference they make to your own data (but never use them as your only method of visualisation!).</p>
+<ul>
+<li>Copy, paste and run the below code in a new code chunk</li>
+<li>Making a bar chart works a little differently to the other graphs you have made so far. Previously, <code>ggplot()</code> has just visualised the raw data, however, for a bar chart you actually want to visualise a <strong>summary</strong> of the data, e.g., the mean.</li>
+<li>You can read the <code>stat_summary</code> code as "draw a summary of the data, use a bar chart to do so and the function to display on the y-axis should be the mean. Then, draw another summary but this time use an errorbar and the function to apply to the data is standard error of the mean".</li>
+</ul>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gender</span>, y <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">stat_summary</span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"bar"</span>, fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">stat_summary</span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"errorbar"</span>, fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="12-more-pipes_files/figure-html/unnamed-chunk-3-1.png" alt="Bad bar chart of means" width="100%"><p class="caption">
+Figure 7.3: Bad bar chart of means
+</p>
+</div>
+<p>Think back to your interpretation of the violin-boxplot, that men and nonbinary people's scores did not differ much and both had higher AQ scores than women. Would you have concluded the same thing if you had looked at the bar chart?</p>
+<p>In this dataset, the outlier in the male group results in the mean score being much higher than the nonbinary mean, it's only through looking at the full distribution with the violin-boxplot that you can accurately intepret the data.</p>
+</div>
+<div id="activity-6-density-plots" class="section level3" number="12.0.6">
+<h3>
+<span class="header-section-number">12.0.6</span> Activity 6: Density plots<a class="anchor" aria-label="anchor" href="#activity-6-density-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>The final type of visualiation we're going to show you are density plots as they are a useful way of visualising how the distributions of different groups compare to each other. You've actually already seen a density plot - it's the base of a violin plot, however, it can be useful to overlap them.</p>
+<ul>
+<li>Copy, paste, and run the below code in a new code chunk.</li>
+<li>A lot of this code should be familiar to you, most of it is editing the axis labels and the theme.</li>
+<li>Adding <code>fill = gender</code> tells <code>ggplot</code> to produce different coloured geoms for each level of <code>gender</code>. Try removing <code>fill = gender</code> and see what happens to the plot.</li>
+<li>
+<code>geom_density()</code> is our new geom and tells R to draw the density curve. The argument <code>alpha</code> controls the transparency of the colours, try adjusting this value.</li>
+</ul>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span>, fill <span class="op">=</span> <span class="va">gender</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_density</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-4"></span>
+<img src="12-more-pipes_files/figure-html/unnamed-chunk-4-1.png" alt="Grouped density plot" width="100%"><p class="caption">
+Figure 5.2: Grouped density plot
+</p>
+</div>
+<p>The y-axis displays density, i.e., what proportion of the data points fall at each point on the x-axis.</p>
+<ul>
+<li>Approximately what percent of female participants had a total AQ of 2? <select class="webex-solveme" data-answer='["30%"]'><option></option>
+<option>.3%</option>
+<option>3%</option>
+<option>30%</option></select>
+</li>
+</ul>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<p>It's important to be able to translate between proportions and percentages, it will make your understanding of statistics and p-values much easier. To translate a proportion into a percentage, you multiply by 100 or move the decimal place two places to the right so a proportion of .5 = 50%, a proportion of .03 = 3% and so on.</p>
+</div>
+</div>
+<div id="activity-7-saving-plots" class="section level3" number="12.0.7">
+<h3>
+<span class="header-section-number">12.0.7</span> Activity 7: Saving plots<a class="anchor" aria-label="anchor" href="#activity-7-saving-plots"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function <code>ggsave()</code>.</p>
+<p>There are two ways you can use <code>ggsave()</code>. If you don't tell <code>ggsave()</code> which plot you want to save, by default it will save a copy of <strong>the last plot you created</strong>. If you've been following this chapter in order, the last plot you created should have been the density plot from Activity 6.</p>
+<p>All that <code>ggsave()</code> requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).</p>
+<ul>
+<li>Copy, paste and run the below code into a new code chunk.</li>
+<li>Check your Data Skills folder, you should now see the saved image file.</li>
+</ul>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggsave</span><span class="op">(</span><span class="st">"density.png"</span><span class="op">)</span></code></pre></div>
+<p>The default size for an image is 7 x 7, you can change this manually if you think that the dimensions of the plot are not correct or if you need a particular size.</p>
+<ul>
+<li>Copy paste and run the below code to overwrite the image file with new dimensions.</li>
+</ul>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggsave</span><span class="op">(</span><span class="st">"density.png"</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
+<p>The second way of using <code>ggsave()</code> is to save your plot as an object and then tell it which object to write to a file. The below code saves the pipe plot from Activity 3 into an object named <code>AQ_histogram</code> and then saves it to an image file "AQ_histogram.png".</p>
+<p>Note that when you save a plot to an object, it won't display in R Studio. To get it to display you need to type the object name in the console (i.e., <code>AQ_histogram</code>). The benefit of doing it this way is that if you are making lots of plots, you can't accidentally save the wrong one because you are explicitly specifying which plot to save rather than just saving the last one.</p>
+<ul>
+<li>Copy, paste and run the below code and then check your Data Skills folder for the image file. Resize the plot if you think it needs it.</li>
+</ul>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_histogram</span> <span class="op">&lt;-</span> <span class="va">AQ_all</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span>
+
+<span class="fu">ggsave</span><span class="op">(</span><span class="st">"AQ_histogram.png"</span>, plot <span class="op">=</span> <span class="va">AQ_histogram</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="activity-solutions---mega-pipe" class="section level3" number="12.0.8">
+<h3>
+<span class="header-section-number">12.0.8</span> Activity solutions - Mega pipe<a class="anchor" aria-label="anchor" href="#activity-solutions---mega-pipe"><i class="fas fa-link"></i></a>
+</h3>
+<div id="activity-1-4" class="section level4" number="12.0.8.1">
+<h4>
+<span class="header-section-number">12.0.8.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
+<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
+<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-2-3" class="section level4" number="12.0.8.2">
+<h4>
+<span class="header-section-number">12.0.8.2</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-3"><i class="fas fa-link"></i></a>
+</h4>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+                      names_to <span class="op">=</span> <span class="st">"Question"</span>,  
+                      values_to <span class="op">=</span> <span class="st">"Response"</span>,
+                      cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-3-4" class="section level4" number="12.0.8.3">
+<h4>
+<span class="header-section-number">12.0.8.3</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-4-4" class="section level4" number="12.0.8.4">
+<h4>
+<span class="header-section-number">12.0.8.4</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-4"><i class="fas fa-link"></i></a>
+</h4>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">gender</span>, <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="pipes.html"><span class="header-section-number">11</span> Pipes</a></div>
+<div class="next"><a href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li>
+<a class="nav-link" href="#mega-pipe"><span class="header-section-number">12</span> Mega pipe</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-set-up-4"><span class="header-section-number">12.0.1</span> Activity 1: Set-up</a></li>
+<li><a class="nav-link" href="#activity-2-mega-pipe"><span class="header-section-number">12.0.2</span> Activity 2: Mega pipe</a></li>
+<li><a class="nav-link" href="#activity-3-pipe-plot"><span class="header-section-number">12.0.3</span> Activity 3: Pipe plot</a></li>
+<li><a class="nav-link" href="#activity-4-aq-score-by-gender"><span class="header-section-number">12.0.4</span> Activity 4: AQ score by gender</a></li>
+<li><a class="nav-link" href="#activity-5-bad-bar-plots"><span class="header-section-number">12.0.5</span> Activity 5: Bad bar plots</a></li>
+<li><a class="nav-link" href="#activity-6-density-plots"><span class="header-section-number">12.0.6</span> Activity 6: Density plots</a></li>
+<li><a class="nav-link" href="#activity-7-saving-plots"><span class="header-section-number">12.0.7</span> Activity 7: Saving plots</a></li>
+<li><a class="nav-link" href="#activity-solutions---mega-pipe"><span class="header-section-number">12.0.8</span> Activity solutions - Mega pipe</a></li>
+</ul>
+</li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/12-more-pipes.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/12-more-pipes.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

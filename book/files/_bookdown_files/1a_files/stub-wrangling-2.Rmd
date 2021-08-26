@@ -1,0 +1,56 @@
+---
+title: "Wrangling 2 stub"
+author: "GUID"
+output: html_document
+---
+
+* After you complete each activity you should knit the file. This will make it easier to spot when errors have crept into your code rather than waiting until the end and trying to figure out where things have gone wrong.
+* Use the whitespace to add your own notes (e.g., if you make an error, note down what the error was and how you fixed it).
+* You can add additional code chunks if needed.
+* Be careful not to delete or add any backticks (```) or to change the chunk name (e.g., a1)
+
+
+## Activity 1
+
+```{r a1}
+
+```
+
+## Activity 2
+
+```{r a2}
+
+```
+
+## Activity 3
+
+```{r a3}
+
+```
+
+## Activity 4
+
+```{r a4}
+
+```
+
+## Activity 5
+
+```{r a5}
+
+```
+
+## Activity 6
+
+```{r a6}
+
+```
+
+## Activity 7
+
+```{r a7}
+
+```
+
+
+

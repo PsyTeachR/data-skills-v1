@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 8 Scatterplots | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 8 Scatterplots | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/scatterplots.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 8 Scatterplots | Data Skills">
+<meta name="twitter:description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="active" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="scatterplots" class="section level1" number="8">
+<h1>
+<span class="header-section-number">8</span> Scatterplots<a class="anchor" aria-label="anchor" href="#scatterplots"><i class="fas fa-link"></i></a>
+</h1>
+<p>In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get the data in the shape we need it to be in for our particular question. In particular we need to generate the object <code>summarydata</code> that just has the variable we need.You have done these steps before so go back to the relevant Lab and use that to guide you through.</p>
+<div id="activity-1-set-up-3" class="section level2" number="8.1">
+<h2>
+<span class="header-section-number">8.1</span> Activity 1: Set-up<a class="anchor" aria-label="anchor" href="#activity-1-set-up-3"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Open R Studio and ensure the environment is clear.<br>
+</li>
+<li>Open the <code>stub-scatterplot.Rmd</code> file and ensure that the working directory is set to your Data Skills folder and that the two .csv data files (<code>participant-info.csv</code> and <code>ahi-cesd.csv</code>) are in your working directory (you should see them in the file pane).<br>
+</li>
+<li>Look through your previous work to find the code that loads the <code>tidyverse</code>, reads in the data files and creates an object called <code>all_dat</code> that joins the two objects <code>dat</code> and <code>pinfo</code>.</li>
+</ul>
+</div>
+<div id="activity-2-select-1" class="section level2" number="8.2">
+<h2>
+<span class="header-section-number">8.2</span> Activity 2: Select<a class="anchor" aria-label="anchor" href="#activity-2-select-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Select the columns <code>ahiTotal</code>, <code>cesdTotal</code>, <code>sex</code>, <code>age</code>, <code>educ</code> from the <code>all_dat</code> and save them in a new object named variable <code>summarydata</code>.</p>
+</div>
+<div id="activity-3-simple-scatterplots" class="section level2" number="8.3">
+<h2>
+<span class="header-section-number">8.3</span> Activity 3: Simple scatterplots<a class="anchor" aria-label="anchor" href="#activity-3-simple-scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<p>First, we want to look at whether there seems to be a relationship between happiness and depression scores across all participants.</p>
+<p>In order to visualise two continuous variables, we can use a <strong>scatterplot</strong>. Using the <code>ggplot</code> code you learned about in Intro to Data Viz, try and recreate the below plot.</p>
+<p>A few hints:</p>
+<ul>
+<li>Use the <code>summarydata</code> data.</li>
+<li>Put <code>ahiTotal</code> on the x-axis and <code>cesdTotal</code> on the y-axis.</li>
+<li>Rather than using <code>geom_bar()</code>, <code>geom_violin()</code>, or <code>geom_boxplot()</code>, for a scatterplot you need to use <code>geom_point()</code>.</li>
+<li>Rather than using <code>scale_fill_viridis_d()</code> to change the colour, add the argument <code>colour = "red"</code> to <code>geom_point</code> (except replace "red" with whatever colour you'd prefer).</li>
+<li>Remember to edit the axis names.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:createplot"></span>
+<img src="08-scatterplots_files/figure-html/createplot-1.png" alt="Scatterplot of happiness and depression scores" width="100%"><p class="caption">
+Figure 8.1: Scatterplot of happiness and depression scores
+</p>
+</div>
+<p><br></p>
+<p>How would you describe the relationship between the two variables? <select class="webex-solveme" data-answer='["As happiness score increase, depression scores decrease"]'><option></option>
+<option>As happiness scores increase, depression scores increase</option>
+<option>As happiness score increase, depression scores decrease</option>
+<option>As happiness scores decrease, depression scores decrease</option></select></p>
+</div>
+<div id="activity-4-adding-a-line-of-best-fit" class="section level2" number="8.4">
+<h2>
+<span class="header-section-number">8.4</span> Activity 4: Adding a line of best fit<a class="anchor" aria-label="anchor" href="#activity-4-adding-a-line-of-best-fit"><i class="fas fa-link"></i></a>
+</h2>
+<p>Scatterplots are very useful but it can often help to add a line of best fit to help interpretation. Add the below layer to the scatterplot code from Activity 4:</p>
+<ul>
+<li>This code uses the function <code>geom_smooth()</code> to draw the line. There are several different methods but we want a straight, or linear, line so we specify <code>method = "lm"</code>.</li>
+<li>This line is really a regression line, which you'll learn more about in level 2. For now, the steeper the slope of the line, the stronger the relationship between the two variables.</li>
+<li>By default the regression line will be extended, beyond the original y-axis limits, if you want to change this so that your plots looks like the below, add <code>limits = c(0,60)</code> to <code>scale_y_continuous()</code>
+</li>
+</ul>
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 20 rows containing missing values (geom_smooth).</code></pre>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:createplot2"></span>
+<img src="08-scatterplots_files/figure-html/createplot2-1.png" alt="Scatterplot of happiness and depression scores" width="100%"><p class="caption">
+Figure 8.2: Scatterplot of happiness and depression scores
+</p>
+</div>
+</div>
+<div id="activity-5-setting-the-factors" class="section level2" number="8.5">
+<h2>
+<span class="header-section-number">8.5</span> Activity 5: Setting the factors<a class="anchor" aria-label="anchor" href="#activity-5-setting-the-factors"><i class="fas fa-link"></i></a>
+</h2>
+<p>It seems fairly obvious that there might be a negative relationship between happiness and depression, so instead we want to look at whether this relationship changes depending on different demographic variables.</p>
+<p>Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, <code>sex</code>, <code>educ</code>, and <code>income</code> are all registered as numeric variables, but we know that they're really categories.</p>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">summarydata</span><span class="op">)</span></code></pre></div>
+<pre><code>## tibble[,6] [992 x 6] (S3: tbl_df/tbl/data.frame)
+##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
+##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
+##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
+##  $ age      : num [1:992] 46 37 37 19 40 49 42 57 41 41 ...
+##  $ educ     : num [1:992] 4 3 3 2 5 4 4 4 4 4 ...
+##  $ income   : num [1:992] 3 2 2 1 2 1 1 2 1 1 ...</code></pre>
+<ul>
+<li>Using the same method you used in the last chapter, overwrite <code>sex</code>, <code>educ</code> and <code>income</code> in <code>summarydata</code> as factors.</li>
+</ul>
+</div>
+<div id="activity-6-grouped-scatterplots" class="section level2" number="8.6">
+<h2>
+<span class="header-section-number">8.6</span> Activity 6: Grouped scatterplots<a class="anchor" aria-label="anchor" href="#activity-6-grouped-scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can now use our factors to display the data in the scatterplots for each group.</p>
+<ul>
+<li>Rather than adding <code>colour</code> to <code>geom_point()</code> which sets the colour for all the data points, instead we add <code>colour = sex</code> to the aesthetic mapping on the first line. This tells <code>ggplot()</code> to produce different colours for each level (or group) in the variable <code>sex</code>.</li>
+<li>
+<code>scale_color_viridis_d()</code> works exactly like the other colour blind friendly scale functions you have used, so we can use <code>name</code> and <code>labels</code> to adjust the legend.</li>
+</ul>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, colour <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participant sex"</span>, 
+                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span>,
+                       option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 42 rows containing missing values (geom_smooth).</code></pre>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>It looks like the relationship between happiness and depression is about the same for male and female participants.</p>
+<ul>
+<li>Create two more scatterplots that show the relationship between happiness and depression grouped by a) <code>income</code> and b) <code>educ</code>. Make sure you update the legend labels (you might need to check the code book).</li>
+</ul>
+</div>
+<div id="activity-7-group-by-a-new-variable" class="section level2" number="8.7">
+<h2>
+<span class="header-section-number">8.7</span> Activity 7: Group by a new variable<a class="anchor" aria-label="anchor" href="#activity-7-group-by-a-new-variable"><i class="fas fa-link"></i></a>
+</h2>
+<p>So, let's be honest, there's not much going on with any of the demographic variables - the relationship between depression and anxiety is pretty much the same for all of the groups. A reasonable hypothesis might be that rather than being connected to any demographic variables, the relationship between happiness and depression changes depending upon your general happiness level.</p>
+<ul>
+<li>Using <code>mutate</code> create a new variable named <code>happiness</code> in <code>summarydata</code> that evaluates whether a participant's happiness score is equal to or higher than the median <code>ahiTotal</code> score.</li>
+<li>This is not an easy task as it's not something we've explicitly shown you how to do but it's the last activity for this semester so before you go to the solution, do a bit of trial and error, then look at the hints to see if you can get near the answer.</li>
+<li>If you've done it right, <code>summarydata</code> should contain a column named <code>happiness</code> with the value <code>TRUE</code> if <code>ahiTotal</code> is above the overall median and <code>FALSE</code> if it is below.</li>
+</ul>
+<div class="webex-solution">
+<button>
+Hint 1
+</button>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">equal_or_more_than_median</span><span class="op">)</span></code></pre></div>
+</div>
+<div class="webex-solution">
+<button>
+Hint 2
+</button>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">variable</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<p>Now, reproduce the below plot using this new variable:</p>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 9 rows containing missing values (geom_smooth).</code></pre>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;"></div>
+<p>What might you conclude from this plot? <select class="webex-solveme" data-answer='["The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores"]'><option></option>
+<option>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option>
+<option>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option>
+<option>There is no difference in the relationship between depression and happiness scores between the groups</option></select></p>
+<div class="webex-solution">
+<button>
+Explain this answer
+</button>
+<p>The line for the "unhappy" group is much steeper than the line for the "happy" group. That is, is you're generally unhappy, then you report a much stronger link between your happiness and depression levels than if you're generally happy.</p>
+<p>If you actually wanted to look at the difference in the relationships statistically, you could compute the correlation coefficients like below, but don't worry about that until Level 2.</p>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_above</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">dat_below</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat_above</span><span class="op">$</span><span class="va">ahiTotal</span>, <span class="va">dat_above</span><span class="op">$</span><span class="va">cesdTotal</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat_below</span><span class="op">$</span><span class="va">ahiTotal</span>, <span class="va">dat_below</span><span class="op">$</span><span class="va">cesdTotal</span><span class="op">)</span></code></pre></div>
+<pre><code>## 
+##  Pearson's product-moment correlation
+## 
+## data:  dat_above$ahiTotal and dat_above$cesdTotal
+## t = -7.6564, df = 491, p-value = 1.024e-13
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.4032637 -0.2453473
+## sample estimates:
+##        cor 
+## -0.3265828 
+## 
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  dat_below$ahiTotal and dat_below$cesdTotal
+## t = -22.474, df = 497, p-value &lt; 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  -0.7509362 -0.6635268
+## sample estimates:
+##        cor 
+## -0.7099551</code></pre>
+</div>
+<div id="finished-5" class="section level3" number="8.7.1">
+<h3>
+<span class="header-section-number">8.7.1</span> Finished!<a class="anchor" aria-label="anchor" href="#finished-5"><i class="fas fa-link"></i></a>
+</h3>
+<p>Great job! As you may have noticed, this chapter tried to push you and test what you've learned - we hope you can see just how far you've come in the space of just a couple of months, it's genuinely amazing what you have achieved and you should feel proud. In Psych 1B we will continue using these wrangling skills on new data and also data that you collect yourself.</p>
+</div>
+</div>
+<div id="activity-solutions---scatterplots" class="section level2" number="8.8">
+<h2>
+<span class="header-section-number">8.8</span> Activity solutions - Scatterplots<a class="anchor" aria-label="anchor" href="#activity-solutions---scatterplots"><i class="fas fa-link"></i></a>
+</h2>
+<div id="activity-1-2" class="section level3" number="8.8.1">
+<h3>
+<span class="header-section-number">8.8.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="scatterplots.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb99-2"><a href="scatterplots.html#cb99-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span> (<span class="st">'ahi-cesd.csv'</span>)</span>
+<span id="cb99-3"><a href="scatterplots.html#cb99-3" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'participant-info.csv'</span>)</span>
+<span id="cb99-4"><a href="scatterplots.html#cb99-4" aria-hidden="true" tabindex="-1"></a>all_dat <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(dat, pinfo, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"intervention"</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-2-2" class="section level3" number="8.8.2">
+<h3>
+<span class="header-section-number">8.8.2</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span>, <span class="va">income</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-3-1" class="section level3" number="8.8.3">
+<h3>
+<span class="header-section-number">8.8.3</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/T3-1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="activity-4" class="section level3" number="8.8.4">
+<h3>
+<span class="header-section-number">8.8.4</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 20 rows containing missing values (geom_smooth).</code></pre>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/T4s-1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="activity-5" class="section level3" number="8.8.5">
+<h3>
+<span class="header-section-number">8.8.5</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="va">summarydata</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>,
+         educ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">educ</span><span class="op">)</span>,
+         income <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-6-1" class="section level3" number="8.8.6">
+<h3>
+<span class="header-section-number">8.8.6</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, 
+                        colour <span class="op">=</span> <span class="va">educ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Education level"</span>, 
+                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Less than Year 12"</span>,
+                                  <span class="st">"Year 12"</span>,
+                                  <span class="st">"Vocational training"</span>,
+                                  <span class="st">"Bachelor’s degree"</span>,
+                                  <span class="st">"Postgraduate degree"</span><span class="op">)</span>,
+                       option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 78 rows containing missing values (geom_smooth).</code></pre>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, 
+                        colour <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Income"</span>, 
+                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below average"</span>,
+                                  <span class="st">"Average"</span>,
+                                  <span class="st">"Above average"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
+<pre><code>## Warning: Removed 62 rows containing missing values (geom_smooth).</code></pre>
+<div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;"></div>
+</div>
+</div>
+<div id="activity-7" class="section level3" number="8.8.7">
+<h3>
+<span class="header-section-number">8.8.7</span> Activity 7<a class="anchor" aria-label="anchor" href="#activity-7"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">summarydata</span>, severity <span class="op">=</span> <span class="va">cesdTotal</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span></code></pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></div>
+<div class="next"><a href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#scatterplots"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="nav-link" href="#activity-1-set-up-3"><span class="header-section-number">8.1</span> Activity 1: Set-up</a></li>
+<li><a class="nav-link" href="#activity-2-select-1"><span class="header-section-number">8.2</span> Activity 2: Select</a></li>
+<li><a class="nav-link" href="#activity-3-simple-scatterplots"><span class="header-section-number">8.3</span> Activity 3: Simple scatterplots</a></li>
+<li><a class="nav-link" href="#activity-4-adding-a-line-of-best-fit"><span class="header-section-number">8.4</span> Activity 4: Adding a line of best fit</a></li>
+<li><a class="nav-link" href="#activity-5-setting-the-factors"><span class="header-section-number">8.5</span> Activity 5: Setting the factors</a></li>
+<li><a class="nav-link" href="#activity-6-grouped-scatterplots"><span class="header-section-number">8.6</span> Activity 6: Grouped scatterplots</a></li>
+<li>
+<a class="nav-link" href="#activity-7-group-by-a-new-variable"><span class="header-section-number">8.7</span> Activity 7: Group by a new variable</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#finished-5"><span class="header-section-number">8.7.1</span> Finished!</a></li></ul>
+</li>
+<li>
+<a class="nav-link" href="#activity-solutions---scatterplots"><span class="header-section-number">8.8</span> Activity solutions - Scatterplots</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-2"><span class="header-section-number">8.8.1</span> Activity 1</a></li>
+<li><a class="nav-link" href="#activity-2-2"><span class="header-section-number">8.8.2</span> Activity 2</a></li>
+<li><a class="nav-link" href="#activity-3-1"><span class="header-section-number">8.8.3</span> Activity 3</a></li>
+<li><a class="nav-link" href="#activity-4"><span class="header-section-number">8.8.4</span> Activity 4</a></li>
+<li><a class="nav-link" href="#activity-5"><span class="header-section-number">8.8.5</span> Activity 5</a></li>
+<li><a class="nav-link" href="#activity-6-1"><span class="header-section-number">8.8.6</span> Activity 6</a></li>
+<li><a class="nav-link" href="#activity-7"><span class="header-section-number">8.8.7</span> Activity 7</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/08-scatterplots.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/08-scatterplots.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

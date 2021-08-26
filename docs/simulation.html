@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 15 Simulation | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content="Before we finish up by analysing your project data, we're going to introduce a few new functions to show you some other things that R can do and that will also reinforce your understanding of...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 15 Simulation | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/simulation.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content="Before we finish up by analysing your project data, we're going to introduce a few new functions to show you some other things that R can do and that will also reinforce your understanding of...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 15 Simulation | Data Skills">
+<meta name="twitter:description" content="Before we finish up by analysing your project data, we're going to introduce a few new functions to show you some other things that R can do and that will also reinforce your understanding of...">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="active" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="simulation" class="section level1" number="15">
+<h1>
+<span class="header-section-number">15</span> Simulation<a class="anchor" aria-label="anchor" href="#simulation"><i class="fas fa-link"></i></a>
+</h1>
+<p>Before we finish up by analysing your project data, we're going to introduce a few new functions to show you some other things that R can do and that will also reinforce your understanding of probability.</p>
+<div id="simulation-1" class="section level2" number="15.1">
+<h2>
+<span class="header-section-number">15.1</span> Simulation<a class="anchor" aria-label="anchor" href="#simulation-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>One of the most powerful features of R is that you can use it for data simulation. Data simulation is the act of generating random numbers that follow a certain distribution or have known properties. This might not sound particularly impressive, but simulating data means that you can do things such as plan your statistical analyses, understand and demonstrate how probability works, or estimate how many participants you need to test in your experiment based upon what you think the data will look like. Data simulation uses the different types of distributions that we covered in Probability to generate data, so make sure that you're happy with the probability chapter before you move on.</p>
+</div>
+<div id="activity-1-sample" class="section level2" number="15.2">
+<h2>
+<span class="header-section-number">15.2</span> Activity 1: <code>sample()</code><a class="anchor" aria-label="anchor" href="#activity-1-sample"><i class="fas fa-link"></i></a>
+</h2>
+<p>Just like Probability, all the functions we need for simulation are contained in Base R, however, we'll also load the <code>tidyverse</code> so that we can wrangle our simulated data.</p>
+<p>Let’s start by introducing the <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> function, which samples elements (data points) from a vector (a collection of things that are of the same type, like numbers or words). We can use <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> to simulate flipping a coin and build some of the graphs you saw in the probability chapter. <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> is used when we want to simulate discrete data, i.e., (nominal or ordinal data).</p>
+<p><code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code> requires you to define three arguments:</p>
+<ul>
+<li><p><code>x</code> = a vector of elements, i.e., all of the possible outcomes. For our current example, this would be HEADS and TAILS.<br></p></li>
+<li><p><code>size</code> = how many samples do you want to take, i.e., how many times do you want R to flip the coin?<br></p></li>
+<li><p><code>replace</code> = specifies whether we should sample with replacement or not. In the last lab we used the example of pulling names out of a hat. If you put the name back in the hat each time you pulled one out this would be with replacement, if you don't put the name back in this would be sampling without replacement. Basically, do you want to be able to get the same outcome on different samples? For a coin flip, it should be possible to get the same outcome more than once, so we specify <code>TRUE</code>. If we specified <code>FALSE</code> you could only draw as many samples as there were unique values, so in our case we could only flip the coin twice: once it would land on heads, once on tails, and then we would run out of outcomes.</p></li>
+<li><p>Open a new R Markdown document, name it "Simulation" and save it in your Data Skills folder.</p></li>
+<li><p>Copy, paste, and run the below code in a new code chunk to simulate flipping a coin 4 times (and load the <code>tidyverse</code>).</p></li>
+</ul>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Notice that because our event labels are strings (text), </span>
+<span class="co"># we need to enter them into the function in "quotes" </span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"HEADS"</span>, <span class="st">"TAILS"</span><span class="op">)</span>, size <span class="op">=</span> <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </code></pre></div>
+<pre><code>## [1] "HEADS" "TAILS" "HEADS" "TAILS"</code></pre>
+<p>How many heads did you get? Don't worry if it's different to our example. Run the code again. How many heads did you get this time? How many do you get on each turn if you run the code five more times?</p>
+<p>When you perform data simulation, you're unlikely to get the same outcome each time you take a sample, just like if you flipped a coin 4 times on 5 separate occasions you would be unlikely to get the same number of heads each time. What's so useful about data simulation is that we can use the outcomes from lots of different sampling attempts to calculate the probability of a particular outcome, e.g., getting 4 heads from 4 flips of a coin.</p>
+<p>So that we can add up the number of heads and tails more easily, let's simulate those coin flips again, but using numerical codes, 1 = HEADS, 0 = TAILS.</p>
+<ul>
+<li>Now that the outcomes are numeric, we don't need the combine function <code>c</code><br>
+</li>
+<li>0:1 means all numbers from 0 to 1 in steps of 1. So basically, 0 and 1. If you wanted to simulate rolling a die, you would write <code>1:6</code> which would give you all the whole numbers from 1 to 6.</li>
+</ul>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 0 1 1 1</code></pre>
+</div>
+<div id="activity-2-sum" class="section level2" number="15.3">
+<h2>
+<span class="header-section-number">15.3</span> Activity 2: <code>sum()</code><a class="anchor" aria-label="anchor" href="#activity-2-sum"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we're using ones and zeroes we can count the number of heads by summing the values of the outcomes. The below code will sample our coin flips as above, and then count up the outcomes. Because we've coded heads = 1 and tails = 0, we can interpret the sum of all the outcomes as the number of heads.</p>
+<ul>
+<li>Copy, paste and run the code below in a new code chunk.</li>
+</ul>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># This code pipes the output of sample() into sum() which counts up the number of heads/1s.</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 2</code></pre>
+<p>Run this function multiple times (you can use the green markdown play arrow at the top right of the code chunk to make this easy). In our simulation of five sets of four flips we got 1, 3, 2, 2, and 3 heads. So in only one out of the five simulations did we get exactly one heads, i.e., a proportion of .2 or 20% of the time.</p>
+</div>
+<div id="activity-3-replicate-1" class="section level2" number="15.4">
+<h2>
+<span class="header-section-number">15.4</span> Activity 3: <code>replicate()</code> 1<a class="anchor" aria-label="anchor" href="#activity-3-replicate-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let’s repeat the experiment a whole bunch more times. We can have R do this over and over again using the <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> function. <code><a href="https://rdrr.io/r/base/lapply.html">replicate()</a></code> requires two arguments (although there are other optional arguments if you want to do more complicated tasks):</p>
+<ul>
+<li>
+<code>n</code> = the number of times you want to repeat your code<br>
+</li>
+<li>
+<code>expr</code> = the expression, or code, you want to repeat</li>
+</ul>
+<p>Copy, paste and run the below code into a new code chunk to run the sample function and sum up the outcomes 20 times.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>##  [1] 1 3 3 1 1 3 2 2 1 2 3 1 2 2 1 1 2 2 2 1</code></pre>
+</div>
+<div id="monte-carlo-simulation" class="section level2" number="15.5">
+<h2>
+<span class="header-section-number">15.5</span> Monte Carlo simulation<a class="anchor" aria-label="anchor" href="#monte-carlo-simulation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Every year, the city of Monte Carlo is the site of innumerable games of chance played in its casinos by people from all over the world. This notoriety is reflected in the use of the term “Monte Carlo simulation” among statisticians to refer to using a computer simulation to estimate statistical properties of a random process. In a Monte Carlo simulations, the random process is repeated over and over again in order to assess its performance over a very large number of trials. It is usually used in situations where mathematical solutions are unknown or hard to compute. Now we are ready to use Monte Carlo simulation to demonstrate the probability of various outcomes.</p>
+</div>
+<div id="activity-4-replicate-2" class="section level2" number="15.6">
+<h2>
+<span class="header-section-number">15.6</span> Activity 4: <code>replicate()</code> 2<a class="anchor" aria-label="anchor" href="#activity-4-replicate-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>We are going to run our coin flip experiment again but this time we are going to run the experiment 50 times (each including 4 coin tosses), and use the same principles to predict the number of heads we will get.</p>
+<ul>
+<li>Copy, paste, and run the below code to run the simulation and store the result in an object `heads50** using the code below:</li>
+</ul>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">heads50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>   
+<span class="va">heads50</span></code></pre></div>
+<pre><code>##  [1] 1 3 3 2 1 3 1 4 2 0 3 2 1 1 1 3 2 2 1 1 3 2 0 0 2 2 2 1 3 2 1 1 2 3 3 2 1 2
+## [39] 1 1 1 4 1 2 3 4 4 1 3 2</code></pre>
+</div>
+<div id="activity-5-probability" class="section level2" number="15.7">
+<h2>
+<span class="header-section-number">15.7</span> Activity 5: probability<a class="anchor" aria-label="anchor" href="#activity-5-probability"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can estimate the probability of each of the outcomes (0, 1, 2, 3, 4 heads after 4 coin tosses) by counting them up and dividing by the number of experiments. We will do this by putting the results of the replications in a tibble() and then using count().</p>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>heads <span class="op">=</span> <span class="va">heads50</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co"># convert to a table</span>
+                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">heads</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co"># group by number of possibilities (0,1,2,3,4)</span>
+                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, <span class="co"># count occurances of each possibility,</span>
+                          p<span class="op">=</span><span class="va">n</span><span class="op">/</span><span class="fl">50</span><span class="op">)</span> <span class="co"># &amp; calculate probability (p) of each</span></code></pre></div>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">heads</th>
+<th align="right">n</th>
+<th align="right">p</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">3</td>
+<td align="right">0.06</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">17</td>
+<td align="right">0.34</td>
+</tr>
+<tr class="odd">
+<td align="right">2</td>
+<td align="right">15</td>
+<td align="right">0.30</td>
+</tr>
+<tr class="even">
+<td align="right">3</td>
+<td align="right">11</td>
+<td align="right">0.22</td>
+</tr>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">0.08</td>
+</tr>
+</tbody>
+</table></div>
+<p>Your numbers may be slightly different to the ones presented in this book - remember that by default, each time you run a simulation, you will get a different random sample.</p>
+</div>
+<div id="activity-6-visualisation" class="section level2" number="15.8">
+<h2>
+<span class="header-section-number">15.8</span> Activity 6: visualisation<a class="anchor" aria-label="anchor" href="#activity-6-visualisation"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can then plot a histogram of the outcomes using <code>geom_bar()</code>.</p>
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Note: stat = "identity" tells  ggplot to use the values of the y-axis variable (p) as the height of the bars in our histogram (as opposed to counting the number of occurances of those values)</span>
+
+<span class="fu">ggplot</span><span class="op">(</span><span class="va">data50</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">heads</span>,y <span class="op">=</span> <span class="va">p</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Number of Heads"</span>, y <span class="op">=</span> <span class="st">"Probability of Heads in 4 flips (p)"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:data50hist"></span>
+<img src="15-simulation_files/figure-html/data50hist-1.png" alt="No. of heads from 4 coin tosses probability outcomes." width="100%"><p class="caption">
+Figure 15.1: No. of heads from 4 coin tosses probability outcomes.
+</p>
+</div>
+<hr>
+<p><strong>Pause here and interpret the above figure</strong></p>
+<ul>
+<li>What is the estimated probability for flipping 0/4 heads? 1/4 heads? 2/4 heads? 3/4 heads? 4/4 heads?</li>
+</ul>
+<hr>
+<p>Unfortunately sometimes this calculation will estimate that the probability of an outcome is zero since this outcome never came up when the simulation is run. If you want reliable estimates, you need a <strong>bigger sample</strong> to minimise the probability that a possible outcome won't occur.</p>
+</div>
+<div id="activity-7-big-data" class="section level2" number="15.9">
+<h2>
+<span class="header-section-number">15.9</span> Activity 7: big data<a class="anchor" aria-label="anchor" href="#activity-7-big-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let's repeat the Monte Carlo simulation, but with 10,000 trials instead of just 50. All we need to do is change <code>n</code> from 50 to 10000.</p>
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">heads10K</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10000</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>   </code></pre></div>
+<p>Again, we'll put the outcome into a table using <code>tibble</code> and calculate counts and probabilities of each outcome using <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>. Remember to try reading your code in full sentences to help you understand what multiple lines of code connected by pipes are doing. How would you read the below code?</p>
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data10K</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>heads <span class="op">=</span> <span class="va">heads10K</span><span class="op">)</span> <span class="op">%&gt;%</span>   
+                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">heads</span><span class="op">)</span> <span class="op">%&gt;%</span>           
+                <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>, p<span class="op">=</span><span class="va">n</span><span class="op">/</span><span class="fl">10000</span><span class="op">)</span> </code></pre></div>
+<p>Finally, we can visualise this as we did earlier.</p>
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">data10K</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">heads</span>,<span class="va">p</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, fill <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Number of Heads"</span>, y <span class="op">=</span> <span class="st">"Probability of Heads in 4 flips (p)"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:data10Khist"></span>
+<img src="15-simulation_files/figure-html/data10Khist-1.png" alt="10K coin toss probability outcomes." width="100%"><p class="caption">
+Figure 15.2: 10K coin toss probability outcomes.
+</p>
+</div>
+<p>Using Monte Carlo simulation, we estimate that the probability of getting exactly one head on four throws is about 0.25. The above result represents a probability distribution for all the possible outcomes in our experiments. We can derive lots of useful information from this.</p>
+<p>For instance, what is the probability of getting two or more heads in four throws? This is easy: the outcomes meeting the criterion are 2, 3, or 4 heads. We can just add these probabilities together like so:</p>
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data10K</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">heads</span> <span class="op">&gt;=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>p2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">p</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="kable-table">
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="right">p2</th>
+</tr></thead>
+<tbody><tr class="odd">
+<td align="right">0.6878</td>
+</tr></tbody>
+</table></div>
+</div>
+<p>You can add probabilities for various outcomes together as long as the outcomes are mutually exclusive, that is, when one outcome occurs, the others can't occur. For this coin flipping example, this is obviously the case: you can't simultaneously get exactly two and exactly three heads as the outcome of a single experiment. However, be aware that you can't simply add probabilities together when the events in question are not mutually exclusive: for example, the probability of the coin landing heads up, and it landing with the image of the head being in a particular orientation are not mutually exclusive, and can't be simply added together.</p>
+<p>This is the basis of how we can calculate the probability of an outcome using a known distribution - by simulating a large number of trials we can use this as an estimate for how our data will look in the real world.</p>
+</div>
+<div id="activity-8-rnorm" class="section level2" number="15.10">
+<h2>
+<span class="header-section-number">15.10</span> Activity 8: <code>rnorm()</code><a class="anchor" aria-label="anchor" href="#activity-8-rnorm"><i class="fas fa-link"></i></a>
+</h2>
+<p>We can also use R to simulate continuous data that follow a normal distribution using <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>. You've actually used <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> before, all the way back in Intro to R from Psych 1A but we'll go over it again.</p>
+<ul>
+<li>
+<code>n</code> is the number of data points you wish to simulate which is the only required argument for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>
+</li>
+<li>
+<code>mean</code> is the mean that you want your data to have. If you don't provide this argument, <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> will use a default value of <code>mean = 0</code>.</li>
+<li>
+<code>sd</code> is the standard deviation you want your data to have. If you don't provide this argument, <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> will use a default value of <code>sd = 1</code>.</li>
+</ul>
+<p>Copy, paste and run the below code in a new code chunk. This will randomly generate 50 numbers that collectively have a mean of 10 and a SD of 2 and then store it in the object <code>normal</code>.</p>
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">normal</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span>, mean <span class="op">=</span> <span class="fl">10</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<p>You can check that the data you have generated are as you expected by calculating the mean and SD of this new variable - you shouldn't expect the values to be exactly 10 and 2 (remember, it's randomly generated), but they should be reasonably close.</p>
+<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">normal</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">normal</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] 9.687068
+## [1] 2.044039</code></pre>
+<p>Finally, you can visualise your data with a density plot. Try changing the number of data points generated by <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> from 50 to 500 to 5000 and then see how the shape of the distribution changes.</p>
+<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>normal <span class="op">=</span> <span class="va">normal</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#turn the variable normal into a table and then</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">normal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># create a density plot</span>
+  <span class="fu">geom_density</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-3"></span>
+<img src="15-simulation_files/figure-html/unnamed-chunk-3-1.png" alt="Distribution of variable created by rnorm" width="100%"><p class="caption">
+Figure 7.3: Distribution of variable created by rnorm
+</p>
+</div>
+</div>
+<div id="activity-9-simulate-a-dataset" class="section level2" number="15.11">
+<h2>
+<span class="header-section-number">15.11</span> Activity 9: Simulate a dataset<a class="anchor" aria-label="anchor" href="#activity-9-simulate-a-dataset"><i class="fas fa-link"></i></a>
+</h2>
+<p>Finally, we can put all of this together to simulate a full dataset. Let's imagine that we're going to run an experiment to see whether 120 people will roll a higher number on a die if their IQ is higher. This is obviously a stupid experiment but psychology does occasionally do stupid things.</p>
+<ul>
+<li>First, let's create a variable that has all of our subject IDs. We're just going to assign our participants numerical codes.</li>
+</ul>
+<div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">subject_id</span> <span class="op">&lt;-</span> <span class="fl">1</span><span class="op">:</span><span class="fl">120</span> <span class="co"># create a variable called subject_id that has the numbers 1 to 120 in it</span></code></pre></div>
+<p>Then we're going to create a column for gender using a new but simple function <code>rep</code> which stands for "repeat". The below code will create a variable that repeats "man" 40 times, then "women" 40 times, then "non-binary" 40 times.</p>
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gender</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"man"</span>, <span class="st">"woman"</span>, <span class="st">"nonbinary"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></code></pre></div>
+<p>Next, let's simulate them all rolling a die once using <code><a href="https://rdrr.io/r/base/sample.html">sample()</a></code>.</p>
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rolls</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span>, size <span class="op">=</span> <span class="fl">120</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Then, let's simulate their IQ scores. IQ scores are standardised so that overall, the population has an average IQ of 100 and a SD of 15 so we can use this information to simulate the data with <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>.</p>
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">iq</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">120</span>, mean <span class="op">=</span> <span class="fl">100</span>, sd <span class="op">=</span> <span class="fl">15</span><span class="op">)</span></code></pre></div>
+<p>Finally, we can stitch all these variables together into a table.</p>
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sim_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span><span class="va">subject_id</span>, <span class="va">gender</span>, <span class="va">rolls</span>, <span class="va">iq</span><span class="op">)</span></code></pre></div>
+<p>Now that we've got our simulated data we could write code to analyse it even before we've collected any real data which will not only save us time in the future, but will help us plan our analyses and we could include this code in a pre-registration document.</p>
+<p>For example, you could create a plot of IQ scores for each dice roll (remember these are not real data...)</p>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sim_data</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>rolls <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">rolls</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">rolls</span>, y <span class="op">=</span> <span class="va">iq</span>, fill <span class="op">=</span> <span class="va">rolls</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.6</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Outcome of dice roll"</span><span class="op">)</span></code></pre></div>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-9"></span>
+<img src="15-simulation_files/figure-html/unnamed-chunk-9-1.png" alt="Boxplot of IQ scores grouped by what each person rolled on the die" width="100%"><p class="caption">
+Figure 7.7: Boxplot of IQ scores grouped by what each person rolled on the die
+</p>
+</div>
+</div>
+<div id="finished-6" class="section level2" number="15.12">
+<h2>
+<span class="header-section-number">15.12</span> Finished!<a class="anchor" aria-label="anchor" href="#finished-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>The final Data Skills activity is to analyse your group project data which means in terms of new stuff to learn, we're done! In Psych 1A and 1B, we've tried to give you a solid introduction to common data skills you'll need in order to conduct your own research. Even if you don't intend to continue with psychology or quantitative research in the future, we hope that you're proud of the skills you've learned. For some of you, R might not have been your favourite bit of the course, but you should be very proud of what you've achieved and with such a diverse class we hope you can see that programming isn't an innate skill that only certain people can learn. It just take a a bit of work, some (hopefully) helpful teaching materials, and a lot of swearing at the error messages.</p>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></div>
+<div class="next"><a href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simulation"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="nav-link" href="#simulation-1"><span class="header-section-number">15.1</span> Simulation</a></li>
+<li><a class="nav-link" href="#activity-1-sample"><span class="header-section-number">15.2</span> Activity 1: sample()</a></li>
+<li><a class="nav-link" href="#activity-2-sum"><span class="header-section-number">15.3</span> Activity 2: sum()</a></li>
+<li><a class="nav-link" href="#activity-3-replicate-1"><span class="header-section-number">15.4</span> Activity 3: replicate() 1</a></li>
+<li><a class="nav-link" href="#monte-carlo-simulation"><span class="header-section-number">15.5</span> Monte Carlo simulation</a></li>
+<li><a class="nav-link" href="#activity-4-replicate-2"><span class="header-section-number">15.6</span> Activity 4: replicate() 2</a></li>
+<li><a class="nav-link" href="#activity-5-probability"><span class="header-section-number">15.7</span> Activity 5: probability</a></li>
+<li><a class="nav-link" href="#activity-6-visualisation"><span class="header-section-number">15.8</span> Activity 6: visualisation</a></li>
+<li><a class="nav-link" href="#activity-7-big-data"><span class="header-section-number">15.9</span> Activity 7: big data</a></li>
+<li><a class="nav-link" href="#activity-8-rnorm"><span class="header-section-number">15.10</span> Activity 8: rnorm()</a></li>
+<li><a class="nav-link" href="#activity-9-simulate-a-dataset"><span class="header-section-number">15.11</span> Activity 9: Simulate a dataset</a></li>
+<li><a class="nav-link" href="#finished-6"><span class="header-section-number">15.12</span> Finished!</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/15-simulation.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/15-simulation.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

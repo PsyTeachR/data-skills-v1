@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 1 Getting to know the data | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content="This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018) and you can find an explanation of the data here Web-based...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 1 Getting to know the data | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/getting-to-know-the-data.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content="This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018) and you can find an explanation of the data here Web-based...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 1 Getting to know the data | Data Skills">
+<meta name="twitter:description" content="This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018) and you can find an explanation of the data here Web-based...">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="active" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="getting-to-know-the-data" class="section level1" number="1">
+<h1>
+<span class="header-section-number">1</span> Getting to know the data<a class="anchor" aria-label="anchor" href="#getting-to-know-the-data"><i class="fas fa-link"></i></a>
+</h1>
+<p>This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018) and you can find an explanation of the data here <a href="files/woodworth.pdf" download>Web-based Positive Psychology Interventions: A Reexamination of Effectiveness</a>.</p>
+<p>There is a <a href="https://uofglasgow.zoom.us/rec/play/fcN0wGI55eLei1anshzY7jf7ikF9thRAr3e5b02ZyzwpZJ8zR5sWdqoTDYkSVzOMaij-w8rV2uHOrzW0.kWhJbJmNF5ZRhh3g?autoplay=true&amp;startTime=1600084023000">walkthrough video</a> of this chapter available via Zoom.</p>
+<div id="activity-1" class="section level2" number="1.1">
+<h2>
+<span class="header-section-number">1.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Read through the study to familiarise yourself with the data you will be using over the coming weeks and answer the below questions.</p>
+<p>When you get the correct answer, the answer box will turn green. Sometimes this doesn't work on Internet Explorer or Edge so be sure to use Chrome or Firefox.</p>
+<ul>
+<li>What does the AHI measure? (Hint, use a single word)</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="9" data-answer='["Happiness","happiness","TRUE"]'></p>
+<ul>
+<li>What does the CES-D measure? (hint, use a single word)</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="10" data-answer='["Depression","depression","TRUE"]'></p>
+<ul>
+<li>How many participants were there in this study?</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="3" data-answer='["295"]'></p>
+<ul>
+<li>How many questions (items) are there on the AHI?</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="2" data-answer='["24"]'></p>
+<ul>
+<li>How many questions (items) are there on the CES-D?</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="2" data-answer='["20"]'></p>
+</div>
+<div id="activity-2" class="section level2" number="1.2">
+<h2>
+<span class="header-section-number">1.2</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2"><i class="fas fa-link"></i></a>
+</h2>
+<p><a href="files/Data_Skills_1A.zip" download>Download the files for Psych 1A here</a></p>
+<p>The files are stored in a <strong>zip file</strong>. A zip file is a folder that contains files that have been compressed to make the file size smaller (like vacuum packed food) and enables you to download multiple files at once, however, before you use the files from a zip folder you first need to extract them.</p>
+<ol style="list-style-type: decimal">
+<li>If you haven't already, make a folder on your computer for Psych 1A.</li>
+<li>Click on the above link to download the folder and save it in your Psych 1A folder. If your computer does not ask you where to save the file, chances are it has saved it in your Downloads folder. If this is the case, once it has downloaded go to your downloads folder and then move it to your Psych 1A folder</li>
+<li>Navigate to the zip file and open it. You will see all the files it contains but <strong>don't use these</strong> - click <strong>"Extract all"</strong> on the top ribbon.</li>
+<li>You will be asked to select a location to save the unzipped files. Assuming that you followed step 2, the default option should be your Psych 1A folder</li>
+<li>You can now use the unzipped files. Save the zip folder for now, we're going to use it again in chapter 3.</li>
+</ol>
+</div>
+<div id="activity-3" class="section level2" number="1.3">
+<h2>
+<span class="header-section-number">1.3</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that you've unzipped the folder, you should see that you have eight files. Three of these files are the data from Woodworth et al. - <code>code-book.pdf</code>, <code>ahi-cesd.csv</code> and <code>participant-info.csv</code>. Open and review each of these files and use the code book to figure out what the data in each variable (column) represents.</p>
+<ul>
+<li>How many variables/columns data does <code>participant-info.csv</code> have?</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="1" data-answer='["6"]'></p>
+<ul>
+<li>How many variables/columns data does <code>ahi-cesd.csv</code> have?</li>
+</ul>
+<p><input class="webex-solveme nospaces" size="2" data-answer='["50"]'></p>
+<ul>
+<li>What does a response of 1 for sex mean? <select class="webex-solveme" data-answer='["female"]'><option></option>
+<option>female</option>
+<option>male</option></select>
+</li>
+</ul>
+<p>The remaining five files are "stub files" that you will use as you work through this book, so don't worry about them just now.</p>
+
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="index.html">Overview</a></div>
+<div class="next"><a href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#getting-to-know-the-data"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="nav-link" href="#activity-1"><span class="header-section-number">1.1</span> Activity 1</a></li>
+<li><a class="nav-link" href="#activity-2"><span class="header-section-number">1.2</span> Activity 2</a></li>
+<li><a class="nav-link" href="#activity-3"><span class="header-section-number">1.3</span> Activity 3</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/01-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/01-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

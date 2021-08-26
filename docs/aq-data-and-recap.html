@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 AQ data and recap | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content="Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 9 AQ data and recap | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/aq-data-and-recap.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content="Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 AQ data and recap | Data Skills">
+<meta name="twitter:description" content="Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability...">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="active" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="aq-data-and-recap" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> AQ data and recap<a class="anchor" aria-label="anchor" href="#aq-data-and-recap"><i class="fas fa-link"></i></a>
+</h1>
+<p>Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability simulations in preparation for statistics in level 2, and analysing your own data for the group project.</p>
+<div class="info">
+<p>
+If you haven't yet installed R on your own machine, we strongly encourage you to do so as it means that a) you're not reliant on the server b) you don't need to be connected to the internet to use R and c) it makes it much easier to check your homework files before you submit them. There is more info in the <a href="https://psyteachr.github.io/ug1-practical/installing-r-on-your-computer-1.html">Appendix</a> and you can also attend a GTA support session if you need help.
+</p>
+</div>
+<p>It would be nice to always get data formatted in the way that you want it, but one of the challenges as a scientist is dealing with Other People’s Data. People often structure data in ways that is convenient for data entry, but not very convenient for data analysis, and so, much effort must be expended ’wrangling’ data into shape before you can do more interesting things with it. Additionally, performing analyses often requires pulling together data obtained from different sources: you have done this in semester 1 by combining the participant information with the depression and happiness data. In this semester, we are going to give you some tips on how to structure data, and introduce strategies for transforming and combining data from different sources.</p>
+<div id="autism-quotient-data" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Autism-quotient data<a class="anchor" aria-label="anchor" href="#autism-quotient-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>For Psych 1B we're going to use a different dataset for our exercises based upon data that was collected using SurveyMonkey but that has has simulated variables added for the purposes of these exercises (gender was missing, so we have added this in). For this research project, participants completed the short 10-item version of the Autism-Spectrum Quotient (AQ) (Baron-Cohen, Wheelwright, Skinner, Martin, &amp; Clubley, 2001), which is designed to measure autistic traits in adults. The items for the questionnaire are shown below.</p>
+<p>Table 1: The ten items on the AQ-10.</p>
+<div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="5%">
+<col width="94%">
+</colgroup>
+<thead><tr class="header">
+<th align="left">Q_No</th>
+<th align="left">Question</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Q 1</td>
+<td align="left">I often notice small sounds when others do not.</td>
+</tr>
+<tr class="even">
+<td align="left">Q 2</td>
+<td align="left">I usually concentrate more on the whole picture, rather than small details.</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 3</td>
+<td align="left">I find it easy to do more than one thing at once.</td>
+</tr>
+<tr class="even">
+<td align="left">Q 4</td>
+<td align="left">If there is an interruption, I can switch back to what I was doing very quickly.</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 5</td>
+<td align="left">I find it easy to read between the lines when someone is talking to me.</td>
+</tr>
+<tr class="even">
+<td align="left">Q 6</td>
+<td align="left">I know how to tell if someone listening to me is getting bored.</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 7</td>
+<td align="left">When I’m reading a story, I find it difficult to work out the characters’ intentions.</td>
+</tr>
+<tr class="even">
+<td align="left">Q 8</td>
+<td align="left">I like to collect information about categories of things.</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 9</td>
+<td align="left">I find it easy to work out what someone is thinking or feeling just by looking at their face.</td>
+</tr>
+<tr class="even">
+<td align="left">Q 10</td>
+<td align="left">I find it difficult to work out people’s intentions.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Responses to each item were measured on a four-point scale: Definitely Disagree, Slightly Disagree, Slightly Agree, Definitely Agree. One of the issues with conducting research using surveys is that if we don't design them carefully, our data may be affected by response bias. One type of response bias is <strong>acquiescence bias</strong>, which is the finding that people have a tendancy to agree with all statements. To try and minimise the impact of this, many questionnaires will <strong>reverse-code</strong> some of the questions so that a positive response means agreeing with one question but disagreeing with another.</p>
+<ul>
+<li>Read through the questions. Type the number of one of the items where you think <strong>agreeing</strong> with the item would mean the participant displayed autistic traits<input class="webex-solveme nospaces" size="2" data-answer='["1","7","8","10"]'>
+</li>
+<li>Now type the number of one of the items where you think <strong>disagreeing</strong> with the item would mean the participant displayed autistic traits <input class="webex-solveme nospaces" size="1" data-answer='["2","3","4","5","6","9"]'>
+</li>
+</ul>
+<p>For those items where agreeing with the item means a higher autistic quotient (AQ) score, participants recieve a score of 1 if they answer "Slightly agree" or "Agree". This is called <strong>forward scoring</strong>. For those items where disagreeing with the item means a higher AQ score, participants recieve a score of 1 if they answer "Slightly disagree" or "Disagree". This is know as <strong>reverse coding</strong>.</p>
+<p>The AQ score for each participant is the total score (i.e., the sum) of all 10 questions. The higher the AQ score, the more ’autistic traits’ they are assumed to exhibit and it is this score we are interested in.</p>
+</div>
+<div id="activity-1-download-the-data" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Activity 1: Download the data<a class="anchor" aria-label="anchor" href="#activity-1-download-the-data"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Download the <a href="files/Psych%201B.zip" download><code>Psych 1B</code></a> zip file.</li>
+<li>If you're working on your computer, extract the files, and make sure it is saved somewhere sensible. If you're one of those people who has 20 versions of the same file, stop being that person and tidy up your files.</li>
+<li>If you're working on the server, upload the zip file to the server. It will automatically unzip it for you. As above, tidy up your server files if necessary.</li>
+</ul>
+</div>
+<div id="activity-2-open-a-new-markdown-document" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Activity 2: Open a new Markdown document<a class="anchor" aria-label="anchor" href="#activity-2-open-a-new-markdown-document"><i class="fas fa-link"></i></a>
+</h2>
+<p>In Psych 1A, we provided the Markdown documents for you in the form of stub files. From this point on, you're going to create and save your own.</p>
+<ul>
+<li>Open R Studio and set the working directory to your Psych 1B folder. If this has worked, you should see the csv files you just downloaded in the file pane in the bottom right of R Studio.<br>
+</li>
+<li>To open a new R Markdown document click the 'new item' icon and then click 'R Markdown'. You will be prompted to give it a title, call it "AQ data and recap". Also, change the author name to your GUID as this will be good practice for the homework. Keep the output format as HTML.</li>
+<li>Once you've opened a new document be sure to save it by clicking <code>File</code> -&gt; <code>Save as</code>. Name this file "AQ data and recap". If you've set the working directory correctly, you should now see this file appear in your file viewer pane.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:img-new-markdownb"></span>
+<img src="images/markdown_new.gif" alt="Opening a new R Markdown document" width="100%"><p class="caption">
+Figure 9.1: Opening a new R Markdown document
+</p>
+</div>
+</div>
+<div id="activity-3-create-a-new-code-chunk" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Activity 3: Create a new code chunk<a class="anchor" aria-label="anchor" href="#activity-3-create-a-new-code-chunk"><i class="fas fa-link"></i></a>
+</h2>
+<p>Let's recap how to use Markdown. When you first open a new R Markdown document you will see a bunch of default welcome text. Do the following steps:</p>
+<ul>
+<li>Delete <strong>everything</strong> below line 7<br>
+</li>
+<li>On line 8 type "Activity 3"<br>
+</li>
+<li>Click <code>Insert</code> -&gt; <code>R</code>
+</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:img-new-chunkb"></span>
+<img src="images/markdown-code_chunks.gif" alt="New R chunk" width="100%"><p class="caption">
+Figure 9.2: New R chunk
+</p>
+</div>
+<p>You should create a new code chunk <strong>for each activity</strong> or each analysis step (like there was in the stub files from 1A) and make sure there is a description of what the code is doing. This will make it easier to read your Markdown and find where any errors in the code are. <strong>Do not put all of your code in one big chunk.</strong></p>
+</div>
+<div id="activity-4-load-in-the-data" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Activity 4: Load in the data<a class="anchor" aria-label="anchor" href="#activity-4-load-in-the-data"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Type and run the code that loads the <code>tidyverse</code> package.</li>
+<li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data. If you need help remembering how to load in data files, check Loading Data.</li>
+</ul>
+<div class="info">
+<p>
+The solutions are at the bottom if you need them. However, as you'll discover in your memory and learning lectures, you'll learn more if you try and retrieve the code from memory. There were a couple of comments in the 1A EvaSys that said some of you felt like you were just copying and pasting - this can only be true if <strong>you choose</strong> to copy and paste.
+</p>
+</div>
+</div>
+<div id="activity-5-look-at-the-data" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Activity 5: Look at the data<a class="anchor" aria-label="anchor" href="#activity-5-look-at-the-data"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>View each of the three datasets by clicking on their name in the environment.</p></li>
+<li><p>Check each object by using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>, e.g., <code><a href="https://rdrr.io/r/base/summary.html">summary(qformats)</a></code>.</p></li>
+<li><p><strong>responses</strong> contains the actual data from the survey. There is a participant Id column and then the rest of the columns contain the responses associated with that participant for each of the 10 questions (Q1, Q2, Q3, …, Q10).<br></p></li>
+<li><p><strong>scoring</strong> contains the scoring information that we described above, that is, whether a question should be given a score of 1 or 0 for forward and reverse coded items for each possible response.<br></p></li>
+<li><p><strong>qformats</strong> contains a list of whether each question is forward or reverse coded.</p></li>
+</ul>
+</div>
+<div id="thinking-through-the-problem" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Thinking through the problem<a class="anchor" aria-label="anchor" href="#thinking-through-the-problem"><i class="fas fa-link"></i></a>
+</h2>
+<p>In order to get a total AQ score for each participant, we need to combine the information from all three files, that is, we need to know the participants response and then how to score it. We technically <em>could</em> score the data by hand. However, there are 66 participants in this dataset with each participant providing 10 responses. This means we would have to manually tidy up 660 responses.</p>
+<p>Not only would this be a horribly mind-numbing task, it is also one in which you would be prone to make errors. Even if you were 99% accurate, you would still get about 7 of the scores wrong. Worst of all, this approach does not scale beyond small datasets. When you analyse the data from your group project, there will likely be thousands of participants and you don't have time to do these by hand!</p>
+<hr>
+<ul>
+<li>Pause here and think about how you might calculate AQ scores for each participant. What are the necessary steps?</li>
+</ul>
+<hr>
+<p>Let’s imagine we are doing the task by hand so that we understand the logic. Once that logic is clear, we’ll go through it again and show you how to write the script to make it happen.</p>
+<p>Let’s take stock of what we know. First, we know that there are two question formats, and that questions Q1, Q7, Q8, and Q10 are scored according to format F and questions Q2, Q3, Q4, Q5, Q6, and Q9 are scored according to format R. This is the information that is currently stored in <code>qformats</code>:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Question</th>
+<th align="left">QFormat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Q 1</td>
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">Q 2</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 3</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 4</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 5</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 6</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 7</td>
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">Q 8</td>
+<td align="left">F</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 9</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 10</td>
+<td align="left">F</td>
+</tr>
+</tbody>
+</table></div>
+<p>We also know that for format <strong>F</strong>, we award a point for <strong>agree</strong>, zero for <strong>disagree</strong>. For format <strong>R</strong>, a point for <strong>disagree</strong>, zero for <strong>agree</strong>. This is the information that is currently stored in <code>scoring</code>:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">QFormat</th>
+<th align="left">Response</th>
+<th align="right">Score</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">F</td>
+<td align="left">Definitely Agree</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left">Slightly Agree</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">F</td>
+<td align="left">Slightly Disagree</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">F</td>
+<td align="left">Definitely Disagree</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">R</td>
+<td align="left">Definitely Agree</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">R</td>
+<td align="left">Slightly Agree</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">R</td>
+<td align="left">Slightly Disagree</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">R</td>
+<td align="left">Definitely Disagree</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Finally, we would need to look at the responses from each participant and then give them the correct score for the format of the question. Let’s walk through the example with the first participant. For this participant (Id = 16), we have the following responses:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Question</th>
+<th align="left">Participant 16 Response</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Q 1</td>
+<td align="left">Slightly Disagree</td>
+</tr>
+<tr class="even">
+<td align="left">Q 2</td>
+<td align="left">Definitely Agree</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 3</td>
+<td align="left">Slightly Disagree</td>
+</tr>
+<tr class="even">
+<td align="left">Q 4</td>
+<td align="left">Definitely Disagree</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 5</td>
+<td align="left">Slightly Agree</td>
+</tr>
+<tr class="even">
+<td align="left">Q 6</td>
+<td align="left">Slightly Agree</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 7</td>
+<td align="left">Slightly Agree</td>
+</tr>
+<tr class="even">
+<td align="left">Q 8</td>
+<td align="left">Definitely Disagree</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 9</td>
+<td align="left">Slightly Agree</td>
+</tr>
+<tr class="even">
+<td align="left">Q 10</td>
+<td align="left">Slightly Agree</td>
+</tr>
+</tbody>
+</table></div>
+<p>Note that we have re-formatted the responses so that each response is in a separate row, rather than having all of the responses in a single row, as they are in <code>responses</code>. We have reshaped the data from its original <strong>wide format</strong> to <strong>long format</strong>. This format is called long because instead of having just one row for each participant, we now have one row for each data point and so 10 rows for each participant.</p>
+<p>While this format makes it less easy to read the whole dataset in with a single glance, it actually ends up being much easier to deal with, because ’Question’ is a now a single variable whose levels are Q1, Q2, …, Q10, and ’Response’ is also now a single variable. Most functions that you will be working with in R will expect your data to be in long rather than wide format.</p>
+<p>Let’s now look up the format for each question:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Question</th>
+<th align="left">Participant 16 Response</th>
+<th align="left">QFormat</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Q 1</td>
+<td align="left">Slightly Disagree</td>
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">Q 2</td>
+<td align="left">Definitely Agree</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 3</td>
+<td align="left">Slightly Disagree</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 4</td>
+<td align="left">Definitely Disagree</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 5</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 6</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 7</td>
+<td align="left">Slightly Agree</td>
+<td align="left">F</td>
+</tr>
+<tr class="even">
+<td align="left">Q 8</td>
+<td align="left">Definitely Disagree</td>
+<td align="left">F</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 9</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+</tr>
+<tr class="even">
+<td align="left">Q 10</td>
+<td align="left">Slightly Agree</td>
+<td align="left">F</td>
+</tr>
+</tbody>
+</table></div>
+<p>And now that we have the format and the response, we can look up the scores:</p>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th align="left">Question</th>
+<th align="left">Participant 16 Response</th>
+<th align="left">QFormat</th>
+<th align="right">Score</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">Q 1</td>
+<td align="left">Slightly Disagree</td>
+<td align="left">F</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Q 2</td>
+<td align="left">Definitely Agree</td>
+<td align="left">R</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 3</td>
+<td align="left">Slightly Disagree</td>
+<td align="left">R</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Q 4</td>
+<td align="left">Definitely Disagree</td>
+<td align="left">R</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 5</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Q 6</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 7</td>
+<td align="left">Slightly Agree</td>
+<td align="left">F</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">Q 8</td>
+<td align="left">Definitely Disagree</td>
+<td align="left">F</td>
+<td align="right">0</td>
+</tr>
+<tr class="odd">
+<td align="left">Q 9</td>
+<td align="left">Slightly Agree</td>
+<td align="left">R</td>
+<td align="right">0</td>
+</tr>
+<tr class="even">
+<td align="left">Q 10</td>
+<td align="left">Slightly Agree</td>
+<td align="left">F</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table></div>
+<p>Then we just add up the scores, which yields an AQ score of 4 for participant 16. We would then repeat this logic for the remaining 65 participants. Anyone fancy doing this for a big data set?!</p>
+<p>Due to the large margin for error in carrying out this task by hand, it's important to learn how to make the computer do the dirty work. The computer won't make mistakes and will free up your mind to focus on the bigger issues in your research.</p>
+</div>
+<div id="activity-5-recap" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> Activity 5: Recap<a class="anchor" aria-label="anchor" href="#activity-5-recap"><i class="fas fa-link"></i></a>
+</h2>
+<p>Finally, let's refresh your memory of some of the important tidyverse functions before we delve into anything new.</p>
+<ul>
+<li>What function would you use to keep just the columns Q1 and Q2 in <code>responses</code>? <select class="webex-solveme" data-answer='["select"]'><option></option>
+<option>filter</option>
+<option>select</option>
+<option>object</option>
+<option>Q1:Q2</option></select>
+</li>
+<li>What function would you use to keep just the data from participant 16 in <code>reponses</code>? <select class="webex-solveme" data-answer='["filter"]'><option></option>
+<option>filter</option>
+<option>select</option>
+<option>summarise</option>
+<option>observation</option></select>
+</li>
+<li>What function would you use to add up the total score for participant 16? <select class="webex-solveme" data-answer='["summarise"]'><option></option>
+<option>filter</option>
+<option>inner_join</option>
+<option>summarise</option>
+<option>score</option></select>
+</li>
+<li>What function would you use to join together <code>qformats</code> and <code>scoring</code>? <select class="webex-solveme" data-answer='["inner_join"]'><option></option>
+<option>inner_join</option>
+<option>join</option>
+<option>join_inner</option>
+<option>object_join</option></select>
+</li>
+</ul>
+</div>
+<div id="activity-solutions---aq-data-and-recap" class="section level2" number="9.9">
+<h2>
+<span class="header-section-number">9.9</span> Activity solutions - AQ data and recap<a class="anchor" aria-label="anchor" href="#activity-solutions---aq-data-and-recap"><i class="fas fa-link"></i></a>
+</h2>
+<div id="activity-4-1" class="section level3" number="9.9.1">
+<h3>
+<span class="header-section-number">9.9.1</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
+<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
+<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script><div class="chapter-nav">
+<div class="prev"><a href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></div>
+<div class="next"><a href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#aq-data-and-recap"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="nav-link" href="#autism-quotient-data"><span class="header-section-number">9.1</span> Autism-quotient data</a></li>
+<li><a class="nav-link" href="#activity-1-download-the-data"><span class="header-section-number">9.2</span> Activity 1: Download the data</a></li>
+<li><a class="nav-link" href="#activity-2-open-a-new-markdown-document"><span class="header-section-number">9.3</span> Activity 2: Open a new Markdown document</a></li>
+<li><a class="nav-link" href="#activity-3-create-a-new-code-chunk"><span class="header-section-number">9.4</span> Activity 3: Create a new code chunk</a></li>
+<li><a class="nav-link" href="#activity-4-load-in-the-data"><span class="header-section-number">9.5</span> Activity 4: Load in the data</a></li>
+<li><a class="nav-link" href="#activity-5-look-at-the-data"><span class="header-section-number">9.6</span> Activity 5: Look at the data</a></li>
+<li><a class="nav-link" href="#thinking-through-the-problem"><span class="header-section-number">9.7</span> Thinking through the problem</a></li>
+<li><a class="nav-link" href="#activity-5-recap"><span class="header-section-number">9.8</span> Activity 5: Recap</a></li>
+<li>
+<a class="nav-link" href="#activity-solutions---aq-data-and-recap"><span class="header-section-number">9.9</span> Activity solutions - AQ data and recap</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#activity-4-1"><span class="header-section-number">9.9.1</span> Activity 4</a></li></ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/09-aq-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/09-aq-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

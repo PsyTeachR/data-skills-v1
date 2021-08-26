@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Reshaping data | Data Skills</title>
+<meta name="author" content="Heather Cleland-Woods and Emily Nordmann (emily.nordmann@glasgow.ac.uk)">
+<meta name="description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Reshaping data | Data Skills">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/reshaping-data.html">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Reshaping data | Data Skills">
+<meta name="twitter:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-6NP3MF25W3');
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+<link rel="stylesheet" href="include/webex.css">
+<link rel="stylesheet" href="include/style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
+        <small class="text-muted">psyTeachR Books</small>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Overview</a></li>
+<li><a class="" href="getting-to-know-the-data.html"><span class="header-section-number">1</span> Getting to know the data</a></li>
+<li><a class="" href="programming-basics.html"><span class="header-section-number">2</span> Programming basics</a></li>
+<li><a class="" href="ref1.html"><span class="header-section-number">3</span> Intro to R</a></li>
+<li><a class="" href="loading-data.html"><span class="header-section-number">4</span> Loading data</a></li>
+<li><a class="" href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></li>
+<li><a class="" href="data-wrangling-2.html"><span class="header-section-number">6</span> Data wrangling 2</a></li>
+<li><a class="" href="intro-to-data-viz.html"><span class="header-section-number">7</span> Intro to Data Viz</a></li>
+<li><a class="" href="scatterplots.html"><span class="header-section-number">8</span> Scatterplots</a></li>
+<li><a class="" href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></li>
+<li><a class="active" href="reshaping-data.html"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="" href="pipes.html"><span class="header-section-number">11</span> Pipes</a></li>
+<li><a class="" href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
+<li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
+<li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li class="book-part">Appendices</li>
+<li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
+<li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
+<li><a class="" href="exporting-files-from-the-server.html"><span class="header-section-number">C</span> Exporting files from the server</a></li>
+<li><a class="" href="symbols.html"><span class="header-section-number">D</span> Symbols</a></li>
+<li><a class="" href="license.html">License</a></li>
+<li><a class="" href="references.html">References</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="reshaping-data" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Reshaping data<a class="anchor" aria-label="anchor" href="#reshaping-data"><i class="fas fa-link"></i></a>
+</h1>
+<p>Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.</p>
+<div id="activity-1-load-in-the-data" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Activity 1: Load in the data<a class="anchor" aria-label="anchor" href="#activity-1-load-in-the-data"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>Open a new R markdown document, name it "Reshaping Data" and save it in your Data Skills folder.</li>
+<li>Set the working directory to your Data Skills folder.</li>
+<li>Type and run the code that loads the <code>tidyverse</code> package.</li>
+<li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
+</ul>
+</div>
+<div id="activity-2-pivot_longer" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Activity 2: <code>pivot_longer()</code><a class="anchor" aria-label="anchor" href="#activity-2-pivot_longer"><i class="fas fa-link"></i></a>
+</h2>
+<p>The first step is to transform the data from wide format to long format. To do this, we will use the function <code>pivot_longer()</code>. <code>pivot_longer()</code> takes multiple columns and collapses them so that each unique variable has it’s own column and has four main arguments:</p>
+<ul>
+<li>
+<code>data</code> is the name of the object you want to transform</li>
+<li>
+<code>names_to</code> is the name of the new column that you will create that will contain the names of the original wide format columns</li>
+<li>
+<code>values_to</code> is the name of the column that will contain the existing values.</li>
+<li>
+<code>cols</code> are the original columns you want to collapse.</li>
+</ul>
+<p>These functions can seem a bit abstract and it is better to show than tell. Run the below code in a new code chunk and then compare how <code>rlong</code> looks compared to <code>responses</code> and see if you can figure out what effect each argument had.</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+                      names_to <span class="op">=</span> <span class="st">"Question"</span>,  
+                      values_to <span class="op">=</span> <span class="st">"Response"</span>,
+                      cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span></code></pre></div>
+<p>You have now created a tibble with 660 observations and 3 variables; 10 observations per 66 participants and 3 variables. Let's recreate the example from the AQ Data and Recap and only use <strong>one participant</strong>. We can do that by using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> (which you used last semester) to create a new object called <code>rlong_16.</code></p>
+</div>
+<div id="activity-3-filter" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Activity 3: <code>filter()</code><a class="anchor" aria-label="anchor" href="#activity-3-filter"><i class="fas fa-link"></i></a>
+</h2>
+<hr>
+<p><strong>Pause here and test your knowledge</strong></p>
+<ul>
+<li>What does <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> do?</li>
+</ul>
+<p><select class="webex-solveme" data-answer='["Retains or removes observations"]'><option></option>
+<option>Retains or removes variables</option>
+<option>Retains or removes observations</option></select></p>
+<hr>
+<ul>
+<li>Create a new object called <code>rlong_16</code> that uses <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to keep only the data from participant Id 16.</li>
+</ul>
+<div class="danger">
+<p>
+Every year, the biggest problem with these exercises is typos caused by not paying attention to the exact spelling and capitalisation. Remember, <code>Question</code> is not the same as <code>question</code>, <code>Response</code> is not the same as <code>response</code>, and <code>Id</code> is not the same as <code>ID.</code>
+</p>
+</div>
+</div>
+<div id="activity-4-inner_join" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Activity 4: <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-4-inner_join"><i class="fas fa-link"></i></a>
+</h2>
+<p>The next step is to match each question with its format (F or R) that is stored in <strong>qformats</strong>. That is, we need to join together the two objects using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> like we did in Psych 1A.</p>
+<ul>
+<li>Create a new object called <code>rlong_16_join</code> that uses <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> to join together <code>rlong_16</code> and <code>qformats</code>by their common column.</li>
+<li>If you get the error <code>Error: by can't contain join column XXXX which is missing from LHS</code> it means that you have made a typo. Check the exact spelling and capitalisation of the variable names.</li>
+</ul>
+<hr>
+<p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> matches up rows in the two tables where both tables have the same value for the variable named in the third argument, “Question”. It then combines the columns from the two tables, copying rows where necessary.</p>
+<p>To state it more simply, what it does is the following: For each row in <code>rlong</code>, it checks the value of the column <code>Question</code>, and looks for rows with the same value in <code>qformats</code>, and then essentially combines all of the other columns in the two tables for these matching rows. If there are values that don't match, the rows get dropped. The <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> function is one of the most useful and time-saving operations in data wrangling so keep practising as it will keep reappearing time after time.</p>
+</div>
+<div id="activity-5-another-inner_join" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Activity 5: Another <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-5-another-inner_join"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now that we have matched up each question with its corresponding format, we can now “look up” the corresponding scores in the scoring table based on the format and the response. This means we have to use <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> once again to join <code>rlong_16_join</code> with <code>scoring</code>**</p>
+<ul>
+<li>Create a new object named <code>scores_16</code> that joins together <code>rlong_16_join</code> with <code>scoring</code>.</li>
+<li>Be careful to tell R <strong>all</strong> the columns the two objects have in common. Remember that when you need to specify multiple variables you will need to use the syntax <code>by = c("var1", "var2)</code>.</li>
+<li>The reason we have to do two separate <code>inner_joins()</code> is because they can only join two tables at once and we have three, so it requires two steps.</li>
+</ul>
+</div>
+<div id="activity-6-calculating-the-aq-score" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score<a class="anchor" aria-label="anchor" href="#activity-6-calculating-the-aq-score"><i class="fas fa-link"></i></a>
+</h2>
+<p>Now you need to calculate the total AQ score for participant 16.</p>
+<ul>
+<li>Create a new object called <code>AQ_16</code>. Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>to add up the numbers in the column <code>Score</code> from <code>scores_16</code> and call the result of this calculation <code>AQ_score</code>.</li>
+<li>This is a difficult task to do from memory but try it anyway - if you get anywhere near the right solution you're doing extremely well!</li>
+</ul>
+</div>
+<div id="activity-7-calculating-all-scores" class="section level2" number="10.7">
+<h2>
+<span class="header-section-number">10.7</span> Activity 7: Calculating all scores<a class="anchor" aria-label="anchor" href="#activity-7-calculating-all-scores"><i class="fas fa-link"></i></a>
+</h2>
+<p>Next we're going to do the same thing but for <strong>all</strong> participants. The first two steps are the same but we just use the full data <code>rlong</code> rather than the filtered dataset.</p>
+<ul>
+<li>Run the below code in a new code chunk.</li>
+</ul>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span>
+<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The final part of calculating the scores requires an extra step because now we don't just want to calculate one score, we want to calculate a score <strong>for each participant</strong> which means that we need to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to group by <code>Id</code>. We're not going to use it in this chapter but we also want our object to show us the participant's gender so we will also add <code>gender</code> to the grouping. If you want to refresh your memory about how <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> works, revise Data Wrangling 1.</p>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
+<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="activity-8-visualisation" class="section level2" number="10.8">
+<h2>
+<span class="header-section-number">10.8</span> Activity 8: Visualisation<a class="anchor" aria-label="anchor" href="#activity-8-visualisation"><i class="fas fa-link"></i></a>
+</h2>
+<p>Finally, use <code>ggplot()</code> and <code>geom_histogram()</code> to make a histogram of all the total AQ scores. Try and make it look pretty by changing the axis labels and the theme. You can check the solution code to see how the below example was made, but you can make yours look different.</p>
+<ul>
+<li>Hint 1: <code>ggplot(data, aes(x)) + geom_histogram()</code>
+</li>
+<li>Hint 2: Add <code>binwidth = 1</code> to <code>geom_histogram()</code> to change the width of the bars.</li>
+</ul>
+<div class="figure" style="text-align: center">
+<span style="display:block;" id="fig:unnamed-chunk-5"></span>
+<img src="10-reshaping-data_files/figure-html/unnamed-chunk-5-1.png" alt="Histogram of total AQ scores" width="100%"><p class="caption">
+Figure 5.3: Histogram of total AQ scores
+</p>
+</div>
+</div>
+<div id="activity-solutions---reshping-data" class="section level2" number="10.9">
+<h2>
+<span class="header-section-number">10.9</span> Activity solutions - Reshping data<a class="anchor" aria-label="anchor" href="#activity-solutions---reshping-data"><i class="fas fa-link"></i></a>
+</h2>
+<div id="activity-1-3" class="section level3" number="10.9.1">
+<h3>
+<span class="header-section-number">10.9.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-3"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
+<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
+<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-3-2" class="section level3" number="10.9.2">
+<h3>
+<span class="header-section-number">10.9.2</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">Id</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="activity-4-2" class="section level3" number="10.9.3">
+<h3>
+<span class="header-section-number">10.9.3</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong_16_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-5-1" class="section level3" number="10.9.4">
+<h3>
+<span class="header-section-number">10.9.4</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5-1"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scores_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+</div>
+<div id="activity-6-2" class="section level3" number="10.9.5">
+<h3>
+<span class="header-section-number">10.9.5</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-2"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_16</span>, AQ_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="activity-8" class="section level3" number="10.9.6">
+<h3>
+<span class="header-section-number">10.9.6</span> Activity 8<a class="anchor" aria-label="anchor" href="#activity-8"><i class="fas fa-link"></i></a>
+</h3>
+<div class="webex-solution">
+<button>
+Solution
+</button>
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
+</div>
+
+</div>
+</div>
+</div>
+<script>
+
+/* update total correct if #webex-total_correct exists */
+update_total_correct = function() {
+  if (t = document.getElementById("webex-total_correct")) {
+    t.innerHTML =
+      document.getElementsByClassName("webex-correct").length + " of " +
+      document.getElementsByClassName("webex-solveme").length + " correct";
+  }
+}
+
+/* webex-solution button toggling function */
+b_func = function() {
+  var cl = this.parentElement.classList;
+  if (cl.contains('open')) {
+    cl.remove("open");
+  } else {
+    cl.add("open");
+  }
+}
+
+/* function for checking solveme answers */
+solveme_func = function(e) {
+  var real_answers = JSON.parse(this.dataset.answer);
+  var my_answer = this.value;
+  var cl = this.classList;
+  if (cl.contains("ignorecase")) {
+    my_answer = my_answer.toLowerCase();
+  }
+  if (cl.contains("nospaces")) {
+    my_answer = my_answer.replace(/ /g, "")
+  }
+
+  if (my_answer == "") {
+    cl.remove("webex-correct");
+    cl.remove("webex-incorrect");
+  } else if (real_answers.includes(my_answer)) {
+    cl.add("webex-correct");
+    cl.remove("webex-incorrect");
+  } else {
+    cl.add("webex-incorrect");
+    cl.remove("webex-correct");
+  }
+
+  // match numeric answers within a specified tolerance
+  if(this.dataset.tol > 0){
+    var tol = JSON.parse(this.dataset.tol);
+    var matches = real_answers.map(x => Math.abs(x - my_answer) < tol)
+    if (matches.reduce((a, b) => a + b, 0) > 0) {
+      cl.add("webex-correct");
+    } else {
+      cl.remove("webex-correct");
+    }
+  }
+
+  // added regex bit
+  if (cl.contains("regex")){
+    answer_regex = RegExp(real_answers.join("|"))
+    if (answer_regex.test(my_answer)) {
+      cl.add("webex-correct");
+    }
+  }
+
+  update_total_correct();
+}
+
+window.onload = function() {
+  /* set up solution buttons */
+  var buttons = document.getElementsByTagName("button");
+
+  for (var i = 0; i < buttons.length; i++) {
+    if (buttons[i].parentElement.classList.contains('webex-solution')) {
+      buttons[i].onclick = b_func;
+    }
+  }
+
+  /* set up webex-solveme inputs */
+  var solveme = document.getElementsByClassName("webex-solveme");
+
+  for (var i = 0; i < solveme.length; i++) {
+    /* make sure input boxes don't auto-anything */
+    solveme[i].setAttribute("autocomplete","off");
+    solveme[i].setAttribute("autocorrect", "off");
+    solveme[i].setAttribute("autocapitalize", "off");
+    solveme[i].setAttribute("spellcheck", "false");
+    solveme[i].value = "";
+
+    /* adjust answer for ignorecase or nospaces */
+    var cl = solveme[i].classList;
+    var real_answer = solveme[i].dataset.answer;
+    if (cl.contains("ignorecase")) {
+      real_answer = real_answer.toLowerCase();
+    }
+    if (cl.contains("nospaces")) {
+      real_answer = real_answer.replace(/ /g, "");
+    }
+    solveme[i].dataset.answer = real_answer;
+
+    /* attach checking function */
+    solveme[i].onkeyup = solveme_func;
+    solveme[i].onchange = solveme_func;
+  }
+
+  update_total_correct();
+}
+
+</script><script>
+$( document ).ready(function() {
+  var cite = ' ';
+  var psyteachr = ' <a href="https://psyteachr.github.io/"><img src="images/logos/psyteachr_logo.png" style="height: 31px; color: white;" alt="psyTeachR: Reproducible Research" /></a>';
+  var license = ' <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/" target="blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a>';
+
+  $("footer div.row div:eq(1) p").html(
+    psyteachr + license + cite
+  );
+});
+</script>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann (<a href="mailto:emily.nordmann@glasgow.ac.uk" class="email">emily.nordmann@glasgow.ac.uk</a>). It was last built on 2021-08-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script><div class="chapter-nav">
+<div class="prev"><a href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></div>
+<div class="next"><a href="pipes.html"><span class="header-section-number">11</span> Pipes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reshaping-data"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="nav-link" href="#activity-1-load-in-the-data"><span class="header-section-number">10.1</span> Activity 1: Load in the data</a></li>
+<li><a class="nav-link" href="#activity-2-pivot_longer"><span class="header-section-number">10.2</span> Activity 2: pivot_longer()</a></li>
+<li><a class="nav-link" href="#activity-3-filter"><span class="header-section-number">10.3</span> Activity 3: filter()</a></li>
+<li><a class="nav-link" href="#activity-4-inner_join"><span class="header-section-number">10.4</span> Activity 4: inner_join()</a></li>
+<li><a class="nav-link" href="#activity-5-another-inner_join"><span class="header-section-number">10.5</span> Activity 5: Another inner_join()</a></li>
+<li><a class="nav-link" href="#activity-6-calculating-the-aq-score"><span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score</a></li>
+<li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.7</span> Activity 7: Calculating all scores</a></li>
+<li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.8</span> Activity 8: Visualisation</a></li>
+<li>
+<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.9</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.9.1</span> Activity 1</a></li>
+<li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.9.2</span> Activity 3</a></li>
+<li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.9.3</span> Activity 4</a></li>
+<li><a class="nav-link" href="#activity-5-1"><span class="header-section-number">10.9.4</span> Activity 5</a></li>
+<li><a class="nav-link" href="#activity-6-2"><span class="header-section-number">10.9.5</span> Activity 6</a></li>
+<li><a class="nav-link" href="#activity-8"><span class="header-section-number">10.9.6</span> Activity 8</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/10-reshaping-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/10-reshaping-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+</div>
+</div>
+</body>
+</html>
