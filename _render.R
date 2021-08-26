@@ -5,5 +5,5 @@ browseURL(
 )
 
 browseURL(
-  xfun::in_dir("book", bookdown::preview_chapter("01-data.Rmd"))
+  xfun::in_dir("book", bookdown::preview_chapter("index.Rmd"))
 )

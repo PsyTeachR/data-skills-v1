@@ -3,7 +3,7 @@
 
 This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018)  and you can find an explanation of the data here <a href="files/woodworth.pdf" download>Web-based Positive Psychology Interventions: A Reexamination of Effectiveness</a>.
 
-There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/fcN0wGI55eLei1anshzY7jf7ikF9thRAr3e5b02ZyzwpZJ8zR5sWdqoTDYkSVzOMaij-w8rV2uHOrzW0.kWhJbJmNF5ZRhh3g?autoplay=true&startTime=1600084023000) of this chapter available via Zoom.
+There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/fcN0wGI55eLei1anshzY7jf7ikF9thRAr3e5b02ZyzwpZJ8zR5sWdqoTDYkSVzOMaij-w8rV2uHOrzW0.kWhJbJmNF5ZRhh3g?autoplay=true&startTime=1600084023000) of this chapter available via Echo360.
 
 ## Activity 1
 
@@ -39,7 +39,7 @@ The files are stored in a **zip file**. A zip file is a folder that contains fil
 
 1. If you haven't already, make a folder on your computer for Psych 1A.
 2. Click on the above link to download the folder and save it in your Psych 1A folder. If your computer does not ask you where to save the file, chances are it has saved it in your Downloads folder. If this is the case, once it has downloaded go to your downloads folder and then move it to your Psych 1A folder
-3. Navigate to the zip file and open it. You will see all the files it contains but **don't use these** - click **"Extract all"** on the top ribbon.
+3. Navigate to the zip file and open it. You will see all the files it contains but **don't use these** - click **"Extract all"** on the top ribbon. If you are using and Mac and Safari, you may find that it automatically unzips the folder. This can actually cause more problems than it solves and I would recommend [turning it off](https://apple.stackexchange.com/questions/961/how-to-stop-safari-from-unzipping-files-after-download) but also, Safari sometimes causes other issues with downloading some file types so if you're on a Mac, I really would just use Chrome or Firefox.
 4. You will be asked to select a location to save the unzipped files. Assuming that you followed step 2, the default option should be your Psych 1A folder
 5. You can now use the unzipped files. Save the zip folder for now, we're going to use it again in chapter 3.
 
