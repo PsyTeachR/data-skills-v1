@@ -123,7 +123,7 @@
 </ul>
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 1 0 0 1</code></pre>
+<pre><code>## [1] 0 0 1 1</code></pre>
 </div>
 <div id="activity-2-sum" class="section level2" number="15.3">
 <h2>
@@ -137,7 +137,7 @@
 <code class="sourceCode R"><span class="co"># This code pipes the output of sample() into sum() which counts up the number of heads/1s.</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, size <span class="op">=</span> <span class="fl">4</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 0</code></pre>
+<pre><code>## [1] 3</code></pre>
 <p>Run this function multiple times (you can use the green markdown play arrow at the top right of the code chunk to make this easy). In our simulation of five sets of four flips we got 1, 3, 2, 2, and 3 heads. So in only one out of the five simulations did we get exactly one heads, i.e., a proportion of .2 or 20% of the time.</p>
 </div>
 <div id="activity-3-replicate-1" class="section level2" number="15.4">
@@ -155,7 +155,7 @@
 <p>Copy, paste and run the below code into a new code chunk to run the sample function and sum up the outcomes 20 times.</p>
 <div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">20</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>##  [1] 1 1 3 4 1 0 2 3 1 1 3 1 2 3 1 2 2 2 2 2</code></pre>
+<pre><code>##  [1] 1 2 3 1 3 2 3 2 3 2 0 2 4 2 3 2 3 1 1 1</code></pre>
 </div>
 <div id="monte-carlo-simulation" class="section level2" number="15.5">
 <h2>
@@ -174,8 +174,8 @@
 <div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">heads50</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>   
 <span class="va">heads50</span></code></pre></div>
-<pre><code>##  [1] 1 1 3 3 3 2 2 2 2 2 2 2 4 1 2 4 2 1 3 2 1 2 3 1 1 2 1 4 0 2 2 2 2 1 2 2 2 2
-## [39] 2 2 1 1 4 1 2 1 2 0 1 2</code></pre>
+<pre><code>##  [1] 3 3 1 1 2 1 3 1 2 2 3 3 3 1 2 4 3 1 1 1 2 0 3 2 3 3 1 1 2 3 0 1 3 1 3 2 1 1
+## [39] 3 2 2 2 2 3 2 2 0 2 3 2</code></pre>
 </div>
 <div id="activity-5-probability" class="section level2" number="15.7">
 <h2>
@@ -196,8 +196,8 @@
 <tbody>
 <tr class="odd">
 <td align="right">0</td>
-<td align="right">2</td>
-<td align="right">0.04</td>
+<td align="right">3</td>
+<td align="right">0.06</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
@@ -206,18 +206,18 @@
 </tr>
 <tr class="odd">
 <td align="right">2</td>
-<td align="right">25</td>
-<td align="right">0.50</td>
+<td align="right">16</td>
+<td align="right">0.32</td>
 </tr>
 <tr class="even">
 <td align="right">3</td>
-<td align="right">5</td>
-<td align="right">0.10</td>
+<td align="right">16</td>
+<td align="right">0.32</td>
 </tr>
 <tr class="odd">
 <td align="right">4</td>
-<td align="right">4</td>
-<td align="right">0.08</td>
+<td align="right">1</td>
+<td align="right">0.02</td>
 </tr>
 </tbody>
 </table></div>
@@ -285,7 +285,7 @@ Figure 15.2: 10K coin toss probability outcomes.
 <th align="right">p2</th>
 </tr></thead>
 <tbody><tr class="odd">
-<td align="right">0.6921</td>
+<td align="right">0.6933</td>
 </tr></tbody>
 </table></div>
 </div>
@@ -313,8 +313,8 @@ Figure 15.2: 10K coin toss probability outcomes.
 <div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">normal</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">normal</span><span class="op">)</span></code></pre></div>
-<pre><code>## [1] 9.802717
-## [1] 1.830436</code></pre>
+<pre><code>## [1] 10.13553
+## [1] 2.002343</code></pre>
 <p>Finally, you can visualise your data with a density plot. Try changing the number of data points generated by <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> from 50 to 500 to 5000 and then see how the shape of the distribution changes.</p>
 <div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>normal <span class="op">=</span> <span class="va">normal</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co">#turn the variable normal into a table and then</span>
