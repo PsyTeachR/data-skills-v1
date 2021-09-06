@@ -104,7 +104,7 @@ final_data <- raw_data %>%
 
 Which of the following is a pipe? <select class='webex-solveme' data-answer='["%>%"]'> <option></option> <option>%>%</option> <option>%<%</option> <option><-</option></select>
 
-Where do pipes send the result of the function that precedes the pipe? <select class='webex-solveme' data-answer='["To the first argument of the next function."]'> <option></option> <option>To the last argument of the next function.</option> <option>To the first argument of the next function.</option> <option>To the third argument of the 18th function.</option></select>
+Where do pipes send the result of the function that precedes the pipe? <select class='webex-solveme' data-answer='["To the first argument of the next function."]'> <option></option> <option>To the first argument of the next function.</option> <option>To the last argument of the next function.</option> <option>To the third argument of the 18th function.</option></select>
 
 ## Activity 2: Set-up
 

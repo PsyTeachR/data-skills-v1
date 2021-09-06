@@ -3,7 +3,7 @@
 
 This semester we will use the same dataset each week to develop your skills and knowledge. The dataset is from Woodworth et al. (2018)  and you can find an explanation of the data here <a href="files/woodworth.pdf" download>Web-based Positive Psychology Interventions: A Reexamination of Effectiveness</a>.
 
-There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/fcN0wGI55eLei1anshzY7jf7ikF9thRAr3e5b02ZyzwpZJ8zR5sWdqoTDYkSVzOMaij-w8rV2uHOrzW0.kWhJbJmNF5ZRhh3g?autoplay=true&startTime=1600084023000) of this chapter available via Echo360.
+There is a [walkthrough video](https://moodle.gla.ac.uk/filter/echo360/lti_launch.php?url=https%3A%2F%2Fecho360.org.uk%2Flti%2F73750256-551c-47b5-9f1b-247567d647c2%3FmediaId%3Db75d33c3-4c7b-4586-b019-ee715f169409%26autoplay%3Dfalse%26automute%3Dfalse&cmid=2529962&width=640&height=420) of this chapter available via Echo360 (UofG Moodle sign-in required).
 
 ## Activity 1
 
