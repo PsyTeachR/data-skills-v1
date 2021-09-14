@@ -143,7 +143,7 @@ However, the power of R is that it is extendable and open source - put simply, i
 
 In order to use a package, you must first install it. The following code installs the package `tidyverse`, a package we will use very frequently in this course.
 
-* If you are working on your own computer, use the below code to install the tidyverse. **You do not need to do this if you are working on the server (which is why we recommend using it) or if you are using the computers in the Boyd Orr building**.  
+* If you are working on your own computer, use the below code to install the tidyverse. **You do not need to do this if you are working on the server or if you are using the computers in the Boyd Orr building**.  
 
 
 ```r
@@ -153,7 +153,7 @@ install.packages("tidyverse")
 You only need to install a package once, however, each time you start R you need to load the packages you want to use, in a similar way that you need to install an app on your phone once, but you need to open it every time you want to use it.
 
 <div class="danger">
-<p>If you get an error message that says something like "WARNING: Rtools is required to build R packages" you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a> (this is one of the many reasons why using the server can be easier).</p>
+<p>If you get an error message that says something like "WARNING: Rtools is required to build R packages" you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
 </div>
 
 To load packages we use the function `library()`. Typically you would start any analysis script by loading all of the packages you need, but we will come back to that in the next chapter.
@@ -235,7 +235,7 @@ data <- rnorm(n = 10, mean = 15, sd = 3)
 
 Note that in these examples, `name`,`age`, and `new_year` would always contain the values `emily`, `35`, and the date of New Year's Day 2021, however, `today` will draw the date from the operating system and `data` will be a randomly generated set of data so the values of these objects will not be static.
 
-As a side note, if you ever have to teach programming and statistics, don't use your age as an example because every time you have to update your teaching materials you get a reminder of the fragility of existence and your advancing age. 
+As a side note, if you ever have to teach programming and statistics, don't use your age as an example because every time you have to update your teaching materials you get a reminder of the fragility of existence and your advancing age. 2021 update: I have now given up updating my age, I will remain forever 35. 
 
 Importantly, objects can be involved in calculations and can interact with each other. For example:
 
@@ -248,7 +248,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of -248 days
+## Time difference of -256 days
 ## [1] 17.66644
 ```
 
