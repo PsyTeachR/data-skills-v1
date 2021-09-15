@@ -4,7 +4,7 @@ In this chapter, we will cover how to use R and RStudio at the University of Gla
 
 This is a long chapter but we don't expect you to memorise all the information that is contained in it and some sections of it will not make sense until you start writing your own code - just make sure you know what help is available!
 
-There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/z4QocMWQL9ExSfHYBaC8C1oISbrEDkOlz8wJwT0oT2y116hgB0yA0O9cTtVdvYWYqO-wq97Xi8_yncLv.1st2ENKayHb21h0S?autoplay=true&startTime=1600084596000) of this chapter available via Zoom.
+There is a [walkthrough video](https://moodle.gla.ac.uk/filter/echo360/lti_launch.php?url=https%3A%2F%2Fecho360.org.uk%2Flti%2F73750256-551c-47b5-9f1b-247567d647c2%3FmediaId%3D2398dd0c-864a-4a2f-9a43-9e34f005e808%26autoplay%3Dfalse%26automute%3Dfalse&cmid=2529962) of this chapter available via Echo360 (Moodle login required) - I strongly encourage you to read through the chapter first before watching the video.
 
 ## R and RStudio
 
@@ -207,7 +207,7 @@ A large part of your coding will involve creating and manipulating objects. Obje
 name <- "emily"
 age <- 16 + 19 
 today <-Sys.Date()
-new_year <- as.Date("2021-01-01")
+new_year <- as.Date("2022-01-01")
 data <- rnorm(n = 10, mean = 15, sd = 3)
 
 ```
