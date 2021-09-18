@@ -1,9 +1,16 @@
 # Data wrangling 1
 
-<div class="info">
-<p>So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at loading in datasets using <code>read_csv()</code>, joined files together using <code>inner_join()</code>, and pulled out variables of interest using <code>select()</code>.</p>
-<p>In this chapter, we'll be moving on to becoming familiar with the Wickham Six and the functionality of the R package, <code>tidyverse</code>!</p>
-</div>
+\begin{info}
+So far you have been introduced to the R environment (e.g.~setting your
+working directory and the difference between .R and .Rmd files). You
+also began working with messy data by having a go at loading in datasets
+using \texttt{read\_csv()}, joined files together using
+\texttt{inner\_join()}, and pulled out variables of interest using
+\texttt{select()}.
+
+In this chapter, we'll be moving on to becoming familiar with the
+Wickham Six and the functionality of the R package, \texttt{tidyverse}!
+\end{info}
 
 Data comes in lots of different formats. One of the most common formats is that of a two-dimensional table (the two dimensions being rows and columns).  Usually, each row stands for a separate observation (e.g. a subject), and each column stands for a different variable (e.g. a response, category, or group). A key benefit of tabular data (i.e., data in a table) is that it allows you to store different types of data-numerical measurements, alphanumeric labels, categorical descriptors-all in one place.
 
@@ -68,18 +75,18 @@ The package `babynames` contains an object of the same name that contains all th
 
 * View a preview of this dataset by running `head(babynames)`. You should see the following output:
 
-<div class="kable-table">
 
-| year|sex |name      |    n|      prop|
-|----:|:---|:---------|----:|---------:|
-| 1880|F   |Mary      | 7065| 0.0723836|
-| 1880|F   |Anna      | 2604| 0.0266790|
-| 1880|F   |Emma      | 2003| 0.0205215|
-| 1880|F   |Elizabeth | 1939| 0.0198658|
-| 1880|F   |Minnie    | 1746| 0.0178884|
-| 1880|F   |Margaret  | 1578| 0.0161672|
-
-</div>
+```
+## # A tibble: 6 x 5
+##    year sex   name          n   prop
+##   <dbl> <chr> <chr>     <int>  <dbl>
+## 1  1880 F     Mary       7065 0.0724
+## 2  1880 F     Anna       2604 0.0267
+## 3  1880 F     Emma       2003 0.0205
+## 4  1880 F     Elizabeth  1939 0.0199
+## 5  1880 F     Minnie     1746 0.0179
+## 6  1880 F     Margaret   1578 0.0162
+```
 
 A tibble is basically a table of data presenting a two dimensional array of your data. `head()` just shows the first five rows of the dataset which is good when you have a very large dataset - in this case `babynames` contains nearly two million data rows! Interested in analyzing these data by hand? No thanks!
 
@@ -112,10 +119,14 @@ ggplot(data = dat,aes(x = year,y = prop, colour=name))+
   geom_line()  
 ```
 
-<div class="figure" style="text-align: center">
-<img src="05-wrangling-1_files/figure-html/babynames-plot-1.png" alt="Proportion of four baby names from 1880 to 2014" width="100%" />
-<p class="caption">(\#fig:babynames-plot)Proportion of four baby names from 1880 to 2014</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{05-wrangling-1_files/figure-latex/babynames-plot-1} 
+
+}
+
+\caption{Proportion of four baby names from 1880 to 2014}(\#fig:babynames-plot)
+\end{figure}
 
 * Change the names to your own examples and see how the plot changes. You can also change the sex from "F" to "M". Post the photos of your new plots on the Teams Data Skills channel.
 * Because in most countries assigned sex at birth is binary, there is no data on intersex, trans or non-binary names. In lieu of that, here's the [Wikipedia page about gender-neutral names and naming laws](https://en.wikipedia.org/wiki/Unisex_name) around the world which will hopefully make you question why on earth we ascribe someone's entire gender identity to a bunch of sounds and letters we use to label them. 
@@ -138,10 +149,14 @@ ggplot(data = dat2,aes(x = year,y = prop, colour=name))+
   facet_wrap(~sex, scales = "free_y", nrow = 2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="05-wrangling-1_files/figure-html/unnamed-chunk-4-1.png" alt="Plots by sex with different scales" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Plots by sex with different scales</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{05-wrangling-1_files/figure-latex/unnamed-chunk-4-1} 
+
+}
+
+\caption{Plots by sex with different scales}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 On the other hand, if the scales for your two groups are fairly similar, it's better to keep the same scales to aid comparison. This time we will filter the dataset for gender neutral names where it might make more sense to have them on the same scale - again try it with and without the scales argument to see what happens
 
@@ -155,10 +170,14 @@ ggplot(data = dat3,aes(x = year,y = prop, colour=name))+
   facet_wrap(~sex, nrow = 2)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="05-wrangling-1_files/figure-html/unnamed-chunk-5-1.png" alt="Plots by sex with the same scale" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-5)Plots by sex with the same scale</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{05-wrangling-1_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Plots by sex with the same scale}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 </div>
 
@@ -176,9 +195,17 @@ select(.data = babynames, # the object you want to select variables from
        year, sex, name, prop) # the variables you want to select
 ```
 
-<div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
-</div>
+\begin{danger}
+If you get an error message when using select that says
+\texttt{unused\ argument} it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+\texttt{select} with \texttt{dplyr::select} which tells R exactly which
+version of the select function to use. We'd recommend restarting the
+session because this will get you in the habit and it's a useful thing
+to try for a range of problems
+\end{danger}
 
 Alternatively, you can also tell R which variables you don't want, in this case, rather than telling R to select `year`, `sex`, `name` and `prop`, we can simply tell it to drop the column `n` using the minus sign `-` before the variable name.
 
@@ -302,18 +329,17 @@ new_dat <- mutate(.data = babynames, # the tibble you want to add a column to
 head(new_dat)
 ```
 
-<div class="kable-table">
-
-| year|sex |name      |    n|      prop| decade|
-|----:|:---|:---------|----:|---------:|------:|
-| 1880|F   |Mary      | 7065| 0.0723836|   1880|
-| 1880|F   |Anna      | 2604| 0.0266790|   1880|
-| 1880|F   |Emma      | 2003| 0.0205215|   1880|
-| 1880|F   |Elizabeth | 1939| 0.0198658|   1880|
-| 1880|F   |Minnie    | 1746| 0.0178884|   1880|
-| 1880|F   |Margaret  | 1578| 0.0161672|   1880|
-
-</div>
+```
+## # A tibble: 6 x 6
+##    year sex   name          n   prop decade
+##   <dbl> <chr> <chr>     <int>  <dbl>  <dbl>
+## 1  1880 F     Mary       7065 0.0724   1880
+## 2  1880 F     Anna       2604 0.0267   1880
+## 3  1880 F     Emma       2003 0.0205   1880
+## 4  1880 F     Elizabeth  1939 0.0199   1880
+## 5  1880 F     Minnie     1746 0.0179   1880
+## 6  1880 F     Margaret   1578 0.0162   1880
+```
 
 In this case, you are creating a new column decade  which has the decade each year appears in. This is calculated using the command `decade = floor(year/10)*10`.
 
@@ -331,13 +357,12 @@ summarise(.data = dat, # the data you want to use
           total = sum(n)) # result = operation
 ```
 
-<div class="kable-table">
-
-|   total|
-|-------:|
-| 2161374|
-
-</div>
+```
+## # A tibble: 1 x 1
+##     total
+##     <int>
+## 1 2161374
+```
 
 `summarise()` becomes even more powerful when combined with the final `dplyr` function, `group_by()`. Quite often, you will want to produce your summary statistics broken down by groups, for examples, the scores of participants in different conditions, or the reading time for native and non-native speakers.
 
@@ -357,16 +382,15 @@ summarise(.data = group_dat,
           total = sum(n)) 
 ```
 
-<div class="kable-table">
-
-|name      |  total|
-|:---------|------:|
-|Alexandra | 231364|
-|Beverly   | 376914|
-|Emily     | 841491|
-|Kathleen  | 711605|
-
-</div>
+```
+## # A tibble: 4 x 2
+##   name       total
+##   <chr>      <int>
+## 1 Alexandra 231364
+## 2 Beverly   376914
+## 3 Emily     841491
+## 4 Kathleen  711605
+```
 
 `summarise()` has performed exactly the same operation as before - adding up the total number in the column `n` - but this time it has done is separately for each group, which in this case was the variable `name`.
 
@@ -379,16 +403,15 @@ summarise(group_dat,
           median_year = median(n))
 ```
 
-<div class="kable-table">
-
-|name      | mean_year| median_year|
-|:---------|---------:|-----------:|
-|Alexandra |  1977.470|       192.0|
-|Beverly   |  3089.459|       709.5|
-|Emily     |  6097.761|      1391.5|
-|Kathleen  |  5156.558|      3098.0|
-
-</div>
+```
+## # A tibble: 4 x 3
+##   name      mean_year median_year
+##   <chr>         <dbl>       <dbl>
+## 1 Alexandra     1977.        192 
+## 2 Beverly       3089.        710.
+## 3 Emily         6098.       1392.
+## 4 Kathleen      5157.       3098
+```
 
 You can also add multiple grouping variables. For example, the following code groups `new_dat` by `sex` and `decade` and then calculates the summary statistics to give us the mean and median number of male and female babies in each decade.
 
@@ -404,44 +427,31 @@ summarise(group_new_dat,
 ## `summarise()` has grouped output by 'sex'. You can override using the `.groups` argument.
 ```
 
-<div class="kable-table">
+```
+## # A tibble: 28 x 4
+## # Groups:   sex [2]
+##    sex   decade mean_year median_year
+##    <chr>  <dbl>     <dbl>       <dbl>
+##  1 F       1880      111.          13
+##  2 F       1890      128.          13
+##  3 F       1900      131.          12
+##  4 F       1910      187.          12
+##  5 F       1920      211.          12
+##  6 F       1930      214.          12
+##  7 F       1940      262.          12
+##  8 F       1950      288.          13
+##  9 F       1960      235.          12
+## 10 F       1970      147.          11
+## # ... with 18 more rows
+```
 
-|sex | decade| mean_year| median_year|
-|:---|------:|---------:|-----------:|
-|F   |   1880| 110.57017|          13|
-|F   |   1890| 128.18406|          13|
-|F   |   1900| 131.32904|          12|
-|F   |   1910| 187.06284|          12|
-|F   |   1920| 210.54574|          12|
-|F   |   1930| 214.19867|          12|
-|F   |   1940| 262.20824|          12|
-|F   |   1950| 288.47692|          13|
-|F   |   1960| 234.71960|          12|
-|F   |   1970| 147.20851|          11|
-|F   |   1980| 134.25355|          11|
-|F   |   1990| 113.07160|          11|
-|F   |   2000|  96.45799|          11|
-|F   |   2010|  91.69925|          11|
-|M   |   1880| 100.76497|          12|
-|M   |   1890|  93.59019|          12|
-|M   |   1900|  94.38963|          12|
-|M   |   1910| 180.83854|          12|
-|M   |   1920| 226.78161|          13|
-|M   |   1930| 253.28957|          13|
-|M   |   1940| 368.40859|          14|
-|M   |   1950| 460.86555|          14|
-|M   |   1960| 415.51792|          13|
-|M   |   1970| 265.55153|          12|
-|M   |   1980| 236.98189|          11|
-|M   |   1990| 187.35187|          11|
-|M   |   2000| 149.06677|          11|
-|M   |   2010| 133.67495|          11|
-
-</div>
-
-<div class="info">
-<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.</p>
-</div>
+\begin{info}
+If you get what looks like an error that says
+\texttt{summarise()\ ungrouping\ output\ (override\ with\ .groups\ argument)}don't
+worry, this isn't an error it's just R telling you what it's done. This
+message was included in a very recent update to the \texttt{tidyverse}
+which is why it doesn't appear on some of the walkthrough vidoes.
+\end{info}
 
 
 
@@ -464,9 +474,15 @@ pipe_summary <- mutate(babynames, decade = floor(year/10) *10) %>%
 
 The reason that this function is called a pipe is because it 'pipes' the data through to the next function. When you wrote the code previously, the first argument of each function was the dataset you wanted to work on. When you use pipes it will automatically take the data from the previous line of code so you don't need to specify it again.
 
-<div class="try">
-<p>When learning to code it can be a useful practice to read your code 'out loud' in full sentences to help you understand what it is doing. You can read the code above as "create a new variable called decade AND THEN only keep the names Emily, Kathleen, Alexandra and Beverly that belong to female babies AND THEN group the dataset by name and decade AND THEN calculate the mean number of babies with each name per decade." Try doing this each time you write a new bit of code.</p>
-</div>
+\begin{try}
+When learning to code it can be a useful practice to read your code `out
+loud' in full sentences to help you understand what it is doing. You can
+read the code above as ``create a new variable called decade AND THEN
+only keep the names Emily, Kathleen, Alexandra and Beverly that belong
+to female babies AND THEN group the dataset by name and decade AND THEN
+calculate the mean number of babies with each name per decade.'' Try
+doing this each time you write a new bit of code.
+\end{try}
 
 Some people find pipes a bit tricky to understand from a conceptual point of view, however, it's well worth learning to use them as when your code starts getting longer they are much more efficient and mean you have to write less code which is always a good thing! 
 

@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 14 Probability continued | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/probability-continued.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Probability continued | Data Skills">
 <meta name="twitter:description" content="First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10.6/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -38,8 +38,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
-        <small class="text-muted">psyTeachR Books</small>
+        <a href="index.html" title="">Data Skills</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -78,7 +77,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/data-skills-v1">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -112,15 +111,15 @@
 <li><p><code>prob</code>: the probability of ‘heads’ on one trial. Here chance is 50-50 which as a probability we state as 0.5 or .5</p></li>
 </ul>
 <p>Copy, paste and run the below code in a new code chunk:</p>
-<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">dbinom</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fl">5</span>, size <span class="op">=</span> <span class="fl">10</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class="webex-solveme nospaces" size="4" data-answer='["0.25",".25"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["25%"]'><option></option>
-<option>0.25%</option>
-<option>2.5%</option>
-<option>25%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.25%</option>
+<option value="">2.5%</option>
+<option value="answer">25%</option></select>
 </li>
 </ul>
 </div>
@@ -132,15 +131,15 @@
 <p>This time we use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> as we want to know the <strong>cumulative probability</strong> of getting a maximum of 2 heads from 10 coin flips. so we have set a cut-off point of 2 but we still have a probability of getting a heads of 0.5.</p>
 <p><strong>Note:</strong> <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> takes the arguments <code>size</code> and <code>prob</code> argument just like <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code>. However, the first input argument is <code>q</code> rather than <code>x</code>. This is because in dbinom <code>x</code> is a fixed number, whereas <code>q</code> is all the possibilities <strong>up to</strong> a given number (e.g. 0, 1, 2).</p>
 <p>Copy, paste and run the below code in a new code chunk:</p>
-<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">2</span>, size <span class="op">=</span> <span class="fl">10</span>, prob <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span></code></pre></div>
 <ul>
 <li>What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class="webex-solveme nospaces" size="4" data-answer='["0.05",".05"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["5%"]'><option></option>
-<option>0.05%</option>
-<option>0.5%</option>
-<option>5%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.05%</option>
+<option value="">0.5%</option>
+<option value="answer">5%</option></select>
 </li>
 </ul>
 </div>
@@ -150,7 +149,7 @@
 </h2>
 <p>Let's try one more scenario with a cut-off point to make sure you have understood this. What is the probability of getting 7 or more heads on 10 flips?</p>
 <p>We can use the same function as in the previous example, however, there's an extra argument if we want to get the correct answer. Let's try running the code we used above but change <code>q = 2</code> to <code>q = 7</code>.</p>
-<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">7</span>, size <span class="op">=</span> <span class="fl">10</span>, prob <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> </code></pre></div>
 <pre><code>## [1] 0.9453125</code></pre>
 <p>This tells us that the probability is .95 or 95% - that doesn't seem right does it? The default behaviour for <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> is to calculate cumulative probability for the lower tail of the curve, i.e., if you specify <code>q = 2</code> it calculates the probability of all outcomes below 2. We specified <code>q = 7</code> which means that it's calculated the probability of getting an outcome of 0, 1, 2, 3, 4, 5, 6, and 7, the blue area in the below figure - which is obviously very high.</p>
@@ -162,15 +161,15 @@ Figure 13.1: Lower and upper tails
 </div>
 <p>To get the right answer, we have to add <code>lower.tail = FALSE</code> as we are interested in the upper tail of the distribution. Because we want the cumulative probability to include 7, we set <code>q = 6</code>. This will now calculate the cumulative probability of getting 7, 8, 9, or 10 heads out of 10 coin flips.</p>
 <p>Copy, paste and run the below code in a new code chunk:</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">pbinom</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">6</span>, size <span class="op">=</span> <span class="fl">10</span>, prob <span class="op">=</span> <span class="fl">.5</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> </code></pre></div>
 <ul>
 <li>What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class="webex-solveme nospaces" size="4" data-answer='["0.17",".17"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["17%"]'><option></option>
-<option>0.017%</option>
-<option>0.17</option>
-<option>17%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.017%</option>
+<option value="">0.17</option>
+<option value="answer">17%</option></select>
 </li>
 </ul>
 </div>
@@ -182,7 +181,7 @@ Figure 13.1: Lower and upper tails
 <p>You have used the argument <code>prob</code> in the previous two functions, <code>dbinom</code> and <code>pbinom</code>, and it represents the probability of success on a single trial (here it is the probability of 'heads' in one coin flip, .5). For <code>qbinom</code>, <code>prob</code> still represents the probability of success in one trial, whereas <code>p</code> represents the overall probability of success across all trials. When you run <code>pbinom</code>, it calculates the number of heads that would give that probability.</p>
 <p>We know from looking at the binomial distribution above that sometimes even when the coin is fair, we won't get exactly 5/10 heads. Instead, we want to set a cut-off and in this example we will use the default cut-off for statistical significance in psychology, .05, or 5%.</p>
 <p>In other words, you ask it for the minimum number of successes (e.g. heads) to maintain an overall probability of .05, in 10 flips, when the probability of a success on any one flip is .5.</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">qbinom</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">.05</span>, size <span class="op">=</span> <span class="fl">10</span>, prob <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
 <p>And it tells you the answer is 2. If the magician flipped fewer than two heads out of ten, you could conclude that there is a less than 5% probability that would happen if the coin was fair and you would reject the null hypothesis that the coin was unbiased against heads and tell the magician to do one.</p>
@@ -196,7 +195,7 @@ Figure 13.1: Lower and upper tails
 <li>What would your cut-off be if you ran 10,000 trials? <input class="webex-solveme nospaces" size="4" data-answer='["4918"]'>
 </li>
 </ul>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html">qbinom</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">.05</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">1000</span>, <span class="fl">10000</span><span class="op">)</span>, prob <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span></code></pre></div>
 <p>Notice that the more trials you run, the more precise the estimates become, that is, the closer they are to the probability of success on a single flip (.5). Again this is a simplification, but think about how this relates to sample size in research studies, the more participants you have, the more precise your estimate will be.</p>
 <hr>
@@ -204,7 +203,7 @@ Figure 13.1: Lower and upper tails
 <p>Have a go at playing around with different numbers of coin flips and probabilities in our <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> and <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> app!</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-2"></span>
-<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px">
+<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px" data-external="1">
 </iframe>
 <p class="caption">
 Figure 12.1: Binomial distribution app
@@ -237,7 +236,7 @@ Figure 12.1: Binomial distribution app
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">men</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100000</span>, mean <span class="op">=</span> <span class="fl">176.2</span>, sd <span class="op">=</span> <span class="fl">6.748</span><span class="op">)</span>
 <span class="va">women</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">100000</span>, mean <span class="op">=</span> <span class="fl">163.8</span>, sd <span class="op">=</span> <span class="fl">6.931</span><span class="op">)</span>
 
@@ -272,16 +271,16 @@ Figure 5.2: Simulation of Scottish height data
 <li>
 <code>lower.tail</code> works as above and depends on whether you are interested in the upper or lower tail</li>
 </ul>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="cn">NULL</span>, mean <span class="op">=</span> <span class="cn">NULL</span>, sd <span class="op">=</span> <span class="cn">NULL</span>, lower.tail <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <p>Replace the NULLs in the above code to calculate the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man.</p>
 <ul>
 <li>What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class="webex-solveme nospaces" size="4" data-answer='["0.04",".04"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["4%"]'><option></option>
-<option>0.04%</option>
-<option>0.4%</option>
-<option>4%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.04%</option>
+<option value="">0.4%</option>
+<option value="answer">4%</option></select>
 </li>
 </ul>
 </div>
@@ -293,10 +292,10 @@ Figure 5.2: Simulation of Scottish height data
 <ul>
 <li>Using <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class="webex-solveme nospaces" size="4" data-answer='["0.23",".23"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["23%"]'><option></option>
-<option>0.23%</option>
-<option>2.3%</option>
-<option>23%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.23%</option>
+<option value="">2.3%</option>
+<option value="answer">23%</option></select>
 </li>
 </ul>
 </div>
@@ -308,10 +307,10 @@ Figure 5.2: Simulation of Scottish height data
 <ul>
 <li>What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class="webex-solveme nospaces" size="4" data-answer='["0.99",".99"]'><br>
 </li>
-<li>What is this probability expressed in percent? <select class="webex-solveme" data-answer='["99%"]'><option></option>
-<option>0.99%</option>
-<option>9.9%</option>
-<option>99%</option></select>
+<li>What is this probability expressed in percent? <select class="webex-select"><option value="blank"></option>
+<option value="">0.99%</option>
+<option value="">9.9%</option>
+<option value="answer">99%</option></select>
 </li>
 </ul>
 </div>
@@ -321,7 +320,7 @@ Figure 5.2: Simulation of Scottish height data
 </h2>
 <p>In the previous examples we calculated the probability of a particular outcome. Now we want to calculate what outcome would be associated with a particular probability and we can use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> to do this.</p>
 <p><code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> is very similar to <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> with one exception, rather than specifying <code>q</code> our known observation or quantile, instead we have to specify <code>p</code>, our known probability.</p>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="cn">NULL</span>, mean <span class="op">=</span> <span class="cn">NULL</span>, sd <span class="op">=</span> <span class="cn">NULL</span>, lower.tail <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
 <p>Replace the NULLs in the above code to calculate how tall a 16-24 y.o. Scottish man would have to be in order to be in the top 5% (i.e., p = .05) of the height distribution for Scottish men in his age group.</p>
 <p><strong>Visualise it!</strong></p>
@@ -341,7 +340,7 @@ Figure 5.2: Simulation of Scottish height data
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">.25</span></code></pre></div>
 </div>
 </div>
@@ -353,7 +352,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb148"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">.06</span></code></pre></div>
 </div>
 </div>
@@ -365,7 +364,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb149"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">.17</span></code></pre></div>
 </div>
 </div>
@@ -377,7 +376,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb150"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">42</span>
 <span class="fl">474</span>
 <span class="fl">4918</span></code></pre></div>
@@ -391,7 +390,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">176.2</span>, mean <span class="op">=</span> <span class="fl">163.8</span>, sd <span class="op">=</span> <span class="fl">6.931</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -403,7 +402,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">181.12</span>, mean <span class="op">=</span> <span class="fl">176.2</span>, sd <span class="op">=</span> <span class="fl">6.748</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -415,7 +414,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">181.12</span>, mean <span class="op">=</span> <span class="fl">163.8</span>, sd <span class="op">=</span> <span class="fl">6.931</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -427,7 +426,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">qnorm</a></span><span class="op">(</span>p <span class="op">=</span> <span class="fl">.05</span>, mean <span class="op">=</span> <span class="fl">176.2</span>, sd <span class="op">=</span> <span class="fl">6.748</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 
@@ -438,15 +437,22 @@ Solution
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -457,6 +463,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -500,7 +508,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -536,6 +587,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -549,6 +612,17 @@ $( document ).ready(function() {
   $("footer div.row div:eq(1) p").html(
     psyteachr + license + cite
   );
+
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
 });
 </script><div class="chapter-nav">
 <div class="prev"><a href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></div>
@@ -583,8 +657,8 @@ $( document ).ready(function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/14-probability-2.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/14-probability-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/data-skills-v1/blob/master/book/14-probability-2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/data-skills-v1/edit/master/book/14-probability-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -596,7 +670,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-14.</p>
+    <p>"<strong>Data Skills</strong>" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

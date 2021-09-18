@@ -64,9 +64,13 @@ pinfo <- read_csv("participant-info.csv")
 
 
 
-<div class="danger">
-<p>There is also a function called <code>read.csv()</code>. Be very careful NOT to use this function instead of <code>read_csv()</code> as they have different ways of naming columns. For the homework, unless your results match ours <strong>exactly</strong> you will not get the marks which means you need to be careful to use the right functions.</p>
-</div>
+\begin{danger}
+There is also a function called \texttt{read.csv()}. Be very careful NOT
+to use this function instead of \texttt{read\_csv()} as they have
+different ways of naming columns. For the homework, unless your results
+match ours \textbf{exactly} you will not get the marks which means you
+need to be careful to use the right functions.
+\end{danger}
 
 ## Activity 4: Check your data
 
@@ -109,9 +113,17 @@ summarydata <- select(.data = all_dat, # name of the object to take data from
                       ahiTotal, cesdTotal, sex, age, educ, income, occasion,elapsed.days) # all the columns you want to keep
 ```
 
-<div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
-</div>
+\begin{danger}
+If you get an error message when using select that says
+\texttt{unused\ argument} it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+\texttt{select} with \texttt{dplyr::select} which tells R exactly which
+version of the select function to use. We'd recommend restarting the
+session because this will get you in the habit and it's a useful thing
+to try for a range of problems
+\end{danger}
 
 
 * Run the above code and then run `head(summarydata)`. If everything has gone to plan it should look something like this:
@@ -136,7 +148,7 @@ ggplot(summarydata, aes(x = as.factor(sex), fill = as.factor(sex))) +
   theme_minimal()
 ```
 
-Are there more male or more female participants (you will need to check the codebook to find out what 1 and 2 mean to answer this)? <select class='webex-solveme' data-answer='["More female participants"]'> <option></option> <option>More female participants</option> <option>More male participants</option></select>
+Are there more male or more female participants (you will need to check the codebook to find out what 1 and 2 mean to answer this)? <select class='webex-select'><option value='blank'></option><option value='answer'>More female participants</option><option value=''>More male participants</option></select>
 
 Copy, paste, and run the below code to create violin-boxplots of happiness scores for each income group.
 
@@ -156,9 +168,9 @@ ggplot(summarydata, aes(x = as.factor(income), y = ahiTotal, fill = as.factor(in
 * The other lines on the boxplot show the interquartile range. There is a really good explanation of [how to read a boxplot here](https://medium.com/dayem-siddiqui/understanding-and-interpreting-box-plots-d07aab9d1b6c). 
 * The black dots are outliers, i.e., extreme values.
 
-Which income group has the highest median happiness score? <select class='webex-solveme' data-answer='["Above average"]'> <option></option> <option>Below average</option> <option>Average</option> <option>Above average</option></select>
+Which income group has the highest median happiness score? <select class='webex-select'><option value='blank'></option><option value=''>Below average</option><option value=''>Average</option><option value='answer'>Above average</option></select>
 
-Which income group has the lowest median happiness score? <select class='webex-solveme' data-answer='["Below average"]'> <option></option> <option>Below average</option> <option>Average</option></select>
+Which income group has the lowest median happiness score? <select class='webex-select'><option value='blank'></option><option value='answer'>Below average</option><option value=''>Average</option></select>
 
 How many outliers does the Average income group have? <input class='webex-solveme nospaces' size='1' data-answer='["2"]'/>
 
@@ -246,7 +258,7 @@ If you want to join two tables that have mulitple columns in common, you need to
 
 1. When loading in a .csv file, which function should you use? 
 
-<select class='webex-solveme' data-answer='["read_csv()"]'> <option></option> <option>read_csv()</option> <option>read.csv()</option></select>
+<select class='webex-select'><option value='blank'></option><option value='answer'>read_csv()</option><option value=''>read.csv()</option></select>
 
 
 <div class='webex-solution'><button>Explain this answer</button>
@@ -260,11 +272,11 @@ Remember, in this course we use `read_csv()` and it is important for the homewor
 
 2. The function `inner_join()` takes the arguments `x`, `y`, `by`. What does `by` do?
 
-<select class='webex-solveme' data-answer='["Specifies the column to join by that both tables have in common"]'> <option></option> <option>Specifies the first table to join</option> <option>Specifies the second table to join</option> <option>Specifies the column to join by that both tables have in common</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Specifies the first table to join</option><option value=''>Specifies the second table to join</option><option value='answer'>Specifies the column to join by that both tables have in common</option></select>
 
 3. What does the function `select()` do? 
 <br>
-<select class='webex-solveme' data-answer='["Keeps only the variables you specify"]'> <option></option> <option>Keeps only the observations you specify</option> <option>Keeps only the variables you specify</option> <option>Keeps only the objects you specify</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Keeps only the observations you specify</option><option value='answer'>Keeps only the variables you specify</option><option value=''>Keeps only the objects you specify</option></select>
 
 *****
 

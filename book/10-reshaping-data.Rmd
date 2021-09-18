@@ -133,58 +133,47 @@ ggplot(AQ_all, aes(x = total_score)) +
 
 ### Activity 1
 
-`r webex::hide()`
 
-```{r a1s, eval = FALSE, message=FALSE}
+```{r a1s, webex.hide=TRUE, eval = FALSE, message=FALSE}
 library(tidyverse)
 scoring <- read_csv ("scoring.csv")
 responses <- read_csv("responses.csv")
 qformats <- read_csv("qformats.csv")
 ```
 
-`r webex::unhide()`
 
 ### Activity 3
 
-`r webex::hide()`
-
-```{r a3s}
+```{r a3s, webex.hide=TRUE}
 rlong_16 <- filter(rlong, Id == 16)
 ```
 
 ### Activity 4
 
-`r webex::hide()`
-
-```{r a4s}
+```{r a4s, webex.hide=TRUE}
 rlong_16_join <- inner_join(rlong_16, qformats, "Question")
 ```
 
-`r webex::unhide()`
 
 ### Activity 5
 
-`r webex::hide()`
-
-```{r}
+```{r, webex.hide=TRUE}
 scores_16 <- inner_join(rlong_16_join, scoring, c("QFormat", "Response"))
 ```
 
-`r webex::unhide()`
+
 
 ### Activity 6
 
-`r webex::hide()`
-
-```{r a6s}
+```{r a6s, webex.hide=TRUE}
 AQ_16 <- summarise(scores_16, AQ_score = sum(Score))
 ```
 
+
 ### Activity 8
 
-`r webex::hide()`
 
-```{r a8s, eval = FALSE}
+```{r a8s, webex.hide=TRUE, eval = FALSE}
 ggplot(AQ_all, aes(x = total_score)) +
   geom_histogram(binwidth = 1, colour = "black", fill = "grey") +
   theme_minimal()+
@@ -192,4 +181,3 @@ ggplot(AQ_all, aes(x = total_score)) +
   scale_y_continuous(name = "Count")
 ```
 
-`r webex::unhide()`

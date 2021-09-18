@@ -39,19 +39,27 @@ To open a new R Markdown document click the 'new item' icon and then click 'R Ma
 
 Once you've opened a new document be sure to save it by clicking `File` -> `Save as`. You should also name this file "Intro to R". If you've set the working directory correctly, you should now see this file appear in your file viewer pane.
 
-<div class="figure" style="text-align: center">
-<img src="images/new-markdown.gif" alt="Opening a new R Markdown document" width="100%" />
-<p class="caption">(\#fig:img-new-markdown)Opening a new R Markdown document</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/new-markdown} 
+
+}
+
+\caption{Opening a new R Markdown document}(\#fig:img-new-markdown)
+\end{figure}
 
 ## Activity 4: Create a new code chunk
 
 When you first open a new R Markdown document you will see a bunch of welcome text that looks like this:
 
-<div class="figure" style="text-align: center">
-<img src="images/markdown-default.png" alt="New R Markdown text" width="100%" />
-<p class="caption">(\#fig:img-markdown-default)New R Markdown text</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/markdown-default} 
+
+}
+
+\caption{New R Markdown text}(\#fig:img-markdown-default)
+\end{figure}
 
 Do the following steps:  
 * Delete **everything** below line 7  
@@ -60,16 +68,24 @@ Do the following steps:
 
 Your Markdown document should now look something like this:
 
-<div class="figure" style="text-align: center">
-<img src="images/new-chunk.png" alt="New R chunk" width="100%" />
-<p class="caption">(\#fig:img-new-chunk)New R chunk</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/new-chunk} 
+
+}
+
+\caption{New R chunk}(\#fig:img-new-chunk)
+\end{figure}
 
 What you have created is a **code chunk**. In R Markdown, anything written in the white space is regarded as normal text, and anything written in a grey code chunk is assumed to be code. This makes it easy to combine both text and code in one document.
 
-<div class="warning">
-<p>When you create a new code chunk you should notice that the grey box starts and ends with three back ticks ```. One common mistake is to accidentally delete these back ticks. Remember, code chunks are grey and text entry is white - if the colour of certain parts of your Markdown doesn't look right, check that you haven't deleted the back ticks.</p>
-</div>
+\begin{warning}
+When you create a new code chunk you should notice that the grey box
+starts and ends with three back ticks ```. One common mistake is to
+accidentally delete these back ticks. Remember, code chunks are grey and
+text entry is white - if the colour of certain parts of your Markdown
+doesn't look right, check that you haven't deleted the back ticks.
+\end{warning}
 
 ## Activity 5: Write some code
 
@@ -92,17 +108,25 @@ When you're working in an R Markdown document, there are several ways to run you
 
 First, you can highlight the code you want to run and then click `Run` -> `Run Selected Line(s)`, however this is very slow.
 
-<div class="figure" style="text-align: center">
-<img src="images/run1.gif" alt="Slow method of running code" width="100%" />
-<p class="caption">(\#fig:img-run1)Slow method of running code</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/run1} 
+
+}
+
+\caption{Slow method of running code}(\#fig:img-run1)
+\end{figure}
 
 Alternatively, you can press the green "play" button at the top-right of the code chunk and this will run **all** lines of code in that chunk.
 
-<div class="figure" style="text-align: center">
-<img src="images/run2.gif" alt="Slightly better method of running code" width="100%" />
-<p class="caption">(\#fig:img-run2)Slightly better method of running code</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/run2} 
+
+}
+
+\caption{Slightly better method of running code}(\#fig:img-run2)
+\end{figure}
 
 Even better though is to learn some of the keyboard shortcuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press `ctrl + enter`. If you want to run all of the code in the code chunk, press `ctrl + shift + enter`. Learn these shortcuts, they will make your life easier!
 
@@ -128,7 +152,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is -65 days until my birthday.**
+**My name is Emily and I am 35 years old. It is -69 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 

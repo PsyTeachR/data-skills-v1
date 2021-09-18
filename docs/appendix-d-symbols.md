@@ -33,10 +33,14 @@
 | ...    | `glossary("ellipsis")`| dots     |
 
 
-<div class="figure" style="text-align: center">
-<img src="images/soundimals_hash.png" alt="[Image by James Chapman/Soundimals](https://soundimals.tumblr.com/post/167354564886/chapmangamo-the-symbol-has-too-many-names)" width="100%" />
-<p class="caption">(\#fig:img-soundimals-hash)[Image by James Chapman/Soundimals](https://soundimals.tumblr.com/post/167354564886/chapmangamo-the-symbol-has-too-many-names)</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/soundimals_hash} 
+
+}
+
+\caption{[Image by James Chapman/Soundimals](https://soundimals.tumblr.com/post/167354564886/chapmangamo-the-symbol-has-too-many-names)}(\#fig:img-soundimals-hash)
+\end{figure}
 
 
 

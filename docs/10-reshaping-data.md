@@ -40,16 +40,20 @@ You have now created a tibble with 660 observations and 3 variables; 10 observat
 
 * What does `filter()` do? 
 
-<select class='webex-solveme' data-answer='["Retains or removes observations"]'> <option></option> <option>Retains or removes variables</option> <option>Retains or removes observations</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Retains or removes variables</option><option value='answer'>Retains or removes observations</option></select>
 
 ******
 
 * Create a new object called `rlong_16` that uses `filter()` to keep only the data from participant Id 16.
 
 
-<div class="danger">
-<p>Every year, the biggest problem with these exercises is typos caused by not paying attention to the exact spelling and capitalisation. Remember, <code>Question</code> is not the same as <code>question</code>, <code>Response</code> is not the same as <code>response</code>, and <code>Id</code> is not the same as <code>ID.</code></p>
-</div>
+\begin{danger}
+Every year, the biggest problem with these exercises is typos caused by
+not paying attention to the exact spelling and capitalisation. Remember,
+\texttt{Question} is not the same as \texttt{question},
+\texttt{Response} is not the same as \texttt{response}, and \texttt{Id}
+is not the same as \texttt{ID.}
+\end{danger}
 
 ## Activity 4: `inner_join()`
 
@@ -107,19 +111,22 @@ Finally, use `ggplot()` and `geom_histogram()` to make a histogram of all the to
 * Hint 1: `ggplot(data, aes(x)) + geom_histogram()`
 * Hint 2: Add `binwidth = 1` to `geom_histogram()` to change the width of the bars.
 
-<div class="figure" style="text-align: center">
-<img src="10-reshaping-data_files/figure-html/unnamed-chunk-5-1.png" alt="Histogram of total AQ scores" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-5)Histogram of total AQ scores</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{10-reshaping-data_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Histogram of total AQ scores}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 ## Activity solutions - Reshping data
 
 ### Activity 1
 
 
+
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 library(tidyverse)
@@ -137,18 +144,17 @@ qformats <- read_csv("qformats.csv")
 
 <div class='webex-solution'><button>Solution</button>
 
-
-
 ```r
 rlong_16 <- filter(rlong, Id == 16)
 ```
+
+
+</div>
 
 ### Activity 4
 
 
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 rlong_16_join <- inner_join(rlong_16, qformats, "Question")
@@ -163,8 +169,6 @@ rlong_16_join <- inner_join(rlong_16, qformats, "Question")
 
 <div class='webex-solution'><button>Solution</button>
 
-
-
 ```r
 scores_16 <- inner_join(rlong_16_join, scoring, c("QFormat", "Response"))
 ```
@@ -173,23 +177,25 @@ scores_16 <- inner_join(rlong_16_join, scoring, c("QFormat", "Response"))
 </div>
 
 
+
 ### Activity 6
 
 
 <div class='webex-solution'><button>Solution</button>
 
-
-
 ```r
 AQ_16 <- summarise(scores_16, AQ_score = sum(Score))
 ```
 
+
+</div>
+
+
 ### Activity 8
 
 
+
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 ggplot(AQ_all, aes(x = total_score)) +

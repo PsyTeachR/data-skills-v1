@@ -31,14 +31,18 @@ A few hints:
 * Rather than using `scale_fill_viridis_d()` to change the colour, add the argument `colour = "red"` to `geom_point` (except replace "red" with whatever colour you'd prefer).
 * Remember to edit the axis names.
 
-<div class="figure" style="text-align: center">
-<img src="08-scatterplots_files/figure-html/createplot-1.png" alt="Scatterplot of happiness and depression scores" width="100%" />
-<p class="caption">(\#fig:createplot)Scatterplot of happiness and depression scores</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/createplot-1} 
+
+}
+
+\caption{Scatterplot of happiness and depression scores}(\#fig:createplot)
+\end{figure}
 
 <br>
 
-How would you describe the relationship between the two variables? <select class='webex-solveme' data-answer='["As happiness score increase, depression scores decrease"]'> <option></option> <option>As happiness scores increase, depression scores increase</option> <option>As happiness score increase, depression scores decrease</option> <option>As happiness scores decrease, depression scores decrease</option></select>
+How would you describe the relationship between the two variables? <select class='webex-select'><option value='blank'></option><option value=''>As happiness scores increase, depression scores increase</option><option value='answer'>As happiness score increase, depression scores decrease</option><option value=''>As happiness scores decrease, depression scores decrease</option></select>
 
 ## Activity 4: Adding a line of best fit
 
@@ -53,19 +57,14 @@ Scatterplots are very useful but it can often help to add a line of best fit to 
 geom_smooth(method = "lm")
 ```
 
+\begin{figure}
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
+{\centering \includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/createplot2-1} 
 
-```
-## Warning: Removed 20 rows containing missing values (geom_smooth).
-```
+}
 
-<div class="figure" style="text-align: center">
-<img src="08-scatterplots_files/figure-html/createplot2-1.png" alt="Scatterplot of happiness and depression scores" width="100%" />
-<p class="caption">(\#fig:createplot2)Scatterplot of happiness and depression scores</p>
-</div>
+\caption{Scatterplot of happiness and depression scores}(\#fig:createplot2)
+\end{figure}
 
 ## Activity 5: Setting the factors
 
@@ -79,7 +78,7 @@ str(summarydata)
 ```
 
 ```
-## tibble[,6] [992 x 6] (S3: tbl_df/tbl/data.frame)
+## tibble [992 x 6] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -107,21 +106,15 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Participant sex", 
                        labels = c("Male", "Female"),
                        option = "E")
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
-```
-## Warning: Removed 42 rows containing missing values (geom_smooth).
-```
 
-<img src="08-scatterplots_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" />
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/unnamed-chunk-4-1} \end{center}
 
 It looks like the relationship between happiness and depression is about the same for male and female participants.
 
@@ -166,17 +159,9 @@ mutate(data, new_variable = variable >= median(variable))
 Now, reproduce the below plot using this new variable:
 
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/unnamed-chunk-8-1} \end{center}
 
-```
-## Warning: Removed 9 rows containing missing values (geom_smooth).
-```
-
-<img src="08-scatterplots_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
-
-What might you conclude from this plot? <select class='webex-solveme' data-answer='["The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores"]'> <option></option> <option>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option> <option>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option> <option>There is no difference in the relationship between depression and happiness scores between the groups</option></select>
+What might you conclude from this plot? <select class='webex-select'><option value='blank'></option><option value=''>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option><option value='answer'>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option><option value=''>There is no difference in the relationship between depression and happiness scores between the groups</option></select>
 
 
 <div class='webex-solution'><button>Explain this answer</button>
@@ -236,7 +221,6 @@ Great job! As you may have noticed, this chapter tried to push you and test what
 
 <div class='webex-solution'><button>Solution</button>
 
-
 ```r
 library(tidyverse)
 dat <- read_csv ('ahi-cesd.csv')
@@ -244,16 +228,15 @@ pinfo <- read_csv('participant-info.csv')
 all_dat <- inner_join(dat, pinfo, by=c("id", "intervention")
 ```
 
-</div>
 
+</div>
 
 
 ### Activity 2
 
 
+
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
@@ -268,8 +251,6 @@ summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
 
 <div class='webex-solution'><button>Solution</button>
 
-
-
 ```r
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
   geom_point(colour = "red") +
@@ -278,7 +259,9 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
   theme_minimal()
 ```
 
-<img src="08-scatterplots_files/figure-html/T3-1.png" width="100%" style="display: block; margin: auto;" />
+
+
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/T3-1} \end{center}
 
 
 </div>
@@ -287,9 +270,8 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
 ### Activity 4
 
 
+
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
@@ -298,29 +280,21 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm", formula = y~x)
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
-```
-## Warning: Removed 20 rows containing missing values (geom_smooth).
-```
 
-<img src="08-scatterplots_files/figure-html/T4s-1.png" width="100%" style="display: block; margin: auto;" />
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/T4s-1} \end{center}
 
 
 </div>
 
-
 ### Activity 5
 
 
+
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 summarydata <- summarydata %>%
@@ -348,7 +322,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Education level", 
                        labels = c("Less than Year 12",
                                   "Year 12",
@@ -358,15 +332,9 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
                        option = "E")
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
-```
-## Warning: Removed 78 rows containing missing values (geom_smooth).
-```
 
-<img src="08-scatterplots_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/unnamed-chunk-10-1} \end{center}
 
 
 ```r
@@ -377,23 +345,16 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Income", 
                        labels = c("Below average",
                                   "Average",
                                   "Above average"))
 ```
 
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
 
-```
-## Warning: Removed 62 rows containing missing values (geom_smooth).
-```
 
-<img src="08-scatterplots_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
-
+\begin{center}\includegraphics[width=1\linewidth]{08-scatterplots_files/figure-latex/unnamed-chunk-11-1} \end{center}
 
 
 </div>
@@ -403,8 +364,6 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 
 
 <div class='webex-solution'><button>Solution</button>
-
-
 
 ```r
 summarydata <- mutate(summarydata, severity = cesdTotal >= 18)

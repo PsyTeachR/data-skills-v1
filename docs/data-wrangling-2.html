@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 6 Data wrangling 2 | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/data-wrangling-2.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="6.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Data wrangling 2 | Data Skills">
 <meta name="twitter:description" content="6.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10.6/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -38,8 +38,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
-        <small class="text-muted">psyTeachR Books</small>
+        <a href="index.html" title="">Data Skills</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -78,7 +77,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/data-skills-v1">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -171,11 +170,11 @@ Solution
 <ul>
 <li>What does <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> do?</li>
 </ul>
-<p><select class="webex-solveme" data-answer='["removes information that we are not interested in"]'><option></option>
-<option>splits a column into multiple columns</option>
-<option>transforms existing columns</option>
-<option>takes multiple columns and collapses them together</option>
-<option>removes information that we are not interested in</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="">splits a column into multiple columns</option>
+<option value="">transforms existing columns</option>
+<option value="">takes multiple columns and collapses them together</option>
+<option value="answer">removes information that we are not interested in</option></select></p>
 <ul>
 <li>How many observations are left in <code>age_65max</code> after running <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>? <input class="webex-solveme nospaces" size="3" data-answer='["939"]'>
 </li>
@@ -225,11 +224,11 @@ If you get what looks like an error that says <code>summarise() ungrouping outpu
 <ul>
 <li>What does <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> do?</li>
 </ul>
-<p><select class="webex-solveme" data-answer='["groups data frames based on a specific column so that all later operations are carried out on a group basis"]'><option></option>
-<option>provides summary statistics of an existing dataframe</option>
-<option>organises information in ascending or descending order</option>
-<option>transforms existing columns</option>
-<option>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="">provides summary statistics of an existing dataframe</option>
+<option value="">organises information in ascending or descending order</option>
+<option value="">transforms existing columns</option>
+<option value="answer">groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select></p>
 <ul>
 <li>How would you change the code to group by education rather than <code>Happiness_Category</code>?</li>
 </ul>
@@ -255,14 +254,14 @@ Solution
   <span class="fu">scale_x_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Income Level"</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below Average"</span>, <span class="st">"Average"</span>, <span class="st">"Above Average"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span></code></pre></div>
 <ul>
-<li><p>Which income group has the highest median depression scores? <select class="webex-solveme" data-answer='["Below Average"]'><option></option>
-<option>Below Average</option>
-<option>Average</option>
-<option>Above Average</option></select></p></li>
-<li><p>Which group has the highest density of scores at any one point? <select class="webex-solveme" data-answer='["Above Average"]'><option></option>
-<option>Below Average</option>
-<option>Average</option>
-<option>Above Average</option></select></p></li>
+<li><p>Which income group has the highest median depression scores? <select class="webex-select"><option value="blank"></option>
+<option value="answer">Below Average</option>
+<option value="">Average</option>
+<option value="">Above Average</option></select></p></li>
+<li><p>Which group has the highest density of scores at any one point? <select class="webex-select"><option value="blank"></option>
+<option value="">Below Average</option>
+<option value="">Average</option>
+<option value="answer">Above Average</option></select></p></li>
 </ul>
 <div class="webex-solution">
 <button>
@@ -271,9 +270,9 @@ Explain This Answer
 <p>Density is represented by the curvy line around the boxplot that looks a little bit like a (drunk) violin. The fatter the violin, the more data points there are at any one point. This means that in the above plot, the Above Average group has the highest density because this has the widest violin, i.e., there are lots of people in the Above Average income group with a score of about 5.</p>
 </div>
 <ul>
-<li>Is income group a between-subject or within-subject variable? <select class="webex-solveme" data-answer='["Between-subjects"]'><option></option>
-<option>Between-subjects</option>
-<option>Within-subjects</option></select>
+<li>Is income group a between-subject or within-subject variable? <select class="webex-select"><option value="blank"></option>
+<option value="answer">Between-subjects</option>
+<option value="">Within-subjects</option></select>
 </li>
 </ul>
 <div class="webex-solution">
@@ -301,15 +300,22 @@ Explain This Answer
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -320,6 +326,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -363,7 +371,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -399,6 +450,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -412,6 +475,17 @@ $( document ).ready(function() {
   $("footer div.row div:eq(1) p").html(
     psyteachr + license + cite
   );
+
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
 });
 </script><div class="chapter-nav">
 <div class="prev"><a href="data-wrangling-1.html"><span class="header-section-number">5</span> Data wrangling 1</a></div>
@@ -434,8 +508,8 @@ $( document ).ready(function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/06-wrangling-2.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/06-wrangling-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/data-skills-v1/blob/master/book/06-wrangling-2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/data-skills-v1/edit/master/book/06-wrangling-2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -447,7 +521,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-14.</p>
+    <p>"<strong>Data Skills</strong>" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

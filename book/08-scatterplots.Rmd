@@ -62,14 +62,14 @@ Scatterplots are very useful but it can often help to add a line of best fit to 
 geom_smooth(method = "lm")
 ```
 
-```{r, createplot2, echo=FALSE, fig.cap = "Scatterplot of happiness and depression scores"}
+```{r, createplot2, echo=FALSE, warning=FALSE, fig.cap = "Scatterplot of happiness and depression scores"}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal)) + 
   geom_point(colour = "red") +
   scale_x_continuous(name = "Happiness Score") +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm", formula = y~x)
 
 ```
 
@@ -99,14 +99,14 @@ We can now use our factors to display the data in the scatterplots for each grou
 * Rather than adding `colour` to `geom_point()` which sets the colour for all the data points, instead we add `colour = sex` to the aesthetic mapping on the first line. This tells `ggplot()` to produce different colours for each level (or group) in the variable `sex`.
 * `scale_color_viridis_d()` works exactly like the other colour blind friendly scale functions you have used, so we can use `name` and `labels` to adjust the legend.
 
-```{r}
+```{r, warning = FALSE}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) + 
   geom_point() +
   scale_x_continuous(name = "Happiness Score") +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Participant sex", 
                        labels = c("Male", "Female"),
                        option = "E")
@@ -147,14 +147,14 @@ summarydata <- summarydata %>%
 
 Now, reproduce the below plot using this new variable:
 
-```{r echo = FALSE}
+```{r, echo = FALSE, warning = FALSE}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = happiness)) + 
   geom_point() +
   scale_x_continuous(name = "Happiness Score") +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_colour_viridis_d(
     name = "Happiness",
     labels = c("Below median happiness",
@@ -188,31 +188,25 @@ Great job! As you may have noticed, this chapter tried to push you and test what
 
 ### Activity 1
 
-`r webex::hide()`
-```{r T1s, eval = FALSE, message=FALSE}
+```{r T1s, webex.hide=TRUE, eval = FALSE, message=FALSE}
 library(tidyverse)
 dat <- read_csv ('ahi-cesd.csv')
 pinfo <- read_csv('participant-info.csv')
 all_dat <- inner_join(dat, pinfo, by=c("id", "intervention")
 ```
-`r webex::unhide()`
 
 
 ### Activity 2
 
-`r webex::hide()`
 
-```{r, T2s}
+```{r T2s, webex.hide=TRUE}
 summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
 ```
 
-`r webex::unhide()`
 
 ### Activity 3
 
-`r webex::hide()`
-
-```{r, T3}
+```{r T3, webex.hide=TRUE}
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
   geom_point(colour = "red") +
   scale_x_continuous(name = "Happiness Score") +
@@ -220,42 +214,36 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
   theme_minimal()
 ```
 
-`r webex::unhide()`
 
 ### Activity 4
 
-`r webex::hide()`
 
-```{r, T4s}
+```{r T4s, webex.hide=TRUE, warning = FALSE}
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
   geom_point(colour = "red") +
   scale_x_continuous(name = "Happiness Score") +
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm")
+  geom_smooth(method = "lm", formula = y~x)
 ```
-
-`r webex::unhide()`
 
 ### Activity 5
 
-`r webex::hide()`
 
-```{r T5s}
+```{r T5s, webex.hide=TRUE}
 summarydata <- summarydata %>%
   mutate(sex = as.factor(sex),
          educ = as.factor(educ),
          income = as.factor(income))
 ```
 
-`r webex::unhide()`
 
 ### Activity 6
 
-`r webex::hide()`
+`r hide()`
 
-```{r}
+```{r, warning = FALSE}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, 
                         colour = educ)) + 
   geom_point() +
@@ -263,7 +251,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Education level", 
                        labels = c("Less than Year 12",
                                   "Year 12",
@@ -273,7 +261,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
                        option = "E")
 ```
 
-```{r}
+```{r, warning = FALSE}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, 
                         colour = income)) + 
   geom_point() +
@@ -281,24 +269,20 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
   scale_y_continuous(name = "Depression Score",
                      limits = c(0,60)) +
   theme_minimal() +
-  geom_smooth(method = "lm") +
+  geom_smooth(method = "lm", formula = y~x) +
   scale_color_viridis_d(name = "Income", 
                        labels = c("Below average",
                                   "Average",
                                   "Above average"))
 ```
 
-
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 7
 
-`r webex::hide()`
-
-```{r T7s, eval = FALSE}
+```{r T7s, webex.hide=TRUE, eval = FALSE}
 summarydata <- mutate(summarydata, severity = cesdTotal >= 18)
 
 ```
 
-`r webex::unhide()`
 

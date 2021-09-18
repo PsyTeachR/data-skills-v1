@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 13 Intro to Probability | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/intro-to-probability.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="In the Psych 1A Research Methods lectures, we talked a lot about p-values and statistical significance. P-values are the probability that you would get the observed results if the null hypothesis...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 13 Intro to Probability | Data Skills">
 <meta name="twitter:description" content="In the Psych 1A Research Methods lectures, we talked a lot about p-values and statistical significance. P-values are the probability that you would get the observed results if the null hypothesis...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10.6/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -38,8 +38,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
-        <small class="text-muted">psyTeachR Books</small>
+        <a href="index.html" title="">Data Skills</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -78,7 +77,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/data-skills-v1">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -106,7 +105,7 @@
 <p>Probability (<em>p</em>) is the extent to which an event is likely to occur and is represented by a number between 0 and 1. For example, the probability of flipping a coin and it landing on 'heads' would be estimated at <em>p = .5</em>, i.e., there is a 50% chance of getting a head when you flip a coin. Calculating the probability of any discrete event occurring can be formulated as:</p>
 <p><span class="math display">\[p = \frac{number \  of  \ ways \ the \ event \ could \  arise}{number \ of \ possible \ outcomes}\]</span>
 For example, what is the probability of randomly drawing your name out of a hat of 12 names where one name is definitely yours?</p>
-<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fl">1</span><span class="op">/</span><span class="fl">12</span></code></pre></div>
 <pre><code>## [1] 0.08333333</code></pre>
 <p>The probability is .08, or to put it another way, there is an 8.3% chance that you would pull your name out of the hat.</p>
@@ -129,29 +128,29 @@ For example, what is the probability of randomly drawing your name out of a hat 
 </h2>
 <p>What types of data are the below measurements?</p>
 <ul>
-<li>Time taken to run a marathon (in seconds): <select class="webex-solveme" data-answer='["ratio"]'><option></option>
-<option>interval</option>
-<option>ordinal</option>
-<option>categorical</option>
-<option>ratio</option></select>
+<li>Time taken to run a marathon (in seconds): <select class="webex-select"><option value="blank"></option>
+<option value="">categorical</option>
+<option value="answer">ratio</option>
+<option value="">interval</option>
+<option value="">ordinal</option></select>
 </li>
-<li>Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class="webex-solveme" data-answer='["ordinal"]'><option></option>
-<option>categorical</option>
-<option>interval</option>
-<option>ratio</option>
-<option>ordinal</option></select>
+<li>Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class="webex-select"><option value="blank"></option>
+<option value="">interval</option>
+<option value="">ratio</option>
+<option value="">categorical</option>
+<option value="answer">ordinal</option></select>
 </li>
-<li>Which Sesame Street character a runner was dressed as: <select class="webex-solveme" data-answer='["categorical"]'><option></option>
-<option>interval</option>
-<option>ordinal</option>
-<option>categorical</option>
-<option>ratio</option></select>
+<li>Which Sesame Street character a runner was dressed as: <select class="webex-select"><option value="blank"></option>
+<option value="answer">categorical</option>
+<option value="">ratio</option>
+<option value="">interval</option>
+<option value="">ordinal</option></select>
 </li>
-<li>Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class="webex-solveme" data-answer='["interval"]'><option></option>
-<option>interval</option>
-<option>categorical</option>
-<option>ordinal</option>
-<option>ratio</option></select>
+<li>Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class="webex-select"><option value="blank"></option>
+<option value="">categorical</option>
+<option value="">ratio</option>
+<option value="">ordinal</option>
+<option value="answer">interval</option></select>
 </li>
 </ul>
 </div>
@@ -191,7 +190,7 @@ Figure 12.1: Probability of no. of heads from 10 coin tosses
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb147"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">heads10000</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">replicate</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">10000</span>, expr <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">1</span>, <span class="fl">10</span>, <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">data10000</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>heads <span class="op">=</span> <span class="va">heads10000</span><span class="op">)</span> <span class="op">%&gt;%</span>   <span class="co"># convert to a tibble</span>
@@ -234,17 +233,17 @@ Figure 5.3: A simulation of an experiment collecting height data from 2000 parti
 </h2>
 <p>Complete the sentences so that they are correct.</p>
 <ul>
-<li>In a normal distribution, the mean, median, and mode <select class="webex-solveme" data-answer='["are all equal"]'><option></option>
-<option>are always different</option>
-<option>sum to zero</option>
-<option>are all equal</option></select>.</li>
-<li>In a normal distribution, the further away from the mean an observation is <select class="webex-solveme" data-answer='["the lower its probability of occuring"]'><option></option>
-<option>the lower its probability of occuring</option>
-<option>the higher its probability of occuring</option></select>.</li>
-<li>Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class="webex-solveme" data-answer='["is a continuous variable"]'><option></option>
-<option>has three possible values</option>
-<option>is a categorical variable</option>
-<option>is a continuous variable</option></select>.</li>
+<li>In a normal distribution, the mean, median, and mode <select class="webex-select"><option value="blank"></option>
+<option value="">sum to zero</option>
+<option value="">are always different</option>
+<option value="answer">are all equal</option></select>.</li>
+<li>In a normal distribution, the further away from the mean an observation is <select class="webex-select"><option value="blank"></option>
+<option value="answer">the lower its probability of occuring</option>
+<option value="">the higher its probability of occuring</option></select>.</li>
+<li>Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class="webex-select"><option value="blank"></option>
+<option value="">is a categorical variable</option>
+<option value="answer">is a continuous variable</option>
+<option value="">has three possible values</option></select>.</li>
 </ul>
 </div>
 <div id="activity-4-distribution-test" class="section level2" number="13.10">
@@ -253,20 +252,20 @@ Figure 5.3: A simulation of an experiment collecting height data from 2000 parti
 </h2>
 <p>Which distribution is likely to be associated with the following?</p>
 <ul>
-<li>Scores on an IQ test <select class="webex-solveme" data-answer='["Normal distribution"]'><option></option>
-<option>Uniform distribution</option>
-<option>Binomial distribution</option>
-<option>Normal distribution</option></select>
+<li>Scores on an IQ test <select class="webex-select"><option value="blank"></option>
+<option value="">Uniform distribution</option>
+<option value="">Binomial distribution</option>
+<option value="answer">Normal distribution</option></select>
 </li>
-<li>Whether a country has won or lost the Eurovision song contest <select class="webex-solveme" data-answer='["Binomial distribution"]'><option></option>
-<option>Uniform distribution</option>
-<option>Binomial distribution</option>
-<option>Normal distribution</option></select>
+<li>Whether a country has won or lost the Eurovision song contest <select class="webex-select"><option value="blank"></option>
+<option value="">Uniform distribution</option>
+<option value="answer">Binomial distribution</option>
+<option value="">Normal distribution</option></select>
 </li>
-<li>Picking a spade card out of a normal pack of playing cards<select class="webex-solveme" data-answer='["Uniform distribution"]'><option></option>
-<option>Uniform distribution</option>
-<option>Binomial distribution</option>
-<option>Normal distribution</option></select>
+<li>Picking a spade card out of a normal pack of playing cards<select class="webex-select"><option value="blank"></option>
+<option value="answer">Uniform distribution</option>
+<option value="">Binomial distribution</option>
+<option value="">Normal distribution</option></select>
 </li>
 </ul>
 <p>In the next chapter we're going to continue looking at distributions and probability. Whilst you won't start conducting statistical tests until level 2, by the end of the next chapter you should be able to understand the core principles of probability and how we can use what we know about distributions to calculate whether a particular outcome is likely.</p>
@@ -277,15 +276,22 @@ Figure 5.3: A simulation of an experiment collecting height data from 2000 parti
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -296,6 +302,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -339,7 +347,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -375,6 +426,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -388,6 +451,17 @@ $( document ).ready(function() {
   $("footer div.row div:eq(1) p").html(
     psyteachr + license + cite
   );
+
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
 });
 </script><div class="chapter-nav">
 <div class="prev"><a href="mega-pipe.html"><span class="header-section-number">12</span> Mega pipe</a></div>
@@ -410,8 +484,8 @@ $( document ).ready(function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/13-probability-1.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/13-probability-1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/data-skills-v1/blob/master/book/13-probability-1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/data-skills-v1/edit/master/book/13-probability-1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -423,7 +497,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-14.</p>
+    <p>"<strong>Data Skills</strong>" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -47,10 +47,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='webex-solveme' data-answer='["ratio"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>categorical</option> <option>ratio</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='webex-solveme' data-answer='["ordinal"]'> <option></option> <option>categorical</option> <option>interval</option> <option>ratio</option> <option>ordinal</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='webex-solveme' data-answer='["categorical"]'> <option></option> <option>interval</option> <option>ordinal</option> <option>categorical</option> <option>ratio</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='webex-solveme' data-answer='["interval"]'> <option></option> <option>interval</option> <option>categorical</option> <option>ordinal</option> <option>ratio</option></select>
+* Time taken to run a marathon (in seconds): <select class='webex-select'><option value='blank'></option><option value=''>ordinal</option><option value='answer'>ratio</option><option value=''>categorical</option><option value=''>interval</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='webex-select'><option value='blank'></option><option value=''>categorical</option><option value=''>interval</option><option value=''>ratio</option><option value='answer'>ordinal</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='webex-select'><option value='blank'></option><option value='answer'>categorical</option><option value=''>ratio</option><option value=''>interval</option><option value=''>ordinal</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='webex-select'><option value='blank'></option><option value=''>ratio</option><option value='answer'>interval</option><option value=''>ordinal</option><option value=''>categorical</option></select>
 
 ## Probability distributions
 
@@ -62,10 +62,14 @@ Mathematicians have discovered a number of different probability distributions, 
 
 The uniform distribution is when each possible outcome has an equal chance of occurring. Let's take the example from above, pulling your name out of a hat of 12 names. Each name has an equal chance of being drawn (p = .08). If we visualised this distribution, it would look like this - each outcome has the same chance of occurring:
 
-<div class="figure" style="text-align: center">
-<img src="13-probability-1_files/figure-html/unnamed-chunk-1-1.png" alt="Uniform distribution" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Uniform distribution</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{13-probability-1_files/figure-latex/unnamed-chunk-1-1} 
+
+}
+
+\caption{Uniform distribution}(\#fig:unnamed-chunk-1)
+\end{figure}
 
 ## The binomial distribution
 
@@ -75,10 +79,14 @@ Describing the probability of single events, such as a single coin flip or rolli
 
 Let’s say we flip a coin 10 times. Assuming the coin is fair (probability of heads = .5), how many heads should we expect to get? The below figure shows the results of a simulation for 10,000 coin flips (if you'd like to do this simulation yourself in R, you can see the code by clicking "Solution"). What this means is that we can use what we know about our data and the binomial distribution to work out the probability of different outcomes (e.g., what's the probability of getting at least 3 heads if you flip a coin 10 times?) and this is what we'll do in the next chapter
 
-<div class="figure" style="text-align: center">
-<img src="13-probability-1_files/figure-html/unnamed-chunk-2-1.png" alt="Probability of no. of heads from 10 coin tosses" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Probability of no. of heads from 10 coin tosses</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{13-probability-1_files/figure-latex/unnamed-chunk-2-1} 
+
+}
+
+\caption{Probability of no. of heads from 10 coin tosses}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -111,10 +119,14 @@ The final probability distribution you need to know about is the normal distribu
 
 As the normal distribution models the probability of a continuous variable, we plot the probability using a density plot. A normal distribution looks like this:
 
-<div class="figure" style="text-align: center">
-<img src="./images/norm_dist_height.PNG" alt="Normal Distribution of height. $\mu$ = the mean (average), $\sigma$ = standard deviation" width="100%" height="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Normal Distribution of height. $\mu$ = the mean (average), $\sigma$ = standard deviation</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth,height=1\textheight]{./images/norm_dist_height} 
+
+}
+
+\caption{Normal Distribution of height. $\mu$ = the mean (average), $\sigma$ = standard deviation}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 Normal distributions are symmetrical, meaning there is an equal probability of observations occurring above and below the mean. This means that, if the mean in figure 1 is 170, we could expect the number of people who have a height of 160 to equal the number of people who have a height of 180. This also means that the mean, median, and mode are all expected to be equal in a normal distribution.
 
@@ -122,26 +134,30 @@ In the same way that we could with the coin flips, we can then use what we know 
 
 As with any probabilities, real-world data will come close to the normal distribution, but will (almost certainly) never match it exactly. As we collect more observations from normally-distributed data, our data will get increasingly closer to a normal distribution. As an example, here's a simulation of an experiment in which we collect heights from 5000 participants. As you can see, as we add more observations, our data starts to look more and more like the normal distribution in the previous figure.
 
-<div class="figure" style="text-align: center">
-<img src="./images/normal_dist.gif" alt="A simulation of an experiment collecting height data from 2000 participants" width="75%" height="75%" />
-<p class="caption">(\#fig:unnamed-chunk-5)A simulation of an experiment collecting height data from 2000 participants</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./images/normal_dist} 
+
+}
+
+\caption{A simulation of an experiment collecting height data from 2000 participants}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 ## Activity 3: Normal distribution
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='webex-solveme' data-answer='["are all equal"]'> <option></option> <option>are always different</option> <option>sum to zero</option> <option>are all equal</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='webex-solveme' data-answer='["the lower its probability of occuring"]'> <option></option> <option>the lower its probability of occuring</option> <option>the higher its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='webex-solveme' data-answer='["is a continuous variable"]'> <option></option> <option>has three possible values</option> <option>is a categorical variable</option> <option>is a continuous variable</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='webex-select'><option value='blank'></option><option value=''>are always different</option><option value=''>sum to zero</option><option value='answer'>are all equal</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='webex-select'><option value='blank'></option><option value=''>the higher its probability of occuring</option><option value='answer'>the lower its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='webex-select'><option value='blank'></option><option value='answer'>is a continuous variable</option><option value=''>has three possible values</option><option value=''>is a categorical variable</option></select>.
 
 ## Activity 4: Distribution test
 
 Which distribution is likely to be associated with the following?
 
-* Scores on an IQ test <select class='webex-solveme' data-answer='["Normal distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
-* Whether a country has won or lost the Eurovision song contest <select class='webex-solveme' data-answer='["Binomial distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
-* Picking a spade card out of a normal pack of playing cards<select class='webex-solveme' data-answer='["Uniform distribution"]'> <option></option> <option>Uniform distribution</option> <option>Binomial distribution</option> <option>Normal distribution</option></select>
+* Scores on an IQ test <select class='webex-select'><option value='blank'></option><option value=''>Uniform distribution</option><option value=''>Binomial distribution</option><option value='answer'>Normal distribution</option></select>
+* Whether a country has won or lost the Eurovision song contest <select class='webex-select'><option value='blank'></option><option value=''>Uniform distribution</option><option value='answer'>Binomial distribution</option><option value=''>Normal distribution</option></select>
+* Picking a spade card out of a normal pack of playing cards<select class='webex-select'><option value='blank'></option><option value='answer'>Uniform distribution</option><option value=''>Binomial distribution</option><option value=''>Normal distribution</option></select>
 
 In the next chapter we're going to continue looking at distributions and probability. Whilst you won't start conducting statistical tests until level 2, by the end of the next chapter you should be able to understand the core principles of probability and how we can use what we know about distributions to calculate whether a particular outcome is likely. 
 
