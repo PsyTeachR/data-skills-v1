@@ -163,7 +163,7 @@ Data from the [Scottish Health Survey (2008)](http://www.scotland.gov.uk/Resourc
 
 The below figure is a simulation of this data - you can see the code used to run this simulation by clicking the solution button.
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 men <- rnorm(n = 100000, mean = 176.2, sd = 6.748)
 women <- rnorm(n = 100000, mean = 163.8, sd = 6.931)
@@ -176,7 +176,7 @@ ggplot(heights, aes(x = height, fill = sex)) +
   scale_fill_viridis_d(option = "E") +
   theme_minimal()
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ```{r echo = FALSE, fig.cap= "Simulation of Scottish height data"}
 men <- rnorm(n = 100000, mean = 176.2, sd = 6.748)
@@ -249,69 +249,69 @@ And that's it! The key concepts to take away from this chapter are that differen
 
 ### Activity 2
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 .25
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 3
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 .06
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 4
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 .17
 ```
-`r webex::unhide()`
+`r unhide()`
 
 
 ### Activity 5
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 42
 474
 4918
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 6
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 pnorm(q = 176.2, mean = 163.8, sd = 6.931, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 7
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 pnorm(q = 181.12, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 8
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 pnorm(q = 181.12, mean = 163.8, sd = 6.931, lower.tail = TRUE)
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 9
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 qnorm(p = .05, mean = 176.2, sd = 6.748, lower.tail = FALSE)
 ```
-`r webex::unhide()`
+`r unhide()`
 
 

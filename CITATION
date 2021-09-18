@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this book, please cite it as below."
+authors:
+- family-names: "Cleland-Woods"
+  given-names: "Heather"
+  orcid: "https://orcid.org/0000-0003-3382-5925"
+- family-names: "Nordmann"
+  given-names: "Emily"
+  orcid: "https://orcid.org/0000-0002-0806-1081"
+title: "Data Skills"
+version: 1.0
+date-released: 2021-09-18
+url: "https://github.com/psyteachr/data-skills-v1/"

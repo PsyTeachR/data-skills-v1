@@ -188,29 +188,29 @@ Great job! As you may have noticed, this chapter tried to push you and test what
 
 ### Activity 1
 
-`r webex::hide()`
+`r hide()`
 ```{r T1s, eval = FALSE, message=FALSE}
 library(tidyverse)
 dat <- read_csv ('ahi-cesd.csv')
 pinfo <- read_csv('participant-info.csv')
 all_dat <- inner_join(dat, pinfo, by=c("id", "intervention")
 ```
-`r webex::unhide()`
+`r unhide()`
 
 
 ### Activity 2
 
-`r webex::hide()`
+`r hide()`
 
 ```{r, T2s}
 summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 3
 
-`r webex::hide()`
+`r hide()`
 
 ```{r, T3}
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
@@ -220,11 +220,11 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
   theme_minimal()
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 4
 
-`r webex::hide()`
+`r hide()`
 
 ```{r, T4s}
 ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) + 
@@ -236,11 +236,11 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
   geom_smooth(method = "lm")
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 5
 
-`r webex::hide()`
+`r hide()`
 
 ```{r T5s}
 summarydata <- summarydata %>%
@@ -249,11 +249,11 @@ summarydata <- summarydata %>%
          income = as.factor(income))
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 6
 
-`r webex::hide()`
+`r hide()`
 
 ```{r}
 ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, 
@@ -289,16 +289,16 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 ```
 
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 7
 
-`r webex::hide()`
+`r hide()`
 
 ```{r T7s, eval = FALSE}
 summarydata <- mutate(summarydata, severity = cesdTotal >= 18)
 
 ```
 
-`r webex::unhide()`
+`r unhide()`
 

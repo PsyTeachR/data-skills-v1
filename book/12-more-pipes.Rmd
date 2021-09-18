@@ -113,10 +113,10 @@ The y-axis displays density, i.e., what proportion of the data points fall at ea
 
 * Approximately what percent of female participants had a total AQ of 2? `r mcq(c(".3%", "3%", answer = "30%"))`
 
-`r webex::hide()`
+`r hide()`
 
 It's important to be able to translate between proportions and percentages, it will make your understanding of statistics and p-values much easier. To translate a proportion into a percentage, you multiply by 100 or move the decimal place two places to the right so a proportion of .5 = 50%, a proportion of .03 = 3% and so on. 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 7: Saving plots
 
@@ -164,18 +164,18 @@ ggsave("AQ_histogram.png", plot = AQ_histogram)
 
 #### Activity 1
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 library(tidyverse)
 scoring <- read_csv ("scoring.csv")
 responses <- read_csv("responses.csv")
 qformats <- read_csv("qformats.csv")
 ```
-`r webex::unhide()`
+`r unhide()`
 
 #### Activity 2
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 AQ_all <- pivot_longer(data = responses, 
                       names_to = "Question",  
@@ -186,11 +186,11 @@ AQ_all <- pivot_longer(data = responses,
   group_by(Id, gender) %>% 
   summarise(total_score = sum(Score))
 ```
-`r webex::unhide()`
+`r unhide()`
 
 #### Activity 3
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 AQ_all %>%
   filter(gender == "female") %>%
@@ -200,15 +200,15 @@ AQ_all %>%
   scale_x_continuous(name = "Total AQ Score (female participants)", breaks = c(0,1,2,3,4,5,6,7,8,9,10)) +
   scale_y_continuous(name = "Count")
 ```
-`r webex::unhide()`
+`r unhide()`
 
 #### Activity 4
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE}
 ggplot(AQ_all, aes(gender, total_score)) +
   geom_violin(trim = FALSE) +
   geom_boxplot(width = .2) +
   theme_minimal()
 ```
-`r webex::unhide()`
+`r unhide()`

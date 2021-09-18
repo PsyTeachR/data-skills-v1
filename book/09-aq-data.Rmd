@@ -229,12 +229,12 @@ Finally, let's refresh your memory of some of the important tidyverse functions 
 
 ### Activity 4
 
-`r webex::hide()`
+`r hide()`
 ```{r t4s, eval = FALSE, message=FALSE}
 library(tidyverse)
 scoring <- read_csv ("scoring.csv")
 responses <- read_csv("responses.csv")
 qformats <- read_csv("qformats.csv")
 ```
-`r webex::unhide()`
+`r unhide()`
 
