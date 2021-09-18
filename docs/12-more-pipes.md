@@ -2,14 +2,14 @@
 
 # Mega pipe
 
-### Activity  1: Set-up 
+## Activity  1: Set-up 
 
 * Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder.
 * Set the working directory to your Data Skills folder.
 * Type and run the code that loads the `tidyverse` package.
 * Use `read_csv()` to load in the data. you should create three objects `responses`, `scoring` and `qformats` that contain the respective data.
 
-### Activity 2: Mega pipe
+## Activity 2: Mega pipe
 
 We're going to build on what you learned in Pipes and rewrite all of the code we did in Reshaping Data (which you can see below) using a pipe. As a reminder, the code:
 
@@ -35,20 +35,24 @@ AQ_all <- summarise(scores_grouped, total_score = sum(Score))
 
 * Rewrite the above code using pipes `%>%`. Make sure you have completed Pipes before you attempt this.
 
-### Activity 3: Pipe plot
+## Activity 3: Pipe plot
 
 Now we've got our total AQ scores, let's use the pipe to make a graph. 
 
 * Take `AQ_all` **then** filter it leaving only female participants **then** use `ggplot()` to create a histogram of the total scores (you did this in Reshaping Data). If you've done it correctly, it should look like the below (you can change the colours if you like).
 
-<div class="figure" style="text-align: center">
-<img src="12-more-pipes_files/figure-html/unnamed-chunk-2-1.png" alt="Histogram of scores for female participants" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Histogram of scores for female participants</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{12-more-pipes_files/figure-latex/unnamed-chunk-2-1} 
+
+}
+
+\caption{Histogram of scores for female participants}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 Remember this for your group project - rather than creating new objects for each graph you want to make you can just pipe the data you want to display straight into `ggplot()`.
 
-### Activity 4: AQ score by gender
+## Activity 4: AQ score by gender
 
 [More men and boys are currently diagnosed as autistic than women and girls](https://www.autism.org.uk/about/what-is/gender.aspx) and there is increasing evidence that there is an over-representation of [transgender and nonbinary people](https://www.ncbi.nlm.nih.gov/pubmed/31260907) in those with autism spectrum disorder (ASD) or who meet the AQ cut-off score for ASD, therefore, it seems sensible to visualise AQ scores by gender (note that this dataset is simulated and that whilst the pattern of results is based on what we would expect from the evidence, these are not real data).
 
@@ -58,11 +62,12 @@ Remember this for your group project - rather than creating new objects for each
 
 Look at the graph and answer the following questions:
 
-* Which group has the lowest median total AQ score? <select class='webex-solveme' data-answer='["female"]'> <option></option> <option>female</option> <option>male</option> <option>nonbinary</option></select>
-* Which group has an outlier? <select class='webex-solveme' data-answer='["male"]'> <option></option> <option>female</option> <option>male</option> <option>nonbinary</option></select>
-* Which of the following do you think would be an accurate conclusion to draw from the plot? <select class='webex-solveme' data-answer='["Men and nonbinary people&apos;s scores did not differ much and both had higher AQ scores than wome"]'> <option></option> <option>Women had higher AQ scores than men or nonbinary people</option> <option>Men and nonbinary people&apos;s scores did not differ much and both had higher AQ scores than wome</option> <option>Men had higher AQ scores than nonbinary people who had higher scores than women</option></select>
+* Which group has the lowest median total AQ score? <select class='webex-select'><option value='blank'></option><option value='answer'>female</option><option value=''>male</option><option value=''>nonbinary</option></select>
+* Which group has an outlier? <select class='webex-select'><option value='blank'></option><option value=''>female</option><option value='answer'>male</option><option value=''>nonbinary</option></select>
 
-### Activity 5: Bad bar plots
+* Which of the following do you think would be an accurate conclusion to draw from the plot? <div class='webex-radiogroup' id='radio_EVVIXIRPKO'><label><input type="radio" autocomplete="off" name="radio_EVVIXIRPKO" value="x"></input> <span>Women had higher AQ scores than men or nonbinary people</span></label><label><input type="radio" autocomplete="off" name="radio_EVVIXIRPKO" value="answer"></input> <span>Men and nonbinary people&apos;s scores did not differ much and both had higher AQ scores than women</span></label><label><input type="radio" autocomplete="off" name="radio_EVVIXIRPKO" value="x"></input> <span>Men had higher AQ scores than nonbinary people who had higher scores than women</span></label></div>
+
+## Activity 5: Bad bar plots
 
 In the research methods lectures for Psych 1A, we talked about the importance of data visualisation and how different graphs might lead you to make very different conclusions about your data. For this reason, we've taught you how to make violin-boxplots because these show the true distribution of the data, however, it's useful to know how to make bad bar plots so that you can see the difference they make to your own data (but never use them as your only method of visualisation!).
 
@@ -79,16 +84,20 @@ AQ_all %>%
   theme_minimal()
 ```
 
-<div class="figure" style="text-align: center">
-<img src="12-more-pipes_files/figure-html/unnamed-chunk-3-1.png" alt="Bad bar chart of means" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-3)Bad bar chart of means</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{12-more-pipes_files/figure-latex/unnamed-chunk-4-1} 
+
+}
+
+\caption{Bad bar chart of means}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 Think back to your interpretation of the violin-boxplot, that men and nonbinary people's scores did not differ much and both had higher AQ scores than women. Would you have concluded the same thing if you had looked at the bar chart? 
 
 In this dataset, the outlier in the male group results in the mean score being much higher than the nonbinary mean, it's only through looking at the full distribution with the violin-boxplot that you can accurately intepret the data.
 
-### Activity 6: Density plots
+## Activity 6: Density plots
 
 The final type of visualiation we're going to show you are density plots as they are a useful way of visualising how the distributions of different groups compare to each other. You've actually already seen a density plot - it's the base of a violin plot, however, it can be useful to overlap them.
 
@@ -107,14 +116,18 @@ ggplot(AQ_all, aes(x = total_score, fill = gender)) +
   scale_y_continuous(name = "Density")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="12-more-pipes_files/figure-html/unnamed-chunk-4-1.png" alt="Grouped density plot" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Grouped density plot</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{12-more-pipes_files/figure-latex/unnamed-chunk-5-1} 
+
+}
+
+\caption{Grouped density plot}(\#fig:unnamed-chunk-5)
+\end{figure}
 
 The y-axis displays density, i.e., what proportion of the data points fall at each point on the x-axis.
 
-* Approximately what percent of female participants had a total AQ of 2? <select class='webex-solveme' data-answer='["30%"]'> <option></option> <option>.3%</option> <option>3%</option> <option>30%</option></select>
+* Approximately what percent of female participants had a total AQ of 2? <select class='webex-select'><option value='blank'></option><option value=''>.3%</option><option value=''>3%</option><option value='answer'>30%</option></select>
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -125,7 +138,7 @@ It's important to be able to translate between proportions and percentages, it w
 </div>
 
 
-### Activity 7: Saving plots
+## Activity 7: Saving plots
 
 Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function `ggsave()`.
 
@@ -169,10 +182,10 @@ AQ_histogram <- AQ_all %>%
 ggsave("AQ_histogram.png", plot = AQ_histogram)
 ```
 
-### Activity solutions - Mega pipe
+## Activity solutions - Mega pipe
 
 
-#### Activity 1
+### Activity 1
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -188,7 +201,7 @@ qformats <- read_csv("qformats.csv")
 </div>
 
 
-#### Activity 2
+### Activity 2
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -208,7 +221,7 @@ AQ_all <- pivot_longer(data = responses,
 </div>
 
 
-#### Activity 3
+### Activity 3
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -227,7 +240,7 @@ AQ_all %>%
 </div>
 
 
-#### Activity 4
+### Activity 4
 
 
 <div class='webex-solution'><button>Solution</button>

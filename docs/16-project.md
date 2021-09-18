@@ -48,10 +48,14 @@ final_dat <- left_join(demo, teams) %>%
 
 Right. Your turn. You may find it helpful to use the search function in this book to find examples of the code you need.
 
-<div class="figure" style="text-align: center">
-<img src="./images/searching.gif" alt="Searching for functions" width="75%" height="75%" />
-<p class="caption">(\#fig:unnamed-chunk-2)Searching for functions</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.75\linewidth,height=0.75\textheight]{./images/searching} 
+
+}
+
+\caption{Searching for functions}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 
 ## Step 2: Look at the data 

@@ -36,9 +36,17 @@ Select the columns all_dat, ahiTotal, cesdTotal, sex, age, educ, income, occasio
 summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income, occasion, elapsed.days)
 ```
 
-<div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
-</div>
+\begin{danger}
+If you get an error message when using select that says
+\texttt{unused\ argument} it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+\texttt{select} with \texttt{dplyr::select} which tells R exactly which
+version of the select function to use. We'd recommend restarting the
+session because this will get you in the habit and it's a useful thing
+to try for a range of problems
+\end{danger}
 
 ******
 
@@ -90,7 +98,7 @@ age_65max <- filter(ahi_asc, age < 65)
 
 * What does `filter()` do? 
 
-<select class='webex-solveme' data-answer='["removes information that we are not interested in"]'> <option></option> <option>splits a column into multiple columns</option> <option>transforms existing columns</option> <option>takes multiple columns and collapses them together</option> <option>removes information that we are not interested in</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>splits a column into multiple columns</option><option value=''>transforms existing columns</option><option value=''>takes multiple columns and collapses them together</option><option value='answer'>removes information that we are not interested in</option></select>
 
 * How many observations are left in `age_65max` after running `filter()`? <input class='webex-solveme nospaces' size='3' data-answer='["939"]'/>
 
@@ -139,9 +147,13 @@ happy_dat <- group_by(age_65max, Happiness_Category)
 data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 ```
 
-<div class="info">
-<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.</p>
-</div>
+\begin{info}
+If you get what looks like an error that says
+\texttt{summarise()\ ungrouping\ output\ (override\ with\ .groups\ argument)}don't
+worry, this isn't an error it's just R telling you what it's done. This
+message was included in a very recent update to the \texttt{tidyverse}
+which is why it doesn't appear on some of the walkthrough vidoes.
+\end{info}
 
 ******
 
@@ -149,7 +161,7 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 
 * What does `group_by()` do? 
 
-<select class='webex-solveme' data-answer='["groups data frames based on a specific column so that all later operations are carried out on a group basis"]'> <option></option> <option>provides summary statistics of an existing dataframe</option> <option>organises information in ascending or descending order</option> <option>transforms existing columns</option> <option>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>provides summary statistics of an existing dataframe</option><option value=''>organises information in ascending or descending order</option><option value=''>transforms existing columns</option><option value='answer'>groups data frames based on a specific column so that all later operations are carried out on a group basis</option></select>
 
 * How would you change the code to group by education rather than `Happiness_Category`?
 
@@ -180,9 +192,9 @@ ggplot(age_65max, aes(x = as.factor(income), y = cesdTotal, fill = as.factor(inc
   scale_y_continuous(name = "Depression Score")
 ```
 
-* Which income group has the highest median depression scores? <select class='webex-solveme' data-answer='["Below Average"]'> <option></option> <option>Below Average</option> <option>Average</option> <option>Above Average</option></select>
+* Which income group has the highest median depression scores? <select class='webex-select'><option value='blank'></option><option value='answer'>Below Average</option><option value=''>Average</option><option value=''>Above Average</option></select>
 
-* Which group has the highest density of scores at any one point? <select class='webex-solveme' data-answer='["Above Average"]'> <option></option> <option>Below Average</option> <option>Average</option> <option>Above Average</option></select>
+* Which group has the highest density of scores at any one point? <select class='webex-select'><option value='blank'></option><option value=''>Below Average</option><option value=''>Average</option><option value='answer'>Above Average</option></select>
 
 
 <div class='webex-solution'><button>Explain This Answer</button>
@@ -192,7 +204,7 @@ Density is represented by the curvy line around the boxplot that looks a little 
 </div>
 
 
-* Is income group a between-subject or within-subject variable? <select class='webex-solveme' data-answer='["Between-subjects"]'> <option></option> <option>Between-subjects</option> <option>Within-subjects</option></select>
+* Is income group a between-subject or within-subject variable? <select class='webex-select'><option value='blank'></option><option value='answer'>Between-subjects</option><option value=''>Within-subjects</option></select>
 
 
 <div class='webex-solution'><button>Explain This Answer</button>

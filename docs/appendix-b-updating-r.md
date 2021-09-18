@@ -8,10 +8,14 @@ RStudio is the easiest component to update. Typically, updates to RStudio won't 
 
 Click `Help - Check for updates`
 
-<div class="figure" style="text-align: center">
-<img src="images/update_rstudio.jpg" alt="Updating RStudio" width="100%" />
-<p class="caption">(\#fig:img-updaterstudio)Updating RStudio</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/update_rstudio} 
+
+}
+
+\caption{Updating RStudio}(\#fig:img-updaterstudio)
+\end{figure}
 
 If an update is available, it will prompt you to download it and you can install it as usual.
 
@@ -28,10 +32,14 @@ install.packages("tidyverse")
 
 To update multiple packages, or indeed all packages, RStudio provides helpful tools. Click `Tools - Check for Package Updates`. A dialogue box will appear and you can select the packages you wish to update. Be aware that if you select all packages, this may take some time and you will be unable to use R whilst the process completes.
 
-<div class="figure" style="text-align: center">
-<img src="images/update_packages.jpg" alt="Updating packages with RStudio" width="100%" />
-<p class="caption">(\#fig:img-updateall)Updating packages with RStudio</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/update_packages} 
+
+}
+
+\caption{Updating packages with RStudio}(\#fig:img-updateall)
+\end{figure}
 
 Occasionally, you might have a few problem packages that seemingly refuse to update, for me, `rlang` and `vctrs` cause me no end of trouble. These aren't packages that you will likely every explicitly load, but they're required beneath the surface for R to do things like knit your Markdown files etc.
 

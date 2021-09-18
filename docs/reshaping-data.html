@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 10 Reshaping data | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/reshaping-data.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Reshaping data | Data Skills">
 <meta name="twitter:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10.6/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -38,8 +38,7 @@
 
     <div class="d-flex align-items-start justify-content-between">
       <h1>
-        <a href="index.html" title="psyTeachR Books">Data Skills</a>:
-        <small class="text-muted">psyTeachR Books</small>
+        <a href="index.html" title="">Data Skills</a>
       </h1>
       <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
@@ -78,7 +77,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/data-skills-v1">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -114,7 +113,7 @@
 <code>cols</code> are the original columns you want to collapse.</li>
 </ul>
 <p>These functions can seem a bit abstract and it is better to show than tell. Run the below code in a new code chunk and then compare how <code>rlong</code> looks compared to <code>responses</code> and see if you can figure out what effect each argument had.</p>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
                       names_to <span class="op">=</span> <span class="st">"Question"</span>,  
                       values_to <span class="op">=</span> <span class="st">"Response"</span>,
@@ -130,9 +129,9 @@
 <ul>
 <li>What does <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> do?</li>
 </ul>
-<p><select class="webex-solveme" data-answer='["Retains or removes observations"]'><option></option>
-<option>Retains or removes variables</option>
-<option>Retains or removes observations</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="">Retains or removes variables</option>
+<option value="answer">Retains or removes observations</option></select></p>
 <hr>
 <ul>
 <li>Create a new object called <code>rlong_16</code> that uses <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to keep only the data from participant Id 16.</li>
@@ -185,11 +184,11 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <ul>
 <li>Run the below code in a new code chunk.</li>
 </ul>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span>
 <span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The final part of calculating the scores requires an extra step because now we don't just want to calculate one score, we want to calculate a score <strong>for each participant</strong> which means that we need to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to group by <code>Id</code>. We're not going to use it in this chapter but we also want our object to show us the participant's gender so we will also add <code>gender</code> to the grouping. If you want to refresh your memory about how <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> works, revise Data Wrangling 1.</p>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
 <span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
@@ -222,7 +221,7 @@ Figure 5.3: Histogram of total AQ scores
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
 <span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
@@ -237,8 +236,9 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rlong_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">Id</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 <div id="activity-4-2" class="section level3" number="10.9.3">
 <h3>
@@ -248,7 +248,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rlong_16_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -260,7 +260,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">scores_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -272,8 +272,9 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">AQ_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_16</span>, AQ_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 <div id="activity-8" class="section level3" number="10.9.6">
 <h3>
@@ -283,7 +284,7 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
@@ -298,15 +299,22 @@ Solution
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -317,6 +325,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -360,7 +370,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -396,6 +449,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -409,8 +474,53 @@ $( document ).ready(function() {
   $("footer div.row div:eq(1) p").html(
     psyteachr + license + cite
   );
+
+  function move_sidebar() {
+    var w = window.innerWidth;
+    if (w < 992) {
+      $("#toc").appendTo($("#main-nav"));
+    } else {
+      $("#toc").appendTo($("div.sidebar-chapter"));
+    }
+  }
+  move_sidebar();
+  window.onresize = move_sidebar;
 });
-</script>
+</script><div class="chapter-nav">
+<div class="prev"><a href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></div>
+<div class="next"><a href="pipes.html"><span class="header-section-number">11</span> Pipes</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reshaping-data"><span class="header-section-number">10</span> Reshaping data</a></li>
+<li><a class="nav-link" href="#activity-1-load-in-the-data"><span class="header-section-number">10.1</span> Activity 1: Load in the data</a></li>
+<li><a class="nav-link" href="#activity-2-pivot_longer"><span class="header-section-number">10.2</span> Activity 2: pivot_longer()</a></li>
+<li><a class="nav-link" href="#activity-3-filter"><span class="header-section-number">10.3</span> Activity 3: filter()</a></li>
+<li><a class="nav-link" href="#activity-4-inner_join"><span class="header-section-number">10.4</span> Activity 4: inner_join()</a></li>
+<li><a class="nav-link" href="#activity-5-another-inner_join"><span class="header-section-number">10.5</span> Activity 5: Another inner_join()</a></li>
+<li><a class="nav-link" href="#activity-6-calculating-the-aq-score"><span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score</a></li>
+<li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.7</span> Activity 7: Calculating all scores</a></li>
+<li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.8</span> Activity 8: Visualisation</a></li>
+<li>
+<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.9</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.9.1</span> Activity 1</a></li>
+<li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.9.2</span> Activity 3</a></li>
+<li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.9.3</span> Activity 4</a></li>
+<li><a class="nav-link" href="#activity-5-1"><span class="header-section-number">10.9.4</span> Activity 5</a></li>
+<li><a class="nav-link" href="#activity-6-2"><span class="header-section-number">10.9.5</span> Activity 6</a></li>
+<li><a class="nav-link" href="#activity-8"><span class="header-section-number">10.9.6</span> Activity 8</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/psyteachr/data-skills-v1/blob/master/book/10-reshaping-data.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/data-skills-v1/edit/master/book/10-reshaping-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
 
 </div>
 </div> <!-- .container -->
@@ -418,7 +528,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-14.</p>
+    <p>"<strong>Data Skills</strong>" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-18.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
@@ -454,42 +564,6 @@ for (let popover of popovers) {
     })
   }
 }
-</script><div class="chapter-nav">
-<div class="prev"><a href="aq-data-and-recap.html"><span class="header-section-number">9</span> AQ data and recap</a></div>
-<div class="next"><a href="pipes.html"><span class="header-section-number">11</span> Pipes</a></div>
-</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
-    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#reshaping-data"><span class="header-section-number">10</span> Reshaping data</a></li>
-<li><a class="nav-link" href="#activity-1-load-in-the-data"><span class="header-section-number">10.1</span> Activity 1: Load in the data</a></li>
-<li><a class="nav-link" href="#activity-2-pivot_longer"><span class="header-section-number">10.2</span> Activity 2: pivot_longer()</a></li>
-<li><a class="nav-link" href="#activity-3-filter"><span class="header-section-number">10.3</span> Activity 3: filter()</a></li>
-<li><a class="nav-link" href="#activity-4-inner_join"><span class="header-section-number">10.4</span> Activity 4: inner_join()</a></li>
-<li><a class="nav-link" href="#activity-5-another-inner_join"><span class="header-section-number">10.5</span> Activity 5: Another inner_join()</a></li>
-<li><a class="nav-link" href="#activity-6-calculating-the-aq-score"><span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score</a></li>
-<li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.7</span> Activity 7: Calculating all scores</a></li>
-<li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.8</span> Activity 8: Visualisation</a></li>
-<li>
-<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.9</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.9.1</span> Activity 1</a></li>
-<li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.9.2</span> Activity 3</a></li>
-<li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.9.3</span> Activity 4</a></li>
-<li><a class="nav-link" href="#activity-5-1"><span class="header-section-number">10.9.4</span> Activity 5</a></li>
-<li><a class="nav-link" href="#activity-6-2"><span class="header-section-number">10.9.5</span> Activity 6</a></li>
-<li><a class="nav-link" href="#activity-8"><span class="header-section-number">10.9.6</span> Activity 8</a></li>
-</ul>
-</li>
-</ul>
-
-      <div class="book-extra">
-        <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/10-reshaping-data.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/10-reshaping-data.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
-        </ul>
-</div>
-    </nav>
-</div>
-</div>
-</div>
+</script>
 </body>
 </html>

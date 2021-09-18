@@ -2,7 +2,6 @@
 title: "Data Skills"
 author: "Heather Cleland-Woods and Emily Nordmann"
 date: "`r Sys.Date()`"
-subtitle: psyTeachR Books
 site: bookdown::bookdown_site
 documentclass: book
 classoption: oneside # for PDFs

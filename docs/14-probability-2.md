@@ -39,7 +39,7 @@ dbinom(x = 5, size = 10, prob = 0.5)
 ```
 
 * What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.25",".25"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["25%"]'> <option></option> <option>0.25%</option> <option>2.5%</option> <option>25%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.25%</option><option value=''>2.5%</option><option value='answer'>25%</option></select>
 
 ## Activity 3: `pbinom()`
 
@@ -57,7 +57,7 @@ pbinom(q = 2, size = 10, prob = 0.5)
 ```
 
 * What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.05",".05"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["5%"]'> <option></option> <option>0.05%</option> <option>0.5%</option> <option>5%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.05%</option><option value=''>0.5%</option><option value='answer'>5%</option></select>
 
 ## Activity 4: `pbinom()` 2
 
@@ -76,10 +76,14 @@ pbinom(q = 7, size = 10, prob = .5)
 
 This tells us that the probability is .95 or 95% - that doesn't seem right does it? The default behaviour for `pbinom()` is to calculate cumulative probability for the lower tail of the curve, i.e., if you specify `q = 2` it calculates the probability of all outcomes below 2. We specified `q = 7` which means that it's calculated the probability of getting an outcome of 0, 1, 2, 3, 4, 5, 6, and 7, the blue area in the below figure - which is obviously very high.
 
-<div class="figure" style="text-align: center">
-<img src="14-probability-2_files/figure-html/unnamed-chunk-1-1.png" alt="Lower and upper tails" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-1)Lower and upper tails</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{14-probability-2_files/figure-latex/unnamed-chunk-1-1} 
+
+}
+
+\caption{Lower and upper tails}(\#fig:unnamed-chunk-1)
+\end{figure}
 
 To get the right answer, we have to add `lower.tail = FALSE` as we are interested in the upper tail of the distribution. Because we want the cumulative probability to include 7, we set `q = 6`. This will now calculate the cumulative probability of getting 7, 8, 9, or 10 heads out of 10 coin flips.
 
@@ -91,7 +95,7 @@ pbinom(q = 6, size = 10, prob = .5, lower.tail = FALSE)
 ```
 
 * What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.17",".17"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["17%"]'> <option></option> <option>0.017%</option> <option>0.17</option> <option>17%</option></select> 
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.017%</option><option value=''>0.17</option><option value='answer'>17%</option></select> 
 
 ## Activity 5: `qbinom()`
 
@@ -135,10 +139,14 @@ Notice that the more trials you run, the more precise the estimates become, that
 
 Have a go at playing around with different numbers of coin flips and probabilities in our `dbinom()` and `pbinom()` app!
 
-<div class="figure" style="text-align: center">
-<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px"></iframe>
-<p class="caption">(\#fig:unnamed-chunk-2)Binomial distribution app</p>
-</div>
+\begin{figure}
+
+{\centering \href{https://shannon-mcnee19.shinyapps.io/binomial_shiny/}{\includegraphics[width=1\linewidth]{14-probability-2_files/figure-latex/unnamed-chunk-2-1} }
+
+}
+
+\caption{Binomial distribution app}(\#fig:unnamed-chunk-2)
+\end{figure}
 
 ******
 
@@ -184,10 +192,14 @@ ggplot(heights, aes(x = height, fill = sex)) +
 </div>
 
 
-<div class="figure" style="text-align: center">
-<img src="14-probability-2_files/figure-html/unnamed-chunk-4-1.png" alt="Simulation of Scottish height data" width="100%" />
-<p class="caption">(\#fig:unnamed-chunk-4)Simulation of Scottish height data</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{14-probability-2_files/figure-latex/unnamed-chunk-4-1} 
+
+}
+
+\caption{Simulation of Scottish height data}(\#fig:unnamed-chunk-4)
+\end{figure}
 
 In this chapter we will use this information to calculate the probability of observing at least or at most a specific height with `pnorm()`, and the heights that are associated with specific probabilities with `qnorm()`.
 
@@ -208,21 +220,21 @@ pnorm(q = NULL, mean = NULL, sd = NULL, lower.tail = NULL)
 Replace the NULLs in the above code to calculate the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man.
 
 * What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class='webex-solveme nospaces' size='4' data-answer='["0.04",".04"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["4%"]'> <option></option> <option>0.04%</option> <option>0.4%</option> <option>4%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.04%</option><option value=''>0.4%</option><option value='answer'>4%</option></select>
 
 ## Activity 7: `pnorm` 2
 
 Fiona is a very tall Scottish woman (181.12\nbsp{}cm) in the 16-24 y.o. range who will only date men who are taller than her.  
 
 * Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.23",".23"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["23%"]'> <option></option> <option>0.23%</option> <option>2.3%</option> <option>23%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.23%</option><option value=''>2.3%</option><option value='answer'>23%</option></select>
 
 ## Activity 8: `pnorm` 3
 
 On the other hand, Fiona will only date women who are shorter than her. 
 
 * What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.99",".99"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["99%"]'> <option></option> <option>0.99%</option> <option>9.9%</option> <option>99%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.99%</option><option value=''>9.9%</option><option value='answer'>99%</option></select>
 
 ## Activity 9: `qnorm()`
 
