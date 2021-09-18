@@ -322,11 +322,7 @@ As noted, you may not have to do this for a while, but come back to this when yo
 
 ## Help and additional resources
 
-```{r img-kitteh, echo=FALSE, fig.cap="The truth about programming"}
-
-knitr::include_graphics("images/kitteh.png")
-
-```
+<div class="small_right"><img src="images/kitteh.png" /></div>
 
 Getting good at programming really means getting good trying stuff out,  searching for help online, and finding examples of code to copy. If you are having difficulty with any of the exercises contained in this book then you can ask for help on Teams, however, learning to problem-solve effectively is a key skill that you need to develop throughout this course. 
 

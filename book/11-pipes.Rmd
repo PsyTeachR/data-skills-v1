@@ -160,8 +160,7 @@ ggplot(question_scores, aes(x = Question, y = item_scores)) +
 
 ### Activity 3
 
-`r hide()`
-```{r eval = FALSE, message=FALSE}
+```{r, webex.hide=TRUE, eval = FALSE, message=FALSE}
 scores <- pivot_longer(data = responses, 
                       names_to = "Question",  
                       values_to = "Response",
@@ -178,22 +177,19 @@ scores <- responses %>%
   inner_join(qformats, "Question") %>%
   inner_join(scoring, c("QFormat", "Response"))
 ```
-`r unhide()`
+
 
 ### Activity 4
 
-`r hide()`
-```{r eval = FALSE, message=FALSE}
+```{r, webex.hide=TRUE, eval = FALSE, message=FALSE}
 example_2 <- select(scores, -QFormat) %>%
   filter(Question == "Q1") %>%
   summarise(total_score = sum(Score))
 ```
-`r unhide()`
 
 ### Activity 5
 
-`r hide()`
-```{r eval = FALSE, message=FALSE}
+```{r, webex.hide=TRUE, eval = FALSE, message=FALSE}
 scores %>%
   group_by(Question) %>%
   summarise(item_scores = sum(Score)) %>%
@@ -201,5 +197,4 @@ scores %>%
   geom_col() +
   theme_minimal()
 ```
-`r unhide()`
 
