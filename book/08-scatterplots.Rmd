@@ -21,7 +21,7 @@ Select the columns `ahiTotal`, `cesdTotal`, `sex`, `age`, `educ` from the `all_d
 
 
 ```{r, T2, echo = FALSE}
-summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
+summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ)
 ```
 
 ## Activity 3: Simple scatterplots
@@ -77,7 +77,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal)) +
 
 It seems fairly obvious that there might be a negative relationship between happiness and depression, so instead we want to look at whether this relationship changes depending on different demographic variables.
 
-Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, `sex`, `educ`, and `income` are all registered as numeric variables, but we know that they're really categories.
+Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, `sex` and `educ` are all registered as numeric variables, but we know that they're really categories.
 
 ```{r}
 str(summarydata)
@@ -86,11 +86,10 @@ str(summarydata)
 ```{r echo = FALSE}
 summarydata <- summarydata %>%
   mutate(sex = as.factor(sex),
-         educ = as.factor(educ),
-         income = as.factor(income))
+         educ = as.factor(educ))
 ```
 
-* Using the same method you used in the last chapter, overwrite `sex`, `educ` and `income` in `summarydata` as factors.
+* Using the same method you used in the last chapter, overwrite `sex` and `educ` in `summarydata` as factors.
 
 ## Activity 6: Grouped scatterplots
 
@@ -114,7 +113,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) +
 
 It looks like the relationship between happiness and depression is about the same for male and female participants.
 
-* Create two more scatterplots that show the relationship between happiness and depression grouped by a) `income` and b) `educ`. Make sure you update the legend labels (you might need to check the code book).
+* Create another scatterplot that shows the relationship between happiness and depression grouped by `educ`. Make sure you update the legend labels (you might need to check the code book).
 
 ## Activity 7: Group by a new variable
 
@@ -203,7 +202,7 @@ all_dat <- inner_join(dat, pinfo, by=c("id", "intervention")
 `r webex::hide()`
 
 ```{r, T2s}
-summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
+summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ)
 ```
 
 `r webex::unhide()`
@@ -245,8 +244,7 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
 ```{r T5s}
 summarydata <- summarydata %>%
   mutate(sex = as.factor(sex),
-         educ = as.factor(educ),
-         income = as.factor(income))
+         educ = as.factor(educ))
 ```
 
 `r webex::unhide()`
@@ -273,22 +271,6 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
                        option = "E")
 ```
 
-```{r}
-ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, 
-                        colour = income)) + 
-  geom_point() +
-  scale_x_continuous(name = "Happiness Score") +
-  scale_y_continuous(name = "Depression Score",
-                     limits = c(0,60)) +
-  theme_minimal() +
-  geom_smooth(method = "lm") +
-  scale_color_viridis_d(name = "Income", 
-                       labels = c("Below average",
-                                  "Average",
-                                  "Above average"))
-```
-
-
 `r webex::unhide()`
 
 ### Activity 7
@@ -296,7 +278,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 `r webex::hide()`
 
 ```{r T7s, eval = FALSE}
-summarydata <- mutate(summarydata, severity = cesdTotal >= 18)
+summarydata <- mutate(summarydata, happiness >= median(ahiTotal))
 
 ```
 

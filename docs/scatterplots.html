@@ -158,18 +158,17 @@ Figure 8.2: Scatterplot of happiness and depression scores
 <span class="header-section-number">8.5</span> Activity 5: Setting the factors<a class="anchor" aria-label="anchor" href="#activity-5-setting-the-factors"><i class="fas fa-link"></i></a>
 </h2>
 <p>It seems fairly obvious that there might be a negative relationship between happiness and depression, so instead we want to look at whether this relationship changes depending on different demographic variables.</p>
-<p>Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, <code>sex</code>, <code>educ</code>, and <code>income</code> are all registered as numeric variables, but we know that they're really categories.</p>
+<p>Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, <code>sex</code> and <code>educ</code> are all registered as numeric variables, but we know that they're really categories.</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">summarydata</span><span class="op">)</span></code></pre></div>
-<pre><code>## tibble[,6] [992 x 6] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble[,5] [992 x 5] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
 ##  $ age      : num [1:992] 46 37 37 19 40 49 42 57 41 41 ...
-##  $ educ     : num [1:992] 4 3 3 2 5 4 4 4 4 4 ...
-##  $ income   : num [1:992] 3 2 2 1 2 1 1 2 1 1 ...</code></pre>
+##  $ educ     : num [1:992] 4 3 3 2 5 4 4 4 4 4 ...</code></pre>
 <ul>
-<li>Using the same method you used in the last chapter, overwrite <code>sex</code>, <code>educ</code> and <code>income</code> in <code>summarydata</code> as factors.</li>
+<li>Using the same method you used in the last chapter, overwrite <code>sex</code> and <code>educ</code> in <code>summarydata</code> as factors.</li>
 </ul>
 </div>
 <div id="activity-6-grouped-scatterplots" class="section level2" number="8.6">
@@ -198,7 +197,7 @@ Figure 8.2: Scatterplot of happiness and depression scores
 <div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;"></div>
 <p>It looks like the relationship between happiness and depression is about the same for male and female participants.</p>
 <ul>
-<li>Create two more scatterplots that show the relationship between happiness and depression grouped by a) <code>income</code> and b) <code>educ</code>. Make sure you update the legend labels (you might need to check the code book).</li>
+<li>Create another scatterplot that shows the relationship between happiness and depression grouped by <code>educ</code>. Make sure you update the legend labels (you might need to check the code book).</li>
 </ul>
 </div>
 <div id="activity-7-group-by-a-new-variable" class="section level2" number="8.7">
@@ -303,7 +302,7 @@ Solution
 Solution
 </button>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span>, <span class="va">income</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-3-1" class="section level3" number="8.8.3">
@@ -355,8 +354,7 @@ Solution
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="va">summarydata</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>,
-         educ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">educ</span><span class="op">)</span>,
-         income <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+         educ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">educ</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-6-1" class="section level3" number="8.8.6">
@@ -386,22 +384,6 @@ Solution
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <pre><code>## Warning: Removed 78 rows containing missing values (geom_smooth).</code></pre>
 <div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, 
-                        colour <span class="op">=</span> <span class="va">income</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
-                     limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Income"</span>, 
-                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below average"</span>,
-                                  <span class="st">"Average"</span>,
-                                  <span class="st">"Above average"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
-<pre><code>## Warning: Removed 62 rows containing missing values (geom_smooth).</code></pre>
-<div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
 </div>
 <div id="activity-7" class="section level3" number="8.8.7">
@@ -412,8 +394,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">summarydata</span>, severity <span class="op">=</span> <span class="va">cesdTotal</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 
 </div>
@@ -579,7 +561,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-15.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

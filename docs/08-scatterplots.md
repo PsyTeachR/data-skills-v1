@@ -71,7 +71,7 @@ geom_smooth(method = "lm")
 
 It seems fairly obvious that there might be a negative relationship between happiness and depression, so instead we want to look at whether this relationship changes depending on different demographic variables.
 
-Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, `sex`, `educ`, and `income` are all registered as numeric variables, but we know that they're really categories.
+Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, `sex` and `educ` are all registered as numeric variables, but we know that they're really categories.
 
 
 ```r
@@ -79,18 +79,17 @@ str(summarydata)
 ```
 
 ```
-## tibble[,6] [992 x 6] (S3: tbl_df/tbl/data.frame)
+## tibble[,5] [992 x 5] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
 ##  $ age      : num [1:992] 46 37 37 19 40 49 42 57 41 41 ...
 ##  $ educ     : num [1:992] 4 3 3 2 5 4 4 4 4 4 ...
-##  $ income   : num [1:992] 3 2 2 1 2 1 1 2 1 1 ...
 ```
 
 
 
-* Using the same method you used in the last chapter, overwrite `sex`, `educ` and `income` in `summarydata` as factors.
+* Using the same method you used in the last chapter, overwrite `sex` and `educ` in `summarydata` as factors.
 
 ## Activity 6: Grouped scatterplots
 
@@ -125,7 +124,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) +
 
 It looks like the relationship between happiness and depression is about the same for male and female participants.
 
-* Create two more scatterplots that show the relationship between happiness and depression grouped by a) `income` and b) `educ`. Make sure you update the legend labels (you might need to check the code book).
+* Create another scatterplot that shows the relationship between happiness and depression grouped by `educ`. Make sure you update the legend labels (you might need to check the code book).
 
 ## Activity 7: Group by a new variable
 
@@ -256,7 +255,7 @@ all_dat <- inner_join(dat, pinfo, by=c("id", "intervention")
 
 
 ```r
-summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income)
+summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ)
 ```
 
 
@@ -325,8 +324,7 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
 ```r
 summarydata <- summarydata %>%
   mutate(sex = as.factor(sex),
-         educ = as.factor(educ),
-         income = as.factor(income))
+         educ = as.factor(educ))
 ```
 
 
@@ -369,33 +367,6 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 <img src="08-scatterplots_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />
 
 
-```r
-ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, 
-                        colour = income)) + 
-  geom_point() +
-  scale_x_continuous(name = "Happiness Score") +
-  scale_y_continuous(name = "Depression Score",
-                     limits = c(0,60)) +
-  theme_minimal() +
-  geom_smooth(method = "lm") +
-  scale_color_viridis_d(name = "Income", 
-                       labels = c("Below average",
-                                  "Average",
-                                  "Above average"))
-```
-
-```
-## `geom_smooth()` using formula 'y ~ x'
-```
-
-```
-## Warning: Removed 62 rows containing missing values (geom_smooth).
-```
-
-<img src="08-scatterplots_files/figure-html/unnamed-chunk-11-1.png" width="100%" style="display: block; margin: auto;" />
-
-
-
 </div>
 
 
@@ -407,7 +378,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 
 
 ```r
-summarydata <- mutate(summarydata, severity = cesdTotal >= 18)
+summarydata <- mutate(summarydata, happiness >= median(ahiTotal))
 ```
 
 

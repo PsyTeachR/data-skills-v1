@@ -97,7 +97,7 @@
 <p>Don't change ANY of the code from step 1. Just copy and paste it into R EXACTLY as it is below.</p>
 <p>This code will clean up the Experimentum data a little bit to help you on your way. You will get a message saying <code>NAs introduced by coercion</code>. Ignore this message, it's a result of converting the employment hours to a numeric variable.</p>
 <p>It's also worth noting that this is a MUCH larger dataset than any you've worked with so far and you might find that R takes a little longer to complete each task - this is perfectly normal.</p>
-<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 
 <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"final_data.csv"</span>, 
@@ -157,11 +157,11 @@ Figure 12.1: Searching for functions
 <p>If necessary, use <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to retain only the observations you need, for example, you might need to delete participants above a certain age, or only use mature students or undergraduate students (and make sure you kept all these columns in step 3). Do not filter the data for your team yet. You will find the code book you downloaded with the data files from Moodle helpful for this task.</p>
 <p>If your grouping variable is whether students undertake paid employment, you will need to create a new variable using mutate that categorises participants into employed (&gt; 0 hours worked per week) and not employed (0 hours per week) categories.</p>
 <p>An additional bit of syntax you might find useful for this is the <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code> notation which allows you to filter by multiple values. For example, the following code will retain all rows where <code>user_sex</code> equals male OR female and nothing else (i.e., it would get rid of non-binary participants, prefer not to says, and missing values).</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">user_sex</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>You can also do it by exclusion with <code><a href="https://rdrr.io/r/base/Logic.html">!</a></code>. The below code would retain everything where <code>user_sex</code> DOESN'T equal male or female.</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="va">user_sex</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"male"</span>, <span class="st">"female"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>If you were feeling really fancy you could do steps 2 - 5 in a single pipeline of code.</p>
@@ -181,14 +181,14 @@ Figure 12.1: Searching for functions
 <li>Change NOTHING else</li>
 </ul>
 <p>You may get the message <code>summarise() regrouping output by....</code> this is fine.</p>
-<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat_means</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_longer</span><span class="op">(</span>names_to <span class="op">=</span> <span class="st">"var"</span>, values_to <span class="op">=</span> <span class="st">"val"</span>, <span class="va">question_1</span><span class="op">:</span><span class="va">question_5</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by_all.html">group_by_at</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="op">-</span><span class="va">val</span>, <span class="op">-</span><span class="va">var</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>scale_mean <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">val</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <p>Optional: If you want a dataset that just has complete cases, then you can run the below code. This will remove any participants who have an <code>NA</code> for scale-score due to missing data.</p>
-<div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dat_means_complete</span> <span class="op">&lt;-</span> <span class="va">dat_means</span> <span class="op">%&gt;%</span>
   <span class="fu">drop_na</span><span class="op">(</span><span class="va">scale_mean</span><span class="op">)</span></code></pre></div>
 </div>
@@ -206,7 +206,7 @@ Figure 12.1: Searching for functions
 <p>First, calculate the demographic information you need: number of participants, gender split, grouping variable split (if you're using a variable that's not gender), mean age and SD.</p>
 <p>You can calculate mean age and SD using <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> like you've done before. There's several different ways that you can count the number of participants in each group, we haven't explicitly shown you how to do this yet so we'll give you example code for this below. The code is fairly simple, you just need to plug in the variables you need.</p>
 <p>Do this separately for the full dataset and your team dataset.</p>
-<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># count the total number of participants in the dataset</span>
 
 <span class="va">dat_means</span> <span class="op">%&gt;%</span>
@@ -398,7 +398,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-09-15.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
