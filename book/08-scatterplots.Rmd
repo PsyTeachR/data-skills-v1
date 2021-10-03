@@ -2,6 +2,9 @@
 
 In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get the data in the shape we need it to be in for our particular question. In particular we need to generate the object `summarydata` that just has the variable we need.You have done these steps before so go back to the relevant Lab and use that to guide you through. 
 
+There is a [walkthrough video](https://moodle.gla.ac.uk/filter/echo360/lti_launch.php?url=https%3A%2F%2Fecho360.org.uk%2Flti%2F73750256-551c-47b5-9f1b-247567d647c2%3FmediaId%3D6636ffbc-be56-45a8-8a7c-07690e096d7e%26autoplay%3Dfalse%26automute%3Dfalse&cmid=2529962) of this chapter available via Echo360 (Moodle login required) - I strongly encourage you to read through the chapter first before watching the video.
+
+
 ## Activity 1: Set-up
 
 * Open R Studio and ensure the environment is clear.  
