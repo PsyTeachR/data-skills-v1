@@ -41,7 +41,7 @@ A few hints:
 
 <br>
 
-How would you describe the relationship between the two variables? <select class='webex-solveme' data-answer='["As happiness score increase, depression scores decrease"]'> <option></option> <option>As happiness scores increase, depression scores increase</option> <option>As happiness score increase, depression scores decrease</option> <option>As happiness scores decrease, depression scores decrease</option></select>
+How would you describe the relationship between the two variables? <select class='webex-select'><option value='blank'></option><option value=''>As happiness scores increase, depression scores increase</option><option value='answer'>As happiness score increase, depression scores decrease</option><option value=''>As happiness scores decrease, depression scores decrease</option></select>
 
 ## Activity 4: Adding a line of best fit
 
@@ -82,7 +82,7 @@ str(summarydata)
 ```
 
 ```
-## tibble[,5] [992 x 5] (S3: tbl_df/tbl/data.frame)
+## tibble [992 x 5] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -178,7 +178,7 @@ Now, reproduce the below plot using this new variable:
 
 <img src="08-scatterplots_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
 
-What might you conclude from this plot? <select class='webex-solveme' data-answer='["The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores"]'> <option></option> <option>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option> <option>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option> <option>There is no difference in the relationship between depression and happiness scores between the groups</option></select>
+What might you conclude from this plot? <select class='webex-select'><option value='blank'></option><option value=''>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option><option value='answer'>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option><option value=''>There is no difference in the relationship between depression and happiness scores between the groups</option></select>
 
 
 <div class='webex-solution'><button>Explain this answer</button>

@@ -7,7 +7,7 @@
 <title>Chapter 8 Scatterplots | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 8 Scatterplots | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/scatterplots.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 8 Scatterplots | Data Skills">
 <meta name="twitter:description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -127,10 +127,10 @@ Figure 8.1: Scatterplot of happiness and depression scores
 </p>
 </div>
 <p><br></p>
-<p>How would you describe the relationship between the two variables? <select class="webex-solveme" data-answer='["As happiness score increase, depression scores decrease"]'><option></option>
-<option>As happiness scores increase, depression scores increase</option>
-<option>As happiness score increase, depression scores decrease</option>
-<option>As happiness scores decrease, depression scores decrease</option></select></p>
+<p>How would you describe the relationship between the two variables? <select class="webex-select"><option value="blank"></option>
+<option value="">As happiness scores increase, depression scores increase</option>
+<option value="answer">As happiness score increase, depression scores decrease</option>
+<option value="">As happiness scores decrease, depression scores decrease</option></select></p>
 </div>
 <div id="activity-4-adding-a-line-of-best-fit" class="section level2" number="8.4">
 <h2>
@@ -162,7 +162,7 @@ Figure 8.2: Scatterplot of happiness and depression scores
 <p>Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, <code>sex</code> and <code>educ</code> are all registered as numeric variables, but we know that they're really categories.</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">summarydata</span><span class="op">)</span></code></pre></div>
-<pre><code>## tibble[,5] [992 x 5] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [992 x 5] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -229,10 +229,10 @@ Hint 2
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <pre><code>## Warning: Removed 9 rows containing missing values (geom_smooth).</code></pre>
 <div class="inline-figure"><img src="08-scatterplots_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;"></div>
-<p>What might you conclude from this plot? <select class="webex-solveme" data-answer='["The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores"]'><option></option>
-<option>The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option>
-<option>The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option>
-<option>There is no difference in the relationship between depression and happiness scores between the groups</option></select></p>
+<p>What might you conclude from this plot? <select class="webex-select"><option value="blank"></option>
+<option value="">The relationship between happiness and depression scores is stronger for people who have above average happiness scores</option>
+<option value="answer">The relationsip between happiness and depression scores is stronger for people who have lower than average happiness scores</option>
+<option value="">There is no difference in the relationship between depression and happiness scores between the groups</option></select></p>
 <div class="webex-solution">
 <button>
 Explain this answer
@@ -562,7 +562,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

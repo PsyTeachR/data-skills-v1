@@ -39,7 +39,7 @@ dbinom(x = 5, size = 10, prob = 0.5)
 ```
 
 * What is the probability of getting 5 heads out of 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.25",".25"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["25%"]'> <option></option> <option>0.25%</option> <option>2.5%</option> <option>25%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.25%</option><option value=''>2.5%</option><option value='answer'>25%</option></select>
 
 ## Activity 3: `pbinom()`
 
@@ -57,7 +57,7 @@ pbinom(q = 2, size = 10, prob = 0.5)
 ```
 
 * What is the probability of getting a maximum of 2 heads on 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.05",".05"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["5%"]'> <option></option> <option>0.05%</option> <option>0.5%</option> <option>5%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.05%</option><option value=''>0.5%</option><option value='answer'>5%</option></select>
 
 ## Activity 4: `pbinom()` 2
 
@@ -91,7 +91,7 @@ pbinom(q = 6, size = 10, prob = .5, lower.tail = FALSE)
 ```
 
 * What is the probability of getting between 7 and 10 heads from 10 coin flips to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.17",".17"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["17%"]'> <option></option> <option>0.017%</option> <option>0.17</option> <option>17%</option></select> 
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.017%</option><option value=''>0.17</option><option value='answer'>17%</option></select> 
 
 ## Activity 5: `qbinom()`
 
@@ -136,7 +136,7 @@ Notice that the more trials you run, the more precise the estimates become, that
 Have a go at playing around with different numbers of coin flips and probabilities in our `dbinom()` and `pbinom()` app!
 
 <div class="figure" style="text-align: center">
-<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px"></iframe>
+<iframe src="https://shannon-mcnee19.shinyapps.io/binomial_shiny/" width="100%" height="800px" data-external="1"></iframe>
 <p class="caption">(\#fig:unnamed-chunk-2)Binomial distribution app</p>
 </div>
 
@@ -208,21 +208,21 @@ pnorm(q = NULL, mean = NULL, sd = NULL, lower.tail = NULL)
 Replace the NULLs in the above code to calculate the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man.
 
 * What is the probability of meeting a 16-24 y.o. Scottish woman who is taller than the average 16-24 y.o. Scottish man? <input class='webex-solveme nospaces' size='4' data-answer='["0.04",".04"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["4%"]'> <option></option> <option>0.04%</option> <option>0.4%</option> <option>4%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.04%</option><option value=''>0.4%</option><option value='answer'>4%</option></select>
 
 ## Activity 7: `pnorm` 2
 
 Fiona is a very tall Scottish woman (181.12\nbsp{}cm) in the 16-24 y.o. range who will only date men who are taller than her.  
 
 * Using `pnorm()` again, what is the proportion of Scottish men Fiona would be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.23",".23"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["23%"]'> <option></option> <option>0.23%</option> <option>2.3%</option> <option>23%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.23%</option><option value=''>2.3%</option><option value='answer'>23%</option></select>
 
 ## Activity 8: `pnorm` 3
 
 On the other hand, Fiona will only date women who are shorter than her. 
 
 * What is the proportion of Scottish women would Fiona be willing to date to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["0.99",".99"]'/>  
-* What is this probability expressed in percent? <select class='webex-solveme' data-answer='["99%"]'> <option></option> <option>0.99%</option> <option>9.9%</option> <option>99%</option></select>
+* What is this probability expressed in percent? <select class='webex-select'><option value='blank'></option><option value=''>0.99%</option><option value=''>9.9%</option><option value='answer'>99%</option></select>
 
 ## Activity 9: `qnorm()`
 

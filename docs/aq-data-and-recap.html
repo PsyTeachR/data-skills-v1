@@ -7,7 +7,7 @@
 <title>Chapter 9 AQ data and recap | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability...">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 9 AQ data and recap | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/aq-data-and-recap.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 9 AQ data and recap | Data Skills">
 <meta name="twitter:description" content="Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -538,29 +538,29 @@ The solutions are at the bottom if you need them. However, as you'll discover in
 </h2>
 <p>Finally, let's refresh your memory of some of the important tidyverse functions before we delve into anything new.</p>
 <ul>
-<li>What function would you use to keep just the columns Q1 and Q2 in <code>responses</code>? <select class="webex-solveme" data-answer='["select"]'><option></option>
-<option>filter</option>
-<option>select</option>
-<option>object</option>
-<option>Q1:Q2</option></select>
+<li>What function would you use to keep just the columns Q1 and Q2 in <code>responses</code>? <select class="webex-select"><option value="blank"></option>
+<option value="">filter</option>
+<option value="answer">select</option>
+<option value="">object</option>
+<option value="">Q1:Q2</option></select>
 </li>
-<li>What function would you use to keep just the data from participant 16 in <code>reponses</code>? <select class="webex-solveme" data-answer='["filter"]'><option></option>
-<option>filter</option>
-<option>select</option>
-<option>summarise</option>
-<option>observation</option></select>
+<li>What function would you use to keep just the data from participant 16 in <code>reponses</code>? <select class="webex-select"><option value="blank"></option>
+<option value="answer">filter</option>
+<option value="">select</option>
+<option value="">summarise</option>
+<option value="">observation</option></select>
 </li>
-<li>What function would you use to add up the total score for participant 16? <select class="webex-solveme" data-answer='["summarise"]'><option></option>
-<option>filter</option>
-<option>inner_join</option>
-<option>summarise</option>
-<option>score</option></select>
+<li>What function would you use to add up the total score for participant 16? <select class="webex-select"><option value="blank"></option>
+<option value="">filter</option>
+<option value="">inner_join</option>
+<option value="answer">summarise</option>
+<option value="">score</option></select>
 </li>
-<li>What function would you use to join together <code>qformats</code> and <code>scoring</code>? <select class="webex-solveme" data-answer='["inner_join"]'><option></option>
-<option>inner_join</option>
-<option>join</option>
-<option>join_inner</option>
-<option>object_join</option></select>
+<li>What function would you use to join together <code>qformats</code> and <code>scoring</code>? <select class="webex-select"><option value="blank"></option>
+<option value="answer">inner_join</option>
+<option value="">join</option>
+<option value="">join_inner</option>
+<option value="">object_join</option></select>
 </li>
 </ul>
 </div>
@@ -737,7 +737,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

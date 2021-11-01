@@ -248,7 +248,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 90 days
+## Time difference of 61 days
 ## [1] 17.66644
 ```
 
@@ -409,7 +409,7 @@ A large part of coding is trying to figure why your code doesn't work and this i
 
 ## Activity 6: Test yourself
 
-**Question 1.** Why should you never include the code `install.packages()` in your analysis scripts? <select class='webex-solveme' data-answer='["You (or someone else) may accidentally install a package update that stops your code working"]'> <option></option> <option>You should use library() instead</option> <option>Packages are already part of Base R</option> <option>You (or someone else) may accidentally install a package update that stops your code working</option> <option>You already have the latest version of the package</option></select> 
+**Question 1.** Why should you never include the code `install.packages()` in your analysis scripts? <select class='webex-select'><option value='blank'></option><option value=''>You should use library() instead</option><option value=''>Packages are already part of Base R</option><option value='answer'>You (or someone else) may accidentally install a package update that stops your code working</option><option value=''>You already have the latest version of the package</option></select> 
 
 
 
@@ -427,7 +427,7 @@ Remember, when you run `install.packages()` it will always install the latest ve
 rnorm(6, 50, 10)
 ```
 
-<select class='webex-solveme' data-answer='["A dataset with 6 numbers that has a mean of 50 and an SD of 10"]'> <option></option> <option>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option> <option>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option> <option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select>  
+<select class='webex-select'><option value='blank'></option><option value=''>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option><option value='answer'>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option><option value=''>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option><option value=''>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select>  
 
 
 <div class='webex-solution'><button>Explain This Answer</button>
@@ -439,7 +439,7 @@ The default form for `rnorm()` is `rnorm(n, mean, sd)`. If you need help remembe
 <br>
 **Question 3.** If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use? 
 
-<select class='webex-solveme' data-answer='["package::function"]'> <option></option> <option>package::function</option> <option>function::package</option> <option>library(package)</option> <option>install.packages(package)</option></select>  
+<select class='webex-select'><option value='blank'></option><option value='answer'>package::function</option><option value=''>function::package</option><option value=''>library(package)</option><option value=''>install.packages(package)</option></select>  
 
 
 <div class='webex-solution'><button>Explain This Answer</button>
@@ -449,11 +449,11 @@ You should use the form `package::function`, for example `dplyr::select`. Rememb
 </div>
   
 
-**Question 4.** Which of the following is most likely to be an argument? <select class='webex-solveme' data-answer='["35"]'> <option></option> <option>35</option> <option>read_csv()</option> <option><-</option></select>
+**Question 4.** Which of the following is most likely to be an argument? <select class='webex-select'><option value='blank'></option><option value='answer'>35</option><option value=''>read_csv()</option><option value=''><-</option></select>
 
-**Question 5.** An easy way to spot functions is to look for <select class='webex-solveme' data-answer='["brackets"]'> <option></option> <option>brackets</option> <option>numbers</option> <option>computers</option></select>.
+**Question 5.** An easy way to spot functions is to look for <select class='webex-select'><option value='blank'></option><option value='answer'>brackets</option><option value=''>numbers</option><option value=''>computers</option></select>.
 
-**Question 6.** The job of `<-` is to send the output from the function to a/an <select class='webex-solveme' data-answer='["object"]'> <option></option> <option>argument</option> <option>assignment</option> <option>object</option></select>.
+**Question 6.** The job of `<-` is to send the output from the function to a/an <select class='webex-select'><option value='blank'></option><option value=''>argument</option><option value=''>assignment</option><option value='answer'>object</option></select>.
 
 
 

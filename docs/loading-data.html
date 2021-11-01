@@ -7,7 +7,7 @@
 <title>Chapter 4 Loading data | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="Part of becoming a psychologist is asking questions and gathering data to enable you to answer these questions effectively. It is very important that you understand all aspects of the research...">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 4 Loading data | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/loading-data.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 4 Loading data | Data Skills">
 <meta name="twitter:description" content="Part of becoming a psychologist is asking questions and gathering data to enable you to answer these questions effectively. It is very important that you understand all aspects of the research...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -224,9 +224,9 @@ If you get an error message when using select that says <code>unused argument</c
   <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Number of participants"</span><span class="op">)</span><span class="op">+</span>
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Are there more male or more female participants (you will need to check the codebook to find out what 1 and 2 mean to answer this)? <select class="webex-solveme" data-answer='["More female participants"]'><option></option>
-<option>More female participants</option>
-<option>More male participants</option></select></p>
+<p>Are there more male or more female participants (you will need to check the codebook to find out what 1 and 2 mean to answer this)? <select class="webex-select"><option value="blank"></option>
+<option value="answer">More female participants</option>
+<option value="">More male participants</option></select></p>
 <p>Copy, paste, and run the below code to create violin-boxplots of happiness scores for each income group.</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">ahiTotal</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -242,13 +242,13 @@ If you get an error message when using select that says <code>unused argument</c
 <li>The other lines on the boxplot show the interquartile range. There is a really good explanation of <a href="https://medium.com/dayem-siddiqui/understanding-and-interpreting-box-plots-d07aab9d1b6c">how to read a boxplot here</a>.</li>
 <li>The black dots are outliers, i.e., extreme values.</li>
 </ul>
-<p>Which income group has the highest median happiness score? <select class="webex-solveme" data-answer='["Above average"]'><option></option>
-<option>Below average</option>
-<option>Average</option>
-<option>Above average</option></select></p>
-<p>Which income group has the lowest median happiness score? <select class="webex-solveme" data-answer='["Below average"]'><option></option>
-<option>Below average</option>
-<option>Average</option></select></p>
+<p>Which income group has the highest median happiness score? <select class="webex-select"><option value="blank"></option>
+<option value="">Below average</option>
+<option value="">Average</option>
+<option value="answer">Above average</option></select></p>
+<p>Which income group has the lowest median happiness score? <select class="webex-select"><option value="blank"></option>
+<option value="answer">Below average</option>
+<option value="">Average</option></select></p>
 <p>How many outliers does the Average income group have? <input class="webex-solveme nospaces" size="1" data-answer='["2"]'></p>
 <p>Finally, try knitting the file to HTML. And that's it, well done! Remember to save your Markdown in your Data Skills folder and make a note of any mistakes you made and how you fixed them.</p>
 <div id="finished-1" class="section level3" number="4.11.1">
@@ -328,9 +328,9 @@ Solution
 <ol style="list-style-type: decimal">
 <li>When loading in a .csv file, which function should you use?</li>
 </ol>
-<p><select class="webex-solveme" data-answer='["read_csv()"]'><option></option>
-<option>read_csv()</option>
-<option>read.csv()</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="answer">read_csv()</option>
+<option value="">read.csv()</option></select></p>
 <div class="webex-solution">
 <button>
 Explain this answer
@@ -341,16 +341,16 @@ Explain this answer
 <ol start="2" style="list-style-type: decimal">
 <li>The function <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> takes the arguments <code>x</code>, <code>y</code>, <code>by</code>. What does <code>by</code> do?</li>
 </ol>
-<p><select class="webex-solveme" data-answer='["Specifies the column to join by that both tables have in common"]'><option></option>
-<option>Specifies the first table to join</option>
-<option>Specifies the second table to join</option>
-<option>Specifies the column to join by that both tables have in common</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="">Specifies the first table to join</option>
+<option value="">Specifies the second table to join</option>
+<option value="answer">Specifies the column to join by that both tables have in common</option></select></p>
 <ol start="3" style="list-style-type: decimal">
 <li>What does the function <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> do?
-<br><select class="webex-solveme" data-answer='["Keeps only the variables you specify"]'><option></option>
-<option>Keeps only the observations you specify</option>
-<option>Keeps only the variables you specify</option>
-<option>Keeps only the objects you specify</option></select>
+<br><select class="webex-select"><option value="blank"></option>
+<option value="">Keeps only the observations you specify</option>
+<option value="answer">Keeps only the variables you specify</option>
+<option value="">Keeps only the objects you specify</option></select>
 </li>
 </ol>
 <hr>
@@ -512,7 +512,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -196,10 +196,10 @@ Due to the large margin for error in carrying out this task by hand, it's import
 
 Finally, let's refresh your memory of some of the important tidyverse functions before we delve into anything new.
 
-* What function would you use to keep just the columns Q1 and Q2 in `responses`? <select class='webex-solveme' data-answer='["select"]'> <option></option> <option>filter</option> <option>select</option> <option>object</option> <option>Q1:Q2</option></select>
-* What function would you use to keep just the data from participant 16 in `reponses`? <select class='webex-solveme' data-answer='["filter"]'> <option></option> <option>filter</option> <option>select</option> <option>summarise</option> <option>observation</option></select>
-* What function would you use to add up the total score for participant 16? <select class='webex-solveme' data-answer='["summarise"]'> <option></option> <option>filter</option> <option>inner_join</option> <option>summarise</option> <option>score</option></select>
-* What function would you use to join together `qformats` and `scoring`? <select class='webex-solveme' data-answer='["inner_join"]'> <option></option> <option>inner_join</option> <option>join</option> <option>join_inner</option> <option>object_join</option></select>
+* What function would you use to keep just the columns Q1 and Q2 in `responses`? <select class='webex-select'><option value='blank'></option><option value=''>filter</option><option value='answer'>select</option><option value=''>object</option><option value=''>Q1:Q2</option></select>
+* What function would you use to keep just the data from participant 16 in `reponses`? <select class='webex-select'><option value='blank'></option><option value='answer'>filter</option><option value=''>select</option><option value=''>summarise</option><option value=''>observation</option></select>
+* What function would you use to add up the total score for participant 16? <select class='webex-select'><option value='blank'></option><option value=''>filter</option><option value=''>inner_join</option><option value='answer'>summarise</option><option value=''>score</option></select>
+* What function would you use to join together `qformats` and `scoring`? <select class='webex-select'><option value='blank'></option><option value='answer'>inner_join</option><option value=''>join</option><option value=''>join_inner</option><option value=''>object_join</option></select>
 
 ## Activity solutions - AQ data and recap
 

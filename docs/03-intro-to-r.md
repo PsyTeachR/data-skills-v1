@@ -27,6 +27,7 @@ Please be aware that **there is no link between your computer and the R server**
 Once you have uploaded the data, set the working directory by clicking `Session` -> `Set Working Directory` -> `Choose Directory` and then select the Data Skills 1A folder as your working directory. 
 
 You need to do this step regardless of whether you are working from the server or from your laptop. This means that R knows which folder to look in for the data and scripts you might want to use.
+
 ## R Markdown for data skills work and homework assignments
 
 For the data skills work and homework you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else's analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using R and RStudio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write, and when it comes time for the portfolio assignments, we can give you a task and you can fill in the required code. 
@@ -128,7 +129,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is -84 days until my birthday.**
+**My name is Emily and I am 35 years old. It is -113 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 

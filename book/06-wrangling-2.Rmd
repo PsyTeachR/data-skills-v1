@@ -84,7 +84,7 @@ arrange(summarydata, by = desc(ahiTotal))
 
 Filter the data ```ahi_asc``` by taking out those who are over 65 years of age.  
 ```{r, T4}
-age_65max <- filter(ahi_asc, age < 65)
+age_65max <- filter(ahi_asc, age <= 65)
 ```
 
 ******
@@ -93,7 +93,7 @@ age_65max <- filter(ahi_asc, age < 65)
 
 `r mcq(c("splits a column into multiple columns", "transforms existing columns", "takes multiple columns and collapses them together", answer = "removes information that we are not interested in"))`
 
-* How many observations are left in `age_65max` after running `filter()`? `r fitb("939")`
+* How many observations are left in `age_65max` after running `filter()`? `r fitb("950")`
 
 ******
 

@@ -7,7 +7,7 @@
 <title>Chapter 2 Programming basics | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Programming basics | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/programming-basics.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 2 Programming basics | Data Skills">
 <meta name="twitter:description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -302,7 +302,7 @@ Figure 2.3: Objects in the environment
 <span class="va">new_year</span> <span class="op">-</span> <span class="va">today</span>
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 45
-## Time difference of 90 days
+## Time difference of 61 days
 ## [1] 17.66644</code></pre>
 <p>Finally, you can store the result of these operations in a new object:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
@@ -463,11 +463,11 @@ Figure 2.7: The truth about programming
 <h2>
 <span class="header-section-number">2.23</span> Activity 6: Test yourself<a class="anchor" aria-label="anchor" href="#activity-6-test-yourself"><i class="fas fa-link"></i></a>
 </h2>
-<p><strong>Question 1.</strong> Why should you never include the code <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in your analysis scripts? <select class="webex-solveme" data-answer='["You (or someone else) may accidentally install a package update that stops your code working"]'><option></option>
-<option>You should use library() instead</option>
-<option>Packages are already part of Base R</option>
-<option>You (or someone else) may accidentally install a package update that stops your code working</option>
-<option>You already have the latest version of the package</option></select></p>
+<p><strong>Question 1.</strong> Why should you never include the code <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in your analysis scripts? <select class="webex-select"><option value="blank"></option>
+<option value="">You should use library() instead</option>
+<option value="">Packages are already part of Base R</option>
+<option value="answer">You (or someone else) may accidentally install a package update that stops your code working</option>
+<option value="">You already have the latest version of the package</option></select></p>
 <div class="webex-solution">
 <button>
 Explain This Answer
@@ -477,11 +477,11 @@ Explain This Answer
 <p><br><strong>Question 2.</strong>What will the following code produce?</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
-<p><select class="webex-solveme" data-answer='["A dataset with 6 numbers that has a mean of 50 and an SD of 10"]'><option></option>
-<option>A dataset with 10 numbers that has a mean of 6 and an SD of 50</option>
-<option>A dataset with 6 numbers that has a mean of 50 and an SD of 10</option>
-<option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option>
-<option>A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="">A dataset with 10 numbers that has a mean of 6 and an SD of 50</option>
+<option value="answer">A dataset with 6 numbers that has a mean of 50 and an SD of 10</option>
+<option value="">A dataset with 50 numbers that has a mean of 10 and an SD of 6</option>
+<option value="">A dataset with 50 numbers that has a mean of 10 and an SD of 6</option></select></p>
 <div class="webex-solution">
 <button>
 Explain This Answer
@@ -489,29 +489,29 @@ Explain This Answer
 <p>The default form for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> is <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm(n, mean, sd)</a></code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code></p>
 </div>
 <p><br><strong>Question 3.</strong> If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use?</p>
-<p><select class="webex-solveme" data-answer='["package::function"]'><option></option>
-<option>package::function</option>
-<option>function::package</option>
-<option>library(package)</option>
-<option>install.packages(package)</option></select></p>
+<p><select class="webex-select"><option value="blank"></option>
+<option value="answer">package::function</option>
+<option value="">function::package</option>
+<option value="">library(package)</option>
+<option value="">install.packages(package)</option></select></p>
 <div class="webex-solution">
 <button>
 Explain This Answer
 </button>
 <p>You should use the form <code>package::function</code>, for example <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code>. Remember that when you first load your packages R will warn you if any functions have the same name - remember to look out for this!</p>
 </div>
-<p><strong>Question 4.</strong> Which of the following is most likely to be an argument? <select class="webex-solveme" data-answer='["35"]'><option></option>
-<option>35</option>
-<option>read_csv()</option>
-<option>&lt;-</option></select></p>
-<p><strong>Question 5.</strong> An easy way to spot functions is to look for <select class="webex-solveme" data-answer='["brackets"]'><option></option>
-<option>brackets</option>
-<option>numbers</option>
-<option>computers</option></select>.</p>
-<p><strong>Question 6.</strong> The job of <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> is to send the output from the function to a/an <select class="webex-solveme" data-answer='["object"]'><option></option>
-<option>argument</option>
-<option>assignment</option>
-<option>object</option></select>.</p>
+<p><strong>Question 4.</strong> Which of the following is most likely to be an argument? <select class="webex-select"><option value="blank"></option>
+<option value="answer">35</option>
+<option value="">read_csv()</option>
+<option value="">&lt;-</option></select></p>
+<p><strong>Question 5.</strong> An easy way to spot functions is to look for <select class="webex-select"><option value="blank"></option>
+<option value="answer">brackets</option>
+<option value="">numbers</option>
+<option value="">computers</option></select>.</p>
+<p><strong>Question 6.</strong> The job of <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> is to send the output from the function to a/an <select class="webex-select"><option value="blank"></option>
+<option value="">argument</option>
+<option value="">assignment</option>
+<option value="answer">object</option></select>.</p>
 
 </div>
 </div>
@@ -683,7 +683,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

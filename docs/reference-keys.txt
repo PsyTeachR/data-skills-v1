@@ -70,6 +70,7 @@ ref1
 walkthrough-video
 activity-1-upload-data-files-to-the-server
 activity-2-set-the-working-directory
+r-markdown-for-data-skills-work-and-homework-assignments
 activity-3-open-and-save-a-new-r-markdown-document
 activity-4-create-a-new-code-chunk
 activity-5-write-some-code

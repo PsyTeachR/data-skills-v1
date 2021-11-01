@@ -55,6 +55,6 @@ Now that you've unzipped the folder, you should see that you have eight files. T
 
 <input class='webex-solveme nospaces' size='2' data-answer='["50"]'/>
 
-* What does a response of 1 for sex mean? <select class='webex-solveme' data-answer='["female"]'> <option></option> <option>female</option> <option>male</option></select>
+* What does a response of 1 for sex mean? <select class='webex-select'><option value='blank'></option><option value='answer'>female</option><option value=''>male</option></select>
 
 The remaining five files are "stub files" that you will use as you work through this book, so don't worry about them just now. 

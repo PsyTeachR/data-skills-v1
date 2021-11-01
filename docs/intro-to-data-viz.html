@@ -7,7 +7,7 @@
 <title>Chapter 7 Intro to Data Viz | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="7.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
-<meta name="generator" content="bookdown 0.23 with bs4_book()">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 7 Intro to Data Viz | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/intro-to-data-viz.html">
@@ -17,9 +17,9 @@
 <meta name="twitter:title" content="Chapter 7 Intro to Data Viz | Data Skills">
 <meta name="twitter:description" content="7.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.10/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="libs/bootstrap-4.5.3/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.4/tabs.js"></script><script src="libs/bs3compat-0.2.4/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -101,37 +101,37 @@
 </h2>
 <p>In Data Wrangling 1 and 2 we were introduced to the tidyverse package, <code>dplyr</code>, and its six important functions. As a recap, which function(s) would you use to approach each of the following problems?</p>
 <ul>
-<li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class="webex-solveme" data-answer='["filter()"]'><option></option>
-<option>select()</option>
-<option>mutate()</option>
-<option>filter()</option>
-<option>summarise()</option>
-<option>group_by()</option>
-<option>arrange()</option></select> function.</p></li>
-<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class="webex-solveme" data-answer='["summarise()"]'><option></option>
-<option>arrange()</option>
-<option>summarise()</option>
-<option>mutate()</option>
-<option>group_by()</option>
-<option>select()</option>
-<option>filter()</option></select> function.</p></li>
-<li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class="webex-solveme" data-answer='["mutate()"]'><option></option>
-<option>mutate()</option>
-<option>summarise()</option>
-<option>arrange()</option>
-<option>group_by()</option>
-<option>select()</option>
-<option>filter()</option></select> function.</p></li>
-<li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class="webex-solveme" data-answer='["group_by() and summarise()"]'><option></option>
-<option>filter() and select()</option>
-<option>arrange() and mutate()</option>
-<option>group_by() and summarise()</option>
-<option>group_by() and arrange()</option></select> functions.</p></li>
-<li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class="webex-solveme" data-answer='["arrange() and select()","mutate() and filter()"]'><option></option>
-<option>select() and summarise()</option>
-<option>arrange() and select()</option>
-<option>mutate() and filter()</option>
-<option>group_by() and mutate()</option></select> functions.</p></li>
+<li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class="webex-select"><option value="blank"></option>
+<option value="">select()</option>
+<option value="">arrange()</option>
+<option value="answer">filter()</option>
+<option value="">summarise()</option>
+<option value="">group_by()</option>
+<option value="">mutate()</option></select> function.</p></li>
+<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class="webex-select"><option value="blank"></option>
+<option value="">mutate()</option>
+<option value="answer">summarise()</option>
+<option value="">filter()</option>
+<option value="">group_by()</option>
+<option value="">arrange()</option>
+<option value="">select()</option></select> function.</p></li>
+<li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class="webex-select"><option value="blank"></option>
+<option value="">summarise()</option>
+<option value="">arrange()</option>
+<option value="answer">mutate()</option>
+<option value="">group_by()</option>
+<option value="">select()</option>
+<option value="">filter()</option></select> function.</p></li>
+<li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class="webex-select"><option value="blank"></option>
+<option value="">arrange() and mutate()</option>
+<option value="">group_by() and arrange()</option>
+<option value="answer">group_by() and summarise()</option>
+<option value="">filter() and select()</option></select> functions.</p></li>
+<li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class="webex-select"><option value="blank"></option>
+<option value="answer">arrange() and select()</option>
+<option value="">group_by() and mutate()</option>
+<option value="answer">mutate() and filter()</option>
+<option value="">select() and summarise()</option></select> functions.</p></li>
 </ul>
 </div>
 <div id="data-visualisation" class="section level2" number="7.3">
@@ -191,7 +191,7 @@ If you get an error message when using select that says <code>unused argument</c
 <p>Before we go any further we need to perform an additional step of data processing that we have glossed over up until this point. First, run the below code to look at the structure of the dataset:</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">summarydata</span><span class="op">)</span></code></pre></div>
-<pre><code>## tibble[,8] [992 x 8] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [992 x 8] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal    : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal   : num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex         : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -545,7 +545,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-10-03.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

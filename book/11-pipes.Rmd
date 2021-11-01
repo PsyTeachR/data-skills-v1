@@ -45,11 +45,11 @@ final_data <- raw_data %>%
   filter(age >= 18) 
 ```
 
-`r webex::hide("Solution")`
+`r hide("Solution")`
 
 Take the object `raw_data` **then** select the columns `id` and `score` **then** join it with the data in `demographic` by `id` **then** filter to only include ages of 18 or greater and save this in an object named `final_data`.
 
-`r webex::unhide()`
+`r unhide()`
 
 <br>
 Importantly, you don't need to write the entire pipe at once, in fact, it's useful to check that each line works as you intended and then add on the next one to make it easier to spot where errors have come in to your code. 
@@ -160,7 +160,7 @@ ggplot(question_scores, aes(x = Question, y = item_scores)) +
 
 ### Activity 3
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE, message=FALSE}
 scores <- pivot_longer(data = responses, 
                       names_to = "Question",  
@@ -178,21 +178,21 @@ scores <- responses %>%
   inner_join(qformats, "Question") %>%
   inner_join(scoring, c("QFormat", "Response"))
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 4
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE, message=FALSE}
 example_2 <- select(scores, -QFormat) %>%
   filter(Question == "Q1") %>%
   summarise(total_score = sum(Score))
 ```
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 5
 
-`r webex::hide()`
+`r hide()`
 ```{r eval = FALSE, message=FALSE}
 scores %>%
   group_by(Question) %>%
@@ -201,5 +201,5 @@ scores %>%
   geom_col() +
   theme_minimal()
 ```
-`r webex::unhide()`
+`r unhide()`
 

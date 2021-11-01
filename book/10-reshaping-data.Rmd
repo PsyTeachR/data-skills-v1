@@ -133,7 +133,7 @@ ggplot(AQ_all, aes(x = total_score)) +
 
 ### Activity 1
 
-`r webex::hide()`
+`r hide()`
 
 ```{r a1s, eval = FALSE, message=FALSE}
 library(tidyverse)
@@ -142,47 +142,51 @@ responses <- read_csv("responses.csv")
 qformats <- read_csv("qformats.csv")
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 3
 
-`r webex::hide()`
+`r hide()`
 
 ```{r a3s}
 rlong_16 <- filter(rlong, Id == 16)
 ```
 
+`r unhide()`
+
 ### Activity 4
 
-`r webex::hide()`
+`r hide()`
 
 ```{r a4s}
 rlong_16_join <- inner_join(rlong_16, qformats, "Question")
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 5
 
-`r webex::hide()`
+`r hide()`
 
 ```{r}
 scores_16 <- inner_join(rlong_16_join, scoring, c("QFormat", "Response"))
 ```
 
-`r webex::unhide()`
+`r unhide()`
 
 ### Activity 6
 
-`r webex::hide()`
+`r hide()`
 
 ```{r a6s}
 AQ_16 <- summarise(scores_16, AQ_score = sum(Score))
 ```
 
+`r unhide()`
+
 ### Activity 8
 
-`r webex::hide()`
+`r hide()`
 
 ```{r a8s, eval = FALSE}
 ggplot(AQ_all, aes(x = total_score)) +
@@ -192,4 +196,4 @@ ggplot(AQ_all, aes(x = total_score)) +
   scale_y_continuous(name = "Count")
 ```
 
-`r webex::unhide()`
+`r unhide()`

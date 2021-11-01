@@ -40,7 +40,7 @@ You have now created a tibble with 660 observations and 3 variables; 10 observat
 
 * What does `filter()` do? 
 
-<select class='webex-solveme' data-answer='["Retains or removes observations"]'> <option></option> <option>Retains or removes variables</option> <option>Retains or removes observations</option></select>
+<select class='webex-select'><option value='blank'></option><option value=''>Retains or removes variables</option><option value='answer'>Retains or removes observations</option></select>
 
 ******
 
@@ -143,6 +143,10 @@ qformats <- read_csv("qformats.csv")
 rlong_16 <- filter(rlong, Id == 16)
 ```
 
+
+</div>
+
+
 ### Activity 4
 
 
@@ -183,6 +187,10 @@ scores_16 <- inner_join(rlong_16_join, scoring, c("QFormat", "Response"))
 ```r
 AQ_16 <- summarise(scores_16, AQ_score = sum(Score))
 ```
+
+
+</div>
+
 
 ### Activity 8
 
