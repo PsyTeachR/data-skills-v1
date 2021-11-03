@@ -78,7 +78,7 @@
 </ul>
 
         <div class="book-extra">
-          <p><a id="book-repo" href="https://github.com/psyteachr/template">View book source <i class="fab fa-github"></i></a></p>
+          <p><a id="book-repo" href="https://github.com/psyteachr/data-skills-v1">View book source <i class="fab fa-github"></i></a></p>
         </div>
       </nav>
 </div>
@@ -102,36 +102,36 @@
 <p>In Data Wrangling 1 and 2 we were introduced to the tidyverse package, <code>dplyr</code>, and its six important functions. As a recap, which function(s) would you use to approach each of the following problems?</p>
 <ul>
 <li><p>We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class="webex-select"><option value="blank"></option>
-<option value="">select()</option>
 <option value="">arrange()</option>
-<option value="answer">filter()</option>
-<option value="">summarise()</option>
-<option value="">group_by()</option>
-<option value="">mutate()</option></select> function.</p></li>
-<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class="webex-select"><option value="blank"></option>
 <option value="">mutate()</option>
+<option value="">group_by()</option>
+<option value="">select()</option>
+<option value="">summarise()</option>
+<option value="answer">filter()</option></select> function.</p></li>
+<li><p>We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class="webex-select"><option value="blank"></option>
+<option value="">select()</option>
+<option value="">group_by()</option>
 <option value="answer">summarise()</option>
 <option value="">filter()</option>
-<option value="">group_by()</option>
-<option value="">arrange()</option>
-<option value="">select()</option></select> function.</p></li>
+<option value="">mutate()</option>
+<option value="">arrange()</option></select> function.</p></li>
 <li><p>Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class="webex-select"><option value="blank"></option>
 <option value="">summarise()</option>
-<option value="">arrange()</option>
-<option value="answer">mutate()</option>
-<option value="">group_by()</option>
 <option value="">select()</option>
-<option value="">filter()</option></select> function.</p></li>
+<option value="">group_by()</option>
+<option value="answer">mutate()</option>
+<option value="">filter()</option>
+<option value="">arrange()</option></select> function.</p></li>
 <li><p>We want to calculate the average for each participant in our dataset. To do this we could use the <select class="webex-select"><option value="blank"></option>
-<option value="">arrange() and mutate()</option>
-<option value="">group_by() and arrange()</option>
+<option value="">filter() and select()</option>
 <option value="answer">group_by() and summarise()</option>
-<option value="">filter() and select()</option></select> functions.</p></li>
+<option value="">group_by() and arrange()</option>
+<option value="">arrange() and mutate()</option></select> functions.</p></li>
 <li><p>We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class="webex-select"><option value="blank"></option>
-<option value="answer">arrange() and select()</option>
-<option value="">group_by() and mutate()</option>
 <option value="answer">mutate() and filter()</option>
-<option value="">select() and summarise()</option></select> functions.</p></li>
+<option value="">select() and summarise()</option>
+<option value="">group_by() and mutate()</option>
+<option value="answer">arrange() and select()</option></select> functions.</p></li>
 </ul>
 </div>
 <div id="data-visualisation" class="section level2" number="7.3">
@@ -401,15 +401,22 @@ Figure 7.8: Violin-boxplot
 
 /* update total correct if #webex-total_correct exists */
 update_total_correct = function() {
+  console.log("webex: update total_correct");
+
   if (t = document.getElementById("webex-total_correct")) {
-    t.innerHTML =
-      document.getElementsByClassName("webex-correct").length + " of " +
-      document.getElementsByClassName("webex-solveme").length + " correct";
+    var correct = document.getElementsByClassName("webex-correct").length;
+    var solvemes = document.getElementsByClassName("webex-solveme").length;
+    var radiogroups = document.getElementsByClassName("webex-radiogroup").length;
+    var selects = document.getElementsByClassName("webex-select").length;
+    
+    t.innerHTML = correct + " of " + (solvemes + radiogroups + selects) + " correct";
   }
 }
 
 /* webex-solution button toggling function */
 b_func = function() {
+  console.log("webex: toggle hide");
+  
   var cl = this.parentElement.classList;
   if (cl.contains('open')) {
     cl.remove("open");
@@ -420,6 +427,8 @@ b_func = function() {
 
 /* function for checking solveme answers */
 solveme_func = function(e) {
+  console.log("webex: check solveme");
+
   var real_answers = JSON.parse(this.dataset.answer);
   var my_answer = this.value;
   var cl = this.classList;
@@ -463,7 +472,50 @@ solveme_func = function(e) {
   update_total_correct();
 }
 
+/* function for checking select answers */
+select_func = function(e) {
+  console.log("webex: check select");
+  
+  var cl = this.classList
+  
+  /* add style */
+  cl.remove("webex-incorrect");
+  cl.remove("webex-correct");
+  if (this.value == "answer") {
+    cl.add("webex-correct");
+  } else if (this.value != "blank") {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
+/* function for checking radiogroups answers */
+radiogroups_func = function(e) {
+  console.log("webex: check radiogroups");
+
+  var checked_button = document.querySelector('input[name=' + this.id + ']:checked');
+  var cl = checked_button.parentElement.classList;
+  var labels = checked_button.parentElement.parentElement.children;
+  
+  /* get rid of styles */
+  for (i = 0; i < labels.length; i++) {
+    labels[i].classList.remove("webex-incorrect");
+    labels[i].classList.remove("webex-correct");
+  }
+  
+  /* add style */
+  if (checked_button.value == "answer") {
+    cl.add("webex-correct");
+  } else {
+    cl.add("webex-incorrect");
+  }
+  
+  update_total_correct();
+}
+
 window.onload = function() {
+  console.log("onload");
   /* set up solution buttons */
   var buttons = document.getElementsByTagName("button");
 
@@ -499,6 +551,18 @@ window.onload = function() {
     solveme[i].onkeyup = solveme_func;
     solveme[i].onchange = solveme_func;
   }
+  
+  /* set up radiogroups */
+  var radiogroups = document.getElementsByClassName("webex-radiogroup");
+  for (var i = 0; i < radiogroups.length; i++) {
+    radiogroups[i].onchange = radiogroups_func;
+  }
+  
+  /* set up selects */
+  var selects = document.getElementsByClassName("webex-select");
+  for (var i = 0; i < selects.length; i++) {
+    selects[i].onchange = select_func;
+  }
 
   update_total_correct();
 }
@@ -532,8 +596,8 @@ $( document ).ready(function() {
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/psyteachr/template/blob/master/book/07-data-viz.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/psyteachr/template/edit/master/book/07-data-viz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/psyteachr/data-skills-v1/blob/master/book/07-data-viz.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/psyteachr/data-skills-v1/edit/master/book/07-data-viz.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -545,7 +609,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-01.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

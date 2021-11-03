@@ -108,7 +108,7 @@ data_median <- summarise(age_65max, median_score = median(ahiTotal))
 
 * What is the median score? `r fitb("74")`
 
-* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? `r fitb("72.48")`
+* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? `r fitb("72.5")`
 
 `r hide("Solution")`
 ```{r, eval = FALSE}
@@ -144,7 +144,7 @@ If you get what looks like an error that says `summarise() ungrouping output (ov
 
 * What does `group_by()` do? 
 
-`r mcq(c("provides summary statistics of an existing dataframe","organises information in ascending or descending order", "transforms existing columns", answer = "groups data frames based on a specific column so that all later operations are carried out on a group basis"))`
+`r longmcq(c("provides summary statistics of an existing dataframe","organises information in ascending or descending order", "transforms existing columns", answer = "groups data frames based on a specific column so that all later operations are carried out on a group basis"))`
 
 * How would you change the code to group by education rather than `Happiness_Category`?
 
