@@ -108,7 +108,7 @@ data_median <- summarise(age_65max, median_score = median(ahiTotal))
 
 * What is the median score? `r fitb("74")`
 
-* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? `r fitb("72.5")`
+* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? `r fitb(c("72.5", "72.50"))`
 
 `r hide("Solution")`
 ```{r, eval = FALSE}

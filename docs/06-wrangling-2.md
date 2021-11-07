@@ -108,7 +108,7 @@ data_median <- summarise(age_65max, median_score = median(ahiTotal))
 
 * What is the median score? <input class='webex-solveme nospaces' size='2' data-answer='["74"]'/>
 
-* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? <input class='webex-solveme nospaces' size='4' data-answer='["72.5"]'/>
+* Change the above code to give you the **mean score**. What is the mean score to 2 decimal places? <input class='webex-solveme nospaces' size='5' data-answer='["72.5","72.50"]'/>
 
 
 <div class='webex-solution'><button>Solution</button>
@@ -149,7 +149,7 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 
 * What does `group_by()` do? 
 
-<div class='webex-radiogroup' id='radio_BYOWZGUEYI'><label><input type="radio" autocomplete="off" name="radio_BYOWZGUEYI" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_BYOWZGUEYI" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_BYOWZGUEYI" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_BYOWZGUEYI" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
+<div class='webex-radiogroup' id='radio_GYPQPKLTLO'><label><input type="radio" autocomplete="off" name="radio_GYPQPKLTLO" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_GYPQPKLTLO" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_GYPQPKLTLO" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_GYPQPKLTLO" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
 
 
 * How would you change the code to group by education rather than `Happiness_Category`?
