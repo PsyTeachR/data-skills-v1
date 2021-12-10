@@ -7,6 +7,12 @@ qformats <- read_csv("qformats.csv")
 
 # Mega pipe
 
+## Walkthrough video
+
+There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/knRwU4RAOpWsquo2FhlXd5B0xSkkKOJoi_838x5BQoPwXDnVQ7PcBxrLEqEtVJFPlJ_MDPRhM6mhciO4.-OXPDbrPlLd19GPQ?startTime=1611396594000&_x_zm_rtaid=9l-fNXfVSTWemmS-B3kcrQ.1611659399975.fc20cef276d7d79dd12cb6d27f4dc438&_x_zm_rhtaid=159) of this chapter available via Zoom.
+
+* Video notes: this video was recorded in 2020. Since then the book has been updated visually.  There are no other differences between the video and this book chapter.
+
 ### Activity  1: Set-up 
 
 * Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder.

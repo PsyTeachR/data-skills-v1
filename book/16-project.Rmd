@@ -1,5 +1,7 @@
 # Project analysis
 
+**This chapter reflects the analysis done in AY2020-2021 and wil be updated towards during semester 2 of 2021-2022 to reflect the new project.**
+
 We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps you will need to go through when analysing your data but, aside from a few lines that will help you deal with the questionnaire data that the Experimentum platform spits out, we're not going to give you any code solutions. 
 
 Everything you need to do you've done before, so use this book to help you. Remember, you don't need to write the code from memory, you just need to find the relevant examples and then copy and paste and change what needs changing to make it work for you.

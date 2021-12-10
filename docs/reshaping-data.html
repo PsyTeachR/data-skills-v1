@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 10 Reshaping data | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
-<meta name="description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta name="description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Walkthrough video There is a walkthrough video of this chapter...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Reshaping data | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/reshaping-data.html">
 <meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<meta property="og:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta property="og:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Walkthrough video There is a walkthrough video of this chapter...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Reshaping data | Data Skills">
-<meta name="twitter:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Activity 1: Load in the data Open a new R markdown document, name it...">
+<meta name="twitter:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Walkthrough video There is a walkthrough video of this chapter...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -87,9 +87,18 @@
 <span class="header-section-number">10</span> Reshaping data<a class="anchor" aria-label="anchor" href="#reshaping-data"><i class="fas fa-link"></i></a>
 </h1>
 <p>Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.</p>
-<div id="activity-1-load-in-the-data" class="section level2" number="10.1">
+<div id="walkthrough-video-5" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">10.1</span> Activity 1: Load in the data<a class="anchor" aria-label="anchor" href="#activity-1-load-in-the-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-video-5"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is a <a href="https://uofglasgow.zoom.us/rec/play/mad7VjCrgp7OBp1vQCACYssHN9eOAWB5r1hxKgHQZpsKUvoA5l1zvcAuGMMzfs97JdIPxObxLXVqpnY4.ZSd3ShjkMsBgl25-?startTime=1610615030000&amp;_x_zm_rtaid=bFn4z68gSkqEXxbk9sRBQg.1610633063893.f0ab853a88b3d42af01e5ef68d0a4775&amp;_x_zm_rhtaid=814">walkthrough video</a> of this chapter available via Zoom.</p>
+<ul>
+<li>Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no other differences between the video and this book chapter.</li>
+</ul>
+</div>
+<div id="activity-1-load-in-the-data" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Activity 1: Load in the data<a class="anchor" aria-label="anchor" href="#activity-1-load-in-the-data"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li>Open a new R markdown document, name it "Reshaping Data" and save it in your Data Skills folder.</li>
@@ -98,9 +107,9 @@
 <li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
 </ul>
 </div>
-<div id="activity-2-pivot_longer" class="section level2" number="10.2">
+<div id="activity-2-pivot_longer" class="section level2" number="10.3">
 <h2>
-<span class="header-section-number">10.2</span> Activity 2: <code>pivot_longer()</code><a class="anchor" aria-label="anchor" href="#activity-2-pivot_longer"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.3</span> Activity 2: <code>pivot_longer()</code><a class="anchor" aria-label="anchor" href="#activity-2-pivot_longer"><i class="fas fa-link"></i></a>
 </h2>
 <p>The first step is to transform the data from wide format to long format. To do this, we will use the function <code>pivot_longer()</code>. <code>pivot_longer()</code> takes multiple columns and collapses them so that each unique variable has it’s own column and has four main arguments:</p>
 <ul>
@@ -121,9 +130,9 @@
                       cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span></code></pre></div>
 <p>You have now created a tibble with 660 observations and 3 variables; 10 observations per 66 participants and 3 variables. Let's recreate the example from the AQ Data and Recap and only use <strong>one participant</strong>. We can do that by using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> (which you used last semester) to create a new object called <code>rlong_16.</code></p>
 </div>
-<div id="activity-3-filter" class="section level2" number="10.3">
+<div id="activity-3-filter" class="section level2" number="10.4">
 <h2>
-<span class="header-section-number">10.3</span> Activity 3: <code>filter()</code><a class="anchor" aria-label="anchor" href="#activity-3-filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.4</span> Activity 3: <code>filter()</code><a class="anchor" aria-label="anchor" href="#activity-3-filter"><i class="fas fa-link"></i></a>
 </h2>
 <hr>
 <p><strong>Pause here and test your knowledge</strong></p>
@@ -143,9 +152,9 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 </p>
 </div>
 </div>
-<div id="activity-4-inner_join" class="section level2" number="10.4">
+<div id="activity-4-inner_join" class="section level2" number="10.5">
 <h2>
-<span class="header-section-number">10.4</span> Activity 4: <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-4-inner_join"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.5</span> Activity 4: <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-4-inner_join"><i class="fas fa-link"></i></a>
 </h2>
 <p>The next step is to match each question with its format (F or R) that is stored in <strong>qformats</strong>. That is, we need to join together the two objects using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> like we did in Psych 1A.</p>
 <ul>
@@ -156,9 +165,9 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> matches up rows in the two tables where both tables have the same value for the variable named in the third argument, “Question”. It then combines the columns from the two tables, copying rows where necessary.</p>
 <p>To state it more simply, what it does is the following: For each row in <code>rlong</code>, it checks the value of the column <code>Question</code>, and looks for rows with the same value in <code>qformats</code>, and then essentially combines all of the other columns in the two tables for these matching rows. If there are values that don't match, the rows get dropped. The <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> function is one of the most useful and time-saving operations in data wrangling so keep practising as it will keep reappearing time after time.</p>
 </div>
-<div id="activity-5-another-inner_join" class="section level2" number="10.5">
+<div id="activity-5-another-inner_join" class="section level2" number="10.6">
 <h2>
-<span class="header-section-number">10.5</span> Activity 5: Another <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-5-another-inner_join"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.6</span> Activity 5: Another <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-5-another-inner_join"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now that we have matched up each question with its corresponding format, we can now “look up” the corresponding scores in the scoring table based on the format and the response. This means we have to use <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> once again to join <code>rlong_16_join</code> with <code>scoring</code>**</p>
 <ul>
@@ -167,9 +176,9 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <li>The reason we have to do two separate <code>inner_joins()</code> is because they can only join two tables at once and we have three, so it requires two steps.</li>
 </ul>
 </div>
-<div id="activity-6-calculating-the-aq-score" class="section level2" number="10.6">
+<div id="activity-6-calculating-the-aq-score" class="section level2" number="10.7">
 <h2>
-<span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score<a class="anchor" aria-label="anchor" href="#activity-6-calculating-the-aq-score"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.7</span> Activity 6: Calculating the AQ score<a class="anchor" aria-label="anchor" href="#activity-6-calculating-the-aq-score"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now you need to calculate the total AQ score for participant 16.</p>
 <ul>
@@ -177,9 +186,9 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <li>This is a difficult task to do from memory but try it anyway - if you get anywhere near the right solution you're doing extremely well!</li>
 </ul>
 </div>
-<div id="activity-7-calculating-all-scores" class="section level2" number="10.7">
+<div id="activity-7-calculating-all-scores" class="section level2" number="10.8">
 <h2>
-<span class="header-section-number">10.7</span> Activity 7: Calculating all scores<a class="anchor" aria-label="anchor" href="#activity-7-calculating-all-scores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.8</span> Activity 7: Calculating all scores<a class="anchor" aria-label="anchor" href="#activity-7-calculating-all-scores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Next we're going to do the same thing but for <strong>all</strong> participants. The first two steps are the same but we just use the full data <code>rlong</code> rather than the filtered dataset.</p>
 <ul>
@@ -193,9 +202,9 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <code class="sourceCode R"><span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
 <span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="activity-8-visualisation" class="section level2" number="10.8">
+<div id="activity-8-visualisation" class="section level2" number="10.9">
 <h2>
-<span class="header-section-number">10.8</span> Activity 8: Visualisation<a class="anchor" aria-label="anchor" href="#activity-8-visualisation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.9</span> Activity 8: Visualisation<a class="anchor" aria-label="anchor" href="#activity-8-visualisation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finally, use <code>ggplot()</code> and <code>geom_histogram()</code> to make a histogram of all the total AQ scores. Try and make it look pretty by changing the axis labels and the theme. You can check the solution code to see how the below example was made, but you can make yours look different.</p>
 <ul>
@@ -210,13 +219,13 @@ Figure 5.3: Histogram of total AQ scores
 </p>
 </div>
 </div>
-<div id="activity-solutions---reshping-data" class="section level2" number="10.9">
+<div id="activity-solutions---reshping-data" class="section level2" number="10.10">
 <h2>
-<span class="header-section-number">10.9</span> Activity solutions - Reshping data<a class="anchor" aria-label="anchor" href="#activity-solutions---reshping-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10</span> Activity solutions - Reshping data<a class="anchor" aria-label="anchor" href="#activity-solutions---reshping-data"><i class="fas fa-link"></i></a>
 </h2>
-<div id="activity-1-3" class="section level3" number="10.9.1">
+<div id="activity-1-3" class="section level3" number="10.10.1">
 <h3>
-<span class="header-section-number">10.9.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-3"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -229,9 +238,9 @@ Solution
 <span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-3-2" class="section level3" number="10.9.2">
+<div id="activity-3-2" class="section level3" number="10.10.2">
 <h3>
-<span class="header-section-number">10.9.2</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.2</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-2"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -241,9 +250,9 @@ Solution
 <code class="sourceCode R"><span class="va">rlong_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">Id</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-4-2" class="section level3" number="10.9.3">
+<div id="activity-4-2" class="section level3" number="10.10.3">
 <h3>
-<span class="header-section-number">10.9.3</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.3</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-2"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -253,9 +262,9 @@ Solution
 <code class="sourceCode R"><span class="va">rlong_16_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-5-1" class="section level3" number="10.9.4">
+<div id="activity-5-1" class="section level3" number="10.10.4">
 <h3>
-<span class="header-section-number">10.9.4</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.4</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5-1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -265,9 +274,9 @@ Solution
 <code class="sourceCode R"><span class="va">scores_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-6-2" class="section level3" number="10.9.5">
+<div id="activity-6-2" class="section level3" number="10.10.5">
 <h3>
-<span class="header-section-number">10.9.5</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.5</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-2"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -277,9 +286,9 @@ Solution
 <code class="sourceCode R"><span class="va">AQ_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_16</span>, AQ_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-8" class="section level3" number="10.9.6">
+<div id="activity-8" class="section level3" number="10.10.6">
 <h3>
-<span class="header-section-number">10.9.6</span> Activity 8<a class="anchor" aria-label="anchor" href="#activity-8"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10.6</span> Activity 8<a class="anchor" aria-label="anchor" href="#activity-8"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -483,22 +492,23 @@ $( document ).ready(function() {
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#reshaping-data"><span class="header-section-number">10</span> Reshaping data</a></li>
-<li><a class="nav-link" href="#activity-1-load-in-the-data"><span class="header-section-number">10.1</span> Activity 1: Load in the data</a></li>
-<li><a class="nav-link" href="#activity-2-pivot_longer"><span class="header-section-number">10.2</span> Activity 2: pivot_longer()</a></li>
-<li><a class="nav-link" href="#activity-3-filter"><span class="header-section-number">10.3</span> Activity 3: filter()</a></li>
-<li><a class="nav-link" href="#activity-4-inner_join"><span class="header-section-number">10.4</span> Activity 4: inner_join()</a></li>
-<li><a class="nav-link" href="#activity-5-another-inner_join"><span class="header-section-number">10.5</span> Activity 5: Another inner_join()</a></li>
-<li><a class="nav-link" href="#activity-6-calculating-the-aq-score"><span class="header-section-number">10.6</span> Activity 6: Calculating the AQ score</a></li>
-<li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.7</span> Activity 7: Calculating all scores</a></li>
-<li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.8</span> Activity 8: Visualisation</a></li>
+<li><a class="nav-link" href="#walkthrough-video-5"><span class="header-section-number">10.1</span> Walkthrough video</a></li>
+<li><a class="nav-link" href="#activity-1-load-in-the-data"><span class="header-section-number">10.2</span> Activity 1: Load in the data</a></li>
+<li><a class="nav-link" href="#activity-2-pivot_longer"><span class="header-section-number">10.3</span> Activity 2: pivot_longer()</a></li>
+<li><a class="nav-link" href="#activity-3-filter"><span class="header-section-number">10.4</span> Activity 3: filter()</a></li>
+<li><a class="nav-link" href="#activity-4-inner_join"><span class="header-section-number">10.5</span> Activity 4: inner_join()</a></li>
+<li><a class="nav-link" href="#activity-5-another-inner_join"><span class="header-section-number">10.6</span> Activity 5: Another inner_join()</a></li>
+<li><a class="nav-link" href="#activity-6-calculating-the-aq-score"><span class="header-section-number">10.7</span> Activity 6: Calculating the AQ score</a></li>
+<li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.8</span> Activity 7: Calculating all scores</a></li>
+<li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.9</span> Activity 8: Visualisation</a></li>
 <li>
-<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.9</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.9.1</span> Activity 1</a></li>
-<li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.9.2</span> Activity 3</a></li>
-<li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.9.3</span> Activity 4</a></li>
-<li><a class="nav-link" href="#activity-5-1"><span class="header-section-number">10.9.4</span> Activity 5</a></li>
-<li><a class="nav-link" href="#activity-6-2"><span class="header-section-number">10.9.5</span> Activity 6</a></li>
-<li><a class="nav-link" href="#activity-8"><span class="header-section-number">10.9.6</span> Activity 8</a></li>
+<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.10</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.10.1</span> Activity 1</a></li>
+<li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.10.2</span> Activity 3</a></li>
+<li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.10.3</span> Activity 4</a></li>
+<li><a class="nav-link" href="#activity-5-1"><span class="header-section-number">10.10.4</span> Activity 5</a></li>
+<li><a class="nav-link" href="#activity-6-2"><span class="header-section-number">10.10.5</span> Activity 6</a></li>
+<li><a class="nav-link" href="#activity-8"><span class="header-section-number">10.10.6</span> Activity 8</a></li>
 </ul>
 </li>
 </ul>
@@ -518,7 +528,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-07.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

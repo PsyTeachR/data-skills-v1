@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 12 Mega pipe | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
-<meta name="description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta name="description" content="12.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 12 Mega pipe | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/mega-pipe.html">
 <meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<meta property="og:description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta property="og:description" content="12.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 12 Mega pipe | Data Skills">
-<meta name="twitter:description" content='12.0.1 Activity 1: Set-up Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder. Set the working directory to your Data Skills folder. Type and run the code...'>
+<meta name="twitter:description" content="12.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -86,9 +86,17 @@
 <h1>
 <span class="header-section-number">12</span> Mega pipe<a class="anchor" aria-label="anchor" href="#mega-pipe"><i class="fas fa-link"></i></a>
 </h1>
-<div id="activity-1-set-up-4" class="section level3" number="12.0.1">
+<div id="walkthrough-video-6" class="section level2" number="12.1">
+<h2>
+<span class="header-section-number">12.1</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-video-6"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is a <a href="https://uofglasgow.zoom.us/rec/play/knRwU4RAOpWsquo2FhlXd5B0xSkkKOJoi_838x5BQoPwXDnVQ7PcBxrLEqEtVJFPlJ_MDPRhM6mhciO4.-OXPDbrPlLd19GPQ?startTime=1611396594000&amp;_x_zm_rtaid=9l-fNXfVSTWemmS-B3kcrQ.1611659399975.fc20cef276d7d79dd12cb6d27f4dc438&amp;_x_zm_rhtaid=159">walkthrough video</a> of this chapter available via Zoom.</p>
+<ul>
+<li>Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no other differences between the video and this book chapter.</li>
+</ul>
+<div id="activity-1-set-up-4" class="section level3" number="12.1.1">
 <h3>
-<span class="header-section-number">12.0.1</span> Activity 1: Set-up<a class="anchor" aria-label="anchor" href="#activity-1-set-up-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.1</span> Activity 1: Set-up<a class="anchor" aria-label="anchor" href="#activity-1-set-up-4"><i class="fas fa-link"></i></a>
 </h3>
 <ul>
 <li>Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder.</li>
@@ -97,9 +105,9 @@
 <li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
 </ul>
 </div>
-<div id="activity-2-mega-pipe" class="section level3" number="12.0.2">
+<div id="activity-2-mega-pipe" class="section level3" number="12.1.2">
 <h3>
-<span class="header-section-number">12.0.2</span> Activity 2: Mega pipe<a class="anchor" aria-label="anchor" href="#activity-2-mega-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.2</span> Activity 2: Mega pipe<a class="anchor" aria-label="anchor" href="#activity-2-mega-pipe"><i class="fas fa-link"></i></a>
 </h3>
 <p>We're going to build on what you learned in Pipes and rewrite all of the code we did in Reshaping Data (which you can see below) using a pipe. As a reminder, the code:</p>
 <ul>
@@ -124,9 +132,9 @@
 <li>Rewrite the above code using pipes <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. Make sure you have completed Pipes before you attempt this.</li>
 </ul>
 </div>
-<div id="activity-3-pipe-plot" class="section level3" number="12.0.3">
+<div id="activity-3-pipe-plot" class="section level3" number="12.1.3">
 <h3>
-<span class="header-section-number">12.0.3</span> Activity 3: Pipe plot<a class="anchor" aria-label="anchor" href="#activity-3-pipe-plot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.3</span> Activity 3: Pipe plot<a class="anchor" aria-label="anchor" href="#activity-3-pipe-plot"><i class="fas fa-link"></i></a>
 </h3>
 <p>Now we've got our total AQ scores, let's use the pipe to make a graph.</p>
 <ul>
@@ -140,9 +148,9 @@ Figure 12.1: Histogram of scores for female participants
 </div>
 <p>Remember this for your group project - rather than creating new objects for each graph you want to make you can just pipe the data you want to display straight into <code>ggplot()</code>.</p>
 </div>
-<div id="activity-4-aq-score-by-gender" class="section level3" number="12.0.4">
+<div id="activity-4-aq-score-by-gender" class="section level3" number="12.1.4">
 <h3>
-<span class="header-section-number">12.0.4</span> Activity 4: AQ score by gender<a class="anchor" aria-label="anchor" href="#activity-4-aq-score-by-gender"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.4</span> Activity 4: AQ score by gender<a class="anchor" aria-label="anchor" href="#activity-4-aq-score-by-gender"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://www.autism.org.uk/about/what-is/gender.aspx">More men and boys are currently diagnosed as autistic than women and girls</a> and there is increasing evidence that there is an over-representation of <a href="https://www.ncbi.nlm.nih.gov/pubmed/31260907">transgender and nonbinary people</a> in those with autism spectrum disorder (ASD) or who meet the AQ cut-off score for ASD, therefore, it seems sensible to visualise AQ scores by gender (note that this dataset is simulated and that whilst the pattern of results is based on what we would expect from the evidence, these are not real data).</p>
 <ul>
@@ -169,9 +177,9 @@ Figure 12.1: Histogram of scores for female participants
 </li>
 </ul>
 </div>
-<div id="activity-5-bad-bar-plots" class="section level3" number="12.0.5">
+<div id="activity-5-bad-bar-plots" class="section level3" number="12.1.5">
 <h3>
-<span class="header-section-number">12.0.5</span> Activity 5: Bad bar plots<a class="anchor" aria-label="anchor" href="#activity-5-bad-bar-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.5</span> Activity 5: Bad bar plots<a class="anchor" aria-label="anchor" href="#activity-5-bad-bar-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p>In the research methods lectures for Psych 1A, we talked about the importance of data visualisation and how different graphs might lead you to make very different conclusions about your data. For this reason, we've taught you how to make violin-boxplots because these show the true distribution of the data, however, it's useful to know how to make bad bar plots so that you can see the difference they make to your own data (but never use them as your only method of visualisation!).</p>
 <ul>
@@ -194,9 +202,9 @@ Figure 7.3: Bad bar chart of means
 <p>Think back to your interpretation of the violin-boxplot, that men and nonbinary people's scores did not differ much and both had higher AQ scores than women. Would you have concluded the same thing if you had looked at the bar chart?</p>
 <p>In this dataset, the outlier in the male group results in the mean score being much higher than the nonbinary mean, it's only through looking at the full distribution with the violin-boxplot that you can accurately intepret the data.</p>
 </div>
-<div id="activity-6-density-plots" class="section level3" number="12.0.6">
+<div id="activity-6-density-plots" class="section level3" number="12.1.6">
 <h3>
-<span class="header-section-number">12.0.6</span> Activity 6: Density plots<a class="anchor" aria-label="anchor" href="#activity-6-density-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.6</span> Activity 6: Density plots<a class="anchor" aria-label="anchor" href="#activity-6-density-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p>The final type of visualiation we're going to show you are density plots as they are a useful way of visualising how the distributions of different groups compare to each other. You've actually already seen a density plot - it's the base of a violin plot, however, it can be useful to overlap them.</p>
 <ul>
@@ -234,9 +242,9 @@ Solution
 <p>It's important to be able to translate between proportions and percentages, it will make your understanding of statistics and p-values much easier. To translate a proportion into a percentage, you multiply by 100 or move the decimal place two places to the right so a proportion of .5 = 50%, a proportion of .03 = 3% and so on.</p>
 </div>
 </div>
-<div id="activity-7-saving-plots" class="section level3" number="12.0.7">
+<div id="activity-7-saving-plots" class="section level3" number="12.1.7">
 <h3>
-<span class="header-section-number">12.0.7</span> Activity 7: Saving plots<a class="anchor" aria-label="anchor" href="#activity-7-saving-plots"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.7</span> Activity 7: Saving plots<a class="anchor" aria-label="anchor" href="#activity-7-saving-plots"><i class="fas fa-link"></i></a>
 </h3>
 <p>Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function <code>ggsave()</code>.</p>
 <p>There are two ways you can use <code>ggsave()</code>. If you don't tell <code>ggsave()</code> which plot you want to save, by default it will save a copy of <strong>the last plot you created</strong>. If you've been following this chapter in order, the last plot you created should have been the density plot from Activity 6.</p>
@@ -269,13 +277,13 @@ Solution
 
 <span class="fu">ggsave</span><span class="op">(</span><span class="st">"AQ_histogram.png"</span>, plot <span class="op">=</span> <span class="va">AQ_histogram</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="activity-solutions---mega-pipe" class="section level3" number="12.0.8">
+<div id="activity-solutions---mega-pipe" class="section level3" number="12.1.8">
 <h3>
-<span class="header-section-number">12.0.8</span> Activity solutions - Mega pipe<a class="anchor" aria-label="anchor" href="#activity-solutions---mega-pipe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.8</span> Activity solutions - Mega pipe<a class="anchor" aria-label="anchor" href="#activity-solutions---mega-pipe"><i class="fas fa-link"></i></a>
 </h3>
-<div id="activity-1-4" class="section level4" number="12.0.8.1">
+<div id="activity-1-4" class="section level4" number="12.1.8.1">
 <h4>
-<span class="header-section-number">12.0.8.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.8.1</span> Activity 1<a class="anchor" aria-label="anchor" href="#activity-1-4"><i class="fas fa-link"></i></a>
 </h4>
 <div class="webex-solution">
 <button>
@@ -288,9 +296,9 @@ Solution
 <span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-2-3" class="section level4" number="12.0.8.2">
+<div id="activity-2-3" class="section level4" number="12.1.8.2">
 <h4>
-<span class="header-section-number">12.0.8.2</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.8.2</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-3"><i class="fas fa-link"></i></a>
 </h4>
 <div class="webex-solution">
 <button>
@@ -307,9 +315,9 @@ Solution
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-3-4" class="section level4" number="12.0.8.3">
+<div id="activity-3-4" class="section level4" number="12.1.8.3">
 <h4>
-<span class="header-section-number">12.0.8.3</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.8.3</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-4"><i class="fas fa-link"></i></a>
 </h4>
 <div class="webex-solution">
 <button>
@@ -325,9 +333,9 @@ Solution
   <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-4-4" class="section level4" number="12.0.8.4">
+<div id="activity-4-4" class="section level4" number="12.1.8.4">
 <h4>
-<span class="header-section-number">12.0.8.4</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">12.1.8.4</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-4"><i class="fas fa-link"></i></a>
 </h4>
 <div class="webex-solution">
 <button>
@@ -340,6 +348,7 @@ Solution
   <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 
+</div>
 </div>
 </div>
 </div>
@@ -528,18 +537,21 @@ $( document ).ready(function() {
 <div class="next"><a href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li>
-<a class="nav-link" href="#mega-pipe"><span class="header-section-number">12</span> Mega pipe</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#activity-1-set-up-4"><span class="header-section-number">12.0.1</span> Activity 1: Set-up</a></li>
-<li><a class="nav-link" href="#activity-2-mega-pipe"><span class="header-section-number">12.0.2</span> Activity 2: Mega pipe</a></li>
-<li><a class="nav-link" href="#activity-3-pipe-plot"><span class="header-section-number">12.0.3</span> Activity 3: Pipe plot</a></li>
-<li><a class="nav-link" href="#activity-4-aq-score-by-gender"><span class="header-section-number">12.0.4</span> Activity 4: AQ score by gender</a></li>
-<li><a class="nav-link" href="#activity-5-bad-bar-plots"><span class="header-section-number">12.0.5</span> Activity 5: Bad bar plots</a></li>
-<li><a class="nav-link" href="#activity-6-density-plots"><span class="header-section-number">12.0.6</span> Activity 6: Density plots</a></li>
-<li><a class="nav-link" href="#activity-7-saving-plots"><span class="header-section-number">12.0.7</span> Activity 7: Saving plots</a></li>
-<li><a class="nav-link" href="#activity-solutions---mega-pipe"><span class="header-section-number">12.0.8</span> Activity solutions - Mega pipe</a></li>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mega-pipe"><span class="header-section-number">12</span> Mega pipe</a></li>
+<li>
+<a class="nav-link" href="#walkthrough-video-6"><span class="header-section-number">12.1</span> Walkthrough video</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-1-set-up-4"><span class="header-section-number">12.1.1</span> Activity 1: Set-up</a></li>
+<li><a class="nav-link" href="#activity-2-mega-pipe"><span class="header-section-number">12.1.2</span> Activity 2: Mega pipe</a></li>
+<li><a class="nav-link" href="#activity-3-pipe-plot"><span class="header-section-number">12.1.3</span> Activity 3: Pipe plot</a></li>
+<li><a class="nav-link" href="#activity-4-aq-score-by-gender"><span class="header-section-number">12.1.4</span> Activity 4: AQ score by gender</a></li>
+<li><a class="nav-link" href="#activity-5-bad-bar-plots"><span class="header-section-number">12.1.5</span> Activity 5: Bad bar plots</a></li>
+<li><a class="nav-link" href="#activity-6-density-plots"><span class="header-section-number">12.1.6</span> Activity 6: Density plots</a></li>
+<li><a class="nav-link" href="#activity-7-saving-plots"><span class="header-section-number">12.1.7</span> Activity 7: Saving plots</a></li>
+<li><a class="nav-link" href="#activity-solutions---mega-pipe"><span class="header-section-number">12.1.8</span> Activity solutions - Mega pipe</a></li>
 </ul>
-</li></ul>
+</li>
+</ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -556,7 +568,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-07.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

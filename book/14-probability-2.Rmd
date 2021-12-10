@@ -1,6 +1,14 @@
 # Probability continued
 
+## Walkthrough video
+
+There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/rVc_Tmlnf0Dy91IagmovoLweYJ3l07zspoplAp-YBva9QoKXpU80Oaxig8rPpdRxNeSEiytqOGTPEnTO.zM7txfYeGQtLB0eW?startTime=1614172419000&_x_zm_rtaid=tcc9cAgYQoGenfNKyEL3fw.1639141352567.6f92c5b33a3f0efa952297c96905f7b7&_x_zm_rhtaid=666) of this chapter available via Zoom.
+
+* Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually.  There are no other differences between the video and this book chapter.
+
 First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see [Programming Basics](https://psyteachr.github.io/ug1-practical/programming-basics.html#packages).
+
+## Activity 1: Set-up
 
 * Open a new R Markdown document, call it "Probability" and save it in your Data Skills folder.
 

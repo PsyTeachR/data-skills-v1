@@ -160,6 +160,7 @@ activity-5-recap
 activity-solutions---aq-data-and-recap
 activity-4-1
 reshaping-data
+walkthrough-video-5
 activity-1-load-in-the-data
 activity-2-pivot_longer
 activity-3-filter
@@ -186,6 +187,7 @@ activity-3-3
 activity-4-3
 activity-5-2
 mega-pipe
+walkthrough-video-6
 activity-1-set-up-4
 activity-2-mega-pipe
 activity-3-pipe-plot
@@ -210,6 +212,8 @@ the-normal-distribution
 activity-3-normal-distribution
 activity-4-distribution-test
 probability-continued
+walkthrough-video-7
+activity-1-set-up-5
 activity-2-dbinom
 activity-3-pbinom
 activity-4-pbinom-2

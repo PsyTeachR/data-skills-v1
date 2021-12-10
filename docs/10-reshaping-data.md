@@ -2,6 +2,13 @@
 
 Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.
 
+## Walkthrough video
+
+There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/mad7VjCrgp7OBp1vQCACYssHN9eOAWB5r1hxKgHQZpsKUvoA5l1zvcAuGMMzfs97JdIPxObxLXVqpnY4.ZSd3ShjkMsBgl25-?startTime=1610615030000&_x_zm_rtaid=bFn4z68gSkqEXxbk9sRBQg.1610633063893.f0ab853a88b3d42af01e5ef68d0a4775&_x_zm_rhtaid=814) of this chapter available via Zoom.
+
+* Video notes: this video was recorded in 2020. Since then the book has been updated visually.  There are no other differences between the video and this book chapter.
+
+
 
 
 ## Activity 1: Load in the data

@@ -6,16 +6,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Chapter 14 Probability continued | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
-<meta name="description" content="First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained...">
+<meta name="description" content="14.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually. There are...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Chapter 14 Probability continued | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/probability-continued.html">
 <meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<meta property="og:description" content="First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained...">
+<meta property="og:description" content="14.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually. There are...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 14 Probability continued | Data Skills">
-<meta name="twitter:description" content="First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained...">
+<meta name="twitter:description" content="14.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually. There are...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -86,7 +86,20 @@
 <h1>
 <span class="header-section-number">14</span> Probability continued<a class="anchor" aria-label="anchor" href="#probability-continued"><i class="fas fa-link"></i></a>
 </h1>
+<div id="walkthrough-video-7" class="section level2" number="14.1">
+<h2>
+<span class="header-section-number">14.1</span> Walkthrough video<a class="anchor" aria-label="anchor" href="#walkthrough-video-7"><i class="fas fa-link"></i></a>
+</h2>
+<p>There is a <a href="https://uofglasgow.zoom.us/rec/play/rVc_Tmlnf0Dy91IagmovoLweYJ3l07zspoplAp-YBva9QoKXpU80Oaxig8rPpdRxNeSEiytqOGTPEnTO.zM7txfYeGQtLB0eW?startTime=1614172419000&amp;_x_zm_rtaid=tcc9cAgYQoGenfNKyEL3fw.1639141352567.6f92c5b33a3f0efa952297c96905f7b7&amp;_x_zm_rhtaid=666">walkthrough video</a> of this chapter available via Zoom.</p>
+<ul>
+<li>Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually. There are no other differences between the video and this book chapter.</li>
+</ul>
 <p>First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see <a href="https://psyteachr.github.io/ug1-practical/programming-basics.html#packages">Programming Basics</a>.</p>
+</div>
+<div id="activity-1-set-up-5" class="section level2" number="14.2">
+<h2>
+<span class="header-section-number">14.2</span> Activity 1: Set-up<a class="anchor" aria-label="anchor" href="#activity-1-set-up-5"><i class="fas fa-link"></i></a>
+</h2>
 <ul>
 <li>Open a new R Markdown document, call it "Probability" and save it in your Data Skills folder.</li>
 </ul>
@@ -99,9 +112,10 @@
 <li>What is the probability of getting exactly 5 heads on 10 flips?</li>
 <li>What is the probability of getting at most 2 heads on 10 flips?</li>
 </ol>
-<div id="activity-2-dbinom" class="section level2" number="14.1">
+</div>
+<div id="activity-2-dbinom" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">14.1</span> Activity 2: <code>dbinom()</code><a class="anchor" aria-label="anchor" href="#activity-2-dbinom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Activity 2: <code>dbinom()</code><a class="anchor" aria-label="anchor" href="#activity-2-dbinom"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let's start with question 1, what is the probability of getting exactly 5 heads on 10 flips?</p>
 <p>We want to predict the <strong>probability</strong> of getting 5 heads in 10 trials (coin flips) and the probability of success is 0.5 (it'll either be heads or tails so you have a 50/50 chance which we write as 0.5). We will use <code><a href="https://rdrr.io/r/stats/Binomial.html">dbinom()</a></code> to work this out:</p>
@@ -124,9 +138,9 @@
 </li>
 </ul>
 </div>
-<div id="activity-3-pbinom" class="section level2" number="14.2">
+<div id="activity-3-pbinom" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">14.2</span> Activity 3: <code>pbinom()</code><a class="anchor" aria-label="anchor" href="#activity-3-pbinom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Activity 3: <code>pbinom()</code><a class="anchor" aria-label="anchor" href="#activity-3-pbinom"><i class="fas fa-link"></i></a>
 </h2>
 <p>OK, question number 2. What is the probability of getting at most 2 heads on 10 flips?</p>
 <p>This time we use <code><a href="https://rdrr.io/r/stats/Binomial.html">pbinom()</a></code> as we want to know the <strong>cumulative probability</strong> of getting a maximum of 2 heads from 10 coin flips. so we have set a cut-off point of 2 but we still have a probability of getting a heads of 0.5.</p>
@@ -144,9 +158,9 @@
 </li>
 </ul>
 </div>
-<div id="activity-4-pbinom-2" class="section level2" number="14.3">
+<div id="activity-4-pbinom-2" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">14.3</span> Activity 4: <code>pbinom()</code> 2<a class="anchor" aria-label="anchor" href="#activity-4-pbinom-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> Activity 4: <code>pbinom()</code> 2<a class="anchor" aria-label="anchor" href="#activity-4-pbinom-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Let's try one more scenario with a cut-off point to make sure you have understood this. What is the probability of getting 7 or more heads on 10 flips?</p>
 <p>We can use the same function as in the previous example, however, there's an extra argument if we want to get the correct answer. Let's try running the code we used above but change <code>q = 2</code> to <code>q = 7</code>.</p>
@@ -174,9 +188,9 @@ Figure 13.1: Lower and upper tails
 </li>
 </ul>
 </div>
-<div id="activity-5-qbinom" class="section level2" number="14.4">
+<div id="activity-5-qbinom" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">14.4</span> Activity 5: <code>qbinom()</code><a class="anchor" aria-label="anchor" href="#activity-5-qbinom"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> Activity 5: <code>qbinom()</code><a class="anchor" aria-label="anchor" href="#activity-5-qbinom"><i class="fas fa-link"></i></a>
 </h2>
 <p>OK, now let's consider a scenario in which you'd use the quantile function <code>qbinom</code>. Imagine that you've been accosted by a street magician and they want to bet you that they can predict whether the coin will land on heads or tails. You suspect that they've done something to the coin so that it's not fair and that the probability of the coin landing on a head is no longer .5 or 50/50, it's now more likely to land on tails. Your null hypothesis is that the coin is not dodgy and that the probability should be even (P(heads)=.5).You are going to run a single experiment to test your hypothesis, with 10 trials. What is the minimum number of heads that is acceptable if p really does equal .5?</p>
 <p>You have used the argument <code>prob</code> in the previous two functions, <code>dbinom</code> and <code>pbinom</code>, and it represents the probability of success on a single trial (here it is the probability of 'heads' in one coin flip, .5). For <code>qbinom</code>, <code>prob</code> still represents the probability of success in one trial, whereas <code>p</code> represents the overall probability of success across all trials. When you run <code>pbinom</code>, it calculates the number of heads that would give that probability.</p>
@@ -212,9 +226,9 @@ Figure 12.1: Binomial distribution app
 </div>
 <hr>
 </div>
-<div id="normal-distribution" class="section level2" number="14.5">
+<div id="normal-distribution" class="section level2" number="14.7">
 <h2>
-<span class="header-section-number">14.5</span> Normal distribution<a class="anchor" aria-label="anchor" href="#normal-distribution"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.7</span> Normal distribution<a class="anchor" aria-label="anchor" href="#normal-distribution"><i class="fas fa-link"></i></a>
 </h2>
 <p>A similar set of functions exist to help us work with other distributions, including the normal distribution and we're going to use three of these:</p>
 <p><code><a href="https://rdrr.io/r/stats/Normal.html">dnorm()</a></code>-the density function, for calculating the probability of a specific value</p>
@@ -222,9 +236,9 @@ Figure 12.1: Binomial distribution app
 <p><code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>-the quantile function, for calculating the specific value associated with a given probability</p>
 <p>As you can probably see, these functions are very similar to the functions we've already come across, that are used to work with the binomial distribution.</p>
 </div>
-<div id="probability-of-heights" class="section level2" number="14.6">
+<div id="probability-of-heights" class="section level2" number="14.8">
 <h2>
-<span class="header-section-number">14.6</span> Probability of heights<a class="anchor" aria-label="anchor" href="#probability-of-heights"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.8</span> Probability of heights<a class="anchor" aria-label="anchor" href="#probability-of-heights"><i class="fas fa-link"></i></a>
 </h2>
 <p>Data from the <a href="http://www.scotland.gov.uk/Resource/Doc/286063/0087158.pdf">Scottish Health Survey (2008)</a> shows that:</p>
 <ul>
@@ -257,9 +271,9 @@ Figure 5.2: Simulation of Scottish height data
 </div>
 <p>In this chapter we will use this information to calculate the probability of observing at least or at most a specific height with <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code>, and the heights that are associated with specific probabilities with <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code>.</p>
 </div>
-<div id="activity-6pnorm" class="section level2" number="14.7">
+<div id="activity-6pnorm" class="section level2" number="14.9">
 <h2>
-<span class="header-section-number">14.7</span> Activity 6:<code>pnorm()</code><a class="anchor" aria-label="anchor" href="#activity-6pnorm"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.9</span> Activity 6:<code>pnorm()</code><a class="anchor" aria-label="anchor" href="#activity-6pnorm"><i class="fas fa-link"></i></a>
 </h2>
 <p><code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> requires three arguments:</p>
 <ul>
@@ -285,9 +299,9 @@ Figure 5.2: Simulation of Scottish height data
 </li>
 </ul>
 </div>
-<div id="activity-7-pnorm-2" class="section level2" number="14.8">
+<div id="activity-7-pnorm-2" class="section level2" number="14.10">
 <h2>
-<span class="header-section-number">14.8</span> Activity 7: <code>pnorm</code> 2<a class="anchor" aria-label="anchor" href="#activity-7-pnorm-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.10</span> Activity 7: <code>pnorm</code> 2<a class="anchor" aria-label="anchor" href="#activity-7-pnorm-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Fiona is a very tall Scottish woman (181.12cm) in the 16-24 y.o. range who will only date men who are taller than her.</p>
 <ul>
@@ -300,9 +314,9 @@ Figure 5.2: Simulation of Scottish height data
 </li>
 </ul>
 </div>
-<div id="activity-8-pnorm-3" class="section level2" number="14.9">
+<div id="activity-8-pnorm-3" class="section level2" number="14.11">
 <h2>
-<span class="header-section-number">14.9</span> Activity 8: <code>pnorm</code> 3<a class="anchor" aria-label="anchor" href="#activity-8-pnorm-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.11</span> Activity 8: <code>pnorm</code> 3<a class="anchor" aria-label="anchor" href="#activity-8-pnorm-3"><i class="fas fa-link"></i></a>
 </h2>
 <p>On the other hand, Fiona will only date women who are shorter than her.</p>
 <ul>
@@ -315,9 +329,9 @@ Figure 5.2: Simulation of Scottish height data
 </li>
 </ul>
 </div>
-<div id="activity-9-qnorm" class="section level2" number="14.10">
+<div id="activity-9-qnorm" class="section level2" number="14.12">
 <h2>
-<span class="header-section-number">14.10</span> Activity 9: <code>qnorm()</code><a class="anchor" aria-label="anchor" href="#activity-9-qnorm"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.12</span> Activity 9: <code>qnorm()</code><a class="anchor" aria-label="anchor" href="#activity-9-qnorm"><i class="fas fa-link"></i></a>
 </h2>
 <p>In the previous examples we calculated the probability of a particular outcome. Now we want to calculate what outcome would be associated with a particular probability and we can use <code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> to do this.</p>
 <p><code><a href="https://rdrr.io/r/stats/Normal.html">qnorm()</a></code> is very similar to <code><a href="https://rdrr.io/r/stats/Normal.html">pnorm()</a></code> with one exception, rather than specifying <code>q</code> our known observation or quantile, instead we have to specify <code>p</code>, our known probability.</p>
@@ -329,13 +343,13 @@ Figure 5.2: Simulation of Scottish height data
 <hr>
 <p>And that's it! The key concepts to take away from this chapter are that different types of data tend to follow known distributions, and that we can use these distributions to calculate the probability of particular outcomes. This is the foundation of many of the statistical tests that you will learn about in level 2. For example, if you want to compare whether the scores from two groups are different, that is, whether they come from different distributions, you can calculate the probability that the scores from group 2 would be in the same distribution as group 1. If this probability is less than 5% (p = .05), you might conclude that the scores were significantly different. That's an oversimplification obviously, but if you can develop a good understanding of probability distributions it will stand you in good stead for level 2.</p>
 </div>
-<div id="activity-solutions---probability" class="section level2" number="14.11">
+<div id="activity-solutions---probability" class="section level2" number="14.13">
 <h2>
-<span class="header-section-number">14.11</span> Activity solutions - Probability<a class="anchor" aria-label="anchor" href="#activity-solutions---probability"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13</span> Activity solutions - Probability<a class="anchor" aria-label="anchor" href="#activity-solutions---probability"><i class="fas fa-link"></i></a>
 </h2>
-<div id="activity-2-4" class="section level3" number="14.11.1">
+<div id="activity-2-4" class="section level3" number="14.13.1">
 <h3>
-<span class="header-section-number">14.11.1</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-4"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.1</span> Activity 2<a class="anchor" aria-label="anchor" href="#activity-2-4"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -345,9 +359,9 @@ Solution
 <code class="sourceCode R"><span class="fl">.25</span></code></pre></div>
 </div>
 </div>
-<div id="activity-3-5" class="section level3" number="14.11.2">
+<div id="activity-3-5" class="section level3" number="14.13.2">
 <h3>
-<span class="header-section-number">14.11.2</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.2</span> Activity 3<a class="anchor" aria-label="anchor" href="#activity-3-5"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -357,9 +371,9 @@ Solution
 <code class="sourceCode R"><span class="fl">.06</span></code></pre></div>
 </div>
 </div>
-<div id="activity-4-5" class="section level3" number="14.11.3">
+<div id="activity-4-5" class="section level3" number="14.13.3">
 <h3>
-<span class="header-section-number">14.11.3</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-5"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.3</span> Activity 4<a class="anchor" aria-label="anchor" href="#activity-4-5"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -369,9 +383,9 @@ Solution
 <code class="sourceCode R"><span class="fl">.17</span></code></pre></div>
 </div>
 </div>
-<div id="activity-5-3" class="section level3" number="14.11.4">
+<div id="activity-5-3" class="section level3" number="14.13.4">
 <h3>
-<span class="header-section-number">14.11.4</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.4</span> Activity 5<a class="anchor" aria-label="anchor" href="#activity-5-3"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -383,9 +397,9 @@ Solution
 <span class="fl">4918</span></code></pre></div>
 </div>
 </div>
-<div id="activity-6-3" class="section level3" number="14.11.5">
+<div id="activity-6-3" class="section level3" number="14.13.5">
 <h3>
-<span class="header-section-number">14.11.5</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-3"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.5</span> Activity 6<a class="anchor" aria-label="anchor" href="#activity-6-3"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -395,9 +409,9 @@ Solution
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">176.2</span>, mean <span class="op">=</span> <span class="fl">163.8</span>, sd <span class="op">=</span> <span class="fl">6.931</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-7-1" class="section level3" number="14.11.6">
+<div id="activity-7-1" class="section level3" number="14.13.6">
 <h3>
-<span class="header-section-number">14.11.6</span> Activity 7<a class="anchor" aria-label="anchor" href="#activity-7-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.6</span> Activity 7<a class="anchor" aria-label="anchor" href="#activity-7-1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -407,9 +421,9 @@ Solution
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">181.12</span>, mean <span class="op">=</span> <span class="fl">176.2</span>, sd <span class="op">=</span> <span class="fl">6.748</span>, lower.tail <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-8-1" class="section level3" number="14.11.7">
+<div id="activity-8-1" class="section level3" number="14.13.7">
 <h3>
-<span class="header-section-number">14.11.7</span> Activity 8<a class="anchor" aria-label="anchor" href="#activity-8-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.7</span> Activity 8<a class="anchor" aria-label="anchor" href="#activity-8-1"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -419,9 +433,9 @@ Solution
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">pnorm</a></span><span class="op">(</span>q <span class="op">=</span> <span class="fl">181.12</span>, mean <span class="op">=</span> <span class="fl">163.8</span>, sd <span class="op">=</span> <span class="fl">6.931</span>, lower.tail <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
-<div id="activity-9" class="section level3" number="14.11.8">
+<div id="activity-9" class="section level3" number="14.13.8">
 <h3>
-<span class="header-section-number">14.11.8</span> Activity 9<a class="anchor" aria-label="anchor" href="#activity-9"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.13.8</span> Activity 9<a class="anchor" aria-label="anchor" href="#activity-9"><i class="fas fa-link"></i></a>
 </h3>
 <div class="webex-solution">
 <button>
@@ -621,26 +635,28 @@ $( document ).ready(function() {
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#probability-continued"><span class="header-section-number">14</span> Probability continued</a></li>
-<li><a class="nav-link" href="#activity-2-dbinom"><span class="header-section-number">14.1</span> Activity 2: dbinom()</a></li>
-<li><a class="nav-link" href="#activity-3-pbinom"><span class="header-section-number">14.2</span> Activity 3: pbinom()</a></li>
-<li><a class="nav-link" href="#activity-4-pbinom-2"><span class="header-section-number">14.3</span> Activity 4: pbinom() 2</a></li>
-<li><a class="nav-link" href="#activity-5-qbinom"><span class="header-section-number">14.4</span> Activity 5: qbinom()</a></li>
-<li><a class="nav-link" href="#normal-distribution"><span class="header-section-number">14.5</span> Normal distribution</a></li>
-<li><a class="nav-link" href="#probability-of-heights"><span class="header-section-number">14.6</span> Probability of heights</a></li>
-<li><a class="nav-link" href="#activity-6pnorm"><span class="header-section-number">14.7</span> Activity 6:pnorm()</a></li>
-<li><a class="nav-link" href="#activity-7-pnorm-2"><span class="header-section-number">14.8</span> Activity 7: pnorm 2</a></li>
-<li><a class="nav-link" href="#activity-8-pnorm-3"><span class="header-section-number">14.9</span> Activity 8: pnorm 3</a></li>
-<li><a class="nav-link" href="#activity-9-qnorm"><span class="header-section-number">14.10</span> Activity 9: qnorm()</a></li>
+<li><a class="nav-link" href="#walkthrough-video-7"><span class="header-section-number">14.1</span> Walkthrough video</a></li>
+<li><a class="nav-link" href="#activity-1-set-up-5"><span class="header-section-number">14.2</span> Activity 1: Set-up</a></li>
+<li><a class="nav-link" href="#activity-2-dbinom"><span class="header-section-number">14.3</span> Activity 2: dbinom()</a></li>
+<li><a class="nav-link" href="#activity-3-pbinom"><span class="header-section-number">14.4</span> Activity 3: pbinom()</a></li>
+<li><a class="nav-link" href="#activity-4-pbinom-2"><span class="header-section-number">14.5</span> Activity 4: pbinom() 2</a></li>
+<li><a class="nav-link" href="#activity-5-qbinom"><span class="header-section-number">14.6</span> Activity 5: qbinom()</a></li>
+<li><a class="nav-link" href="#normal-distribution"><span class="header-section-number">14.7</span> Normal distribution</a></li>
+<li><a class="nav-link" href="#probability-of-heights"><span class="header-section-number">14.8</span> Probability of heights</a></li>
+<li><a class="nav-link" href="#activity-6pnorm"><span class="header-section-number">14.9</span> Activity 6:pnorm()</a></li>
+<li><a class="nav-link" href="#activity-7-pnorm-2"><span class="header-section-number">14.10</span> Activity 7: pnorm 2</a></li>
+<li><a class="nav-link" href="#activity-8-pnorm-3"><span class="header-section-number">14.11</span> Activity 8: pnorm 3</a></li>
+<li><a class="nav-link" href="#activity-9-qnorm"><span class="header-section-number">14.12</span> Activity 9: qnorm()</a></li>
 <li>
-<a class="nav-link" href="#activity-solutions---probability"><span class="header-section-number">14.11</span> Activity solutions - Probability</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#activity-2-4"><span class="header-section-number">14.11.1</span> Activity 2</a></li>
-<li><a class="nav-link" href="#activity-3-5"><span class="header-section-number">14.11.2</span> Activity 3</a></li>
-<li><a class="nav-link" href="#activity-4-5"><span class="header-section-number">14.11.3</span> Activity 4</a></li>
-<li><a class="nav-link" href="#activity-5-3"><span class="header-section-number">14.11.4</span> Activity 5</a></li>
-<li><a class="nav-link" href="#activity-6-3"><span class="header-section-number">14.11.5</span> Activity 6</a></li>
-<li><a class="nav-link" href="#activity-7-1"><span class="header-section-number">14.11.6</span> Activity 7</a></li>
-<li><a class="nav-link" href="#activity-8-1"><span class="header-section-number">14.11.7</span> Activity 8</a></li>
-<li><a class="nav-link" href="#activity-9"><span class="header-section-number">14.11.8</span> Activity 9</a></li>
+<a class="nav-link" href="#activity-solutions---probability"><span class="header-section-number">14.13</span> Activity solutions - Probability</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#activity-2-4"><span class="header-section-number">14.13.1</span> Activity 2</a></li>
+<li><a class="nav-link" href="#activity-3-5"><span class="header-section-number">14.13.2</span> Activity 3</a></li>
+<li><a class="nav-link" href="#activity-4-5"><span class="header-section-number">14.13.3</span> Activity 4</a></li>
+<li><a class="nav-link" href="#activity-5-3"><span class="header-section-number">14.13.4</span> Activity 5</a></li>
+<li><a class="nav-link" href="#activity-6-3"><span class="header-section-number">14.13.5</span> Activity 6</a></li>
+<li><a class="nav-link" href="#activity-7-1"><span class="header-section-number">14.13.6</span> Activity 7</a></li>
+<li><a class="nav-link" href="#activity-8-1"><span class="header-section-number">14.13.7</span> Activity 8</a></li>
+<li><a class="nav-link" href="#activity-9"><span class="header-section-number">14.13.8</span> Activity 9</a></li>
 </ul>
 </li>
 </ul>
@@ -660,7 +676,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-11-07.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
