@@ -169,7 +169,7 @@ activity-5-another-inner_join
 activity-6-calculating-the-aq-score
 activity-7-calculating-all-scores
 activity-8-visualisation
-activity-solutions---reshping-data
+activity-solutions---reshaping-data
 activity-1-3
 activity-3-2
 activity-4-2
@@ -269,3 +269,4 @@ updating-packages
 updating-r
 exporting-files-from-the-server
 symbols
+citing-this-book

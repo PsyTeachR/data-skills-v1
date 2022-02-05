@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 6 Data wrangling 2 | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/data-wrangling-2.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="6.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 6 Data wrangling 2 | Data Skills">
 <meta name="twitter:description" content="6.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020, it uses the server, and the book has been updated visually....">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -108,12 +108,12 @@
 </li>
 <li>Type and run the below code to load the <code>tidyverse</code> package and to load in the data files.</li>
 </ul>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span> 
 
-<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">'ahi-cesd.csv'</span><span class="op">)</span>
-<span class="va">pinfo</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">'participant-info.csv'</span><span class="op">)</span>
-<span class="va">all_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">pinfo</span>, by<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"intervention"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">'ahi-cesd.csv'</span><span class="op">)</span>
+<span class="va">pinfo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">'participant-info.csv'</span><span class="op">)</span>
+<span class="va">all_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">pinfo</span>, by<span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="st">"intervention"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now let's start working with our <code>tidyverse</code> verb functions...</p>
 </div>
 <div id="activity-2-select" class="section level2" number="6.3">
@@ -121,11 +121,11 @@
 <span class="header-section-number">6.3</span> Activity 2: Select<a class="anchor" aria-label="anchor" href="#activity-2-select"><i class="fas fa-link"></i></a>
 </h2>
 <p>Select the columns all_dat, ahiTotal, cesdTotal, sex, age, educ, income, occasion, elapsed.days from the data and create a variable called <code>summarydata</code>.</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span>, <span class="va">income</span>, <span class="va">occasion</span>, <span class="va">elapsed.days</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span>, <span class="va">income</span>, <span class="va">occasion</span>, <span class="va">elapsed.days</span><span class="op">)</span></code></pre></div>
 <div class="danger">
 <p>
-If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems
+If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">dplyr::select</a></code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems
 </p>
 </div>
 <hr>
@@ -141,8 +141,8 @@ If you get an error message when using select that says <code>unused argument</c
 <span class="header-section-number">6.4</span> Activity 3: Arrange<a class="anchor" aria-label="anchor" href="#activity-3-arrange"><i class="fas fa-link"></i></a>
 </h2>
 <p>Arrange the data in the variable created above (<code>summarydata</code>) by ahiTotal with lowest score first.</p>
-<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ahi_asc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">summarydata</span>, by <span class="op">=</span> <span class="va">ahiTotal</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ahi_asc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange</a></span><span class="op">(</span><span class="va">summarydata</span>, by <span class="op">=</span> <span class="va">ahiTotal</span><span class="op">)</span></code></pre></div>
 <hr>
 <ul>
 <li>How could you arrange this data in <strong>descending</strong> order (highest score first)?</li>
@@ -151,8 +151,8 @@ If you get an error message when using select that says <code>unused argument</c
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">summarydata</span>, by <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange</a></span><span class="op">(</span><span class="va">summarydata</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <ul>
 <li><p>What is the smallest ahiTotal score? <input class="webex-solveme nospaces" size="2" data-answer='["32"]'></p></li>
@@ -165,11 +165,11 @@ Solution
 <span class="header-section-number">6.5</span> Activity 4: Filter<a class="anchor" aria-label="anchor" href="#activity-4-filter"><i class="fas fa-link"></i></a>
 </h2>
 <p>Filter the data <code>ahi_asc</code> by taking out those who are over 65 years of age.</p>
-<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age_65max</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ahi_asc</span>, <span class="va">age</span> <span class="op">&lt;=</span> <span class="fl">65</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">age_65max</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">ahi_asc</span>, <span class="va">age</span> <span class="op">&lt;=</span> <span class="fl">65</span><span class="op">)</span></code></pre></div>
 <hr>
 <ul>
-<li>What does <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> do?</li>
+<li>What does <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> do?</li>
 </ul>
 <p><select class="webex-select"><option value="blank"></option>
 <option value="">splits a column into multiple columns</option>
@@ -177,7 +177,7 @@ Solution
 <option value="">takes multiple columns and collapses them together</option>
 <option value="answer">removes information that we are not interested in</option></select></p>
 <ul>
-<li>How many observations are left in <code>age_65max</code> after running <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>? <input class="webex-solveme nospaces" size="3" data-answer='["950"]'>
+<li>How many observations are left in <code>age_65max</code> after running <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code>? <input class="webex-solveme nospaces" size="3" data-answer='["950"]'>
 </li>
 </ul>
 <hr>
@@ -187,8 +187,8 @@ Solution
 <span class="header-section-number">6.6</span> Activity 5: Summarise<a class="anchor" aria-label="anchor" href="#activity-5-summarise"><i class="fas fa-link"></i></a>
 </h2>
 <p>Then, use summarise to create a new variable <code>data_median</code>, which calculates the median ahiTotal score in this grouped data and assign it a table head called <code>median_score</code>.</p>
-<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data_median</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">age_65max</span>, median_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data_median</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">age_65max</span>, median_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <hr>
 <ul>
 <li><p>What is the median score? <input class="webex-solveme nospaces" size="2" data-answer='["74"]'></p></li>
@@ -198,8 +198,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">age_65max</span>, mean_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">age_65max</span>, mean_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <hr>
 </div>
@@ -210,11 +210,11 @@ Solution
 <p>Use mutate to create a new column called <code>Happiness_Category</code> in <code>age_65max</code> which categorises participants based on whether they score above the median <code>ahiTotal</code> score for all participants.</p>
 <p>Then, group the data stored in <code>age_65max</code> by <code>Happiness_Category</code>, and store it in an object named <code>happy_dat</code>.</p>
 <p>Finally, use summarise to calculate the median <code>cesdTotal</code> score for participants who scored above and below the median <code>ahiTotal</code> score and save it in a new object named <code>data_median_group</code>.</p>
-<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">age_65max</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">age_65max</span>, Happiness_Category <span class="op">=</span> <span class="op">(</span><span class="va">ahiTotal</span> <span class="op">&gt;</span> <span class="fl">74</span><span class="op">)</span><span class="op">)</span>
-<span class="va">happy_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_65max</span>, <span class="va">Happiness_Category</span><span class="op">)</span>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">age_65max</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span><span class="va">age_65max</span>, Happiness_Category <span class="op">=</span> <span class="op">(</span><span class="va">ahiTotal</span> <span class="op">&gt;</span> <span class="fl">74</span><span class="op">)</span><span class="op">)</span>
+<span class="va">happy_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_65max</span>, <span class="va">Happiness_Category</span><span class="op">)</span>
 
-<span class="va">data_median_group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">happy_dat</span>, median_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="va">data_median_group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">happy_dat</span>, median_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="info">
 <p>
 If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.
@@ -223,10 +223,10 @@ If you get what looks like an error that says <code>summarise() ungrouping outpu
 <hr>
 <p><strong>Pause here and interpret the above code and output</strong></p>
 <ul>
-<li>What does <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> do?</li>
+<li>What does <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code> do?</li>
 </ul>
-<div id="radio_MUAZDTAISC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MUAZDTAISC" value=""><span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_MUAZDTAISC" value=""><span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_MUAZDTAISC" value=""><span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_MUAZDTAISC" value="answer"><span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label>
+<div id="radio_WQCZCPOYYK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WQCZCPOYYK" value=""><span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_WQCZCPOYYK" value=""><span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_WQCZCPOYYK" value=""><span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_WQCZCPOYYK" value="answer"><span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label>
 </div>
 <ul>
 <li>How would you change the code to group by education rather than <code>Happiness_Category</code>?</li>
@@ -235,8 +235,8 @@ If you get what looks like an error that says <code>summarise() ungrouping outpu
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_65max</span>, <span class="va">educ</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">age_65max</span>, <span class="va">educ</span><span class="op">)</span></code></pre></div>
 </div>
 <hr>
 </div>
@@ -245,13 +245,13 @@ Solution
 <span class="header-section-number">6.8</span> Activity 7: Data visualisation<a class="anchor" aria-label="anchor" href="#activity-7-data-visualisation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Copy, paste and run the below code into a new code chunk to create a plot of depression scores grouped by income level using the <code>age_65max</code> data.</p>
-<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">age_65max</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">cesdTotal</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.6</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_discrete</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Income Level"</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below Average"</span>, <span class="st">"Average"</span>, <span class="st">"Above Average"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">age_65max</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">cesdTotal</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">income</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_violin.html">geom_violin</a></span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.6</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span>, alpha <span class="op">=</span> <span class="fl">.5</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_fill_viridis_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_discrete.html">scale_x_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Income Level"</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Below Average"</span>, <span class="st">"Average"</span>, <span class="st">"Above Average"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span></code></pre></div>
 <ul>
 <li><p>Which income group has the highest median depression scores? <select class="webex-select"><option value="blank"></option>
 <option value="answer">Below Average</option>
@@ -509,7 +509,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

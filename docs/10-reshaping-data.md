@@ -119,7 +119,7 @@ Finally, use `ggplot()` and `geom_histogram()` to make a histogram of all the to
 <p class="caption">(\#fig:unnamed-chunk-5)Histogram of total AQ scores</p>
 </div>
 
-## Activity solutions - Reshping data
+## Activity solutions - Reshaping data
 
 ### Activity 1
 
