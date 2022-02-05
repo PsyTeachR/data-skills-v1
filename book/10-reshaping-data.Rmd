@@ -136,7 +136,7 @@ ggplot(AQ_all, aes(x = total_score)) +
   scale_y_continuous(name = "Count")
 ```
 
-## Activity solutions - Reshping data
+## Activity solutions - Reshaping data
 
 ### Activity 1
 

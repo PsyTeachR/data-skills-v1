@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 12 Mega pipe | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/mega-pipe.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="12.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 12 Mega pipe | Data Skills">
 <meta name="twitter:description" content="12.1 Walkthrough video There is a walkthrough video of this chapter available via Zoom. Video notes: this video was recorded in 2020. Since then the book has been updated visually. There are no...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -102,7 +102,7 @@
 <li>Open a new R markdown document, name it "Mega pipe" and save it in your Data Skills folder.</li>
 <li>Set the working directory to your Data Skills folder.</li>
 <li>Type and run the code that loads the <code>tidyverse</code> package.</li>
-<li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
+<li>Use <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
 </ul>
 </div>
 <div id="activity-2-mega-pipe" class="section level3" number="12.1.2">
@@ -115,21 +115,21 @@
 <li>Joins together the three objects by their common columns</li>
 <li>Calculates a total AQ score for each participant</li>
 </ul>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
                       names_to <span class="op">=</span> <span class="st">"Question"</span>,  
                       values_to <span class="op">=</span> <span class="st">"Response"</span>,
                       cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span>
 
-<span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span>
+<span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span>
 
-<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span>
+<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
+<span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
 
-<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <ul>
-<li>Rewrite the above code using pipes <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. Make sure you have completed Pipes before you attempt this.</li>
+<li>Rewrite the above code using pipes <code>%&gt;%</code>. Make sure you have completed Pipes before you attempt this.</li>
 </ul>
 </div>
 <div id="activity-3-pipe-plot" class="section level3" number="12.1.3">
@@ -138,7 +138,7 @@
 </h3>
 <p>Now we've got our total AQ scores, let's use the pipe to make a graph.</p>
 <ul>
-<li>Take <code>AQ_all</code> <strong>then</strong> filter it leaving only female participants <strong>then</strong> use <code>ggplot()</code> to create a histogram of the total scores (you did this in Reshaping Data). If you've done it correctly, it should look like the below (you can change the colours if you like).</li>
+<li>Take <code>AQ_all</code> <strong>then</strong> filter it leaving only female participants <strong>then</strong> use <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code> to create a histogram of the total scores (you did this in Reshaping Data). If you've done it correctly, it should look like the below (you can change the colours if you like).</li>
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-2"></span>
@@ -146,7 +146,7 @@
 Figure 12.1: Histogram of scores for female participants
 </p>
 </div>
-<p>Remember this for your group project - rather than creating new objects for each graph you want to make you can just pipe the data you want to display straight into <code>ggplot()</code>.</p>
+<p>Remember this for your group project - rather than creating new objects for each graph you want to make you can just pipe the data you want to display straight into <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code>.</p>
 </div>
 <div id="activity-4-aq-score-by-gender" class="section level3" number="12.1.4">
 <h3>
@@ -184,15 +184,15 @@ Figure 12.1: Histogram of scores for female participants
 <p>In the research methods lectures for Psych 1A, we talked about the importance of data visualisation and how different graphs might lead you to make very different conclusions about your data. For this reason, we've taught you how to make violin-boxplots because these show the true distribution of the data, however, it's useful to know how to make bad bar plots so that you can see the difference they make to your own data (but never use them as your only method of visualisation!).</p>
 <ul>
 <li>Copy, paste and run the below code in a new code chunk</li>
-<li>Making a bar chart works a little differently to the other graphs you have made so far. Previously, <code>ggplot()</code> has just visualised the raw data, however, for a bar chart you actually want to visualise a <strong>summary</strong> of the data, e.g., the mean.</li>
+<li>Making a bar chart works a little differently to the other graphs you have made so far. Previously, <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code> has just visualised the raw data, however, for a bar chart you actually want to visualise a <strong>summary</strong> of the data, e.g., the mean.</li>
 <li>You can read the <code>stat_summary</code> code as "draw a summary of the data, use a bar chart to do so and the function to display on the y-axis should be the mean. Then, draw another summary but this time use an errorbar and the function to apply to the data is standard error of the mean".</li>
 </ul>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gender</span>, y <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">stat_summary</span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"bar"</span>, fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">stat_summary</span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"errorbar"</span>, fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">gender</span>, y <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/stat_summary.html">stat_summary</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"bar"</span>, fun <span class="op">=</span> <span class="st">"mean"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/stat_summary.html">stat_summary</a></span><span class="op">(</span>geom <span class="op">=</span> <span class="st">"errorbar"</span>, fun.data <span class="op">=</span> <span class="st">"mean_se"</span>, width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-3"></span>
 <img src="12-more-pipes_files/figure-html/unnamed-chunk-3-1.png" alt="Bad bar chart of means" width="100%"><p class="caption">
@@ -212,15 +212,15 @@ Figure 7.3: Bad bar chart of means
 <li>A lot of this code should be familiar to you, most of it is editing the axis labels and the theme.</li>
 <li>Adding <code>fill = gender</code> tells <code>ggplot</code> to produce different coloured geoms for each level of <code>gender</code>. Try removing <code>fill = gender</code> and see what happens to the plot.</li>
 <li>
-<code>geom_density()</code> is our new geom and tells R to draw the density curve. The argument <code>alpha</code> controls the transparency of the colours, try adjusting this value.</li>
+<code><a href="https://rdrr.io/pkg/ggplot2/man/geom_density.html">geom_density()</a></code> is our new geom and tells R to draw the density curve. The argument <code>alpha</code> controls the transparency of the colours, try adjusting this value.</li>
 </ul>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span>, fill <span class="op">=</span> <span class="va">gender</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_density</span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_fill_viridis_d</span><span class="op">(</span>option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span>, fill <span class="op">=</span> <span class="va">gender</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_density.html">geom_density</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_fill_viridis_d</a></span><span class="op">(</span>option <span class="op">=</span> <span class="st">"D"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="12-more-pipes_files/figure-html/unnamed-chunk-4-1.png" alt="Grouped density plot" width="100%"><p class="caption">
@@ -246,36 +246,36 @@ Solution
 <h3>
 <span class="header-section-number">12.1.7</span> Activity 7: Saving plots<a class="anchor" aria-label="anchor" href="#activity-7-saving-plots"><i class="fas fa-link"></i></a>
 </h3>
-<p>Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function <code>ggsave()</code>.</p>
-<p>There are two ways you can use <code>ggsave()</code>. If you don't tell <code>ggsave()</code> which plot you want to save, by default it will save a copy of <strong>the last plot you created</strong>. If you've been following this chapter in order, the last plot you created should have been the density plot from Activity 6.</p>
-<p>All that <code>ggsave()</code> requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).</p>
+<p>Finally, it's useful to be able to save a copy of your plots as an image file so that you can use it in a presentation or word document and to do this we can use the function <code><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave()</a></code>.</p>
+<p>There are two ways you can use <code><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave()</a></code>. If you don't tell <code><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave()</a></code> which plot you want to save, by default it will save a copy of <strong>the last plot you created</strong>. If you've been following this chapter in order, the last plot you created should have been the density plot from Activity 6.</p>
+<p>All that <code><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave()</a></code> requires is for you to tell it what file name it should save the plot to and the type of image file you want to create (the below example uses .png but you could also use e.g., .jpeg and other image types).</p>
 <ul>
 <li>Copy, paste and run the below code into a new code chunk.</li>
 <li>Check your Data Skills folder, you should now see the saved image file.</li>
 </ul>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggsave</span><span class="op">(</span><span class="st">"density.png"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"density.png"</span><span class="op">)</span></code></pre></div>
 <p>The default size for an image is 7 x 7, you can change this manually if you think that the dimensions of the plot are not correct or if you need a particular size.</p>
 <ul>
 <li>Copy paste and run the below code to overwrite the image file with new dimensions.</li>
 </ul>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggsave</span><span class="op">(</span><span class="st">"density.png"</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
-<p>The second way of using <code>ggsave()</code> is to save your plot as an object and then tell it which object to write to a file. The below code saves the pipe plot from Activity 3 into an object named <code>AQ_histogram</code> and then saves it to an image file "AQ_histogram.png".</p>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"density.png"</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></code></pre></div>
+<p>The second way of using <code><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave()</a></code> is to save your plot as an object and then tell it which object to write to a file. The below code saves the pipe plot from Activity 3 into an object named <code>AQ_histogram</code> and then saves it to an image file "AQ_histogram.png".</p>
 <p>Note that when you save a plot to an object, it won't display in R Studio. To get it to display you need to type the object name in the console (i.e., <code>AQ_histogram</code>). The benefit of doing it this way is that if you are making lots of plots, you can't accidentally save the wrong one because you are explicitly specifying which plot to save rather than just saving the last one.</p>
 <ul>
 <li>Copy, paste and run the below code and then check your Data Skills folder for the image file. Resize the plot if you think it needs it.</li>
 </ul>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">AQ_histogram</span> <span class="op">&lt;-</span> <span class="va">AQ_all</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span>
+<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_histogram</span> <span class="op">&lt;-</span> <span class="va">AQ_all</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span>
 
-<span class="fu">ggsave</span><span class="op">(</span><span class="st">"AQ_histogram.png"</span>, plot <span class="op">=</span> <span class="va">AQ_histogram</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"AQ_histogram.png"</span>, plot <span class="op">=</span> <span class="va">AQ_histogram</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="activity-solutions---mega-pipe" class="section level3" number="12.1.8">
 <h3>
@@ -289,11 +289,11 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
-<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
-<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
+<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
+<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
+<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-2-3" class="section level4" number="12.1.8.2">
@@ -304,15 +304,15 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
                       names_to <span class="op">=</span> <span class="st">"Question"</span>,  
                       values_to <span class="op">=</span> <span class="st">"Response"</span>,
-                      cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+                      cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">qformats</span>, by <span class="op">=</span> <span class="st">"Question"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-3-4" class="section level4" number="12.1.8.3">
@@ -323,14 +323,14 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_all</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">gender</span> <span class="op">==</span> <span class="st">"female"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score (female participants)"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-4-4" class="section level4" number="12.1.8.4">
@@ -341,11 +341,11 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">gender</span>, <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_violin</span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_boxplot</span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span><span class="va">gender</span>, <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_violin.html">geom_violin</a></span><span class="op">(</span>trim <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">.2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 
 </div>
@@ -568,7 +568,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

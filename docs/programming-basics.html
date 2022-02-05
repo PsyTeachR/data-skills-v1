@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 2 Programming basics | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/programming-basics.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 2 Programming basics | Data Skills">
 <meta name="twitter:description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -254,26 +254,27 @@ To avoid accidentally overwriting a package with a later version, you should <st
 <h2>
 <span class="header-section-number">2.13</span> Package conflicts<a class="anchor" aria-label="anchor" href="#conflicts"><i class="fas fa-link"></i></a>
 </h2>
-<p>There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages <code>dplyr</code> and <code>MASS</code> both have a function named <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>. If you load both of these packages, R will produce a warning telling you that there is a conflict.</p>
+<p>There are thousands of different R packages with even more functions. Unfortunately, sometimes different packages have the same function names. For example, the packages <code>dplyr</code> and <code>MASS</code> both have a function named <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code>. If you load both of these packages, R will produce a warning telling you that there is a conflict.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://www.stats.ox.ac.uk/pub/MASS4/">MASS</a></span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: package 'MASS' was built under R version 4.1.2</code></pre>
 <pre><code>## 
 ## Attaching package: 'MASS'</code></pre>
 <pre><code>## The following object is masked from 'package:dplyr':
 ## 
 ##     select</code></pre>
-<p>In this case, R is telling you that the function <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> in the <code>dplyr</code> package is being hidden (or 'masked') by another function with the same name. If you were to try and use <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, R would use the function from the package that was loaded most recently - in this case it would use the function from <code>MASS</code>.</p>
+<p>In this case, R is telling you that the function <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code> in the <code>dplyr</code> package is being hidden (or 'masked') by another function with the same name. If you were to try and use <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code>, R would use the function from the package that was loaded most recently - in this case it would use the function from <code>MASS</code>.</p>
 <p>If you want to specify which package you want to use for a particular function you can use code in the format <code>package::function</code>, for example:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">)</span>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">MASS</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/MASS/man/lm.ridge.html">select</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="objects" class="section level2" number="2.14">
 <h2>
 <span class="header-section-number">2.14</span> Objects<a class="anchor" aria-label="anchor" href="#objects"><i class="fas fa-link"></i></a>
 </h2>
-<p>A large part of your coding will involve creating and manipulating objects. Objects contain stuff. That stuff can be numbers, words, or the result of operations and analyses.You assign content to an object using <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>.</p>
+<p>A large part of your coding will involve creating and manipulating objects. Objects contain stuff. That stuff can be numbers, words, or the result of operations and analyses.You assign content to an object using <code>&lt;-</code>.</p>
 </div>
 <div id="activity-5-create-some-objects" class="section level2" number="2.15">
 <h2>
@@ -282,7 +283,7 @@ To avoid accidentally overwriting a package with a later version, you should <st
 <ul>
 <li>Copy and paste the following code into the console, change the code so that it uses your own name and age and run it. You should see that <code>name</code>, <code>age</code>, <code>today</code>, <code>new_year</code>, and <code>data</code> appear in the environment pane.</li>
 </ul>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">name</span> <span class="op">&lt;-</span> <span class="st">"emily"</span>
 <span class="va">age</span> <span class="op">&lt;-</span> <span class="fl">16</span> <span class="op">+</span> <span class="fl">19</span> 
 <span class="va">today</span> <span class="op">&lt;-</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
@@ -297,19 +298,19 @@ Figure 2.3: Objects in the environment
 <p>Note that in these examples, <code>name</code>,<code>age</code>, and <code>new_year</code> would always contain the values <code>emily</code>, <code>35</code>, and the date of New Year's Day 2021, however, <code>today</code> will draw the date from the operating system and <code>data</code> will be a randomly generated set of data so the values of these objects will not be static.</p>
 <p>As a side note, if you ever have to teach programming and statistics, don't use your age as an example because every time you have to update your teaching materials you get a reminder of the fragility of existence and your advancing age. 2021 update: I have now given up updating my age, I will remain forever 35.</p>
 <p>Importantly, objects can be involved in calculations and can interact with each other. For example:</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">age</span> <span class="op">+</span> <span class="fl">10</span>
 <span class="va">new_year</span> <span class="op">-</span> <span class="va">today</span>
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 45
-## Time difference of 22 days
+## Time difference of -35 days
 ## [1] 17.66644</code></pre>
 <p>Finally, you can store the result of these operations in a new object:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">decade</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">+</span> <span class="fl">10</span></code></pre></div>
 <div class="try">
 <p>
-You may find it helpful to read <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> as <code>contains</code>, e.g., <code>name</code> contains the text <code>emily</code>.
+You may find it helpful to read <code>&lt;-</code> as <code>contains</code>, e.g., <code>name</code> contains the text <code>emily</code>.
 </p>
 </div>
 <p>You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can be numbers, text, or the result of operations, and that they can be used in further operations to create new variables.</p>
@@ -325,8 +326,8 @@ You may also see objects referred to as 'variables'. There is a difference betwe
 </h2>
 <p>If you've been writing a lot of code you may find that the environment pane (or workspace) has become cluttered with many objects. This can make it difficult to figure out which object you need and therefore you run the risk of using the wrong data frame. If you're working on a new dataset, or if you've tried lots of different code before getting the final version, it is good practice to remember to clear the environment to avoid using the wrong object. You can do this in several way.</p>
 <ol style="list-style-type: decimal">
-<li>To remove individual objects, you can type <code><a href="https://rdrr.io/r/base/rm.html">rm(object_name)</a></code> in the console. Try this now to remove one of the objects you created in the previous section.</li>
-<li>To clear all objects from the environment run <code><a href="https://rdrr.io/r/base/rm.html">rm(list = ls())</a></code> in the console.</li>
+<li>To remove individual objects, you can type <code>rm(object_name)</code> in the console. Try this now to remove one of the objects you created in the previous section.</li>
+<li>To clear all objects from the environment run <code>rm(list = ls())</code> in the console.</li>
 <li>To clear all objects from the environment you can also click the broom icon in the environment pane.</li>
 </ol>
 <div class="figure" style="text-align: center">
@@ -372,7 +373,7 @@ Figure 2.6: The truth about programming
 </h2>
 <p>You may be some way off writing a scientific report where you have to cite and reference R, however, when the time comes it is important to do so to the people who built it (most of them for free!) credit. You should provide separate citations for R, RStudio, and the packages you use.</p>
 <p>To get the citation for the version of R you are using, simply run the <code><a href="https://rdrr.io/r/utils/citation.html">citation()</a></code> function which will always provide you with he most recent citation.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ## To cite R in publications use:
@@ -396,7 +397,7 @@ Figure 2.6: The truth about programming
 ## when using it for data analysis. See also 'citation("pkgname")' for
 ## citing R packages.</code></pre>
 <p>To generate the citation for any packages you are using, you can also use the <code><a href="https://rdrr.io/r/utils/citation.html">citation()</a></code> function with the name of the package you wish to cite.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
 ##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
@@ -415,7 +416,7 @@ Figure 2.6: The truth about programming
 ##     doi = {10.21105/joss.01686},
 ##   }</code></pre>
 <p>To generate the citation for the version of RStudio you are using, you can use the <code>RStudio.Vesion()</code> function:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">RStudio.Version</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Finally, here's an example of how that might look in the write-up of your method section:</p>
 <blockquote>
@@ -475,7 +476,7 @@ Explain This Answer
 <p>Remember, when you run <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> it will always install the latest version of the package and it will overwrite any older versions of the package you may have installed.</p>
 </div>
 <p><br><strong>Question 2.</strong>What will the following code produce?</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">6</span>, <span class="fl">50</span>, <span class="fl">10</span><span class="op">)</span></code></pre></div>
 <p><select class="webex-select"><option value="blank"></option>
 <option value="">A dataset with 10 numbers that has a mean of 6 and an SD of 50</option>
@@ -486,7 +487,7 @@ Explain This Answer
 <button>
 Explain This Answer
 </button>
-<p>The default form for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> is <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm(n, mean, sd)</a></code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code></p>
+<p>The default form for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> is <code>rnorm(n, mean, sd)</code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code></p>
 </div>
 <p><br><strong>Question 3.</strong> If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use?</p>
 <p><select class="webex-select"><option value="blank"></option>
@@ -498,7 +499,7 @@ Explain This Answer
 <button>
 Explain This Answer
 </button>
-<p>You should use the form <code>package::function</code>, for example <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code>. Remember that when you first load your packages R will warn you if any functions have the same name - remember to look out for this!</p>
+<p>You should use the form <code>package::function</code>, for example <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">dplyr::select</a></code>. Remember that when you first load your packages R will warn you if any functions have the same name - remember to look out for this!</p>
 </div>
 <p><strong>Question 4.</strong> Which of the following is most likely to be an argument? <select class="webex-select"><option value="blank"></option>
 <option value="answer">35</option>
@@ -508,7 +509,7 @@ Explain This Answer
 <option value="answer">brackets</option>
 <option value="">numbers</option>
 <option value="">computers</option></select>.</p>
-<p><strong>Question 6.</strong> The job of <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> is to send the output from the function to a/an <select class="webex-select"><option value="blank"></option>
+<p><strong>Question 6.</strong> The job of <code>&lt;-</code> is to send the output from the function to a/an <select class="webex-select"><option value="blank"></option>
 <option value="">argument</option>
 <option value="">assignment</option>
 <option value="answer">object</option></select>.</p>
@@ -747,7 +748,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 8 Scatterplots | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/scatterplots.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 8 Scatterplots | Data Skills">
 <meta name="twitter:description" content="In this chapter we will work with our data to generate a plot of two variables from the Woodworth et al. dataset. Before we get to generate our plot, we still need to work through the steps to get...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -116,8 +116,8 @@
 <ul>
 <li>Use the <code>summarydata</code> data.</li>
 <li>Put <code>ahiTotal</code> on the x-axis and <code>cesdTotal</code> on the y-axis.</li>
-<li>Rather than using <code>geom_bar()</code>, <code>geom_violin()</code>, or <code>geom_boxplot()</code>, for a scatterplot you need to use <code>geom_point()</code>.</li>
-<li>Rather than using <code>scale_fill_viridis_d()</code> to change the colour, add the argument <code>colour = "red"</code> to <code>geom_point</code> (except replace "red" with whatever colour you'd prefer).</li>
+<li>Rather than using <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_bar.html">geom_bar()</a></code>, <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_violin.html">geom_violin()</a></code>, or <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_boxplot.html">geom_boxplot()</a></code>, for a scatterplot you need to use <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point()</a></code>.</li>
+<li>Rather than using <code><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_fill_viridis_d()</a></code> to change the colour, add the argument <code>colour = "red"</code> to <code>geom_point</code> (except replace "red" with whatever colour you'd prefer).</li>
 <li>Remember to edit the axis names.</li>
 </ul>
 <div class="figure" style="text-align: center">
@@ -138,13 +138,13 @@ Figure 8.1: Scatterplot of happiness and depression scores
 </h2>
 <p>Scatterplots are very useful but it can often help to add a line of best fit to help interpretation. Add the below layer to the scatterplot code from Activity 4:</p>
 <ul>
-<li>This code uses the function <code>geom_smooth()</code> to draw the line. There are several different methods but we want a straight, or linear, line so we specify <code>method = "lm"</code>.</li>
+<li>This code uses the function <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth()</a></code> to draw the line. There are several different methods but we want a straight, or linear, line so we specify <code>method = "lm"</code>.</li>
 <li>This line is really a regression line, which you'll learn more about in level 2. For now, the steeper the slope of the line, the stronger the relationship between the two variables.</li>
-<li>By default the regression line will be extended, beyond the original y-axis limits, if you want to change this so that your plots looks like the below, add <code>limits = c(0,60)</code> to <code>scale_y_continuous()</code>
+<li>By default the regression line will be extended, beyond the original y-axis limits, if you want to change this so that your plots looks like the below, add <code>limits = c(0,60)</code> to <code><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous()</a></code>
 </li>
 </ul>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <pre><code>## Warning: Removed 20 rows containing missing values (geom_smooth).</code></pre>
 <div class="figure" style="text-align: center">
@@ -160,9 +160,9 @@ Figure 8.2: Scatterplot of happiness and depression scores
 </h2>
 <p>It seems fairly obvious that there might be a negative relationship between happiness and depression, so instead we want to look at whether this relationship changes depending on different demographic variables.</p>
 <p>Just like in the last chapter, we need to ensure that R knows what type of data each variable is. At the moment, <code>sex</code> and <code>educ</code> are all registered as numeric variables, but we know that they're really categories.</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">summarydata</span><span class="op">)</span></code></pre></div>
-<pre><code>## tibble [992 x 5] (S3: tbl_df/tbl/data.frame)
+<pre><code>## tibble [992 × 5] (S3: tbl_df/tbl/data.frame)
 ##  $ ahiTotal : num [1:992] 32 34 34 35 36 37 38 38 38 38 ...
 ##  $ cesdTotal: num [1:992] 50 49 47 41 36 35 50 55 47 39 ...
 ##  $ sex      : num [1:992] 1 1 1 1 1 1 2 1 2 2 ...
@@ -178,19 +178,19 @@ Figure 8.2: Scatterplot of happiness and depression scores
 </h2>
 <p>We can now use our factors to display the data in the scatterplots for each group.</p>
 <ul>
-<li>Rather than adding <code>colour</code> to <code>geom_point()</code> which sets the colour for all the data points, instead we add <code>colour = sex</code> to the aesthetic mapping on the first line. This tells <code>ggplot()</code> to produce different colours for each level (or group) in the variable <code>sex</code>.</li>
+<li>Rather than adding <code>colour</code> to <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point()</a></code> which sets the colour for all the data points, instead we add <code>colour = sex</code> to the aesthetic mapping on the first line. This tells <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code> to produce different colours for each level (or group) in the variable <code>sex</code>.</li>
 <li>
-<code>scale_color_viridis_d()</code> works exactly like the other colour blind friendly scale functions you have used, so we can use <code>name</code> and <code>labels</code> to adjust the legend.</li>
+<code><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_color_viridis_d()</a></code> works exactly like the other colour blind friendly scale functions you have used, so we can use <code>name</code> and <code>labels</code> to adjust the legend.</li>
 </ul>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, colour <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, colour <span class="op">=</span> <span class="va">sex</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
                      limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participant sex"</span>, 
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_color_viridis_d</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Participant sex"</span>, 
                        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Male"</span>, <span class="st">"Female"</span><span class="op">)</span>,
                        option <span class="op">=</span> <span class="st">"E"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
@@ -215,15 +215,15 @@ Figure 8.2: Scatterplot of happiness and depression scores
 <button>
 Hint 1
 </button>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">equal_or_more_than_median</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">equal_or_more_than_median</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="webex-solution">
 <button>
 Hint 2
 </button>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">variable</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span><span class="va">data</span>, new_variable <span class="op">=</span> <span class="va">variable</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">variable</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <p>Now, reproduce the below plot using this new variable:</p>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
@@ -239,9 +239,9 @@ Explain this answer
 </button>
 <p>The line for the "unhappy" group is much steeper than the line for the "happy" group. That is, is you're generally unhappy, then you report a much stronger link between your happiness and depression levels than if you're generally happy.</p>
 <p>If you actually wanted to look at the difference in the relationships statistically, you could compute the correlation coefficients like below, but don't worry about that until Level 2.</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat_above</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="va">dat_below</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat_above</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">dat_below</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">==</span> <span class="cn">FALSE</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat_above</span><span class="op">$</span><span class="va">ahiTotal</span>, <span class="va">dat_above</span><span class="op">$</span><span class="va">cesdTotal</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/cor.test.html">cor.test</a></span><span class="op">(</span><span class="va">dat_below</span><span class="op">$</span><span class="va">ahiTotal</span>, <span class="va">dat_below</span><span class="op">$</span><span class="va">cesdTotal</span><span class="op">)</span></code></pre></div>
@@ -288,10 +288,10 @@ Explain this answer
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="scatterplots.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb99-2"><a href="scatterplots.html#cb99-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span> (<span class="st">'ahi-cesd.csv'</span>)</span>
-<span id="cb99-3"><a href="scatterplots.html#cb99-3" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'participant-info.csv'</span>)</span>
-<span id="cb99-4"><a href="scatterplots.html#cb99-4" aria-hidden="true" tabindex="-1"></a>all_dat <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(dat, pinfo, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"intervention"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="scatterplots.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb100-2"><a href="scatterplots.html#cb100-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read_csv</span> (<span class="st">'ahi-cesd.csv'</span>)</span>
+<span id="cb100-3"><a href="scatterplots.html#cb100-3" aria-hidden="true" tabindex="-1"></a>pinfo <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">'participant-info.csv'</span>)</span>
+<span id="cb100-4"><a href="scatterplots.html#cb100-4" aria-hidden="true" tabindex="-1"></a>all_dat <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(dat, pinfo, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"id"</span>, <span class="st">"intervention"</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-2-2" class="section level3" number="8.8.2">
@@ -302,8 +302,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="va">ahiTotal</span>, <span class="va">cesdTotal</span>, <span class="va">sex</span>, <span class="va">age</span>, <span class="va">educ</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-3-1" class="section level3" number="8.8.3">
@@ -314,12 +314,12 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="08-scatterplots_files/figure-html/T3-1.png" width="100%" style="display: block; margin: auto;"></div>
 </div>
 </div>
@@ -331,14 +331,14 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">all_dat</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
                      limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></code></pre></div>
 <pre><code>## `geom_smooth()` using formula 'y ~ x'</code></pre>
 <pre><code>## Warning: Removed 20 rows containing missing values (geom_smooth).</code></pre>
 <div class="inline-figure"><img src="08-scatterplots_files/figure-html/T4s-1.png" width="100%" style="display: block; margin: auto;"></div>
@@ -352,9 +352,9 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="va">summarydata</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>,
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="va">summarydata</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>sex <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>,
          educ <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">educ</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
@@ -366,16 +366,16 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, 
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">ahiTotal</span> , y <span class="op">=</span> <span class="va">cesdTotal</span>, 
                         colour <span class="op">=</span> <span class="va">educ</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Happiness Score"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Depression Score"</span>,
                      limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">60</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_smooth</span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_color_viridis_d</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Education level"</span>, 
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_viridis.html">scale_color_viridis_d</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Education level"</span>, 
                        labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Less than Year 12"</span>,
                                   <span class="st">"Year 12"</span>,
                                   <span class="st">"Vocational training"</span>,
@@ -395,8 +395,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">summarydata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span><span class="va">summarydata</span>, <span class="va">happiness</span> <span class="op">&gt;=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">ahiTotal</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 
 </div>
@@ -626,7 +626,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

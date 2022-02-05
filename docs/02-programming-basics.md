@@ -191,6 +191,10 @@ library(MASS)
 ```
 
 ```
+## Warning: package 'MASS' was built under R version 4.1.2
+```
+
+```
 ## 
 ## Attaching package: 'MASS'
 ```
@@ -248,7 +252,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of 22 days
+## Time difference of -35 days
 ## [1] 17.66644
 ```
 

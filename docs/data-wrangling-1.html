@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 5 Data wrangling 1 | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/data-wrangling-1.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 5 Data wrangling 1 | Data Skills">
 <meta name="twitter:description" content="So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -88,7 +88,7 @@
 </h1>
 <div class="info">
 <p>
-So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at loading in datasets using <code>read_csv()</code>, joined files together using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>, and pulled out variables of interest using <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>.
+So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at loading in datasets using <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code>, joined files together using <code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code>, and pulled out variables of interest using <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code>.
 </p>
 <p>
 In this chapter, we'll be moving on to becoming familiar with the Wickham Six and the functionality of the R package, <code>tidyverse</code>!
@@ -108,17 +108,17 @@ In this chapter, we'll be moving on to becoming familiar with the Wickham Six an
 <p>In this chapter, we are going to focus on the <code>dplyr</code> package, which contains six important functions:</p>
 <ul>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> Include or exclude certain variables (columns)</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code> Include or exclude certain variables (columns)</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> Include or exclude certain observations (rows)</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> Include or exclude certain observations (rows)</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> Create new variables (columns)</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code> Create new variables (columns)</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> Change the order of observations (rows)</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange()</a></code> Change the order of observations (rows)</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> Organize the observations into groups</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code> Organize the observations into groups</li>
 <li>
-<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> Derive aggregate variables for groups of observations</li>
+<code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code> Derive aggregate variables for groups of observations</li>
 </ul>
 <p>These six functions are known as ’single table verbs’ because they only operate on one table at a time. Although the operations of these functions may seem very simplistic, it’s amazing what you can accomplish when you string them together: Hadley Wickham has claimed that 90% of data analysis can be reduced to the operations described by these six functions.</p>
 <p>Again, we don't expect you to remember everything in this chapter - the important thing is that you know where to come and look for help when you need to do particular tasks. Being good at coding really is just being good at knowing what to copy and paste.</p>
@@ -153,7 +153,7 @@ In this chapter, we'll be moving on to becoming familiar with the Wickham Six an
 <li>If you are working on your own computer, install the package <code>babynames</code>. If you are working on the server or a university computer, this package will already be installed.</li>
 <li>Type and run the code that loads the packages <code>tidyverse</code> and <code>babynames</code> using <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> in the Activity 1 code chunk.</li>
 </ul>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/babynames">babynames</a></span><span class="op">)</span></code></pre></div>
 </div>
@@ -163,7 +163,7 @@ In this chapter, we'll be moving on to becoming familiar with the Wickham Six an
 </h2>
 <p>The package <code>babynames</code> contains an object of the same name that contains all the data about babynames.</p>
 <ul>
-<li>View a preview of this dataset by running <code><a href="https://rdrr.io/r/utils/head.html">head(babynames)</a></code>. You should see the following output:</li>
+<li>View a preview of this dataset by running <code>head(babynames)</code>. You should see the following output:</li>
 </ul>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -266,12 +266,12 @@ In this chapter, we'll be moving on to becoming familiar with the Wickham Six an
 <li>Type the code below into a new code chunk and run it.</li>
 </ul>
 <p>We're going to cover how to write visualisation code in the next chapter so still don't worry about not understanding the plot code yet. The point is show you how much you can accomplish with very little code. The code creates a graph showing the popularity of four girl baby names - Alexandra, Beverly, Emily, and Kathleen - from 1880 to 2014. You should see Figure <a href="data-wrangling-1.html#fig:babynames-plot">5.1</a> appear, which shows the proportion of each name across different years.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"F"</span><span class="op">)</span>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"F"</span><span class="op">)</span>
 
-<span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>,<span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span>  </code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat</span>,<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span>  </code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:babynames-plot"></span>
 <img src="05-wrangling-1_files/figure-html/babynames-plot-1.png" alt="Proportion of four baby names from 1880 to 2014" width="100%"><p class="caption">
@@ -288,13 +288,13 @@ But I want to display male AND female names!
 </button>
 <p>This is more complicated than you might first imagine so only read on if you're feeling confident. If you remove the filter for <code>sex</code> when creating <code>dat</code> and then run the plot code again, it will make a very messy looking plot (try it). This is because for most names there will be two data points because although the numbers might be small for gendered names, there is usually always at least one baby of the non-dominant name gender that has been assigned that name.</p>
 <p>You can get around this by adding an additional line of code that produces separate plots by sex. The scale argument tells R that it can use different scales on the y-axis for each plot - when there's a large difference between the two scales this is helpful to allow you to see the data in both sets (run this code and then remove the scales argument and run it again to see the difference) although it does run the risk of people misinterpreting the data if the difference between the scales isn't made clear.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat2</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat2</span>,<span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat2</span>,<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sex</span>, scales <span class="op">=</span> <span class="st">"free_y"</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-4"></span>
 <img src="05-wrangling-1_files/figure-html/unnamed-chunk-4-1.png" alt="Plots by sex with different scales" width="100%"><p class="caption">
@@ -302,13 +302,13 @@ Figure 5.2: Plots by sex with different scales
 </p>
 </div>
 <p>On the other hand, if the scales for your two groups are fairly similar, it's better to keep the same scales to aid comparison. This time we will filter the dataset for gender neutral names where it might make more sense to have them on the same scale - again try it with and without the scales argument to see what happens</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">dat3</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sam"</span>,<span class="st">"Alex"</span>,<span class="st">"Jordan"</span>,<span class="st">"Drew"</span><span class="op">)</span><span class="op">)</span>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">dat3</span> <span class="op">&lt;-</span> <span class="va">babynames</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Sam"</span>,<span class="st">"Alex"</span>,<span class="st">"Jordan"</span>,<span class="st">"Drew"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="fu">ggplot</span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat3</span>,<span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">geom_line</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">sex</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">dat3</span>,<span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>,y <span class="op">=</span> <span class="va">prop</span>, colour<span class="op">=</span><span class="va">name</span><span class="op">)</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">sex</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-5"></span>
 <img src="05-wrangling-1_files/figure-html/unnamed-chunk-5-1.png" alt="Plots by sex with the same scale" width="100%"><p class="caption">
@@ -322,47 +322,47 @@ Figure 5.3: Plots by sex with the same scale
 <span class="header-section-number">5.7</span> Activity 4: Selecting variables of interest<a class="anchor" aria-label="anchor" href="#activity-4-selecting-variables-of-interest"><i class="fas fa-link"></i></a>
 </h2>
 <p>There are two numeric measurements of name popularity, <code>prop</code> (the proportion of all babies with each name) is probably more useful than <code>n</code> (total number of babies with that name), because it takes into account that different numbers of babies are born in different years.</p>
-<p>Just like in Loading Data, if we wanted to create a dataset that only includes certain variables, we can use the <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> function from the <code>dplyr</code> package. Run the below code to only select the columns <code>year</code>, <code>sex</code>, <code>name</code> and <code>prop</code>.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the object you want to select variables from</span>
+<p>Just like in Loading Data, if we wanted to create a dataset that only includes certain variables, we can use the <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code> function from the <code>dplyr</code> package. Run the below code to only select the columns <code>year</code>, <code>sex</code>, <code>name</code> and <code>prop</code>.</p>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the object you want to select variables from</span>
        <span class="va">year</span>, <span class="va">sex</span>, <span class="va">name</span>, <span class="va">prop</span><span class="op">)</span> <span class="co"># the variables you want to select</span></code></pre></div>
 <div class="danger">
 <p>
-If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code><a href="https://dplyr.tidyverse.org/reference/select.html">dplyr::select</a></code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems
+If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">dplyr::select</a></code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems
 </p>
 </div>
-<p>Alternatively, you can also tell R which variables you don't want, in this case, rather than telling R to select <code>year</code>, <code>sex</code>, <code>name</code> and <code>prop</code>, we can simply tell it to drop the column <code>n</code> using the minus sign <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> before the variable name.</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
-<p>Note that <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> does not change the original tibble, but makes a new tibble with the specified columns. If you don't save this new tibble to an object, it won't be saved. If you want to keep this new dataset, create a new object. When you run this code, you will see your new tibble appear in the environment pane.</p>
+<p>Alternatively, you can also tell R which variables you don't want, in this case, rather than telling R to select <code>year</code>, <code>sex</code>, <code>name</code> and <code>prop</code>, we can simply tell it to drop the column <code>n</code> using the minus sign <code>-</code> before the variable name.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
+<p>Note that <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code> does not change the original tibble, but makes a new tibble with the specified columns. If you don't save this new tibble to an object, it won't be saved. If you want to keep this new dataset, create a new object. When you run this code, you will see your new tibble appear in the environment pane.</p>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/select.html">select</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="op">-</span><span class="va">n</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="activity-5-arranging-the-data" class="section level2" number="5.8">
 <h2>
 <span class="header-section-number">5.8</span> Activity 5: Arranging the data<a class="anchor" aria-label="anchor" href="#activity-5-arranging-the-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>The function <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> will sort the rows in the table according to the columns you supply. Try running the following code:</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the data you want to sort</span>
-        <span class="va">name</span><span class="op">)</span> <span class="co"># the variable you want to sort by</span></code></pre></div>
-<p>The data are now sorted in ascending alphabetical order by name. The default is to sort in ascending order. If you want it descending, wrap the name of the variable in the <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> function. For instance, to sort by year in descending order, run the following code:</p>
+<p>The function <code><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange()</a></code> will sort the rows in the table according to the columns you supply. Try running the following code:</p>
 <div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">babynames</span>,<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<p>You can also sort by more than one column. What do you think the following code will do?</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the data you want to sort</span>
+        <span class="va">name</span><span class="op">)</span> <span class="co"># the variable you want to sort by</span></code></pre></div>
+<p>The data are now sorted in ascending alphabetical order by name. The default is to sort in ascending order. If you want it descending, wrap the name of the variable in the <code><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc()</a></code> function. For instance, to sort by year in descending order, run the following code:</p>
 <div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange</a></span><span class="op">(</span><span class="va">babynames</span>,<span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<p>You can also sort by more than one column. What do you think the following code will do?</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/arrange.html">arrange</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc</a></span><span class="op">(</span><span class="va">sex</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/desc.html">desc</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 </div>
 <div id="activity-6-using-filter-to-select-observations" class="section level2" number="5.9">
 <h2>
 <span class="header-section-number">5.9</span> Activity 6: Using filter to select observations<a class="anchor" aria-label="anchor" href="#activity-6-using-filter-to-select-observations"><i class="fas fa-link"></i></a>
 </h2>
-<p>We have previously used <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> to select certain variables or columns, however, frequently you will also want to select only certain observations or rows, for example, only babies born after 1999, or only babies named "Mary". You do this using the verb <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. The <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> function is a bit more involved than the other verbs, and requires more detailed explanation, but this is because it is also extremely powerful.</p>
+<p>We have previously used <code><a href="https://rdrr.io/pkg/dplyr/man/select.html">select()</a></code> to select certain variables or columns, however, frequently you will also want to select only certain observations or rows, for example, only babies born after 1999, or only babies named "Mary". You do this using the verb <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code>. The <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> function is a bit more involved than the other verbs, and requires more detailed explanation, but this is because it is also extremely powerful.</p>
 <p>Here is an example of filter, can you guess what it will do?</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
-<code class="sourceCode R"> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">2000</span><span class="op">)</span></code></pre></div>
-<p>The first part of the code tells the function to use the object <code>babynames</code>. The second argument, <code>year &gt; 2000</code>, is what is known as a <strong>Boolean expression</strong>: an expression whose evaluation results in a value of TRUE or FALSE. What <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> does is include any observations (rows) for which the expression evaluates to TRUE, and exclude any for which it evaluates to FALSE. So in effect, behind the scenes, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> goes through the entire set of 1.8 million observations, row by row, checking the value of year for each row, keeping it if the value is greater than 2000, and rejecting it if it is less than 2000. To see how a boolean expression works, consider the code below:</p>
 <div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">2000</span><span class="op">)</span></code></pre></div>
+<p>The first part of the code tells the function to use the object <code>babynames</code>. The second argument, <code>year &gt; 2000</code>, is what is known as a <strong>Boolean expression</strong>: an expression whose evaluation results in a value of TRUE or FALSE. What <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> does is include any observations (rows) for which the expression evaluates to TRUE, and exclude any for which it evaluates to FALSE. So in effect, behind the scenes, <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> goes through the entire set of 1.8 million observations, row by row, checking the value of year for each row, keeping it if the value is greater than 2000, and rejecting it if it is less than 2000. To see how a boolean expression works, consider the code below:</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">years</span> <span class="op">&lt;-</span> <span class="fl">1996</span><span class="op">:</span><span class="fl">2005</span>
 <span class="va">years</span>
 <span class="va">years</span> <span class="op">&gt;</span> <span class="fl">2000</span></code></pre></div>
@@ -414,28 +414,28 @@ If you get an error message when using select that says <code>unused argument</c
 </tr>
 </tbody>
 </table></div>
-<p>If you want only those observations for a specific name (e.g., Mary), you use the equivalence operator <code><a href="https://rdrr.io/r/base/Comparison.html">==</a></code>. Note that you use double equal signs, not a single equal sign.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op">==</span> <span class="st">"Mary"</span><span class="op">)</span></code></pre></div>
-<p>If you wanted all the names except Mary, you use the 'not equals' operator:</p>
+<p>If you want only those observations for a specific name (e.g., Mary), you use the equivalence operator <code>==</code>. Note that you use double equal signs, not a single equal sign.</p>
 <div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span><span class="op">!=</span><span class="st">"Mary"</span><span class="op">)</span> </code></pre></div>
-<p>And if you wanted names from a defined set - e.g., names of British queens - you can use <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code>:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op">==</span> <span class="st">"Mary"</span><span class="op">)</span></code></pre></div>
+<p>If you wanted all the names except Mary, you use the 'not equals' operator:</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mary"</span>,<span class="st">"Elizabeth"</span>,<span class="st">"Victoria"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>This gives you data for the names in the vector on the right hand side of <code><a href="https://rdrr.io/r/base/match.html">%in%</a></code>. You can always invert an expression to get its opposite. So, for instance, if you instead wanted to get rid of all Marys, Elizabeths, and Victorias you would use the following:</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span><span class="op">!=</span><span class="st">"Mary"</span><span class="op">)</span> </code></pre></div>
+<p>And if you wanted names from a defined set - e.g., names of British queens - you can use <code>%in%</code>:</p>
 <div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="op">!</span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mary"</span>,<span class="st">"Elizabeth"</span>,<span class="st">"Victoria"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>You can include as many expressions as you like as additional arguments to <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> and it will only pull out the rows for which all of the expressions for that row evaluate to TRUE. For instance, <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter(babynames, year &gt; 2000, prop &gt; .01)</a></code> will pull out only those observations beyond the year 2000 that represent greater than 1% of the names for a given sex; any observation where either expression is false will be excluded. This ability to string together criteria makes <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> a very powerful member of the Wickham Six.</p>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mary"</span>,<span class="st">"Elizabeth"</span>,<span class="st">"Victoria"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>This gives you data for the names in the vector on the right hand side of <code>%in%</code>. You can always invert an expression to get its opposite. So, for instance, if you instead wanted to get rid of all Marys, Elizabeths, and Victorias you would use the following:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">babynames</span>, <span class="op">!</span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Mary"</span>,<span class="st">"Elizabeth"</span>,<span class="st">"Victoria"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>You can include as many expressions as you like as additional arguments to <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> and it will only pull out the rows for which all of the expressions for that row evaluate to TRUE. For instance, <code>filter(babynames, year &gt; 2000, prop &gt; .01)</code> will pull out only those observations beyond the year 2000 that represent greater than 1% of the names for a given sex; any observation where either expression is false will be excluded. This ability to string together criteria makes <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> a very powerful member of the Wickham Six.</p>
 <p><strong>Remember that this section exists. It will contain a lot of the answers to problems you face when wrangling data!</strong></p>
 </div>
 <div id="activity-7-creating-new-variables" class="section level2" number="5.10">
 <h2>
 <span class="header-section-number">5.10</span> Activity 7: Creating new variables<a class="anchor" aria-label="anchor" href="#activity-7-creating-new-variables"><i class="fas fa-link"></i></a>
 </h2>
-<p>Sometimes we need to create a new variable that doesn’t exist in our dataset. For instance, we might want to figure out what decade a particular year belongs to. To create new variables, we use the function <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Note that if you want to save this new column, you need to save it to an object. Here, you are mutating a new column and attaching it to the <code>new_dat</code> object you created in Activity 4.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the tibble you want to add a column to</span>
+<p>Sometimes we need to create a new variable that doesn’t exist in our dataset. For instance, we might want to figure out what decade a particular year belongs to. To create new variables, we use the function <code><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate()</a></code>. Note that if you want to save this new column, you need to save it to an object. Here, you are mutating a new column and attaching it to the <code>new_dat</code> object you created in Activity 4.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">babynames</span>, <span class="co"># the tibble you want to add a column to</span>
                   decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">year</span><span class="op">/</span><span class="fl">10</span><span class="op">)</span> <span class="op">*</span><span class="fl">10</span><span class="op">)</span> <span class="co"># new column name = what you want it to contain</span>
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">new_dat</span><span class="op">)</span></code></pre></div>
 <div class="kable-table">
@@ -506,11 +506,11 @@ If you get an error message when using select that says <code>unused argument</c
 <h2>
 <span class="header-section-number">5.11</span> Activity 8: Grouping and summarising<a class="anchor" aria-label="anchor" href="#activity-8-grouping-and-summarising"><i class="fas fa-link"></i></a>
 </h2>
-<p>Most quantitative analyses will require you to summarise your data somehow, for example, by calculating the mean, median or a sum total of your data. You can perform all of these operations using the function <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>.</p>
+<p>Most quantitative analyses will require you to summarise your data somehow, for example, by calculating the mean, median or a sum total of your data. You can perform all of these operations using the function <code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code>.</p>
 <p>First, let's use the object <code>dat</code> that just has the data for the four girls names, Alexandra, Beverly, Emily, and Kathleen. To start off, we're simply going to calculate the total number of babies across all years that were given one of these four names.</p>
 <p>It's useful to get in the habit of translating your code into full sentences to make it easier to figure out what's happening. You can read the below code as "run the function summarise using the data in the object <code>dat</code> to create a new variable named <code>total</code> that is the result of adding up all the numbers in the column <code>n</code>".</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">dat</span>, <span class="co"># the data you want to use</span>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">dat</span>, <span class="co"># the data you want to use</span>
           total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="co"># result = operation</span></code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -522,14 +522,14 @@ If you get an error message when using select that says <code>unused argument</c
 </tr></tbody>
 </table></div>
 </div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> becomes even more powerful when combined with the final <code>dplyr</code> function, <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>. Quite often, you will want to produce your summary statistics broken down by groups, for examples, the scores of participants in different conditions, or the reading time for native and non-native speakers.</p>
-<p>There are two ways you can use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>. First, you can create a new, grouped object.</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">group_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">dat</span>, <span class="co"># the data you want to group</span>
+<p><code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code> becomes even more powerful when combined with the final <code>dplyr</code> function, <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code>. Quite often, you will want to produce your summary statistics broken down by groups, for examples, the scores of participants in different conditions, or the reading time for native and non-native speakers.</p>
+<p>There are two ways you can use <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code>. First, you can create a new, grouped object.</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">group_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">dat</span>, <span class="co"># the data you want to group</span>
                       <span class="va">name</span><span class="op">)</span> <span class="co"># the variable you want to group by</span></code></pre></div>
 <p>If you look at this object in the viewer, it won't look any different to the original <code>dat</code>, however, the underlying structure has changed. Let's run the above summarise code again, but now using the grouped data.</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">group_dat</span>, 
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>.data <span class="op">=</span> <span class="va">group_dat</span>, 
           total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <div class="kable-table">
 <div class="inline-table"><table class="table table-sm">
@@ -557,10 +557,10 @@ If you get an error message when using select that says <code>unused argument</c
 </tbody>
 </table></div>
 </div>
-<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> has performed exactly the same operation as before - adding up the total number in the column <code>n</code> - but this time it has done is separately for each group, which in this case was the variable <code>name</code>.</p>
+<p><code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code> has performed exactly the same operation as before - adding up the total number in the column <code>n</code> - but this time it has done is separately for each group, which in this case was the variable <code>name</code>.</p>
 <p>You can request multiple summary calculations to be performed in the same function. For example, the following code calculates the mean and median number of babies given each name every year.</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">group_dat</span>,
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">group_dat</span>,
           mean_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,
           median_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="kable-table">
@@ -595,9 +595,9 @@ If you get an error message when using select that says <code>unused argument</c
 </table></div>
 </div>
 <p>You can also add multiple grouping variables. For example, the following code groups <code>new_dat</code> by <code>sex</code> and <code>decade</code> and then calculates the summary statistics to give us the mean and median number of male and female babies in each decade.</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">group_new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">new_dat</span>, <span class="va">sex</span>, <span class="va">decade</span><span class="op">)</span>
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">group_new_dat</span>,
+<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">group_new_dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">new_dat</span>, <span class="va">sex</span>, <span class="va">decade</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">group_new_dat</span>,
           mean_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span>,
           median_year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## `summarise()` has grouped output by 'sex'. You can override using the `.groups` argument.</code></pre>
@@ -791,14 +791,14 @@ If you get what looks like an error that says <code>summarise() ungrouping outpu
 <h2>
 <span class="header-section-number">5.12</span> Activity 9: Pipes<a class="anchor" aria-label="anchor" href="#activity-9-pipes"><i class="fas fa-link"></i></a>
 </h2>
-<p>The final activity for this chapter essentially repeats what we've already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names.</p>
-<p>Instead, you can use <strong>pipes</strong>. Pipes are written as <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>and they should be read as "and then". Pipes allow you to string together 'sentences' of code into 'paragraphs' so that you don't need to create intermediary objects. Again, it is easier to show than tell.</p>
+<p>The final activity for this chapter essentially repeats what we've already covered but in a slightly different way. In the previous activities, you created new objects with new variables or groupings and then you called <code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code> on those new objects in separate lines of code. As a result, you had multiple objects in your environment pane and you need to make sure that you keep track of the different names.</p>
+<p>Instead, you can use <strong>pipes</strong>. Pipes are written as <code>%&gt;%</code>and they should be read as "and then". Pipes allow you to string together 'sentences' of code into 'paragraphs' so that you don't need to create intermediary objects. Again, it is easier to show than tell.</p>
 <p>The below code does <strong>exactly</strong> the same as all the code we wrote above but it only creates one object.</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pipe_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">babynames</span>, decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">year</span><span class="op">/</span><span class="fl">10</span><span class="op">)</span> <span class="op">*</span><span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"F"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">decade</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mean_decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pipe_summary</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate.html">mutate</a></span><span class="op">(</span><span class="va">babynames</span>, decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">floor</a></span><span class="op">(</span><span class="va">year</span><span class="op">/</span><span class="fl">10</span><span class="op">)</span> <span class="op">*</span><span class="fl">10</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Emily"</span>,<span class="st">"Kathleen"</span>,<span class="st">"Alexandra"</span>,<span class="st">"Beverly"</span><span class="op">)</span>, <span class="va">sex</span><span class="op">==</span><span class="st">"F"</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">decade</span><span class="op">)</span> <span class="op"><a href="https://rdrr.io/pkg/magrittr/man/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span>mean_decade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>The reason that this function is called a pipe is because it 'pipes' the data through to the next function. When you wrote the code previously, the first argument of each function was the dataset you wanted to work on. When you use pipes it will automatically take the data from the previous line of code so you don't need to specify it again.</p>
 <div class="try">
 <p>
@@ -1032,7 +1032,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -11,15 +11,15 @@
 <meta property="og:title" content="Chapter 10 Reshaping data | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/reshaping-data.html">
-<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <meta property="og:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Walkthrough video There is a walkthrough video of this chapter...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Chapter 10 Reshaping data | Data Skills">
 <meta name="twitter:description" content="Let’s continue what we started in AQ Data and Recap by hand but now using R to calculate a score for each participant.  10.1 Walkthrough video There is a walkthrough video of this chapter...">
-<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
+<meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/logo.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -104,14 +104,14 @@
 <li>Open a new R markdown document, name it "Reshaping Data" and save it in your Data Skills folder.</li>
 <li>Set the working directory to your Data Skills folder.</li>
 <li>Type and run the code that loads the <code>tidyverse</code> package.</li>
-<li>Use <code>read_csv()</code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
+<li>Use <code><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv()</a></code> to load in the data. you should create three objects <code>responses</code>, <code>scoring</code> and <code>qformats</code> that contain the respective data.</li>
 </ul>
 </div>
 <div id="activity-2-pivot_longer" class="section level2" number="10.3">
 <h2>
 <span class="header-section-number">10.3</span> Activity 2: <code>pivot_longer()</code><a class="anchor" aria-label="anchor" href="#activity-2-pivot_longer"><i class="fas fa-link"></i></a>
 </h2>
-<p>The first step is to transform the data from wide format to long format. To do this, we will use the function <code>pivot_longer()</code>. <code>pivot_longer()</code> takes multiple columns and collapses them so that each unique variable has it’s own column and has four main arguments:</p>
+<p>The first step is to transform the data from wide format to long format. To do this, we will use the function <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code>. <code><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer()</a></code> takes multiple columns and collapses them so that each unique variable has it’s own column and has four main arguments:</p>
 <ul>
 <li>
 <code>data</code> is the name of the object you want to transform</li>
@@ -123,12 +123,12 @@
 <code>cols</code> are the original columns you want to collapse.</li>
 </ul>
 <p>These functions can seem a bit abstract and it is better to show than tell. Run the below code in a new code chunk and then compare how <code>rlong</code> looks compared to <code>responses</code> and see if you can figure out what effect each argument had.</p>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu">pivot_longer</span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tidyr/man/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">responses</span>, 
                       names_to <span class="op">=</span> <span class="st">"Question"</span>,  
                       values_to <span class="op">=</span> <span class="st">"Response"</span>,
                       cols <span class="op">=</span> <span class="va">Q1</span><span class="op">:</span><span class="va">Q10</span><span class="op">)</span></code></pre></div>
-<p>You have now created a tibble with 660 observations and 3 variables; 10 observations per 66 participants and 3 variables. Let's recreate the example from the AQ Data and Recap and only use <strong>one participant</strong>. We can do that by using <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> (which you used last semester) to create a new object called <code>rlong_16.</code></p>
+<p>You have now created a tibble with 660 observations and 3 variables; 10 observations per 66 participants and 3 variables. Let's recreate the example from the AQ Data and Recap and only use <strong>one participant</strong>. We can do that by using <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> (which you used last semester) to create a new object called <code>rlong_16.</code></p>
 </div>
 <div id="activity-3-filter" class="section level2" number="10.4">
 <h2>
@@ -137,14 +137,14 @@
 <hr>
 <p><strong>Pause here and test your knowledge</strong></p>
 <ul>
-<li>What does <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> do?</li>
+<li>What does <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> do?</li>
 </ul>
 <p><select class="webex-select"><option value="blank"></option>
 <option value="">Retains or removes variables</option>
 <option value="answer">Retains or removes observations</option></select></p>
 <hr>
 <ul>
-<li>Create a new object called <code>rlong_16</code> that uses <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> to keep only the data from participant Id 16.</li>
+<li>Create a new object called <code>rlong_16</code> that uses <code><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter()</a></code> to keep only the data from participant Id 16.</li>
 </ul>
 <div class="danger">
 <p>
@@ -156,20 +156,20 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <h2>
 <span class="header-section-number">10.5</span> Activity 4: <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-4-inner_join"><i class="fas fa-link"></i></a>
 </h2>
-<p>The next step is to match each question with its format (F or R) that is stored in <strong>qformats</strong>. That is, we need to join together the two objects using <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> like we did in Psych 1A.</p>
+<p>The next step is to match each question with its format (F or R) that is stored in <strong>qformats</strong>. That is, we need to join together the two objects using <code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code> like we did in Psych 1A.</p>
 <ul>
-<li>Create a new object called <code>rlong_16_join</code> that uses <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> to join together <code>rlong_16</code> and <code>qformats</code>by their common column.</li>
+<li>Create a new object called <code>rlong_16_join</code> that uses <code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code> to join together <code>rlong_16</code> and <code>qformats</code>by their common column.</li>
 <li>If you get the error <code>Error: by can't contain join column XXXX which is missing from LHS</code> it means that you have made a typo. Check the exact spelling and capitalisation of the variable names.</li>
 </ul>
 <hr>
-<p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> matches up rows in the two tables where both tables have the same value for the variable named in the third argument, “Question”. It then combines the columns from the two tables, copying rows where necessary.</p>
-<p>To state it more simply, what it does is the following: For each row in <code>rlong</code>, it checks the value of the column <code>Question</code>, and looks for rows with the same value in <code>qformats</code>, and then essentially combines all of the other columns in the two tables for these matching rows. If there are values that don't match, the rows get dropped. The <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> function is one of the most useful and time-saving operations in data wrangling so keep practising as it will keep reappearing time after time.</p>
+<p><code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code> matches up rows in the two tables where both tables have the same value for the variable named in the third argument, “Question”. It then combines the columns from the two tables, copying rows where necessary.</p>
+<p>To state it more simply, what it does is the following: For each row in <code>rlong</code>, it checks the value of the column <code>Question</code>, and looks for rows with the same value in <code>qformats</code>, and then essentially combines all of the other columns in the two tables for these matching rows. If there are values that don't match, the rows get dropped. The <code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code> function is one of the most useful and time-saving operations in data wrangling so keep practising as it will keep reappearing time after time.</p>
 </div>
 <div id="activity-5-another-inner_join" class="section level2" number="10.6">
 <h2>
 <span class="header-section-number">10.6</span> Activity 5: Another <code>inner_join()</code><a class="anchor" aria-label="anchor" href="#activity-5-another-inner_join"><i class="fas fa-link"></i></a>
 </h2>
-<p>Now that we have matched up each question with its corresponding format, we can now “look up” the corresponding scores in the scoring table based on the format and the response. This means we have to use <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code> once again to join <code>rlong_16_join</code> with <code>scoring</code>**</p>
+<p>Now that we have matched up each question with its corresponding format, we can now “look up” the corresponding scores in the scoring table based on the format and the response. This means we have to use <code><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join()</a></code> once again to join <code>rlong_16_join</code> with <code>scoring</code>**</p>
 <ul>
 <li>Create a new object named <code>scores_16</code> that joins together <code>rlong_16_join</code> with <code>scoring</code>.</li>
 <li>Be careful to tell R <strong>all</strong> the columns the two objects have in common. Remember that when you need to specify multiple variables you will need to use the syntax <code>by = c("var1", "var2)</code>.</li>
@@ -182,7 +182,7 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 </h2>
 <p>Now you need to calculate the total AQ score for participant 16.</p>
 <ul>
-<li>Create a new object called <code>AQ_16</code>. Use <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>to add up the numbers in the column <code>Score</code> from <code>scores_16</code> and call the result of this calculation <code>AQ_score</code>.</li>
+<li>Create a new object called <code>AQ_16</code>. Use <code><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise()</a></code> and <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>to add up the numbers in the column <code>Score</code> from <code>scores_16</code> and call the result of this calculation <code>AQ_score</code>.</li>
 <li>This is a difficult task to do from memory but try it anyway - if you get anywhere near the right solution you're doing extremely well!</li>
 </ul>
 </div>
@@ -194,23 +194,23 @@ Every year, the biggest problem with these exercises is typos caused by not payi
 <ul>
 <li>Run the below code in a new code chunk.</li>
 </ul>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span>
-<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>The final part of calculating the scores requires an extra step because now we don't just want to calculate one score, we want to calculate a score <strong>for each participant</strong> which means that we need to use <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> to group by <code>Id</code>. We're not going to use it in this chapter but we also want our object to show us the participant's gender so we will also add <code>gender</code> to the grouping. If you want to refresh your memory about how <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> works, revise Data Wrangling 1.</p>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
-<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">rlong_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span>
+<span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>The final part of calculating the scores requires an extra step because now we don't just want to calculate one score, we want to calculate a score <strong>for each participant</strong> which means that we need to use <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code> to group by <code>Id</code>. We're not going to use it in this chapter but we also want our object to show us the participant's gender so we will also add <code>gender</code> to the grouping. If you want to refresh your memory about how <code><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by()</a></code> works, revise Data Wrangling 1.</p>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scores_grouped</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/group_by.html">group_by</a></span><span class="op">(</span><span class="va">scores</span>, <span class="va">Id</span>, <span class="va">gender</span><span class="op">)</span>
+<span class="va">AQ_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_grouped</span>, total_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="activity-8-visualisation" class="section level2" number="10.9">
 <h2>
 <span class="header-section-number">10.9</span> Activity 8: Visualisation<a class="anchor" aria-label="anchor" href="#activity-8-visualisation"><i class="fas fa-link"></i></a>
 </h2>
-<p>Finally, use <code>ggplot()</code> and <code>geom_histogram()</code> to make a histogram of all the total AQ scores. Try and make it look pretty by changing the axis labels and the theme. You can check the solution code to see how the below example was made, but you can make yours look different.</p>
+<p>Finally, use <code><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot()</a></code> and <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_histogram.html">geom_histogram()</a></code> to make a histogram of all the total AQ scores. Try and make it look pretty by changing the axis labels and the theme. You can check the solution code to see how the below example was made, but you can make yours look different.</p>
 <ul>
 <li>Hint 1: <code>ggplot(data, aes(x)) + geom_histogram()</code>
 </li>
-<li>Hint 2: Add <code>binwidth = 1</code> to <code>geom_histogram()</code> to change the width of the bars.</li>
+<li>Hint 2: Add <code>binwidth = 1</code> to <code><a href="https://rdrr.io/pkg/ggplot2/man/geom_histogram.html">geom_histogram()</a></code> to change the width of the bars.</li>
 </ul>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-5"></span>
@@ -219,9 +219,9 @@ Figure 5.3: Histogram of total AQ scores
 </p>
 </div>
 </div>
-<div id="activity-solutions---reshping-data" class="section level2" number="10.10">
+<div id="activity-solutions---reshaping-data" class="section level2" number="10.10">
 <h2>
-<span class="header-section-number">10.10</span> Activity solutions - Reshping data<a class="anchor" aria-label="anchor" href="#activity-solutions---reshping-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.10</span> Activity solutions - Reshaping data<a class="anchor" aria-label="anchor" href="#activity-solutions---reshaping-data"><i class="fas fa-link"></i></a>
 </h2>
 <div id="activity-1-3" class="section level3" number="10.10.1">
 <h3>
@@ -231,11 +231,11 @@ Figure 5.3: Histogram of total AQ scores
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
-<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
-<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
+<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span> <span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
+<span class="va">responses</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"responses.csv"</span><span class="op">)</span>
+<span class="va">qformats</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/readr/man/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"qformats.csv"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-3-2" class="section level3" number="10.10.2">
@@ -246,8 +246,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rlong_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">Id</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/filter.html">filter</a></span><span class="op">(</span><span class="va">rlong</span>, <span class="va">Id</span> <span class="op">==</span> <span class="fl">16</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-4-2" class="section level3" number="10.10.3">
@@ -258,8 +258,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rlong_16_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rlong_16_join</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16</span>, <span class="va">qformats</span>, <span class="st">"Question"</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-5-1" class="section level3" number="10.10.4">
@@ -270,8 +270,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">scores_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">scores_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">rlong_16_join</span>, <span class="va">scoring</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"QFormat"</span>, <span class="st">"Response"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-6-2" class="section level3" number="10.10.5">
@@ -282,8 +282,8 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">AQ_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_16</span>, AQ_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">AQ_16</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/dplyr/man/summarise.html">summarise</a></span><span class="op">(</span><span class="va">scores_16</span>, AQ_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Score</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="activity-8" class="section level3" number="10.10.6">
@@ -294,12 +294,12 @@ Solution
 <button>
 Solution
 </button>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu">scale_x_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">scale_y_continuous</span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">AQ_all</span>, <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">total_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">1</span>, colour <span class="op">=</span> <span class="st">"black"</span>, fill <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_x_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Total AQ Score"</span>, breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">1</span>,<span class="fl">2</span>,<span class="fl">3</span>,<span class="fl">4</span>,<span class="fl">5</span>,<span class="fl">6</span>,<span class="fl">7</span>,<span class="fl">8</span>,<span class="fl">9</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/ggplot2/man/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></code></pre></div>
 </div>
 
 </div>
@@ -502,7 +502,7 @@ $( document ).ready(function() {
 <li><a class="nav-link" href="#activity-7-calculating-all-scores"><span class="header-section-number">10.8</span> Activity 7: Calculating all scores</a></li>
 <li><a class="nav-link" href="#activity-8-visualisation"><span class="header-section-number">10.9</span> Activity 8: Visualisation</a></li>
 <li>
-<a class="nav-link" href="#activity-solutions---reshping-data"><span class="header-section-number">10.10</span> Activity solutions - Reshping data</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#activity-solutions---reshaping-data"><span class="header-section-number">10.10</span> Activity solutions - Reshaping data</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#activity-1-3"><span class="header-section-number">10.10.1</span> Activity 1</a></li>
 <li><a class="nav-link" href="#activity-3-2"><span class="header-section-number">10.10.2</span> Activity 3</a></li>
 <li><a class="nav-link" href="#activity-4-2"><span class="header-section-number">10.10.3</span> Activity 4</a></li>
@@ -528,7 +528,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2021-12-10.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-02-05.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
