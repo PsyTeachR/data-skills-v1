@@ -4,18 +4,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Chapter 16 Project analysis | Data Skills</title>
+<title>Chapter 17 Step 2: BFI-2 scores | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
-<meta name="description" content="We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps...">
+<meta name="description" content="First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data. Create an object named trait_dat (where trait is the name of the Big 5 trait you are using...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Chapter 16 Project analysis | Data Skills">
+<meta property="og:title" content="Chapter 17 Step 2: BFI-2 scores | Data Skills">
 <meta property="og:type" content="book">
-<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/project-analysis.html">
+<meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/step-2-bfi-2-scores.html">
 <meta property="og:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<meta property="og:description" content="We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps...">
+<meta property="og:description" content="First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data. Create an object named trait_dat (where trait is the name of the Big 5 trait you are using...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chapter 16 Project analysis | Data Skills">
-<meta name="twitter:description" content="We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps...">
+<meta name="twitter:title" content="Chapter 17 Step 2: BFI-2 scores | Data Skills">
+<meta name="twitter:description" content="First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data. Create an object named trait_dat (where trait is the name of the Big 5 trait you are using...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -67,7 +67,8 @@
 <li><a class="" href="intro-to-probability.html"><span class="header-section-number">13</span> Intro to Probability</a></li>
 <li><a class="" href="probability-continued.html"><span class="header-section-number">14</span> Probability continued</a></li>
 <li><a class="" href="simulation.html"><span class="header-section-number">15</span> Simulation</a></li>
-<li><a class="active" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li><a class="" href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></li>
+<li><a class="active" href="step-2-bfi-2-scores.html"><span class="header-section-number">17</span> Step 2: BFI-2 scores</a></li>
 <li class="book-part">Appendices</li>
 <li><a class="" href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></li>
 <li><a class="" href="updating-r-rstudio-and-packages.html"><span class="header-section-number">B</span> Updating R, RStudio, and packages</a></li>
@@ -82,69 +83,18 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="project-analysis" class="section level1" number="16">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="step-2-bfi-2-scores" class="section level1" number="17">
 <h1>
-<span class="header-section-number">16</span> Project analysis<a class="anchor" aria-label="anchor" href="#project-analysis"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17</span> Step 2: BFI-2 scores<a class="anchor" aria-label="anchor" href="#step-2-bfi-2-scores"><i class="fas fa-link"></i></a>
 </h1>
-<p>We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps you will need to go through when analysing your data but, aside from a few lines that will help you deal with the questionnaire data and a couple of things you haven't done before we're not going to give you any code solutions.</p>
-<p>For everything else, you have done it before, so use this book to help you. Remember, you don't need to write the code from memory, you just need to find the relevant examples and then copy and paste and change what needs changing to make it work for you.</p>
-<p>We suggest that you problem-solve the code as a group, however, make sure that you all have a separate copy of the final working code. You can book into GTA sessions in week 9 and 10 to help you as well.</p>
-<div id="step-1-import-and-initial-data-wrangling" class="section level2" number="16.1">
-<h2>
-<span class="header-section-number">16.1</span> Step 1: Import and initial data wrangling<a class="anchor" aria-label="anchor" href="#step-1-import-and-initial-data-wrangling"><i class="fas fa-link"></i></a>
-</h2>
-<p>To help get you on your way, we've done a bit of the initial wrangling for you. Download the data files from Moodle into your working directory, create a new Markdown, then run all the below code without changing anything.</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-
-<span class="co"># read in data but skip rows 2 and 3</span>
-<span class="va">col_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu">read_csv</span><span class="op">(</span><span class="st">"big5_data.csv"</span>, n_max <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>
-<span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"big5_data.csv"</span>, col_names <span class="op">=</span> <span class="va">col_names</span>, skip <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">Progress</span> <span class="op">==</span> <span class="fl">100</span>, <span class="co"># only keep data from participants who progressed to end of survey</span>
-         <span class="va">DistributionChannel</span> <span class="op">!=</span> <span class="st">"preview"</span><span class="op">)</span>  <span class="co"># Remove Emily's preview data</span>
-
-<span class="co"># read in scoring and codebook data</span>
-<span class="va">scoring</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"scoring.csv"</span><span class="op">)</span>
-<span class="va">codebook</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"code_book.csv"</span><span class="op">)</span>
-
-<span class="co"># create dataset of just big 5 data then join with codebook and scoring</span>
-<span class="va">big5</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">ResponseId</span>, <span class="va">Q4_1</span><span class="op">:</span><span class="va">Q4_60</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">pivot_longer</span><span class="op">(</span>cols <span class="op">=</span> <span class="va">Q4_1</span><span class="op">:</span><span class="va">Q4_60</span>, names_to <span class="op">=</span> <span class="st">"item"</span>, values_to <span class="op">=</span> <span class="st">"response"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">codebook</span>, by <span class="op">=</span> <span class="st">"item"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"response"</span>, <span class="st">"direction"</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># create dataset that just has demographic questions</span>
-
-<span class="va">demographic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">ResponseId</span>, 
-                      <span class="st">"age"</span> <span class="op">=</span> <span class="va">Q6</span>, 
-                      <span class="st">"gender"</span> <span class="op">=</span> <span class="va">Q7</span>, 
-                      <span class="st">"sexual_orientation"</span> <span class="op">=</span> <span class="va">Q8</span>, 
-                      <span class="st">"siblings"</span> <span class="op">=</span> <span class="va">Q9</span>, 
-                      <span class="st">"birth_order"</span> <span class="op">=</span> <span class="va">Q10</span>, 
-                      <span class="st">"neurodivergent"</span> <span class="op">=</span> <span class="va">Q11</span>,
-                      <span class="st">"team_name"</span> <span class="op">=</span> <span class="va">Q14</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Man"</span>, <span class="st">"Woman"</span>, <span class="st">"Non-binary"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         sexual_orientation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sexual_orientation</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Straight/ Heterosexual"</span>, <span class="st">"Bisexual/pansexual"</span>, <span class="st">"Gay or Lesbian"</span>, <span class="st">"Asexual"</span>, <span class="st">"Other"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         birth_order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">birth_order</span><span class="op">)</span>,
-         neurodivergent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">neurodivergent</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Neurotypical"</span>, <span class="st">"Diagnosed"</span>, <span class="st">"Seeking diagnosis"</span>, <span class="st">"Not seeking diagnosis"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         team_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">team_name</span><span class="op">)</span><span class="op">)</span>
-
-<span class="co"># get rid of objects we don't need</span>
-<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">scoring</span>, <span class="va">codebook</span><span class="op">)</span></code></pre></div>
-</div>
-<div id="step-2-bfi-2-scores" class="section level2" number="16.2">
-<h2>
-<span class="header-section-number">16.2</span> Step 2: BFI-2 scores<a class="anchor" aria-label="anchor" href="#step-2-bfi-2-scores"><i class="fas fa-link"></i></a>
-</h2>
 <p>First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data.</p>
 <p>Create an object named <code>trait_dat</code> (where <code>trait</code> is the name of the Big 5 trait you are using as your DV) that just has the data from the trait you are interested in. Your starting dataset should be <code>big5</code>.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></p>
 <p>Then, use <code>trait_dat</code> to calculate the average trait <code>score</code> for each participant (<code>ResponseId</code>). Store these scores in an object named <code>trait_scores</code>.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and then <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>.</p>
-</div>
-<div id="step-3-iv" class="section level2" number="16.3">
+<div id="step-3-iv" class="section level2" number="17.1">
 <h2>
-<span class="header-section-number">16.3</span> Step 3: IV<a class="anchor" aria-label="anchor" href="#step-3-iv"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.1</span> Step 3: IV<a class="anchor" aria-label="anchor" href="#step-3-iv"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. However you do it, make the final obkect named <code>my_demo</code>.</p>
 <ol style="list-style-type: decimal">
@@ -164,18 +114,18 @@
   <span class="fu">drop_na</span><span class="op">(</span><span class="va">sexual_orientation</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># put your IV variable in here</span>
   <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="step-4-joining-it-all-together" class="section level2" number="16.4">
+<div id="step-4-joining-it-all-together" class="section level2" number="17.2">
 <h2>
-<span class="header-section-number">16.4</span> Step 4: Joining it all together<a class="anchor" aria-label="anchor" href="#step-4-joining-it-all-together"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.2</span> Step 4: Joining it all together<a class="anchor" aria-label="anchor" href="#step-4-joining-it-all-together"><i class="fas fa-link"></i></a>
 </h2>
 <p>Getting there.</p>
 <p>Now, create a dataset named <code>all_dat</code> that joins together <code>my_demo</code> and <code>trait_scores</code> so that you have a single dataset that contains all the data you need from participants who are present in both datasets.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code></p>
 <p>Now on to the analysis (the worst part is over).</p>
 </div>
-<div id="step-5-sample-information" class="section level2" number="16.5">
+<div id="step-5-sample-information" class="section level2" number="17.3">
 <h2>
-<span class="header-section-number">16.5</span> Step 5: Sample information<a class="anchor" aria-label="anchor" href="#step-5-sample-information"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.3</span> Step 5: Sample information<a class="anchor" aria-label="anchor" href="#step-5-sample-information"><i class="fas fa-link"></i></a>
 </h2>
 <p>Count the number of participants in the data set. This is the overall class sample size. You haven't done this very often so we'll give you the code.</p>
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
@@ -190,24 +140,24 @@
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
 <p>Count how many participants are in each of your IV groups, e.g., how many first born and late born, or how many neurodivergent and neurotypical. Remember to use the recoded variable if you collapsed the categories. You may also wish to calculate percentages.</p>
 </div>
-<div id="step-6-group-differences-in-scores" class="section level2" number="16.6">
+<div id="step-6-group-differences-in-scores" class="section level2" number="17.4">
 <h2>
-<span class="header-section-number">16.6</span> Step 6: Group differences in scores<a class="anchor" aria-label="anchor" href="#step-6-group-differences-in-scores"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.4</span> Step 6: Group differences in scores<a class="anchor" aria-label="anchor" href="#step-6-group-differences-in-scores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Calculate the mean and SD trait score for each of your groups. If there is missing data, you may need to use <code>na.rm = TRUE</code>.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> then <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
 </div>
-<div id="step-7-visualisations" class="section level2" number="16.7">
+<div id="step-7-visualisations" class="section level2" number="17.5">
 <h2>
-<span class="header-section-number">16.7</span> Step 7: Visualisations<a class="anchor" aria-label="anchor" href="#step-7-visualisations"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.5</span> Step 7: Visualisations<a class="anchor" aria-label="anchor" href="#step-7-visualisations"><i class="fas fa-link"></i></a>
 </h2>
 <p>Create a bar chart of means for your DV by IV with error bars that display standard error (<code>mean_se</code>).</p>
 <p>Create a violin-boxplot for your DV by IV.</p>
 <p>Ensure that your visualisations are appropriately labelled and try to make them look visually appealing.</p>
 </div>
-<div id="step-8-team-data" class="section level2" number="16.8">
+<div id="step-8-team-data" class="section level2" number="17.6">
 <h2>
-<span class="header-section-number">16.8</span> Step 8: Team data<a class="anchor" aria-label="anchor" href="#step-8-team-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.6</span> Step 8: Team data<a class="anchor" aria-label="anchor" href="#step-8-team-data"><i class="fas fa-link"></i></a>
 </h2>
 <p>Almost done. Now, create a dataset that just contains the data from your team. Be very careful about the spelling of your team name, there is a space before and after the colon and it must be exactly as it is in the dataset to work including all capital letters. You might want to open up the data file to check the exact spelling. Here's an example.</p>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
@@ -215,9 +165,9 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team_name</span> <span class="op">==</span> <span class="st">"PR01 : Pavlov's Puppies"</span><span class="op">)</span></code></pre></div>
 <p>Then repeat Steps 5 - 7 but use <code>team_dat</code> instead of <code>all_dat</code>. You should be able to reuse all of code, and just plug in the different dataset.</p>
 </div>
-<div id="finished-7" class="section level2" number="16.9">
+<div id="finished-7" class="section level2" number="17.7">
 <h2>
-<span class="header-section-number">16.9</span> Finished<a class="anchor" aria-label="anchor" href="#finished-7"><i class="fas fa-link"></i></a>
+<span class="header-section-number">17.7</span> Finished<a class="anchor" aria-label="anchor" href="#finished-7"><i class="fas fa-link"></i></a>
 </h2>
 <p>And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world.</p>
 
@@ -227,21 +177,19 @@
 
 
 <div class="chapter-nav">
-<div class="prev"><a href="simulation.html"><span class="header-section-number">15</span> Simulation</a></div>
+<div class="prev"><a href="project-analysis.html"><span class="header-section-number">16</span> Project analysis</a></div>
 <div class="next"><a href="installing-r.html"><span class="header-section-number">A</span> Installing R</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#project-analysis"><span class="header-section-number">16</span> Project analysis</a></li>
-<li><a class="nav-link" href="#step-1-import-and-initial-data-wrangling"><span class="header-section-number">16.1</span> Step 1: Import and initial data wrangling</a></li>
-<li><a class="nav-link" href="#step-2-bfi-2-scores"><span class="header-section-number">16.2</span> Step 2: BFI-2 scores</a></li>
-<li><a class="nav-link" href="#step-3-iv"><span class="header-section-number">16.3</span> Step 3: IV</a></li>
-<li><a class="nav-link" href="#step-4-joining-it-all-together"><span class="header-section-number">16.4</span> Step 4: Joining it all together</a></li>
-<li><a class="nav-link" href="#step-5-sample-information"><span class="header-section-number">16.5</span> Step 5: Sample information</a></li>
-<li><a class="nav-link" href="#step-6-group-differences-in-scores"><span class="header-section-number">16.6</span> Step 6: Group differences in scores</a></li>
-<li><a class="nav-link" href="#step-7-visualisations"><span class="header-section-number">16.7</span> Step 7: Visualisations</a></li>
-<li><a class="nav-link" href="#step-8-team-data"><span class="header-section-number">16.8</span> Step 8: Team data</a></li>
-<li><a class="nav-link" href="#finished-7"><span class="header-section-number">16.9</span> Finished</a></li>
+<li><a class="nav-link" href="#step-2-bfi-2-scores"><span class="header-section-number">17</span> Step 2: BFI-2 scores</a></li>
+<li><a class="nav-link" href="#step-3-iv"><span class="header-section-number">17.1</span> Step 3: IV</a></li>
+<li><a class="nav-link" href="#step-4-joining-it-all-together"><span class="header-section-number">17.2</span> Step 4: Joining it all together</a></li>
+<li><a class="nav-link" href="#step-5-sample-information"><span class="header-section-number">17.3</span> Step 5: Sample information</a></li>
+<li><a class="nav-link" href="#step-6-group-differences-in-scores"><span class="header-section-number">17.4</span> Step 6: Group differences in scores</a></li>
+<li><a class="nav-link" href="#step-7-visualisations"><span class="header-section-number">17.5</span> Step 7: Visualisations</a></li>
+<li><a class="nav-link" href="#step-8-team-data"><span class="header-section-number">17.6</span> Step 8: Team data</a></li>
+<li><a class="nav-link" href="#finished-7"><span class="header-section-number">17.7</span> Finished</a></li>
 </ul>
 
       <div class="book-extra">

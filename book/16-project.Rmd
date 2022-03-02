@@ -1,181 +1,146 @@
 # Project analysis
 
-**This chapter reflects the analysis done in AY2020-2021 and wil be updated towards during semester 2 of 2021-2022 to reflect the new project.**
+We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps you will need to go through when analysing your data but, aside from a few lines that will help you deal with the questionnaire data and a couple of things you haven't done before we're not going to give you any code solutions. 
 
-We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps you will need to go through when analysing your data but, aside from a few lines that will help you deal with the questionnaire data that the Experimentum platform spits out, we're not going to give you any code solutions. 
-
-Everything you need to do you've done before, so use this book to help you. Remember, you don't need to write the code from memory, you just need to find the relevant examples and then copy and paste and change what needs changing to make it work for you.
+For everything else, you have done it before, so use this book to help you. Remember, you don't need to write the code from memory, you just need to find the relevant examples and then copy and paste and change what needs changing to make it work for you.
 
 We suggest that you problem-solve the code as a group, however, make sure that you all have a separate copy of the final working code. You can book into GTA sessions in week 9 and 10 to help you as well.
 
-## Step 1: Load in packages and data
+## Step 1: Import and initial data wrangling
 
-The data file `final_data.csv` is on Moodle in the Group Poster section.
-
-Don't change ANY of the code from step 1. Just copy and paste it into R EXACTLY as it is below. 
-
-This code will clean up the Experimentum data a little bit to help you on your way. You will get a message saying `NAs introduced by coercion`. Ignore this message, it's a result of converting the employment hours to a numeric variable. 
-
-It's also worth noting that this is a MUCH larger dataset than any you've worked with so far and you might find that R takes a little longer to complete each task - this is perfectly normal.
+To help get you on your way, we've done a bit of the initial wrangling for you. Download the data files from Moodle into your working directory, create a new Markdown, then run all the below code without changing anything. 
 
 ```{r eval = FALSE}
 library(tidyverse)
 
-dat <- read_csv("final_data.csv", 
-                col_types = cols(team = col_factor(), 
-                                 dv = col_character()))
+# read in data but skip rows 2 and 3
+col_names <- names(read_csv("big5_data.csv", n_max = 0))
+dat <- read_csv("big5_data.csv", col_names = col_names, skip = 3) %>%
+  filter(Progress == 100, # only keep data from participants who progressed to end of survey
+         DistributionChannel != "preview")  # Remove Emily's preview data
 
-demo <-  dat %>%
-  filter(quest_id == "1448") %>%
-  select(user_id, user_sex, user_age, q_name, dv, covid) %>%
-  pivot_wider(names_from = "q_name", values_from = "dv") %>%
-  select(-"NA") %>%
-  mutate(employment = as.numeric(employment))
+# read in scoring and codebook data
+scoring <- read_csv("scoring.csv")
+codebook <- read_csv("code_book.csv")
 
-teams <-  dat %>%
-  filter(q_name == "team_name") %>%
-  select(user_id, team)
+# create dataset of just big 5 data then join with codebook and scoring
+big5 <- select(dat, ResponseId, Q4_1:Q4_60) %>%
+  pivot_longer(cols = Q4_1:Q4_60, names_to = "item", values_to = "response") %>%
+  inner_join(codebook, by = "item") %>%
+  inner_join(scoring, by = c("response", "direction"))
 
-mslq <-  dat %>%
-  filter(quest_id == "1449") %>%
-  select(user_id, q_name, dv) %>%
-  mutate(dv = as.numeric(dv)) %>%
-  arrange(q_name) %>%
-  pivot_wider(names_from = "q_name", values_from = "dv")
+# create dataset that just has demographic questions
 
-final_dat <- left_join(demo, teams) %>%
-  inner_join(mslq)
+demographic <- select(dat, ResponseId, 
+                      "age" = Q6, 
+                      "gender" = Q7, 
+                      "sexual_orientation" = Q8, 
+                      "siblings" = Q9, 
+                      "birth_order" = Q10, 
+                      "neurodivergent" = Q11,
+                      "team_name" = Q14) %>%
+  mutate(gender = factor(gender, labels = c("Man", "Woman", "Non-binary", "Prefer not to say")),
+         sexual_orientation = factor(sexual_orientation, labels = c("Straight/ Heterosexual", "Bisexual/pansexual", "Gay or Lesbian", "Asexual", "Other", "Prefer not to say")),
+         birth_order = factor(birth_order),
+         neurodivergent = factor(neurodivergent, labels = c("Neurotypical", "Diagnosed", "Seeking diagnosis", "Not seeking diagnosis", "Prefer not to say")),
+         team_name = factor(team_name))
+
+# get rid of objects we don't need
+rm(dat, scoring, codebook)
+
 ```
 
-Right. Your turn. You may find it helpful to use the search function in this book to find examples of the code you need.
+## Step 2: BFI-2 scores
 
-```{r, echo=FALSE, fig.cap="Searching for functions", out.width="75%", out.height="75%"}
-knitr::include_graphics(path="./images/searching.gif")
+First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data.
+
+Create an object named `trait_dat` (where `trait` is the name of the Big 5 trait you are using as your DV) that just has the data from the trait you are interested in. Your starting dataset should be `big5`.
+
+Hint: `filter()`
+
+Then, use `trait_dat` to calculate the average trait `score` for each participant (`ResponseId`). Store these scores in an object named `trait_scores`.
+
+Hint: `group_by()` and then `summarise()`.
+
+## Step 3: IV
+
+Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the `%>%`. However you do it, make the final obkect named `my_demo`.
+
+1. First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also want to remove people who answered "Prefer not to say" for your IV at this point.
+2. Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those two). 
+3. Then, create any new category groups as required. For example, you might want to collapse sexual orientation into two categories, "heterosexual" and "queer". This is slightly complicated so we'll give you example code - you can adapt the code to collapse other categories like the neurodivergent or birth order options. Be very careful with the spelling, it needs to be exact for `recode` to work.
+4. Finally, add `drop_na(IV)` and `droplevels()` to your code (see below) where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). `droplevels` removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).
+
+```{r eval = FALSE}
+my_demo <- data_from_step1_and_step2 %>%
+  mutate(sexual_orientation_recoded = recode(sexual_orientation, 
+                                             "Straight/ Heterosexual" = "Heterosexual",
+                                             "Gay or Lesbian" = "Queer",
+                                             "Bisexual/pansexual" = "Queer",
+                                             "Asexual" = "Queer",
+                                             "Other" = "Queer")) %>%
+  drop_na(sexual_orientation) %>% # put your IV variable in here
+  droplevels()
 ```
 
+## Step 4: Joining it all together
 
-## Step 2: Look at the data 
+Getting there.
 
-`final_dat` should have 91 columns which means that R won't show you them all if you just click on the object, you'll need to run `summary()`. Have a look at what all the variables are, you will find it helpful to refer to the Survey Variables Overview document.
+Now, create a dataset named `all_dat` that joins together `my_demo` and `trait_scores` so that you have a single dataset that contains all the data you need from participants who are present in both datasets.
 
-## Step 3. Select your variables
+Hint: `inner_join()`
 
-Use `select()` to retain only the variables you need for your chosen research design and analysis, i.e. the responses to the sub-scale you're interested in as well as the user id, sex, age, team number, and any variables you're going to use as criteria for inclusion. Again, you might find it helpful to consult the survey variables overview document to get the variable names.
+Now on to the analysis (the worst part is over).
 
-## Step 4: Factors
+## Step 5: Sample information
 
-Using `summary()` again if you need it, check what type of variable each column is. Recode any variables that you want to use as categorical variables as factors and then run summary again to see how many you have in each group. You will find the code book you downloaded with the data files from Moodle helpful for this task. You may find the [Data Visualisation activity about factors](https://psyteachr.github.io/ug1-practical/intro-to-data-viz.html#activity-3-factors) helpful for this.
+Count the number of participants in the data set. This is the overall class sample size. You haven't done this very often so we'll give you the code.
 
-## Step 5: Filter
+```{r eval = FALSE}
+all_dat %>%
+  count()
+```
 
-If necessary, use `filter()` to retain only the observations you need, for example, you might need to delete participants above a certain age, or only use mature students or undergraduate students (and make sure you kept all these columns in step 3). Do not filter the data for your team yet. You will find the code book you downloaded with the data files from Moodle helpful for this task.
+Count the number of people of each gender in `all_dat`. You can also create a column of percentages. You haven't done this before so we'll also give you the code.
 
-If your grouping variable is whether students undertake paid employment, you will need to create a new variable using mutate that categorises participants into employed (> 0 hours worked per week) and not employed (0 hours per week) categories.
+```{r eval = FALSE}
+all_dat %>%
+  count(gender) %>%
+  mutate(percent = n/sum(n)*100)
+```
 
-An additional bit of syntax you might find useful for this is the `%in%` notation which allows you to filter by multiple values. For example, the following code will retain all rows where `user_sex` equals male OR female and nothing else (i.e., it would get rid of non-binary participants, prefer not to says, and missing values).
+Calculate the mean age and SD of the full sample. If there is missing data, you may need to use `na.rm = TRUE`.
+
+Hint: `summarise()`
+
+Count how many participants are in each of your IV groups, e.g., how many first born and late born, or how many neurodivergent and neurotypical. Remember to use the recoded variable if you collapsed the categories. You may also wish to calculate percentages.
+
+## Step 6: Group differences in scores
+
+Calculate the mean and SD trait score for each of your groups. If there is missing data, you may need to use `na.rm = TRUE`.
+
+Hint: `group_by()` then `summarise()`
+
+## Step 7: Visualisations
+
+Create a bar chart of means for your DV by IV with error bars that display standard error (`mean_se`). 
+
+Create a violin-boxplot for your DV by IV. 
+
+Ensure that your visualisations are appropriately labelled and try to make them look visually appealing.
+
+## Step 8: Team data
+
+Almost done. Now, create a dataset that just contains the data from your team. Be very careful about the spelling of your team name, there is a space before and after the colon and it must be exactly as it is in the dataset to work including all capital letters. You might want to open up the data file to check the exact spelling. Here's an example.
 
 ```{r eval=FALSE}
-
-dat %>%
-  filter(user_sex %in% c("male", "female"))
+team_dat <- all_dat %>%
+  filter(team_name == "PR01 : Pavlov's Puppies")
 ```
 
-You can also do it by exclusion with `!`. The below code would retain everything where `user_sex` DOESN'T equal male or female.
+Then repeat Steps 5 - 7 but use `team_dat` instead of `all_dat`. You should be able to reuse all of code, and just plug in the different dataset. 
 
-```{r eval = FALSE}
-dat %>%
-  filter(!user_sex %in% c("male", "female"))
-```
+## Finished
 
-If you were feeling really fancy you could do steps 2 - 5 in a single pipeline of code.
-
-## Step 6: Sub-scale scores
-
-Calculate the mean score for each participant for your chosen sub-scale. There are a few ways you can do this but helpfully the [Experimentum documentation](https://gla-my.sharepoint.com/:w:/g/personal/2087153l_student_gla_ac_uk/EfFPtssPMV9HkrZALfdln8wBBJKClQ0eAXzrrHxa0nOo7g?e=SNIhSt) provides example code to make this easier, you just need to adapt it for the variables you need. You may also want to change the `na.rm = TRUE` for the calculation of means depending on whether you want to only include participants who completed all questions.
-
-* Change `data` to the name of the object you created in step 6
-* Change `question_1:question_5` to the relevant variables for your subscale e.g., `help_1:help_4`
-* Change `scale_mean` to the name of your sub-scale e.g., `anxiety_mean`
-* If you want to calculate the mean scores for participants who have missing data, e.g., if they only completed three out of four questions for your sub-scale, then `na.rm = TRUE`. If you only want to calculate scores for participants who answered all questions for your sub-scale, then `na.rm = FALSE`.
-* Change NOTHING else
-
-You may get the message `summarise() regrouping output by....` this is fine.
-
-```{r eval = FALSE}
-dat_means <- data %>% 
-  pivot_longer(names_to = "var", values_to = "val", question_1:question_5) %>% 
-  group_by_at(vars(-val, -var)) %>% 
-  summarise(scale_mean = mean(val, na.rm = TRUE)) %>% 
-  ungroup() 
-```
-
-Optional: If you want a dataset that just has complete cases, then you can run the below code. This will remove any participants who have an `NA` for scale-score due to missing data.
-
-```{r eval=FALSE}
-dat_means_complete <- dat_means %>%
-  drop_na(scale_mean)
-```
-
-## Step 7: Split the dataset
-
-Use the codebook to find which `team` number corresponds to your team. Next, use `filter()`  to create a new dataset that only contains the data from participants who contributed to your team and call it `dat_means_team`. Once this is complete, you  will have a final large dataset that contains the sub-scale scores for all participants, and a smaller dataset that just has data from the participants you recruited for your team. 
-
-## Step 8: Demographic information 
-
-That should be the really hard bit done, now you've got the data in the right format for analysis. 
-
-First, calculate the demographic information you need: number of participants, gender split, grouping variable split (if you're using a variable that's not gender), mean age and SD. 
-
-You can calculate mean age and SD using `summarise()` like you've done before. There's several different ways that you can count the number of participants in each group, we haven't explicitly shown you how to do this yet so we'll give you example code for this below. The code is fairly simple, you just need to plug in the variables you need.
-
-Do this separately for the full dataset and your team dataset.
-
-```{r eval = FALSE}
-
-# count the total number of participants in the dataset
-
-dat_means %>%
-  count()
-
-# count the number of responses to each level of user_sex (for gender)
-dat_means %>%
-  group_by(user_sex) %>%
-  count()
-
-# count the number of responses to each level of covid status (change this variable to the one you're using if necessary)
-dat_means %>%
-  group_by(covid) %>%
-  count()
-
-# count the number of responses across two categories (you might not need or want to do this)
-dat_means %>%
-  group_by(user_sex,covid) %>%
-  count()
-```
-
-Once you've done this you might realise that you have participants in the dataset that shouldn't be there. For example, you might have people who have answered "Not applicable" to the mature student question, or you might have some NAs (missing data from when people didn't respond). 
-
-You need to think about whether you need to get rid of any observations from your dataset. For example, if you're looking at gender differences, then you can't have people who are missing gender information. You may have said in your pre-reg that you would only include non-binary people if they made up a certain proportion of the data. If you're looking at mature student status, you can't have people who didn't answer the question or who said not applicable (i.e., postgrad students). You need to decide whether any of this is a problem, and potentially go back and add in an extra filter to step 6.
-
-## Step 9: Descriptive statistics
-
-Use `summarise()` and `group_by()` to calculate the mean, median, and standard deviation of the sub-scale scores for each group. Do this separately for the full dataset and your team dataset.
-
-## Step 10: visualisation
-
-You now need to create a bar chart with error bars and a violin-boxplot for both the full dataset and your team dataset. You've done all of these before, just find a previous example code and change the variables and axis labels. If you are comparing pre and post-covid, then you team plot will only have data from the post-covid group, this is ok, you can still compare it to the larger sample. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. 
