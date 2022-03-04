@@ -64,10 +64,10 @@ Hint: `group_by()` and then `summarise()`.
 
 ## Step 3: IV
 
-Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the `%>%`. However you do it, make the final obkect named `my_demo`.
+Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the `%>%`. However you do it, make the final object named `my_demo`.
 
-1. First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also want to remove people who answered "Prefer not to say" for your IV at this point.
-2. Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those two). 
+1. First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or don't want people with no siblings). You may also want to remove people who answered "Prefer not to say" for your IV at this point.
+2. Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those four). 
 3. Then, create any new category groups as required. For example, you might want to collapse sexual orientation into two categories, "heterosexual" and "queer". This is slightly complicated so we'll give you example code - you can adapt the code to collapse other categories like the neurodivergent or birth order options. Be very careful with the spelling, it needs to be exact for `recode` to work.
 4. Finally, add `drop_na(IV)` and `droplevels()` to your code (see below) where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). `droplevels` removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).
 
@@ -147,4 +147,4 @@ Then repeat Steps 5 - 7 but use `team_dat` instead of `all_dat`. You should be a
 
 ## Finished
 
-And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. 
+And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. But no-one ever believe me so I'm going to [leave you with this](https://www.tiktok.com/@mamagum/video/6972749768233684226)

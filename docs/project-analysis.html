@@ -146,10 +146,10 @@
 <h2>
 <span class="header-section-number">16.3</span> Step 3: IV<a class="anchor" aria-label="anchor" href="#step-3-iv"><i class="fas fa-link"></i></a>
 </h2>
-<p>Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. However you do it, make the final obkect named <code>my_demo</code>.</p>
+<p>Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the <code><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></code>. However you do it, make the final object named <code>my_demo</code>.</p>
 <ol style="list-style-type: decimal">
-<li>First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also want to remove people who answered "Prefer not to say" for your IV at this point.</li>
-<li>Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those two).</li>
+<li>First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or don't want people with no siblings). You may also want to remove people who answered "Prefer not to say" for your IV at this point.</li>
+<li>Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those four).</li>
 <li>Then, create any new category groups as required. For example, you might want to collapse sexual orientation into two categories, "heterosexual" and "queer". This is slightly complicated so we'll give you example code - you can adapt the code to collapse other categories like the neurodivergent or birth order options. Be very careful with the spelling, it needs to be exact for <code>recode</code> to work.</li>
 <li>Finally, add <code>drop_na(IV)</code> and <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code> to your code (see below) where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). <code>droplevels</code> removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).</li>
 </ol>
@@ -219,7 +219,7 @@
 <h2>
 <span class="header-section-number">16.9</span> Finished<a class="anchor" aria-label="anchor" href="#finished-7"><i class="fas fa-link"></i></a>
 </h2>
-<p>And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world.</p>
+<p>And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. But no-one ever believe me so I'm going to <a href="https://www.tiktok.com/@mamagum/video/6972749768233684226">leave you with this</a></p>
 
 </div>
 </div>
@@ -441,7 +441,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-03-02.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-03-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
