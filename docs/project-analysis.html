@@ -151,6 +151,7 @@
 <li>First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or don't want people with no siblings). You may also want to remove people who answered "Prefer not to say" for your IV at this point.</li>
 <li>Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those four).</li>
 <li>Then, create any new category groups as required. For example, you might want to collapse sexual orientation into two categories, "heterosexual" and "queer". This is slightly complicated so we'll give you example code - you can adapt the code to collapse other categories like the neurodivergent or birth order options. Be very careful with the spelling, it needs to be exact for <code>recode</code> to work.</li>
+<li>If you're doing birth order, be aware that it is currently stored as a factor because we're using it as a category. What this means is that you can't perform any numeric operations on it in its current state (e.g., you can't calculate the mean birth order or use filter to drop participants above or below a certain value). If you need to do anything like this, create a new variable that recodes this data <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>.</li>
 <li>Finally, add <code>drop_na(IV)</code> and <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code> to your code (see below) where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). <code>droplevels</code> removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).</li>
 </ol>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
@@ -441,7 +442,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-03-04.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-03-07.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
