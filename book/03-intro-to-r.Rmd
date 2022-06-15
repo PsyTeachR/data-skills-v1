@@ -130,7 +130,7 @@ My name is `r name` and I am `r age` years old. It is `r next_birthday - today` 
 
 ## Activity 8: Knitting your file
 
-Nearly finished! As our final step we are going to "knit" our file. This simply means that we're going to compile our code into a document that is more presentable. To do this click `Knit` -> `Knit to HMTL`. R Markdown will create a new HTML document and it will automatically save this file in your working directory. 
+Nearly finished! As our final step we are going to "knit" our file. This simply means that we're going to compile our code into a document that is more presentable. To do this click `Knit` -> `Knit to HTML`. R Markdown will create a new HTML document and it will automatically save this file in your working directory. 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
