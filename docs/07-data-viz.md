@@ -10,15 +10,15 @@ There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/Q9BA93fhXCTrT
 
 In Data Wrangling 1 and 2 we were introduced to the tidyverse package, `dplyr`, and its six important functions. As a recap, which function(s) would you use to approach each of the following problems?
 
-* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>arrange()</option><option value='answer'>filter()</option><option value=''>mutate()</option><option value=''>select()</option><option value=''>group_by()</option><option value=''>summarise()</option></select> function.
+* We have a dataset of 400 adults, but we want to remove anyone with an age of 50 years or more. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>group_by()</option><option value=''>select()</option><option value=''>mutate()</option><option value='answer'>filter()</option><option value=''>summarise()</option><option value=''>arrange()</option></select> function.
 
-* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>mutate()</option><option value=''>group_by()</option><option value=''>filter()</option><option value=''>arrange()</option><option value=''>select()</option><option value='answer'>summarise()</option></select> function.
+* We are interested in overall summary statistics for our data, such as the overall average and total number of observations. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>filter()</option><option value='answer'>summarise()</option><option value=''>select()</option><option value=''>arrange()</option><option value=''>mutate()</option><option value=''>group_by()</option></select> function.
 
-* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value=''>summarise()</option><option value=''>group_by()</option><option value='answer'>mutate()</option><option value=''>filter()</option><option value=''>select()</option><option value=''>arrange()</option></select> function.
+* Our dataset has a column with the number of cats a person has, and a column with the number of dogs. We want to calculate a new column which contains the total number of pets each participant has. To do this, we could use the <select class='webex-select'><option value='blank'></option><option value='answer'>mutate()</option><option value=''>group_by()</option><option value=''>select()</option><option value=''>arrange()</option><option value=''>filter()</option><option value=''>summarise()</option></select> function.
 
-* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='webex-select'><option value='blank'></option><option value='answer'>group_by() and summarise()</option><option value=''>filter() and select()</option><option value=''>arrange() and mutate()</option><option value=''>group_by() and arrange()</option></select> functions.
+* We want to calculate the average for each participant in our dataset. To do this we could use the <select class='webex-select'><option value='blank'></option><option value='answer'>group_by() and summarise()</option><option value=''>group_by() and arrange()</option><option value=''>arrange() and mutate()</option><option value=''>filter() and select()</option></select> functions.
 
-* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='webex-select'><option value='blank'></option><option value=''>group_by() and mutate()</option><option value='answer'>mutate() and filter()</option><option value='answer'>arrange() and select()</option><option value=''>select() and summarise()</option></select> functions.
+* We want to order a dataframe of participants by the number of cats that they own, but want our new dataframe to only contain some of our columns. To do this we could use the <select class='webex-select'><option value='blank'></option><option value=''>select() and summarise()</option><option value=''>group_by() and mutate()</option><option value='answer'>arrange() and select()</option><option value='answer'>mutate() and filter()</option></select> functions.
 
 ## Data visualisation
 
@@ -63,7 +63,15 @@ summarydata <- select(.data = all_dat,
 
 
 <div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
+<p>If you get an error message when using select that says
+<code>unused argument</code> it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+<code>select</code> with <code>dplyr::select</code> which tells R
+exactly which version of the select function to use. We'd recommend
+restarting the session because this will get you in the habit and it's a
+useful thing to try for a range of problems</p>
 </div>
 
 ## Activity 3: Factors
@@ -242,7 +250,12 @@ ggplot(summarydata, aes(x = sex, fill = sex)) +
 
 
 <div class="warning">
-<p>In R terms, <code>ggplot2</code> is a fairly old package. As a result, the use of pipes wasn't included when it was originally written. As you can see in the code above, the layers of the code are separated by <code>+</code> rather than <code>%&gt;%</code>. In this case, <code>+</code> is doing essentially the same job as a pipe - be careful not to confuse them.</p>
+<p>In R terms, <code>ggplot2</code> is a fairly old package. As a
+result, the use of pipes wasn't included when it was originally written.
+As you can see in the code above, the layers of the code are separated
+by <code>+</code> rather than <code>%&gt;%</code>. In this case,
+<code>+</code> is doing essentially the same job as a pipe - be careful
+not to confuse them.</p>
 </div>
 
 ## Activity 5: Violin-boxplot

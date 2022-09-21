@@ -69,7 +69,11 @@ Your Markdown document should now look something like this:
 What you have created is a **code chunk**. In R Markdown, anything written in the white space is regarded as normal text, and anything written in a grey code chunk is assumed to be code. This makes it easy to combine both text and code in one document.
 
 <div class="warning">
-<p>When you create a new code chunk you should notice that the grey box starts and ends with three back ticks ```. One common mistake is to accidentally delete these back ticks. Remember, code chunks are grey and text entry is white - if the colour of certain parts of your Markdown doesn't look right, check that you haven't deleted the back ticks.</p>
+<p>When you create a new code chunk you should notice that the grey box
+starts and ends with three back ticks ```. One common mistake is to
+accidentally delete these back ticks. Remember, code chunks are grey and
+text entry is white - if the colour of certain parts of your Markdown
+doesn't look right, check that you haven't deleted the back ticks.</p>
 </div>
 
 ## Activity 5: Write some code
@@ -129,7 +133,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is -239 days until my birthday.**
+**My name is Emily and I am 35 years old. It is -437 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 

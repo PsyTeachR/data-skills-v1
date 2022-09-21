@@ -4,7 +4,7 @@ In this chapter, we will cover how to use R and RStudio at the University of Gla
 
 This is a long chapter but we don't expect you to memorise all the information that is contained in it and some sections of it will not make sense until you start writing your own code - just make sure you know what help is available!
 
-There is a [walkthrough video](https://moodle.gla.ac.uk/filter/echo360/lti_launch.php?url=https%3A%2F%2Fecho360.org.uk%2Flti%2F73750256-551c-47b5-9f1b-247567d647c2%3FmediaId%3D2398dd0c-864a-4a2f-9a43-9e34f005e808%26autoplay%3Dfalse%26automute%3Dfalse&cmid=2529962) of this chapter available via Echo360 (Moodle login required) - I strongly encourage you to read through the chapter first before watching the video.
+There is a [walkthrough video](https://echo360.org.uk/media/4fbb8312-acd4-4fed-ad63-a8cec442457b/public) of this chapter available via Echo360 - I strongly encourage you to read through the chapter first before watching the video.
 
 ## R and RStudio
 
@@ -98,7 +98,14 @@ This time R has still produced 5 random numbers, but now this set of numbers has
 
 
 <div class="info">
-<p>If you're looking up examples of code online, you may often see code that starts with the function <code>set.seed()</code>. This function controls the random number generator - if you're using any functions that generate numbers randomly (such as <code>rnorm()</code>), running <code>set.seed()</code> will ensure that you get the same result (in some cases this may not be what you want to do). We call <code>set.seed()</code> in this example because it means that you will get the same random numbers as this book.</p>
+<p>If you're looking up examples of code online, you may often see code
+that starts with the function <code>set.seed()</code>. This function
+controls the random number generator - if you're using any functions
+that generate numbers randomly (such as <code>rnorm()</code>), running
+<code>set.seed()</code> will ensure that you get the same result (in
+some cases this may not be what you want to do). We call
+<code>set.seed()</code> in this example because it means that you will
+get the same random numbers as this book.</p>
 </div>
 
 ## Argument names
@@ -153,7 +160,10 @@ install.packages("tidyverse")
 You only need to install a package once, however, each time you start R you need to load the packages you want to use, in a similar way that you need to install an app on your phone once, but you need to open it every time you want to use it.
 
 <div class="danger">
-<p>If you get an error message that says something like "WARNING: Rtools is required to build R packages" you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
+<p>If you get an error message that says something like "WARNING: Rtools
+is required to build R packages" you may need to download and install an
+extra bit of software called <a
+href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.</p>
 </div>
 
 To load packages we use the function `library()`. Typically you would start any analysis script by loading all of the packages you need, but we will come back to that in the next chapter.
@@ -177,7 +187,12 @@ Now that we've loaded the `tidyverse` package we can use any of the functions it
 In addition to updates to R and R Studio, the creators of packages also sometimes update their code. This can be to add functions to a package, or it can be to fix errors. One thing to avoid is unintentionally updating an installed package. When you run `install.packages()` it will always install the latest version of the package and it will overwrite any older versions you may have installed. Sometimes this isn't a problem, however, sometimes you will find that the update means your code no longer works as the package has changed substantially. It is possible to revert back to an older version of a package but try to avoid this anyway.
 
 <div class="danger">
-<p>To avoid accidentally overwriting a package with a later version, you should <strong>never</strong> include <code>install.packages()</code> in your analysis scripts in case you, or someone else runs the code by mistake. Remember, the server will already have all of the packages you need for this course so you only need to install packages if you are using your own machine.</p>
+<p>To avoid accidentally overwriting a package with a later version, you
+should <strong>never</strong> include <code>install.packages()</code> in
+your analysis scripts in case you, or someone else runs the code by
+mistake. Remember, the server will already have all of the packages you
+need for this course so you only need to install packages if you are
+using your own machine.</p>
 </div>
 
 ## Package conflicts {#conflicts}
@@ -248,7 +263,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of -65 days
+## Time difference of -263 days
 ## [1] 17.66644
 ```
 
@@ -260,13 +275,17 @@ decade <- age + 10
 ```
 
 <div class="try">
-<p>You may find it helpful to read <code>&lt;-</code> as <code>contains</code>, e.g., <code>name</code> contains the text <code>emily</code>.</p>
+<p>You may find it helpful to read <code>&lt;-</code> as
+<code>contains</code>, e.g., <code>name</code> contains the text
+<code>emily</code>.</p>
 </div>
 
 You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can be numbers, text, or the result of operations, and that they can be used in further operations to create new variables.
 
 <div class="info">
-<p>You may also see objects referred to as 'variables'. There is a difference between the two in programming terms, however, they are used synonymously very frequently.</p>
+<p>You may also see objects referred to as 'variables'. There is a
+difference between the two in programming terms, however, they are used
+synonymously very frequently.</p>
 </div>
 
 ## Looking after the environment
@@ -321,7 +340,7 @@ citation()
 ## 
 ## To cite R in publications use:
 ## 
-##   R Core Team (2021). R: A language and environment for statistical
+##   R Core Team (2022). R: A language and environment for statistical
 ##   computing. R Foundation for Statistical Computing, Vienna, Austria.
 ##   URL https://www.R-project.org/.
 ## 
@@ -332,7 +351,7 @@ citation()
 ##     author = {{R Core Team}},
 ##     organization = {R Foundation for Statistical Computing},
 ##     address = {Vienna, Austria},
-##     year = {2021},
+##     year = {2022},
 ##     url = {https://www.R-project.org/},
 ##   }
 ## 
@@ -350,8 +369,12 @@ citation("tidyverse")
 
 ```
 ## 
-##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
-##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+## Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
+## Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,
+## Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi
+## K, Vaughan D, Wilke C, Woo K, Yutani H (2019). "Welcome to the
+## tidyverse." _Journal of Open Source Software_, *4*(43), 1686. doi:
+## 10.21105/joss.01686 (URL: https://doi.org/10.21105/joss.01686).
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 

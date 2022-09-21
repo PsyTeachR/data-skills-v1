@@ -1,8 +1,15 @@
 # Data wrangling 1
 
 <div class="info">
-<p>So far you have been introduced to the R environment (e.g. setting your working directory and the difference between .R and .Rmd files). You also began working with messy data by having a go at loading in datasets using <code>read_csv()</code>, joined files together using <code>inner_join()</code>, and pulled out variables of interest using <code>select()</code>.</p>
-<p>In this chapter, we'll be moving on to becoming familiar with the Wickham Six and the functionality of the R package, <code>tidyverse</code>!</p>
+<p>So far you have been introduced to the R environment (e.g. setting
+your working directory and the difference between .R and .Rmd files).
+You also began working with messy data by having a go at loading in
+datasets using <code>read_csv()</code>, joined files together using
+<code>inner_join()</code>, and pulled out variables of interest using
+<code>select()</code>.</p>
+<p>In this chapter, we'll be moving on to becoming familiar with the
+Wickham Six and the functionality of the R package,
+<code>tidyverse</code>!</p>
 </div>
 
 Data comes in lots of different formats. One of the most common formats is that of a two-dimensional table (the two dimensions being rows and columns).  Usually, each row stands for a separate observation (e.g. a subject), and each column stands for a different variable (e.g. a response, category, or group). A key benefit of tabular data (i.e., data in a table) is that it allows you to store different types of data-numerical measurements, alphanumeric labels, categorical descriptors-all in one place.
@@ -70,14 +77,61 @@ The package `babynames` contains an object of the same name that contains all th
 
 <div class="kable-table">
 
-| year|sex |name      |    n|      prop|
-|----:|:---|:---------|----:|---------:|
-| 1880|F   |Mary      | 7065| 0.0723836|
-| 1880|F   |Anna      | 2604| 0.0266790|
-| 1880|F   |Emma      | 2003| 0.0205215|
-| 1880|F   |Elizabeth | 1939| 0.0198658|
-| 1880|F   |Minnie    | 1746| 0.0178884|
-| 1880|F   |Margaret  | 1578| 0.0161672|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> year </th>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> prop </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Mary </td>
+   <td style="text-align:right;"> 7065 </td>
+   <td style="text-align:right;"> 0.0723836 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Anna </td>
+   <td style="text-align:right;"> 2604 </td>
+   <td style="text-align:right;"> 0.0266790 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Emma </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0205215 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Elizabeth </td>
+   <td style="text-align:right;"> 1939 </td>
+   <td style="text-align:right;"> 0.0198658 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Minnie </td>
+   <td style="text-align:right;"> 1746 </td>
+   <td style="text-align:right;"> 0.0178884 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Margaret </td>
+   <td style="text-align:right;"> 1578 </td>
+   <td style="text-align:right;"> 0.0161672 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
@@ -177,7 +231,15 @@ select(.data = babynames, # the object you want to select variables from
 ```
 
 <div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
+<p>If you get an error message when using select that says
+<code>unused argument</code> it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+<code>select</code> with <code>dplyr::select</code> which tells R
+exactly which version of the select function to use. We'd recommend
+restarting the session because this will get you in the habit and it's a
+useful thing to try for a range of problems</p>
 </div>
 
 Alternatively, you can also tell R which variables you don't want, in this case, rather than telling R to select `year`, `sex`, `name` and `prop`, we can simply tell it to drop the column `n` using the minus sign `-` before the variable name.
@@ -304,14 +366,68 @@ head(new_dat)
 
 <div class="kable-table">
 
-| year|sex |name      |    n|      prop| decade|
-|----:|:---|:---------|----:|---------:|------:|
-| 1880|F   |Mary      | 7065| 0.0723836|   1880|
-| 1880|F   |Anna      | 2604| 0.0266790|   1880|
-| 1880|F   |Emma      | 2003| 0.0205215|   1880|
-| 1880|F   |Elizabeth | 1939| 0.0198658|   1880|
-| 1880|F   |Minnie    | 1746| 0.0178884|   1880|
-| 1880|F   |Margaret  | 1578| 0.0161672|   1880|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> year </th>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> n </th>
+   <th style="text-align:right;"> prop </th>
+   <th style="text-align:right;"> decade </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Mary </td>
+   <td style="text-align:right;"> 7065 </td>
+   <td style="text-align:right;"> 0.0723836 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Anna </td>
+   <td style="text-align:right;"> 2604 </td>
+   <td style="text-align:right;"> 0.0266790 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Emma </td>
+   <td style="text-align:right;"> 2003 </td>
+   <td style="text-align:right;"> 0.0205215 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Elizabeth </td>
+   <td style="text-align:right;"> 1939 </td>
+   <td style="text-align:right;"> 0.0198658 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Minnie </td>
+   <td style="text-align:right;"> 1746 </td>
+   <td style="text-align:right;"> 0.0178884 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Margaret </td>
+   <td style="text-align:right;"> 1578 </td>
+   <td style="text-align:right;"> 0.0161672 </td>
+   <td style="text-align:right;"> 1880 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
@@ -333,9 +449,18 @@ summarise(.data = dat, # the data you want to use
 
 <div class="kable-table">
 
-|   total|
-|-------:|
-| 2161374|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 2161374 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
@@ -359,12 +484,32 @@ summarise(.data = group_dat,
 
 <div class="kable-table">
 
-|name      |  total|
-|:---------|------:|
-|Alexandra | 231364|
-|Beverly   | 376914|
-|Emily     | 841491|
-|Kathleen  | 711605|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> total </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Alexandra </td>
+   <td style="text-align:right;"> 231364 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Beverly </td>
+   <td style="text-align:right;"> 376914 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Emily </td>
+   <td style="text-align:right;"> 841491 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kathleen </td>
+   <td style="text-align:right;"> 711605 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
@@ -381,12 +526,37 @@ summarise(group_dat,
 
 <div class="kable-table">
 
-|name      | mean_year| median_year|
-|:---------|---------:|-----------:|
-|Alexandra |  1977.470|       192.0|
-|Beverly   |  3089.459|       709.5|
-|Emily     |  6097.761|      1391.5|
-|Kathleen  |  5156.558|      3098.0|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> name </th>
+   <th style="text-align:right;"> mean_year </th>
+   <th style="text-align:right;"> median_year </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Alexandra </td>
+   <td style="text-align:right;"> 1977.470 </td>
+   <td style="text-align:right;"> 192.0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Beverly </td>
+   <td style="text-align:right;"> 3089.459 </td>
+   <td style="text-align:right;"> 709.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Emily </td>
+   <td style="text-align:right;"> 6097.761 </td>
+   <td style="text-align:right;"> 1391.5 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Kathleen </td>
+   <td style="text-align:right;"> 5156.558 </td>
+   <td style="text-align:right;"> 3098.0 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
@@ -401,46 +571,202 @@ summarise(group_new_dat,
 ```
 
 ```
-## `summarise()` has grouped output by 'sex'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'sex'. You can override using the `.groups`
+## argument.
 ```
 
 <div class="kable-table">
 
-|sex | decade| mean_year| median_year|
-|:---|------:|---------:|-----------:|
-|F   |   1880| 110.57017|          13|
-|F   |   1890| 128.18406|          13|
-|F   |   1900| 131.32904|          12|
-|F   |   1910| 187.06284|          12|
-|F   |   1920| 210.54574|          12|
-|F   |   1930| 214.19867|          12|
-|F   |   1940| 262.20824|          12|
-|F   |   1950| 288.47692|          13|
-|F   |   1960| 234.71960|          12|
-|F   |   1970| 147.20851|          11|
-|F   |   1980| 134.25355|          11|
-|F   |   1990| 113.07160|          11|
-|F   |   2000|  96.45799|          11|
-|F   |   2010|  91.69925|          11|
-|M   |   1880| 100.76497|          12|
-|M   |   1890|  93.59019|          12|
-|M   |   1900|  94.38963|          12|
-|M   |   1910| 180.83854|          12|
-|M   |   1920| 226.78161|          13|
-|M   |   1930| 253.28957|          13|
-|M   |   1940| 368.40859|          14|
-|M   |   1950| 460.86555|          14|
-|M   |   1960| 415.51792|          13|
-|M   |   1970| 265.55153|          12|
-|M   |   1980| 236.98189|          11|
-|M   |   1990| 187.35187|          11|
-|M   |   2000| 149.06677|          11|
-|M   |   2010| 133.67495|          11|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> sex </th>
+   <th style="text-align:right;"> decade </th>
+   <th style="text-align:right;"> mean_year </th>
+   <th style="text-align:right;"> median_year </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:right;"> 110.57017 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1890 </td>
+   <td style="text-align:right;"> 128.18406 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1900 </td>
+   <td style="text-align:right;"> 131.32904 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1910 </td>
+   <td style="text-align:right;"> 187.06284 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1920 </td>
+   <td style="text-align:right;"> 210.54574 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1930 </td>
+   <td style="text-align:right;"> 214.19867 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1940 </td>
+   <td style="text-align:right;"> 262.20824 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1950 </td>
+   <td style="text-align:right;"> 288.47692 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1960 </td>
+   <td style="text-align:right;"> 234.71960 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1970 </td>
+   <td style="text-align:right;"> 147.20851 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1980 </td>
+   <td style="text-align:right;"> 134.25355 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 113.07160 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 96.45799 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 91.69925 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1880 </td>
+   <td style="text-align:right;"> 100.76497 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1890 </td>
+   <td style="text-align:right;"> 93.59019 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1900 </td>
+   <td style="text-align:right;"> 94.38963 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1910 </td>
+   <td style="text-align:right;"> 180.83854 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1920 </td>
+   <td style="text-align:right;"> 226.78161 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1930 </td>
+   <td style="text-align:right;"> 253.28957 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1940 </td>
+   <td style="text-align:right;"> 368.40859 </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1950 </td>
+   <td style="text-align:right;"> 460.86555 </td>
+   <td style="text-align:right;"> 14 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1960 </td>
+   <td style="text-align:right;"> 415.51792 </td>
+   <td style="text-align:right;"> 13 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1970 </td>
+   <td style="text-align:right;"> 265.55153 </td>
+   <td style="text-align:right;"> 12 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1980 </td>
+   <td style="text-align:right;"> 236.98189 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 1990 </td>
+   <td style="text-align:right;"> 187.35187 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 2000 </td>
+   <td style="text-align:right;"> 149.06677 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> M </td>
+   <td style="text-align:right;"> 2010 </td>
+   <td style="text-align:right;"> 133.67495 </td>
+   <td style="text-align:right;"> 11 </td>
+  </tr>
+</tbody>
+</table>
 
 </div>
 
 <div class="info">
-<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.</p>
+<p>If you get what looks like an error that says
+<code>summarise() ungrouping output (override with .groups argument)</code>don't
+worry, this isn't an error it's just R telling you what it's done. This
+message was included in a very recent update to the
+<code>tidyverse</code> which is why it doesn't appear on some of the
+walkthrough vidoes.</p>
 </div>
 
 
@@ -465,7 +791,13 @@ pipe_summary <- mutate(babynames, decade = floor(year/10) *10) %>%
 The reason that this function is called a pipe is because it 'pipes' the data through to the next function. When you wrote the code previously, the first argument of each function was the dataset you wanted to work on. When you use pipes it will automatically take the data from the previous line of code so you don't need to specify it again.
 
 <div class="try">
-<p>When learning to code it can be a useful practice to read your code 'out loud' in full sentences to help you understand what it is doing. You can read the code above as "create a new variable called decade AND THEN only keep the names Emily, Kathleen, Alexandra and Beverly that belong to female babies AND THEN group the dataset by name and decade AND THEN calculate the mean number of babies with each name per decade." Try doing this each time you write a new bit of code.</p>
+<p>When learning to code it can be a useful practice to read your code
+'out loud' in full sentences to help you understand what it is doing.
+You can read the code above as "create a new variable called decade AND
+THEN only keep the names Emily, Kathleen, Alexandra and Beverly that
+belong to female babies AND THEN group the dataset by name and decade
+AND THEN calculate the mean number of babies with each name per decade."
+Try doing this each time you write a new bit of code.</p>
 </div>
 
 Some people find pipes a bit tricky to understand from a conceptual point of view, however, it's well worth learning to use them as when your code starts getting longer they are much more efficient and mean you have to write less code which is always a good thing! 

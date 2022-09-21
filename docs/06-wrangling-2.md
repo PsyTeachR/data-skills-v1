@@ -37,7 +37,15 @@ summarydata <- select(all_dat, ahiTotal, cesdTotal, sex, age, educ, income, occa
 ```
 
 <div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
+<p>If you get an error message when using select that says
+<code>unused argument</code> it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+<code>select</code> with <code>dplyr::select</code> which tells R
+exactly which version of the select function to use. We'd recommend
+restarting the session because this will get you in the habit and it's a
+useful thing to try for a range of problems</p>
 </div>
 
 ******
@@ -140,7 +148,12 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 ```
 
 <div class="info">
-<p>If you get what looks like an error that says <code>summarise() ungrouping output (override with .groups argument)</code>don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the <code>tidyverse</code> which is why it doesn't appear on some of the walkthrough vidoes.</p>
+<p>If you get what looks like an error that says
+<code>summarise() ungrouping output (override with .groups argument)</code>don't
+worry, this isn't an error it's just R telling you what it's done. This
+message was included in a very recent update to the
+<code>tidyverse</code> which is why it doesn't appear on some of the
+walkthrough vidoes.</p>
 </div>
 
 ******
@@ -149,7 +162,7 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 
 * What does `group_by()` do? 
 
-<div class='webex-radiogroup' id='radio_YGRDVMFDHB'><label><input type="radio" autocomplete="off" name="radio_YGRDVMFDHB" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_YGRDVMFDHB" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_YGRDVMFDHB" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_YGRDVMFDHB" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
+<div class='webex-radiogroup' id='radio_VWLRIPNLWQ'><label><input type="radio" autocomplete="off" name="radio_VWLRIPNLWQ" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_VWLRIPNLWQ" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_VWLRIPNLWQ" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_VWLRIPNLWQ" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
 
 
 * How would you change the code to group by education rather than `Happiness_Category`?

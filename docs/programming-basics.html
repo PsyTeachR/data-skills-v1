@@ -7,7 +7,7 @@
 <title>Chapter 2 Programming basics | Data Skills</title>
 <meta name="author" content="Heather Cleland-Woods and Emily Nordmann">
 <meta name="description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.25 with bs4_book()">
 <meta property="og:title" content="Chapter 2 Programming basics | Data Skills">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://psyteachr.github.io/data-skills-v1/programming-basics.html">
@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="Chapter 2 Programming basics | Data Skills">
 <meta name="twitter:description" content="In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get...">
 <meta name="twitter:image" content="https://psyteachr.github.io/data-skills-v1/images/logos/twitter_card.png">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=G-6NP3MF25W3"></script><script>
@@ -26,7 +26,33 @@
       gtag('js', new Date());
 
       gtag('config', 'G-6NP3MF25W3');
-    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="include/psyteachr.css">
+    </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="include/psyteachr.css">
 <link rel="stylesheet" href="include/webex.css">
 <link rel="stylesheet" href="include/style.css">
 </head>
@@ -88,7 +114,7 @@
 </h1>
 <p>In this chapter, we will cover how to use R and RStudio at the University of Glasgow as well as some basic programming concepts and terminology, common pitfalls, helpful hints, and where to get help. Those of you who have no programming experience should find this chapter particularly helpful, however, even if you've used R before there may be some helpful hints and tips so please make sure you read through this chapter before the moving on.</p>
 <p>This is a long chapter but we don't expect you to memorise all the information that is contained in it and some sections of it will not make sense until you start writing your own code - just make sure you know what help is available!</p>
-<p>There is a <a href="https://moodle.gla.ac.uk/filter/echo360/lti_launch.php?url=https%3A%2F%2Fecho360.org.uk%2Flti%2F73750256-551c-47b5-9f1b-247567d647c2%3FmediaId%3D2398dd0c-864a-4a2f-9a43-9e34f005e808%26autoplay%3Dfalse%26automute%3Dfalse&amp;cmid=2529962">walkthrough video</a> of this chapter available via Echo360 (Moodle login required) - I strongly encourage you to read through the chapter first before watching the video.</p>
+<p>There is a <a href="https://echo360.org.uk/media/4fbb8312-acd4-4fed-ad63-a8cec442457b/public">walkthrough video</a> of this chapter available via Echo360 - I strongly encourage you to read through the chapter first before watching the video.</p>
 <div id="r-and-rstudio" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> R and RStudio<a class="anchor" aria-label="anchor" href="#r-and-rstudio"><i class="fas fa-link"></i></a>
@@ -171,7 +197,14 @@ Figure 2.1: RStudio interface
 <p>This time R has still produced 5 random numbers, but now this set of numbers has a mean of 10 and an sd of 2 as specified. Always remember to use the help documentation to help you understand what arguments a function requires.</p>
 <div class="info">
 <p>
-If you're looking up examples of code online, you may often see code that starts with the function <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>. This function controls the random number generator - if you're using any functions that generate numbers randomly (such as <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>), running <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> will ensure that you get the same result (in some cases this may not be what you want to do). We call <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> in this example because it means that you will get the same random numbers as this book.
+If you're looking up examples of code online, you may often see code
+that starts with the function <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code>. This function
+controls the random number generator - if you're using any functions
+that generate numbers randomly (such as <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code>), running
+<code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> will ensure that you get the same result (in
+some cases this may not be what you want to do). We call
+<code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> in this example because it means that you will
+get the same random numbers as this book.
 </p>
 </div>
 </div>
@@ -222,7 +255,9 @@ Figure 2.2: Tab auto-complete
 <p>You only need to install a package once, however, each time you start R you need to load the packages you want to use, in a similar way that you need to install an app on your phone once, but you need to open it every time you want to use it.</p>
 <div class="danger">
 <p>
-If you get an error message that says something like "WARNING: Rtools is required to build R packages" you may need to download and install an extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.
+If you get an error message that says something like "WARNING: Rtools
+is required to build R packages" you may need to download and install an
+extra bit of software called <a href="https://cran.r-project.org/bin/windows/Rtools/">Rtools</a>.
 </p>
 </div>
 <p>To load packages we use the function <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Typically you would start any analysis script by loading all of the packages you need, but we will come back to that in the next chapter.</p>
@@ -246,7 +281,12 @@ If you get an error message that says something like "WARNING: Rtools is require
 <p>In addition to updates to R and R Studio, the creators of packages also sometimes update their code. This can be to add functions to a package, or it can be to fix errors. One thing to avoid is unintentionally updating an installed package. When you run <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> it will always install the latest version of the package and it will overwrite any older versions you may have installed. Sometimes this isn't a problem, however, sometimes you will find that the update means your code no longer works as the package has changed substantially. It is possible to revert back to an older version of a package but try to avoid this anyway.</p>
 <div class="danger">
 <p>
-To avoid accidentally overwriting a package with a later version, you should <strong>never</strong> include <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in your analysis scripts in case you, or someone else runs the code by mistake. Remember, the server will already have all of the packages you need for this course so you only need to install packages if you are using your own machine.
+To avoid accidentally overwriting a package with a later version, you
+should <strong>never</strong> include <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> in
+your analysis scripts in case you, or someone else runs the code by
+mistake. Remember, the server will already have all of the packages you
+need for this course so you only need to install packages if you are
+using your own machine.
 </p>
 </div>
 </div>
@@ -273,7 +313,7 @@ To avoid accidentally overwriting a package with a later version, you should <st
 <h2>
 <span class="header-section-number">2.14</span> Objects<a class="anchor" aria-label="anchor" href="#objects"><i class="fas fa-link"></i></a>
 </h2>
-<p>A large part of your coding will involve creating and manipulating objects. Objects contain stuff. That stuff can be numbers, words, or the result of operations and analyses.You assign content to an object using <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code>.</p>
+<p>A large part of your coding will involve creating and manipulating objects. Objects contain stuff. That stuff can be numbers, words, or the result of operations and analyses.You assign content to an object using <code>&lt;-</code>.</p>
 </div>
 <div id="activity-5-create-some-objects" class="section level2" number="2.15">
 <h2>
@@ -302,20 +342,24 @@ Figure 2.3: Objects in the environment
 <span class="va">new_year</span> <span class="op">-</span> <span class="va">today</span>
 <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 45
-## Time difference of -65 days
+## Time difference of -263 days
 ## [1] 17.66644</code></pre>
 <p>Finally, you can store the result of these operations in a new object:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">decade</span> <span class="op">&lt;-</span> <span class="va">age</span> <span class="op">+</span> <span class="fl">10</span></code></pre></div>
 <div class="try">
 <p>
-You may find it helpful to read <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> as <code>contains</code>, e.g., <code>name</code> contains the text <code>emily</code>.
+You may find it helpful to read <code>&lt;-</code> as
+<code>contains</code>, e.g., <code>name</code> contains the text
+<code>emily</code>.
 </p>
 </div>
 <p>You will constantly be creating objects throughout this course and you will learn more about them and how they behave as we go along, however, for now it is enough to understand that they are a way of saving values, that these values can be numbers, text, or the result of operations, and that they can be used in further operations to create new variables.</p>
 <div class="info">
 <p>
-You may also see objects referred to as 'variables'. There is a difference between the two in programming terms, however, they are used synonymously very frequently.
+You may also see objects referred to as 'variables'. There is a
+difference between the two in programming terms, however, they are used
+synonymously very frequently.
 </p>
 </div>
 </div>
@@ -325,8 +369,8 @@ You may also see objects referred to as 'variables'. There is a difference betwe
 </h2>
 <p>If you've been writing a lot of code you may find that the environment pane (or workspace) has become cluttered with many objects. This can make it difficult to figure out which object you need and therefore you run the risk of using the wrong data frame. If you're working on a new dataset, or if you've tried lots of different code before getting the final version, it is good practice to remember to clear the environment to avoid using the wrong object. You can do this in several way.</p>
 <ol style="list-style-type: decimal">
-<li>To remove individual objects, you can type <code><a href="https://rdrr.io/r/base/rm.html">rm(object_name)</a></code> in the console. Try this now to remove one of the objects you created in the previous section.</li>
-<li>To clear all objects from the environment run <code><a href="https://rdrr.io/r/base/rm.html">rm(list = ls())</a></code> in the console.</li>
+<li>To remove individual objects, you can type <code>rm(object_name)</code> in the console. Try this now to remove one of the objects you created in the previous section.</li>
+<li>To clear all objects from the environment run <code>rm(list = ls())</code> in the console.</li>
 <li>To clear all objects from the environment you can also click the broom icon in the environment pane.</li>
 </ol>
 <div class="figure" style="text-align: center">
@@ -377,7 +421,7 @@ Figure 2.6: The truth about programming
 <pre><code>## 
 ## To cite R in publications use:
 ## 
-##   R Core Team (2021). R: A language and environment for statistical
+##   R Core Team (2022). R: A language and environment for statistical
 ##   computing. R Foundation for Statistical Computing, Vienna, Austria.
 ##   URL https://www.R-project.org/.
 ## 
@@ -388,7 +432,7 @@ Figure 2.6: The truth about programming
 ##     author = {{R Core Team}},
 ##     organization = {R Foundation for Statistical Computing},
 ##     address = {Vienna, Austria},
-##     year = {2021},
+##     year = {2022},
 ##     url = {https://www.R-project.org/},
 ##   }
 ## 
@@ -399,8 +443,12 @@ Figure 2.6: The truth about programming
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/citation.html">citation</a></span><span class="op">(</span><span class="st">"tidyverse"</span><span class="op">)</span></code></pre></div>
 <pre><code>## 
-##   Wickham et al., (2019). Welcome to the tidyverse. Journal of Open
-##   Source Software, 4(43), 1686, https://doi.org/10.21105/joss.01686
+## Wickham H, Averick M, Bryan J, Chang W, McGowan LD, François R,
+## Grolemund G, Hayes A, Henry L, Hester J, Kuhn M, Pedersen TL, Miller E,
+## Bache SM, Müller K, Ooms J, Robinson D, Seidel DP, Spinu V, Takahashi
+## K, Vaughan D, Wilke C, Woo K, Yutani H (2019). "Welcome to the
+## tidyverse." _Journal of Open Source Software_, *4*(43), 1686. doi:
+## 10.21105/joss.01686 (URL: https://doi.org/10.21105/joss.01686).
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -486,7 +534,7 @@ Explain This Answer
 <button>
 Explain This Answer
 </button>
-<p>The default form for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> is <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm(n, mean, sd)</a></code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code></p>
+<p>The default form for <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> is <code>rnorm(n, mean, sd)</code>. If you need help remembering what each argument of a function does, look up the help documentation by running <code><a href="https://rdrr.io/r/stats/Normal.html">?rnorm</a></code></p>
 </div>
 <p><br><strong>Question 3.</strong> If you have two packages that have functions with the same name and you want to specify exactly which package to use, what code would you use?</p>
 <p><select class="webex-select"><option value="blank"></option>
@@ -508,7 +556,7 @@ Explain This Answer
 <option value="answer">brackets</option>
 <option value="">numbers</option>
 <option value="">computers</option></select>.</p>
-<p><strong>Question 6.</strong> The job of <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> is to send the output from the function to a/an <select class="webex-select"><option value="blank"></option>
+<p><strong>Question 6.</strong> The job of <code>&lt;-</code> is to send the output from the function to a/an <select class="webex-select"><option value="blank"></option>
 <option value="">argument</option>
 <option value="">assignment</option>
 <option value="answer">object</option></select>.</p>
@@ -747,7 +795,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-03-07.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-09-21.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

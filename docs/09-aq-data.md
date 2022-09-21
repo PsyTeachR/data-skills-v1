@@ -4,7 +4,13 @@
 Welcome back to Psych 1B! This semester we're going to build on the data skills you developed in the first semester by adding in a couple of new data wrangling functions, running probability simulations in preparation for statistics in level 2, and analysing your own data for the group project.
 
 <div class="info">
-<p>If you haven't yet installed R on your own machine, we strongly encourage you to do so as it means that a) you're not reliant on the server b) you don't need to be connected to the internet to use R and c) it makes it much easier to check your homework files before you submit them. There is more info in the <a href="https://psyteachr.github.io/ug1-practical/installing-r-on-your-computer-1.html">Appendix</a> and you can also attend a GTA support session if you need help.</p>
+<p>If you haven't yet installed R on your own machine, we strongly
+encourage you to do so as it means that a) you're not reliant on the
+server b) you don't need to be connected to the internet to use R and c)
+it makes it much easier to check your homework files before you submit
+them. There is more info in the <a
+href="https://psyteachr.github.io/ug1-practical/installing-r-on-your-computer-1.html">Appendix</a>
+and you can also attend a GTA support session if you need help.</p>
 </div>
 
 It would be nice to always get data formatted in the way that you want it, but one of the challenges as a scientist is dealing with Other People’s Data. People often structure data in ways that is convenient for data entry, but not very convenient for data analysis, and so, much effort must be expended ’wrangling’ data into shape before you can do more interesting things with it. Additionally, performing analyses often requires pulling together data obtained from different sources: you have done this in semester 1 by combining the participant information with the depression and happiness data. In this semester, we are going to give you some tips on how to structure data, and introduce strategies for transforming and combining data from different sources.
@@ -15,19 +21,56 @@ For Psych 1B we're going to use a different dataset for our exercises based upon
 
 Table 1: The ten items on the AQ-10.
 
-
-|Q_No |Question                                                                                      |
-|:----|:---------------------------------------------------------------------------------------------|
-|Q 1  |I often notice small sounds when others do not.                                               |
-|Q 2  |I usually concentrate more on the whole picture, rather than small details.                   |
-|Q 3  |I find it easy to do more than one thing at once.                                             |
-|Q 4  |If there is an interruption, I can switch back to what I was doing very quickly.              |
-|Q 5  |I find it easy to read between the lines when someone is talking to me.                       |
-|Q 6  |I know how to tell if someone listening to me is getting bored.                               |
-|Q 7  |When I’m reading a story, I find it difficult to work out the characters’ intentions.         |
-|Q 8  |I like to collect information about categories of things.                                     |
-|Q 9  |I find it easy to work out what someone is thinking or feeling just by looking at their face. |
-|Q 10 |I find it difficult to work out people’s intentions.                                          |
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Q_No </th>
+   <th style="text-align:left;"> Question </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q 1 </td>
+   <td style="text-align:left;"> I often notice small sounds when others do not. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 2 </td>
+   <td style="text-align:left;"> I usually concentrate more on the whole picture, rather than small details. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 3 </td>
+   <td style="text-align:left;"> I find it easy to do more than one thing at once. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 4 </td>
+   <td style="text-align:left;"> If there is an interruption, I can switch back to what I was doing very quickly. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 5 </td>
+   <td style="text-align:left;"> I find it easy to read between the lines when someone is talking to me. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 6 </td>
+   <td style="text-align:left;"> I know how to tell if someone listening to me is getting bored. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 7 </td>
+   <td style="text-align:left;"> When I’m reading a story, I find it difficult to work out the characters’ intentions. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 8 </td>
+   <td style="text-align:left;"> I like to collect information about categories of things. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 9 </td>
+   <td style="text-align:left;"> I find it easy to work out what someone is thinking or feeling just by looking at their face. </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 10 </td>
+   <td style="text-align:left;"> I find it difficult to work out people’s intentions. </td>
+  </tr>
+</tbody>
+</table>
 
 Responses to each item were measured on a four-point scale: Definitely Disagree, Slightly Disagree, Slightly Agree, Definitely Agree. One of the issues with conducting research using surveys is that if we don't design them carefully, our data may be affected by response bias. One type of response bias is **acquiescence bias**, which is the finding that people have a tendancy to agree with all statements. To try and minimise the impact of this, many questionnaires will **reverse-code** some of the questions so that a positive response means agreeing with one question but disagreeing with another.
 
@@ -79,7 +122,12 @@ You should create a new code chunk **for each activity** or each analysis step (
 * Use `read_csv()` to load in the data. you should create three objects `responses`, `scoring` and `qformats` that contain the respective data. If you need help remembering how to load in data files, check Loading Data. 
 
 <div class="info">
-<p>The solutions are at the bottom if you need them. However, as you'll discover in your memory and learning lectures, you'll learn more if you try and retrieve the code from memory. There were a couple of comments in the 1A EvaSys that said some of you felt like you were just copying and pasting - this can only be true if <strong>you choose</strong> to copy and paste.</p>
+<p>The solutions are at the bottom if you need them. However, as you'll
+discover in your memory and learning lectures, you'll learn more if you
+try and retrieve the code from memory. There were a couple of comments
+in the 1A EvaSys that said some of you felt like you were just copying
+and pasting - this can only be true if <strong>you choose</strong> to
+copy and paste.</p>
 </div>
 
 ## Activity 5: Look at the data
@@ -108,49 +156,163 @@ Let’s imagine we are doing the task by hand so that we understand the logic. O
 
 Let’s take stock of what we know. First, we know that there are two question formats, and that questions Q1, Q7, Q8, and Q10 are scored according to format F and questions Q2, Q3, Q4, Q5, Q6, and Q9 are scored according to format R. This is the information that is currently stored in `qformats`:
 
-
-|Question |QFormat |
-|:--------|:-------|
-|Q 1      |F       |
-|Q 2      |R       |
-|Q 3      |R       |
-|Q 4      |R       |
-|Q 5      |R       |
-|Q 6      |R       |
-|Q 7      |F       |
-|Q 8      |F       |
-|Q 9      |R       |
-|Q 10     |F       |
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Question </th>
+   <th style="text-align:left;"> QFormat </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q 1 </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 2 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 3 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 4 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 5 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 6 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 7 </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 8 </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 9 </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 10 </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+</tbody>
+</table>
 
 We also know that for format **F**, we award a point for **agree**, zero for **disagree**. For format **R**, a point for **disagree**, zero for **agree**. This is the information that is currently stored in `scoring`:
 
-
-|QFormat |Response            | Score|
-|:-------|:-------------------|-----:|
-|F       |Definitely Agree    |     1|
-|F       |Slightly Agree      |     1|
-|F       |Slightly Disagree   |     0|
-|F       |Definitely Disagree |     0|
-|R       |Definitely Agree    |     0|
-|R       |Slightly Agree      |     0|
-|R       |Slightly Disagree   |     1|
-|R       |Definitely Disagree |     1|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> QFormat </th>
+   <th style="text-align:left;"> Response </th>
+   <th style="text-align:right;"> Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Definitely Agree </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:left;"> Definitely Agree </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 Finally, we would need to look at the responses from each participant and then give them the correct score for the format of the question. Let’s walk through the example with the first participant. For this participant (Id = 16), we have the following responses:
   
-
-|Question |Participant 16 Response |
-|:--------|:-----------------------|
-|Q 1      |Slightly Disagree       |
-|Q 2      |Definitely Agree        |
-|Q 3      |Slightly Disagree       |
-|Q 4      |Definitely Disagree     |
-|Q 5      |Slightly Agree          |
-|Q 6      |Slightly Agree          |
-|Q 7      |Slightly Agree          |
-|Q 8      |Definitely Disagree     |
-|Q 9      |Slightly Agree          |
-|Q 10     |Slightly Agree          |
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Question </th>
+   <th style="text-align:left;"> Participant 16 Response </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q 1 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 2 </td>
+   <td style="text-align:left;"> Definitely Agree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 3 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 4 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 5 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 6 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 7 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 8 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 9 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 10 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+  </tr>
+</tbody>
+</table>
 
 Note that we have re-formatted the responses so that each response is in a separate row, rather than having all of the responses in a single row, as they are in `responses`. We have reshaped the data from its original **wide format** to **long format**. This format is called long because instead of having just one row for each participant, we now have one row for each data point and so 10 rows for each participant.
 
@@ -158,35 +320,142 @@ While this format makes it less easy to read the whole dataset in with a single 
 
 Let’s now look up the format for each question:
 
-
-|Question |Participant 16 Response |QFormat |
-|:--------|:-----------------------|:-------|
-|Q 1      |Slightly Disagree       |F       |
-|Q 2      |Definitely Agree        |R       |
-|Q 3      |Slightly Disagree       |R       |
-|Q 4      |Definitely Disagree     |R       |
-|Q 5      |Slightly Agree          |R       |
-|Q 6      |Slightly Agree          |R       |
-|Q 7      |Slightly Agree          |F       |
-|Q 8      |Definitely Disagree     |F       |
-|Q 9      |Slightly Agree          |R       |
-|Q 10     |Slightly Agree          |F       |
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Question </th>
+   <th style="text-align:left;"> Participant 16 Response </th>
+   <th style="text-align:left;"> QFormat </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q 1 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 2 </td>
+   <td style="text-align:left;"> Definitely Agree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 3 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 4 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 5 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 6 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 7 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 8 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 9 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 10 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> F </td>
+  </tr>
+</tbody>
+</table>
 
 And now that we have the format and the response, we can look up the scores:
 
-
-|Question |Participant 16 Response |QFormat | Score|
-|:--------|:-----------------------|:-------|-----:|
-|Q 1      |Slightly Disagree       |F       |     0|
-|Q 2      |Definitely Agree        |R       |     0|
-|Q 3      |Slightly Disagree       |R       |     1|
-|Q 4      |Definitely Disagree     |R       |     1|
-|Q 5      |Slightly Agree          |R       |     0|
-|Q 6      |Slightly Agree          |R       |     0|
-|Q 7      |Slightly Agree          |F       |     1|
-|Q 8      |Definitely Disagree     |F       |     0|
-|Q 9      |Slightly Agree          |R       |     0|
-|Q 10     |Slightly Agree          |F       |     1|
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> Question </th>
+   <th style="text-align:left;"> Participant 16 Response </th>
+   <th style="text-align:left;"> QFormat </th>
+   <th style="text-align:right;"> Score </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> Q 1 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 2 </td>
+   <td style="text-align:left;"> Definitely Agree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 3 </td>
+   <td style="text-align:left;"> Slightly Disagree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 4 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 5 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 6 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 7 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 8 </td>
+   <td style="text-align:left;"> Definitely Disagree </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 9 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> R </td>
+   <td style="text-align:right;"> 0 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> Q 10 </td>
+   <td style="text-align:left;"> Slightly Agree </td>
+   <td style="text-align:left;"> F </td>
+   <td style="text-align:right;"> 1 </td>
+  </tr>
+</tbody>
+</table>
 
 Then we just add up the scores, which yields an AQ score of 4 for participant 16. We would then repeat this logic for the remaining 65 participants. Anyone fancy doing this for a big data set?!
 

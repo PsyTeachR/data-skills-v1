@@ -65,7 +65,11 @@ pinfo <- read_csv("participant-info.csv")
 
 
 <div class="danger">
-<p>There is also a function called <code>read.csv()</code>. Be very careful NOT to use this function instead of <code>read_csv()</code> as they have different ways of naming columns. For the homework, unless your results match ours <strong>exactly</strong> you will not get the marks which means you need to be careful to use the right functions.</p>
+<p>There is also a function called <code>read.csv()</code>. Be very
+careful NOT to use this function instead of <code>read_csv()</code> as
+they have different ways of naming columns. For the homework, unless
+your results match ours <strong>exactly</strong> you will not get the
+marks which means you need to be careful to use the right functions.</p>
 </div>
 
 ## Activity 4: Check your data
@@ -110,7 +114,15 @@ summarydata <- select(.data = all_dat, # name of the object to take data from
 ```
 
 <div class="danger">
-<p>If you get an error message when using select that says <code>unused argument</code> it means that it is trying to use the wrong version of the select function. There are two solutions to this, first, save you work and then restart the R session (click session -restart R) and then run all your code above again from the start, or replace <code>select</code> with <code>dplyr::select</code> which tells R exactly which version of the select function to use. We'd recommend restarting the session because this will get you in the habit and it's a useful thing to try for a range of problems</p>
+<p>If you get an error message when using select that says
+<code>unused argument</code> it means that it is trying to use the wrong
+version of the select function. There are two solutions to this, first,
+save you work and then restart the R session (click session -restart R)
+and then run all your code above again from the start, or replace
+<code>select</code> with <code>dplyr::select</code> which tells R
+exactly which version of the select function to use. We'd recommend
+restarting the session because this will get you in the habit and it's a
+useful thing to try for a range of problems</p>
 </div>
 
 

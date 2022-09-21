@@ -55,7 +55,12 @@ You have now created a tibble with 660 observations and 3 variables; 10 observat
 
 
 <div class="danger">
-<p>Every year, the biggest problem with these exercises is typos caused by not paying attention to the exact spelling and capitalisation. Remember, <code>Question</code> is not the same as <code>question</code>, <code>Response</code> is not the same as <code>response</code>, and <code>Id</code> is not the same as <code>ID.</code></p>
+<p>Every year, the biggest problem with these exercises is typos caused
+by not paying attention to the exact spelling and capitalisation.
+Remember, <code>Question</code> is not the same as
+<code>question</code>, <code>Response</code> is not the same as
+<code>response</code>, and <code>Id</code> is not the same as
+<code>ID.</code></p>
 </div>
 
 ## Activity 4: `inner_join()`
