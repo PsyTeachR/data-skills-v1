@@ -9,7 +9,7 @@ There is a [walkthrough video](https://echo360.org.uk/media/0df3ba1d-4ab4-411b-a
 
 Read through the study to familiarise yourself with the data you will be using over the coming weeks and answer the below questions.
 
-When you get the correct answer, the answer box will turn green. Sometimes this doesn't work on Internet Explorer or Edge so be sure to use Chrome or Firefox.
+When you get the correct answer, the answer box will turn green. Sometimes this doesn't work on Internet Explorer or Edge so be sure to use Chrome or Firefox. Please also be aware that your answer won't save in this online workbook - if you want to keep a record of them, make a note of them in your notebook (also remember that testing yourself is the best way to commit things to memory so completing it multiple times will actually help!).
 
 * What does the AHI measure? (Hint, use a single word)
 
