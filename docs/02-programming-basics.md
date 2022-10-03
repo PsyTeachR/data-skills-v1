@@ -142,7 +142,7 @@ One very useful feature of R Studio is the tab auto-complete for functions (see 
 
 ## Base R and packages {#packages}
 
-When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as **Base R** and there is a useful cheat sheet that shows many Base R functions [here](https://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf).
+When you install R you will have access to a range of functions including options for data wrangling and statistical analysis. The functions that are included in the default installation are typically referred to as **Base R** and there is a useful cheat sheet that shows many Base R functions [here](https://github.com/rstudio/cheatsheets/raw/main/base-r.pdf).
 
 However, the power of R is that it is extendable and open source - put simply, if a function doesn't exist or doesn't work very well, anyone can create a new **package** that contains data and code to allow you to perform new tasks. You may find it useful to think of Base R as the default apps that come on your phone and packages as additional apps that you need to download separately.
 
@@ -263,7 +263,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of -264 days
+## Time difference of -275 days
 ## [1] 17.66644
 ```
 

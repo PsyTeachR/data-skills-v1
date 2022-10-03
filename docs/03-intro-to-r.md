@@ -8,11 +8,15 @@ There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/uJ_2RvnP_UhUF
 
 * Video notes: this video was recorded in September 2020 when we recommended using the server above installing R on your computer. With more experience of the server, we now strongly encourage you to install R on your computer if you can. The book has also been updated visually but there are no other differences between the video and this book chapter in terms of content.
 
+## Activity 0: Prepare your files
+
+In [Getting to know the data](https://psyteachr.github.io/data-skills-v1/getting-to-know-the-data.html#activity-2) you created a Psych 1A folder, downloaded the data files we will be using for this semester, and then unzipped the files. If you're working on your own computer with an installation of R, or if you're working on the desktop computers in the Boyd Orr or library, you don't need to do anything further.
+
+However, if you're using the sever, there's one more step you need to do. Whilst we're not going to use the data in this chapter, it's a useful step to get ready for next week.
+
 ## Activity 1: Upload data files to the server
 
 The main disadvantage to using the R server is that you need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).
-
-In [Getting to know the data](https://psyteachr.github.io/ug1-practical/getting-to-know-the-data.html#activity-2) you downloaded the data files we will be using for this semester. In order to use these files, we need to copy them to the R server. Whilst we're not going to use the data in this chapter, it's a useful step to get ready for next week.
 
 * Log on to the [R server](https://rstudio.psy.gla.ac.uk/)
 * In the Files pane, click `New folder` and call it Psych 1A.
@@ -133,7 +137,7 @@ Nearly finished! As our final step we are going to "knit" our file. This simply 
 
 As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created. 
 
-**My name is Emily and I am 35 years old. It is -438 days until my birthday.**
+**My name is Emily and I am 35 years old. It is -449 days until my birthday.**
 
 We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.
 

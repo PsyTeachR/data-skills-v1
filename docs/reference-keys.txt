@@ -68,6 +68,7 @@ debugging-tips
 activity-6-test-yourself
 ref1
 walkthrough-video
+activity-0-prepare-your-files
 activity-1-upload-data-files-to-the-server
 activity-2-set-the-working-directory
 r-markdown-for-data-skills-work-and-homework-assignments

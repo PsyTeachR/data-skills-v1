@@ -122,12 +122,18 @@
 <li>Video notes: this video was recorded in September 2020 when we recommended using the server above installing R on your computer. With more experience of the server, we now strongly encourage you to install R on your computer if you can. The book has also been updated visually but there are no other differences between the video and this book chapter in terms of content.</li>
 </ul>
 </div>
-<div id="activity-1-upload-data-files-to-the-server" class="section level2" number="3.2">
+<div id="activity-0-prepare-your-files" class="section level2" number="3.2">
 <h2>
-<span class="header-section-number">3.2</span> Activity 1: Upload data files to the server<a class="anchor" aria-label="anchor" href="#activity-1-upload-data-files-to-the-server"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.2</span> Activity 0: Prepare your files<a class="anchor" aria-label="anchor" href="#activity-0-prepare-your-files"><i class="fas fa-link"></i></a>
+</h2>
+<p>In <a href="https://psyteachr.github.io/data-skills-v1/getting-to-know-the-data.html#activity-2">Getting to know the data</a> you created a Psych 1A folder, downloaded the data files we will be using for this semester, and then unzipped the files. If you're working on your own computer with an installation of R, or if you're working on the desktop computers in the Boyd Orr or library, you don't need to do anything further.</p>
+<p>However, if you're using the sever, there's one more step you need to do. Whilst we're not going to use the data in this chapter, it's a useful step to get ready for next week.</p>
+</div>
+<div id="activity-1-upload-data-files-to-the-server" class="section level2" number="3.3">
+<h2>
+<span class="header-section-number">3.3</span> Activity 1: Upload data files to the server<a class="anchor" aria-label="anchor" href="#activity-1-upload-data-files-to-the-server"><i class="fas fa-link"></i></a>
 </h2>
 <p>The main disadvantage to using the R server is that you need to upload and download any files you are working on to and from the server (if you are using a local installation on your laptop you can skip this step).</p>
-<p>In <a href="https://psyteachr.github.io/ug1-practical/getting-to-know-the-data.html#activity-2">Getting to know the data</a> you downloaded the data files we will be using for this semester. In order to use these files, we need to copy them to the R server. Whilst we're not going to use the data in this chapter, it's a useful step to get ready for next week.</p>
 <ul>
 <li>Log on to the <a href="https://rstudio.psy.gla.ac.uk/">R server</a>
 </li>
@@ -138,23 +144,23 @@
 </ul>
 <p>Please be aware that <strong>there is no link between your computer and the R server</strong>. If you change files on the server, they won't magically appear on your computer and you need to be very careful when you submit your homework files that you're submitting the right thing (last year we had lots of student submit blank files). This is the main reason we recommend installing R on your computer if you can.</p>
 </div>
-<div id="activity-2-set-the-working-directory" class="section level2" number="3.3">
+<div id="activity-2-set-the-working-directory" class="section level2" number="3.4">
 <h2>
-<span class="header-section-number">3.3</span> Activity 2: Set the working directory<a class="anchor" aria-label="anchor" href="#activity-2-set-the-working-directory"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.4</span> Activity 2: Set the working directory<a class="anchor" aria-label="anchor" href="#activity-2-set-the-working-directory"><i class="fas fa-link"></i></a>
 </h2>
 <p>Once you have uploaded the data, set the working directory by clicking <code>Session</code> -&gt; <code>Set Working Directory</code> -&gt; <code>Choose Directory</code> and then select the Data Skills 1A folder as your working directory.</p>
 <p>You need to do this step regardless of whether you are working from the server or from your laptop. This means that R knows which folder to look in for the data and scripts you might want to use.</p>
 </div>
-<div id="r-markdown-for-data-skills-work-and-homework-assignments" class="section level2" number="3.4">
+<div id="r-markdown-for-data-skills-work-and-homework-assignments" class="section level2" number="3.5">
 <h2>
-<span class="header-section-number">3.4</span> R Markdown for data skills work and homework assignments<a class="anchor" aria-label="anchor" href="#r-markdown-for-data-skills-work-and-homework-assignments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.5</span> R Markdown for data skills work and homework assignments<a class="anchor" aria-label="anchor" href="#r-markdown-for-data-skills-work-and-homework-assignments"><i class="fas fa-link"></i></a>
 </h2>
 <p>For the data skills work and homework you will use a worksheet format called R Markdown (abbreviated as Rmd) which is a great way to create dynamic documents with embedded chunks of code. These documents are self-contained and fully reproducible (if you have the necessary data, you should be able to run someone else's analyses with the click of a button) which makes it very easy to share. This is an important part of your open science training as one of the reasons we are using R and RStudio is that it enables us to share open and reproducible information. Using these worksheets enables you to keep a record of all the code you write, and when it comes time for the portfolio assignments, we can give you a task and you can fill in the required code.</p>
 <p>For more information about R Markdown feel free to have a look at their main webpage <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>. The key advantage of R Markdown is that it allows you to write code into a document, along with regular text, and then <strong>knit</strong> it using the package <code>knitr</code> to create your document as either a webpage (HTML), a PDF, or Word document (.docx).</p>
 </div>
-<div id="activity-3-open-and-save-a-new-r-markdown-document" class="section level2" number="3.5">
+<div id="activity-3-open-and-save-a-new-r-markdown-document" class="section level2" number="3.6">
 <h2>
-<span class="header-section-number">3.5</span> Activity 3: Open and save a new R Markdown document<a class="anchor" aria-label="anchor" href="#activity-3-open-and-save-a-new-r-markdown-document"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.6</span> Activity 3: Open and save a new R Markdown document<a class="anchor" aria-label="anchor" href="#activity-3-open-and-save-a-new-r-markdown-document"><i class="fas fa-link"></i></a>
 </h2>
 <p>To open a new R Markdown document click the 'new item' icon and then click 'R Markdown'. You will be prompted to give it a title, call it "Intro to R". Also, change the author name to your GUID as this will be good practice for the homework. Keep the output format as HTML.</p>
 <p>Once you've opened a new document be sure to save it by clicking <code>File</code> -&gt; <code>Save as</code>. You should also name this file "Intro to R". If you've set the working directory correctly, you should now see this file appear in your file viewer pane.</p>
@@ -165,9 +171,9 @@ Figure 3.1: Opening a new R Markdown document
 </p>
 </div>
 </div>
-<div id="activity-4-create-a-new-code-chunk" class="section level2" number="3.6">
+<div id="activity-4-create-a-new-code-chunk" class="section level2" number="3.7">
 <h2>
-<span class="header-section-number">3.6</span> Activity 4: Create a new code chunk<a class="anchor" aria-label="anchor" href="#activity-4-create-a-new-code-chunk"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.7</span> Activity 4: Create a new code chunk<a class="anchor" aria-label="anchor" href="#activity-4-create-a-new-code-chunk"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you first open a new R Markdown document you will see a bunch of welcome text that looks like this:</p>
 <div class="figure" style="text-align: center">
@@ -198,9 +204,9 @@ doesn't look right, check that you haven't deleted the back ticks.
 </p>
 </div>
 </div>
-<div id="activity-5-write-some-code" class="section level2" number="3.7">
+<div id="activity-5-write-some-code" class="section level2" number="3.8">
 <h2>
-<span class="header-section-number">3.7</span> Activity 5: Write some code<a class="anchor" aria-label="anchor" href="#activity-5-write-some-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.8</span> Activity 5: Write some code<a class="anchor" aria-label="anchor" href="#activity-5-write-some-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now we're going to use the code examples you read about in Programming Basics to add some simple code to our R Markdown document.</p>
 <ul>
@@ -214,9 +220,9 @@ doesn't look right, check that you haven't deleted the back ticks.
 <span class="va">today</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html">Sys.Date</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">next_birthday</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="st">"2021-07-11"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="running-code" class="section level2" number="3.8">
+<div id="running-code" class="section level2" number="3.9">
 <h2>
-<span class="header-section-number">3.8</span> Running code<a class="anchor" aria-label="anchor" href="#running-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.9</span> Running code<a class="anchor" aria-label="anchor" href="#running-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>When you're working in an R Markdown document, there are several ways to run your lines of code.</p>
 <p>First, you can highlight the code you want to run and then click <code>Run</code> -&gt; <code>Run Selected Line(s)</code>, however this is very slow.</p>
@@ -235,27 +241,27 @@ Figure 3.5: Slightly better method of running code
 </div>
 <p>Even better though is to learn some of the keyboard shortcuts for R Studio. To run a single line of code, make sure that the cursor is in the line of code you want to run (it can be anywhere) and press <code>ctrl + enter</code>. If you want to run all of the code in the code chunk, press <code>ctrl + shift + enter</code>. Learn these shortcuts, they will make your life easier!</p>
 </div>
-<div id="activity-6-run-your-code" class="section level2" number="3.9">
+<div id="activity-6-run-your-code" class="section level2" number="3.10">
 <h2>
-<span class="header-section-number">3.9</span> Activity 6: Run your code<a class="anchor" aria-label="anchor" href="#activity-6-run-your-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.10</span> Activity 6: Run your code<a class="anchor" aria-label="anchor" href="#activity-6-run-your-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>Run your code using one of the methods above. You should see the variables <code>name</code>, <code>age</code>, <code>today</code>, and <code>next_birthday</code> appear in the environment pane.</p>
 </div>
-<div id="activity-7-inline-code" class="section level2" number="3.10">
+<div id="activity-7-inline-code" class="section level2" number="3.11">
 <h2>
-<span class="header-section-number">3.10</span> Activity 7: Inline code<a class="anchor" aria-label="anchor" href="#activity-7-inline-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.11</span> Activity 7: Inline code<a class="anchor" aria-label="anchor" href="#activity-7-inline-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>An incredibly useful feature of R Markdown is that R can insert values into your writing using <strong>inline code</strong>. If you've ever had to copy and paste a value or text from one file in to another, you'll know how easy it can be to make mistakes. Inline code avoids this. It's easier to show you what inline code does rather than to explain it so let's have a go.</p>
 <p>First, copy and paste this text exactly (do not change anything) to the <strong>white space</strong> underneath your code chunk.</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="ref1.html#cb26-1" aria-hidden="true" tabindex="-1"></a>My name is <span class="st">`</span><span class="at">r name</span><span class="st">`</span> and I am <span class="st">`</span><span class="at">r age</span><span class="st">`</span> years old. It is <span class="st">`</span><span class="at">r next_birthday - today</span><span class="st">`</span> days until my birthday.</span></code></pre></div>
 </div>
-<div id="activity-8-knitting-your-file" class="section level2" number="3.11">
+<div id="activity-8-knitting-your-file" class="section level2" number="3.12">
 <h2>
-<span class="header-section-number">3.11</span> Activity 8: Knitting your file<a class="anchor" aria-label="anchor" href="#activity-8-knitting-your-file"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.12</span> Activity 8: Knitting your file<a class="anchor" aria-label="anchor" href="#activity-8-knitting-your-file"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nearly finished! As our final step we are going to "knit" our file. This simply means that we're going to compile our code into a document that is more presentable. To do this click <code>Knit</code> -&gt; <code>Knit to HMTL</code>. R Markdown will create a new HTML document and it will automatically save this file in your working directory.</p>
 <p>As if by magic, that slightly odd bit of text you copied and pasted now appears as a normal sentence with the values pulled in from the objects you created.</p>
-<p><strong>My name is Emily and I am 35 years old. It is -438 days until my birthday.</strong></p>
+<p><strong>My name is Emily and I am 35 years old. It is -449 days until my birthday.</strong></p>
 <p>We're not going to use this function very often in the rest of the course but hopefully you can see just how useful this would be when writing up a report with lots of numbers! R Markdown is an incredibly powerful and flexible format - this book was written using it! If you want to push yourself with R, additional functions and features of R Markdown would be a good place to start.</p>
 <p>Before we finish, there are a few final things to note about knitting that will be useful for the homework:</p>
 <ul>
@@ -266,15 +272,15 @@ Figure 3.5: Slightly better method of running code
 <li>R will automatically open the knitted HTML file in the viewer, however, you can also navigate to the folder it is stored in and open the HTML file in your web browser (e.g., Chrome or Firefox).</li>
 </ul>
 </div>
-<div id="activity-9-make-r-your-own" class="section level2" number="3.12">
+<div id="activity-9-make-r-your-own" class="section level2" number="3.13">
 <h2>
-<span class="header-section-number">3.12</span> Activity 9: Make R your own<a class="anchor" aria-label="anchor" href="#activity-9-make-r-your-own"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.13</span> Activity 9: Make R your own<a class="anchor" aria-label="anchor" href="#activity-9-make-r-your-own"><i class="fas fa-link"></i></a>
 </h2>
 <p>Finally, you can customise how R Studio looks to make it feel more like your own personal version. Click <code>Tools</code> - <code>Global Options</code> - <code>Appearance</code>. You can change the default font, font size, and general appearance of R Studio, including using dark mode. Play around with the settings and see which one you prefer - you're going to spend a lot of time with R, it might as well look nice!</p>
 </div>
-<div id="finished" class="section level2" number="3.13">
+<div id="finished" class="section level2" number="3.14">
 <h2>
-<span class="header-section-number">3.13</span> Finished<a class="anchor" aria-label="anchor" href="#finished"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.14</span> Finished<a class="anchor" aria-label="anchor" href="#finished"><i class="fas fa-link"></i></a>
 </h2>
 <p>And you're done! On your very first time using R you've not only written functioning code but you've written a reproducible output! You could send someone else your R Markdown document and they would be able to produce exactly the same HTML document as you, just by pressing knit.</p>
 <p>The key thing we want you to take away from this chapter is that R isn't scary. It might be very new to a lot of you, but we're going to take you through it step-by-step. You'll be amazed at how quickly you can start producing professional-looking data visualisations and analysis.</p>
@@ -470,18 +476,19 @@ $( document ).ready(function() {
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#ref1"><span class="header-section-number">3</span> Intro to R</a></li>
 <li><a class="nav-link" href="#walkthrough-video"><span class="header-section-number">3.1</span> Walkthrough video</a></li>
-<li><a class="nav-link" href="#activity-1-upload-data-files-to-the-server"><span class="header-section-number">3.2</span> Activity 1: Upload data files to the server</a></li>
-<li><a class="nav-link" href="#activity-2-set-the-working-directory"><span class="header-section-number">3.3</span> Activity 2: Set the working directory</a></li>
-<li><a class="nav-link" href="#r-markdown-for-data-skills-work-and-homework-assignments"><span class="header-section-number">3.4</span> R Markdown for data skills work and homework assignments</a></li>
-<li><a class="nav-link" href="#activity-3-open-and-save-a-new-r-markdown-document"><span class="header-section-number">3.5</span> Activity 3: Open and save a new R Markdown document</a></li>
-<li><a class="nav-link" href="#activity-4-create-a-new-code-chunk"><span class="header-section-number">3.6</span> Activity 4: Create a new code chunk</a></li>
-<li><a class="nav-link" href="#activity-5-write-some-code"><span class="header-section-number">3.7</span> Activity 5: Write some code</a></li>
-<li><a class="nav-link" href="#running-code"><span class="header-section-number">3.8</span> Running code</a></li>
-<li><a class="nav-link" href="#activity-6-run-your-code"><span class="header-section-number">3.9</span> Activity 6: Run your code</a></li>
-<li><a class="nav-link" href="#activity-7-inline-code"><span class="header-section-number">3.10</span> Activity 7: Inline code</a></li>
-<li><a class="nav-link" href="#activity-8-knitting-your-file"><span class="header-section-number">3.11</span> Activity 8: Knitting your file</a></li>
-<li><a class="nav-link" href="#activity-9-make-r-your-own"><span class="header-section-number">3.12</span> Activity 9: Make R your own</a></li>
-<li><a class="nav-link" href="#finished"><span class="header-section-number">3.13</span> Finished</a></li>
+<li><a class="nav-link" href="#activity-0-prepare-your-files"><span class="header-section-number">3.2</span> Activity 0: Prepare your files</a></li>
+<li><a class="nav-link" href="#activity-1-upload-data-files-to-the-server"><span class="header-section-number">3.3</span> Activity 1: Upload data files to the server</a></li>
+<li><a class="nav-link" href="#activity-2-set-the-working-directory"><span class="header-section-number">3.4</span> Activity 2: Set the working directory</a></li>
+<li><a class="nav-link" href="#r-markdown-for-data-skills-work-and-homework-assignments"><span class="header-section-number">3.5</span> R Markdown for data skills work and homework assignments</a></li>
+<li><a class="nav-link" href="#activity-3-open-and-save-a-new-r-markdown-document"><span class="header-section-number">3.6</span> Activity 3: Open and save a new R Markdown document</a></li>
+<li><a class="nav-link" href="#activity-4-create-a-new-code-chunk"><span class="header-section-number">3.7</span> Activity 4: Create a new code chunk</a></li>
+<li><a class="nav-link" href="#activity-5-write-some-code"><span class="header-section-number">3.8</span> Activity 5: Write some code</a></li>
+<li><a class="nav-link" href="#running-code"><span class="header-section-number">3.9</span> Running code</a></li>
+<li><a class="nav-link" href="#activity-6-run-your-code"><span class="header-section-number">3.10</span> Activity 6: Run your code</a></li>
+<li><a class="nav-link" href="#activity-7-inline-code"><span class="header-section-number">3.11</span> Activity 7: Inline code</a></li>
+<li><a class="nav-link" href="#activity-8-knitting-your-file"><span class="header-section-number">3.12</span> Activity 8: Knitting your file</a></li>
+<li><a class="nav-link" href="#activity-9-make-r-your-own"><span class="header-section-number">3.13</span> Activity 9: Make R your own</a></li>
+<li><a class="nav-link" href="#finished"><span class="header-section-number">3.14</span> Finished</a></li>
 </ul>
 
       <div class="book-extra">
@@ -499,7 +506,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-09-22.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2022-10-03.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
