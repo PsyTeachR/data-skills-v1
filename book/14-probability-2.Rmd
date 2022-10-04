@@ -6,7 +6,7 @@ There is a [walkthrough video](https://uofglasgow.zoom.us/rec/play/rVc_Tmlnf0Dy9
 
 * Video notes: this video was recorded in 2020-2021. Since then the book has been updated visually.  There are no other differences between the video and this book chapter.
 
-First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see [Programming Basics](https://psyteachr.github.io/ug1-practical/programming-basics.html#packages).
+First, we're going to calculate probabilities based on the binomial distribution. In this chapter, for the first time we don't need to load the tidyverse. All the functions we need are contained in Base R. If you want a refresher on the difference between Base R and packages, see [Programming Basics](https://psyteachr.github.io/data-skills-v1/programming-basics.html).
 
 ## Activity 1: Set-up
 

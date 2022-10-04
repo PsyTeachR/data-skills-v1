@@ -153,7 +153,7 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 worry, this isn't an error it's just R telling you what it's done. This
 message was included in a very recent update to the
 <code>tidyverse</code> which is why it doesn't appear on some of the
-walkthrough vidoes.</p>
+walkthrough videos.</p>
 </div>
 
 ******
@@ -162,7 +162,7 @@ walkthrough vidoes.</p>
 
 * What does `group_by()` do? 
 
-<div class='webex-radiogroup' id='radio_DQOQXTUEOS'><label><input type="radio" autocomplete="off" name="radio_DQOQXTUEOS" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_DQOQXTUEOS" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_DQOQXTUEOS" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_DQOQXTUEOS" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
+<div class='webex-radiogroup' id='radio_WDYERGSPNB'><label><input type="radio" autocomplete="off" name="radio_WDYERGSPNB" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_WDYERGSPNB" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_WDYERGSPNB" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_WDYERGSPNB" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
 
 
 * How would you change the code to group by education rather than `Happiness_Category`?

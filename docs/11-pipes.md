@@ -2,7 +2,7 @@
 
 ## Activity 1: Recap
 
-In Psych 1A we briefly introduced the concept of **pipes**, if you'd like to recap what you did, you can [find it here](https://emilynordmann.github.io/ug1-practical/data-wrangling-1.html#activity-9-pipes). 
+In Psych 1A we briefly introduced the concept of **pipes**, if you'd like to recap what you did, you can [find it here](https://psyteachr.github.io/data-skills-v1/data-wrangling-1.html?q=pipe#activity-9-pipes). 
 
 Pipes look like this: `%>%`. Pipes allow you to send the output from one function straight into another function. Specifically, they send the result of the function before `%>%` to be the first argument of the function after `%>%`. As usual, it's easier to show, rather than tell so let's look at an example.
 
@@ -109,9 +109,9 @@ mark!).</p></li>
 </ol>
 </div>
 
-Which of the following is a pipe? <select class='webex-select'><option value='blank'></option><option value=''><-</option><option value='answer'>%>%</option><option value=''>%<%</option></select>
+Which of the following is a pipe? <select class='webex-select'><option value='blank'></option><option value='answer'>%>%</option><option value=''><-</option><option value=''>%<%</option></select>
 
-Where do pipes send the result of the function that precedes the pipe? <select class='webex-select'><option value='blank'></option><option value='answer'>To the first argument of the next function.</option><option value=''>To the third argument of the 18th function.</option><option value=''>To the last argument of the next function.</option></select>
+Where do pipes send the result of the function that precedes the pipe? <select class='webex-select'><option value='blank'></option><option value=''>To the third argument of the 18th function.</option><option value='answer'>To the first argument of the next function.</option><option value=''>To the last argument of the next function.</option></select>
 
 ## Activity 2: Set-up
 

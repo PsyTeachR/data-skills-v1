@@ -26,7 +26,7 @@ When you downloaded the data in Getting to know the data, you will have noticed 
 
 Before we begin working with the data we need to do some set-up. If you need help with any of these steps, you should refer to Chapter \@ref(ref1): 
 
-* You should have already downloaded the data files and, if you are using the server, uploaded them to the R server as part of [Intro to R](https://psyteachr.github.io/ug1-practical/ref1.html), if you haven't done this, go back and work through that chapter now.
+* You should have already downloaded the data files and, if you are using the server, uploaded them to the R server as part of [Intro to R](https://psyteachr.github.io/data-skills-v1/ref1.html#activity-1-upload-data-files-to-the-server), if you haven't done this, go back and work through that chapter now.
 * Open R and ensure the environment is clear.
 * If you're on the server, avoid a number of issues by restarting the session - click `Session` - `Restart R`  
 * Set the working directory to your Data Skills folder.  

@@ -26,7 +26,7 @@ You will find the link to the R server on Moodle. Please note that the R server 
 
 ### Installing R on your computer
 
-To use R on your computer, please see [Installing R](https://psyteachr.github.io/ug1-practical/installing-r.html) which has more detailed instructions and links to the files you need to download, as well as a links to a series of walkthroughs for installing R on different types of computers. 
+To use R on your computer, please see [Installing R](https://psyteachr.github.io/data-skills-v1/installing-r.html) which has more detailed instructions and links to the files you need to download, as well as a links to a series of walkthroughs for installing R on different types of computers. 
 
 ## Getting to know R Studio
 
@@ -263,7 +263,7 @@ mean(data)
 
 ```
 ## [1] 45
-## Time difference of -275 days
+## Time difference of -276 days
 ## [1] 17.66644
 ```
 

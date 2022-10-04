@@ -1,76 +1,71 @@
 # Installing `R` {#installing-r}
 
-## Why should I install R on my computer?
+Installing R and RStudio is usually straightforward. The sections below explain how and [there is a helpful YouTube video here](https://www.youtube.com/watch?v=lVKMsaWju8w){target="_blank"}.
 
-The R Server cuts down on a lot of installation problems and it means that you have all the packages and functions you need already installed. However, it requires an internet connection to use and additional when it comes time to submit your R assessments, if you don't have R on your computer it means that you won't be able to open the files you download from the server to check they're ok before you submit them.
+## Installing Base R
 
-There are some great detailed walkthrough videos by [Danielle Narvarro on YouTube](https://www.youtube.com/playlist?list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd) re: how to install R on both Windows and Mac.
+[Install base R](https://cran.rstudio.com/){target="_blank"}. Choose the download link for your operating system (Linux, Mac OS X, or Windows).
 
-## Windows
+If you have a Mac, install the latest release from the newest `R-x.x.x.pkg` link (or a legacy version if you have an older operating system). You may also need to install [XQuartz](http://xquartz.macosforge.org/){target="_blank"} to be able to use some visualisation packages.
 
-If you are using Windows, you should download and install the following:
+If you are installing the Windows version, choose the "[base](https://cran.rstudio.com/bin/windows/base/)" subdirectory and click on the download link at the top of the page. 
 
-* [R](https://cran.r-project.org/bin/windows/base/)
-* [R Studio](https://rstudio.com/products/rstudio/download/#download)
-* [RTools](https://cran.r-project.org/bin/windows/Rtools/)
+If you are using Linux, choose your specific operating system and follow the installation instructions.
 
-Once you've installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:
+## Installing RStudio
 
+Go to [rstudio.com](https://www.rstudio.com/products/rstudio/download/#download){target="_blank"} and download the RStudio Desktop (Open Source License) version for your operating system under the list titled **Installers for Supported Platforms**.
 
-```r
-install.packages("tidyverse")
-```
+## Installing RTools
 
-This will install the `tidyverse` package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
+If you are using Windows, after you install R, you should also install [RTools](https://cran.rstudio.com/bin/windows/Rtools/){target="_blank"}; use the "recommended" version highlighted near the top of the list. RTools is used for installing and loading some packages. You can get started without installing RTools, but if you're having problems with installing and loading some packages, this should be the first thing you try.
 
-## Mac
-
-If you are using a Mac, you should download and install the following:
-
-* [R](https://www.stats.bris.ac.uk/R/)  
-* [R Studio](https://rstudio.com/products/rstudio/download/#download)  
-* [XQuartz](https://www.xquartz.org/)  
-
-If you have any issues installing R on your Mac, first, we recommend that you watch the [walkthrough by Danielle Navarro](https://www.youtube.com/watch?v=ay25o485YXs&list=PLRPB0ZzEYegOZivdelOuEn-R-XUN-DOjd&index=1&t=113s). 
-
-If you have further issues on Mac, you may find this video helpful [walkthrough video](https://www.youtube.com/watch?v=90IdULVGmYY). Additionally, if you are using a Mac with the Catalina OS, we also recommend you read this [troubleshooting guide](https://psyteachr.github.io/FAQ/installing-r-and-rstudio.html#i-am-using-macos-10.15-catalina)
-
-Once you've installed all three programs, restart your computer. Then, open RStudio (not R) and run the below code:
+RTools will require you to put it "on the PATH". The instructions for this can seem a bit vague - the easiest way to do it is to open RStudio, run the below code in the console:
 
 
 ```r
-install.packages("tidyverse")
+write('PATH="${RTOOLS40_HOME}\\usr\\bin;${PATH}"', file = "~/.Renviron", append = TRUE)
 ```
 
-This will install the `tidyverse` package on your computer. If you have any problems installing R, please book into a GTA session as they should be able to help you with any installation problems.
+Once you've done that, restart R by clicking `Session - Restart R` and then run the below code in the console which should give you the path to your RTools installation:
 
-## Chromebooks
 
-Please note that you cannot currently install R on a Chromebook, please use the R Server.
-## RStudio Settings
+```r
+Sys.which("make")
+```
+
+```
+##                               make 
+## "C:\\rtools40\\usr\\bin\\make.exe"
+```
+
+
+## RStudio Settings {#rstudio-settings}
 
 There are a few settings you should fix immediately after updating RStudio. Go to **`Global Options...`** under the **`Tools`** menu (&#8984;,), and in the General tab, uncheck the box that says **`Restore .RData into workspace at startup`**.  If you keep things around in your workspace, things will get messy, and unexpected things will happen. You should always start with a clear workspace. This also means that you never want to save your workspace when you exit, so set this to **`Never`**. The only thing you want to save are your scripts.
 
 You may also want to change the appearance of your code. Different fonts and themes can sometimes help with visual difficulties or [dyslexia](https://datacarpentry.org/blog/2017/09/coding-and-dyslexia){target="_blank"}. 
 
 <div class="figure" style="text-align: center">
-<img src="images/rstudio_settings_general_appearance.png" alt="RStudio General and Appearance settings" width="100%" />
+<img src="images/appx/rstudio_settings_general_appearance.png" alt="RStudio General and Appearance settings" width="100%" />
 <p class="caption">(\#fig:settings-general)RStudio General and Appearance settings</p>
 </div>
 
-You may also want to change the settings in the Code tab. Foe example, Lisa prefers two spaces instead of tabs for my code and likes to be able to see the <a class='glossary' target='_blank' title='Spaces, tabs and line breaks' href='https://psyteachr.github.io/glossary/w#whitespace'>whitespace</a> characters. But these are all a matter of personal preference.
+You may also want to change the settings in the Code tab. For example, Lisa prefers two spaces instead of tabs for my code and likes to be able to see the <a class='glossary' target='_blank' title='Spaces, tabs and line breaks' href='https://psyteachr.github.io/glossary/w#whitespace'>whitespace</a> characters. But these are all a matter of personal preference.
 
 <div class="figure" style="text-align: center">
-<img src="images/rstudio_settings_code.png" alt="RStudio Code settings" width="100%" />
+<img src="images/appx/rstudio_settings_code.png" alt="RStudio Code settings" width="100%" />
 <p class="caption">(\#fig:settings-code)RStudio Code settings</p>
 </div>
 
 
 ## Installing LaTeX
 
-You can install the LaTeX typesetting system to produce PDF reports from RStudio. Without this additional installation, you will be able to produce reports in HTML but not PDF. This course will not require you to make PDFs. To generate PDF reports, you will additionally need to install <code class='package'>tinytex</code> [@R-tinytex] and run the following code:
+You can install the LaTeX typesetting system to produce PDF reports from RStudio. Without this additional installation, you will be able to produce reports in HTML but not PDF. To generate PDF reports, you will additionally need to install <code class='package'>tinytex</code> [@R-tinytex] and run the following code:
 
 
 ```r
+# run this in the console
+install.packages("tinytex")
 tinytex::install_tinytex()
 ```

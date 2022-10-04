@@ -9,7 +9,7 @@ encourage you to do so as it means that a) you're not reliant on the
 server b) you don't need to be connected to the internet to use R and c)
 it makes it much easier to check your homework files before you submit
 them. There is more info in the <a
-href="https://psyteachr.github.io/ug1-practical/installing-r-on-your-computer-1.html">Appendix</a>
+href="https://psyteachr.github.io/data-skills-v1/installing-r.html">Appendix</a>
 and you can also attend a GTA support session if you need help.</p>
 </div>
 

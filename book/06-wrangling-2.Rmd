@@ -135,7 +135,7 @@ data_median_group <- summarise(happy_dat, median_score = median(cesdTotal))
 ```
 
 ```{block, type = "info"}
-If you get what looks like an error that says `summarise() ungrouping output (override with .groups argument)`don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the `tidyverse` which is why it doesn't appear on some of the walkthrough vidoes.
+If you get what looks like an error that says `summarise() ungrouping output (override with .groups argument)`don't worry, this isn't an error it's just R telling you what it's done. This message was included in a very recent update to the `tidyverse` which is why it doesn't appear on some of the walkthrough videos.
 ```
 
 ******
