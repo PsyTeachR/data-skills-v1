@@ -128,7 +128,82 @@ useful thing to try for a range of problems</p>
 
 * Run the above code and then run `head(summarydata)`. If everything has gone to plan it should look something like this:
 
-
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:center;"> ahiTotal </th>
+   <th style="text-align:center;"> cesdTotal </th>
+   <th style="text-align:center;"> sex </th>
+   <th style="text-align:center;"> age </th>
+   <th style="text-align:center;"> educ </th>
+   <th style="text-align:center;"> income </th>
+   <th style="text-align:center;"> occasion </th>
+   <th style="text-align:center;"> elapsed.days </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:center;"> 32 </td>
+   <td style="text-align:center;"> 50 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 46 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 182.03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 34 </td>
+   <td style="text-align:center;"> 49 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 37 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 14.19 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 34 </td>
+   <td style="text-align:center;"> 47 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 37 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 3 </td>
+   <td style="text-align:center;"> 33.03 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 35 </td>
+   <td style="text-align:center;"> 41 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 19 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 36 </td>
+   <td style="text-align:center;"> 36 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 40 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 2 </td>
+   <td style="text-align:center;"> 5 </td>
+   <td style="text-align:center;"> 202.10 </td>
+  </tr>
+  <tr>
+   <td style="text-align:center;"> 37 </td>
+   <td style="text-align:center;"> 35 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 49 </td>
+   <td style="text-align:center;"> 4 </td>
+   <td style="text-align:center;"> 1 </td>
+   <td style="text-align:center;"> 0 </td>
+   <td style="text-align:center;"> 0.00 </td>
+  </tr>
+</tbody>
+</table>
 
 ## Activity 7: Visualise the data
 

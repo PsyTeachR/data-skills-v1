@@ -117,8 +117,8 @@ If you get an error message when using select that says `unused argument` it mea
 
 ```{r, echo = FALSE, results='asis'}
 
-#head(summarydata)%>%
-#  knitr::kable(digits = 2, align = "c")
+head(summarydata)%>%
+  knitr::kable(digits = 2, align = "c")
 
 ```
 
