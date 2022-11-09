@@ -111,7 +111,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) +
   theme_minimal() +
   geom_smooth(method = "lm") +
   scale_color_viridis_d(name = "Participant sex", 
-                       labels = c("Male", "Female"),
+                       labels = c("Female", "Male"),
                        option = "E")
 ```
 
@@ -381,7 +381,7 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 
 
 ```r
-summarydata <- mutate(summarydata, happiness >= median(ahiTotal))
+summarydata <- mutate(summarydata, happiness = ahiTotal >= median(ahiTotal))
 ```
 
 
