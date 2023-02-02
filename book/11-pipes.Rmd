@@ -41,7 +41,7 @@ raw_data <- read_csv("my_data.csv")
 
 final_data <- raw_data %>%
   select(id, score) %>%
-  inner_join(demographic, by = "id")
+  inner_join(demographic, by = "id") %>%
   filter(age >= 18) 
 ```
 

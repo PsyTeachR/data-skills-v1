@@ -58,11 +58,11 @@ geom_smooth(method = "lm")
 
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_smooth).
+## Warning: Removed 20 rows containing missing values (`geom_smooth()`).
 ```
 
 <div class="figure" style="text-align: center">
@@ -116,11 +116,11 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal, colour = sex)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 42 rows containing missing values (geom_smooth).
+## Warning: Removed 42 rows containing missing values (`geom_smooth()`).
 ```
 
 <img src="08-scatterplots_files/figure-html/unnamed-chunk-4-1.png" width="100%" style="display: block; margin: auto;" />
@@ -169,11 +169,11 @@ Now, reproduce the below plot using this new variable:
 
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 9 rows containing missing values (geom_smooth).
+## Warning: Removed 9 rows containing missing values (`geom_smooth()`).
 ```
 
 <img src="08-scatterplots_files/figure-html/unnamed-chunk-8-1.png" width="100%" style="display: block; margin: auto;" />
@@ -304,11 +304,11 @@ ggplot(all_dat, aes(x = ahiTotal , y = cesdTotal)) +
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 20 rows containing missing values (geom_smooth).
+## Warning: Removed 20 rows containing missing values (`geom_smooth()`).
 ```
 
 <img src="08-scatterplots_files/figure-html/T4s-1.png" width="100%" style="display: block; margin: auto;" />
@@ -360,11 +360,11 @@ ggplot(summarydata, aes(x = ahiTotal , y = cesdTotal,
 ```
 
 ```
-## `geom_smooth()` using formula 'y ~ x'
+## `geom_smooth()` using formula = 'y ~ x'
 ```
 
 ```
-## Warning: Removed 78 rows containing missing values (geom_smooth).
+## Warning: Removed 78 rows containing missing values (`geom_smooth()`).
 ```
 
 <img src="08-scatterplots_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" />

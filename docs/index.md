@@ -1,7 +1,7 @@
 --- 
 title: "Data Skills"
 author: "Heather Cleland-Woods and Emily Nordmann"
-date: "2022-11-09"
+date: "2023-02-02"
 subtitle: psyTeachR Books
 site: bookdown::bookdown_site
 documentclass: book
