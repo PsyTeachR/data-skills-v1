@@ -251,6 +251,11 @@ project-analysis
 step-1-import-and-initial-data-wrangling
 step-2-bfi-2-scores
 step-3-iv
+exclusion-criteria
+selecting-columns
+new-categories
+cleaning-up-your-datasets
+example-code
 step-4-joining-it-all-together
 step-5-sample-information
 step-6-group-differences-in-scores

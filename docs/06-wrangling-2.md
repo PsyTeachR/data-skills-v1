@@ -162,7 +162,7 @@ walkthrough videos.</p>
 
 * What does `group_by()` do? 
 
-<div class='webex-radiogroup' id='radio_YZPDUDFOIW'><label><input type="radio" autocomplete="off" name="radio_YZPDUDFOIW" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_YZPDUDFOIW" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_YZPDUDFOIW" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_YZPDUDFOIW" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
+<div class='webex-radiogroup' id='radio_ZTFERUUKDM'><label><input type="radio" autocomplete="off" name="radio_ZTFERUUKDM" value=""></input> <span>provides summary statistics of an existing dataframe</span></label><label><input type="radio" autocomplete="off" name="radio_ZTFERUUKDM" value=""></input> <span>organises information in ascending or descending order</span></label><label><input type="radio" autocomplete="off" name="radio_ZTFERUUKDM" value=""></input> <span>transforms existing columns</span></label><label><input type="radio" autocomplete="off" name="radio_ZTFERUUKDM" value="answer"></input> <span>groups data frames based on a specific column so that all later operations are carried out on a group basis</span></label></div>
 
 
 * How would you change the code to group by education rather than `Happiness_Category`?

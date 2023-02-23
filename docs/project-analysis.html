@@ -114,14 +114,16 @@
 </h1>
 <p>We've spent the last 6 months giving you the skills you need to be able to deal with your own data. Now's the time to show us what you've learned. In this chapter we're going to describe the steps you will need to go through when analysing your data but, aside from a few lines that will help you deal with the questionnaire data and a couple of things you haven't done before we're not going to give you any code solutions.</p>
 <p>For everything else, you have done it before, so use this book to help you. Remember, you don't need to write the code from memory, you just need to find the relevant examples and then copy and paste and change what needs changing to make it work for you.</p>
-<p>We suggest that you problem-solve the code as a group, however, make sure that you all have a separate copy of the final working code. You can book into GTA sessions in week 9 and 10 to help you as well.</p>
+<p>We suggest that you problem-solve the code as a group, however, make sure that you all have a separate copy of the final working code. You can attend into GTA sessions in week 9 and 10 to help you as well.</p>
 <div id="step-1-import-and-initial-data-wrangling" class="section level2" number="16.1">
 <h2>
 <span class="header-section-number">16.1</span> Step 1: Import and initial data wrangling<a class="anchor" aria-label="anchor" href="#step-1-import-and-initial-data-wrangling"><i class="fas fa-link"></i></a>
 </h2>
-<p>To help get you on your way, we've done a bit of the initial wrangling for you. Download the data files from Moodle into your working directory, create a new Markdown, then run all the below code without changing anything.</p>
+<p>To help get you on your way, we've done a bit of the initial wrangling for you. Download the data files into your working directory, create a new Markdown, then run all the below code without changing anything. I would also encourage you to open up the Excel files to see what's in them as it will help your understanding of the analysis.</p>
 <div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 
 <span class="co"># read in data but skip rows 2 and 3</span>
 <span class="va">col_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"big5_data.csv"</span>, n_max <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span>
@@ -139,24 +141,51 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">codebook</span>, by <span class="op">=</span> <span class="st">"item"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">scoring</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"response"</span>, <span class="st">"direction"</span><span class="op">)</span><span class="op">)</span>
 
-<span class="co"># create dataset that just has demographic questions</span>
+<span class="co"># clean up the neurodivergent data</span>
+<span class="co"># this code is a bit hacky, if you want to suggest a cleaner version, get in touch!</span>
+
+<span class="va">nd_dat</span> <span class="op">&lt;-</span> <span class="va">dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ResponseId</span>, <span class="va">Q11</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">Q11</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col3"</span>, <span class="st">"col4"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">""</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fl">3</span><span class="op">:</span><span class="fl">5</span>, names_to <span class="op">=</span> <span class="st">"response"</span>, values_to <span class="op">=</span> <span class="st">"condition"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>condition <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">condition</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">~</span> <span class="st">"Autism_spectrum"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">3</span> <span class="op">~</span> <span class="st">"ADHD"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Dyslexia"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">5</span> <span class="op">~</span> <span class="st">"Dyscalculia"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">6</span> <span class="op">~</span> <span class="st">"Dyspraxia"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">7</span> <span class="op">~</span> <span class="st">"Other_ND"</span>,
+                               <span class="va">condition</span> <span class="op">==</span> <span class="fl">8</span> <span class="op">~</span> <span class="st">"Neurotypical"</span><span class="op">)</span>,
+         value <span class="op">=</span> <span class="va">condition</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ResponseId</span>, <span class="va">condition</span>, <span class="va">value</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>id_cols <span class="op">=</span> <span class="st">"ResponseId"</span>, names_from <span class="op">=</span> <span class="st">"condition"</span>, values_from <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>,<span class="fl">5</span><span class="op">:</span><span class="fl">8</span>,<span class="fl">4</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span>, <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span>, <span class="st">"No"</span>, <span class="va">.</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+  
+
+<span class="co"># create dataset that just has the demographic questions</span>
 
 <span class="va">demographic</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">ResponseId</span>, 
                       <span class="st">"age"</span> <span class="op">=</span> <span class="va">Q6</span>, 
                       <span class="st">"gender"</span> <span class="op">=</span> <span class="va">Q7</span>, 
-                      <span class="st">"sexual_orientation"</span> <span class="op">=</span> <span class="va">Q8</span>, 
-                      <span class="st">"siblings"</span> <span class="op">=</span> <span class="va">Q9</span>, 
-                      <span class="st">"birth_order"</span> <span class="op">=</span> <span class="va">Q10</span>, 
-                      <span class="st">"neurodivergent"</span> <span class="op">=</span> <span class="va">Q11</span>,
-                      <span class="st">"team_name"</span> <span class="op">=</span> <span class="va">Q14</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Man"</span>, <span class="st">"Woman"</span>, <span class="st">"Non-binary"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         sexual_orientation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sexual_orientation</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Straight/ Heterosexual"</span>, <span class="st">"Bisexual/pansexual"</span>, <span class="st">"Gay or Lesbian"</span>, <span class="st">"Asexual"</span>, <span class="st">"Other"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         birth_order <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">birth_order</span><span class="op">)</span>,
-         neurodivergent <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">neurodivergent</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Neurotypical"</span>, <span class="st">"Diagnosed"</span>, <span class="st">"Seeking diagnosis"</span>, <span class="st">"Not seeking diagnosis"</span>, <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
-         team_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">team_name</span><span class="op">)</span><span class="op">)</span>
+                      <span class="st">"sexual_orientation"</span> <span class="op">=</span> <span class="va">Q8</span>,
+                      <span class="st">"team_name"</span> <span class="op">=</span> <span class="va">Q16</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gender <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">gender</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Man"</span>, 
+                                            <span class="st">"Woman"</span>, 
+                                            <span class="st">"Non-binary"</span>, 
+                                            <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
+         sexual_orientation <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">sexual_orientation</span>, labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Straight/ Heterosexual"</span>,
+                                                                    <span class="st">"Bisexual/pansexual"</span>, 
+                                                                    <span class="st">"Gay or Lesbian"</span>, 
+                                                                    <span class="st">"Asexual"</span>, 
+                                                                    <span class="st">"Other"</span>, 
+                                                                    <span class="st">"Prefer not to say"</span><span class="op">)</span><span class="op">)</span>,
+         team_name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">team_name</span><span class="op">)</span>
+         <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">nd_dat</span><span class="op">)</span>
 
 <span class="co"># get rid of objects we don't need</span>
-<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">scoring</span>, <span class="va">codebook</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">dat</span>, <span class="va">scoring</span>, <span class="va">codebook</span>, <span class="va">nd_dat</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="step-2-bfi-2-scores" class="section level2" number="16.2">
 <h2>
@@ -165,7 +194,7 @@
 <p>First, let's deal with the Big 5 scores and just focus on the whole dataset rather than your team data.</p>
 <p>Create an object named <code>trait_dat</code> (where <code>trait</code> is the name of the Big 5 trait you are using as your DV) that just has the data from the trait you are interested in. Your starting dataset should be <code>big5</code>.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></p>
-<p>Then, use <code>trait_dat</code> to calculate the average trait <code>score</code> for each participant (<code>ResponseId</code>). Store these scores in an object named <code>trait_scores</code>.</p>
+<p>Then, use <code>trait_dat</code> to calculate the mean trait <code>score</code> for each participant (<code>ResponseId</code>). Store these scores in an object named <code>trait_scores</code>. The table you create in this step should have as many rows as there are participants because there should be one score for each participant once you've calculated the average.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> and then <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>.</p>
 </div>
 <div id="step-3-iv" class="section level2" number="16.3">
@@ -173,55 +202,105 @@
 <span class="header-section-number">16.3</span> Step 3: IV<a class="anchor" aria-label="anchor" href="#step-3-iv"><i class="fas fa-link"></i></a>
 </h2>
 <p>Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the <code>%&gt;%</code>. However you do it, make the final object named <code>my_demo</code>.</p>
-<ol style="list-style-type: decimal">
-<li>First, if you have exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or don't want people with no siblings). You may also want to remove people who answered "Prefer not to say" for your IV at this point.</li>
-<li>Then, select to keep just the columns that contain the participant's id, age, gender, team name, and your IV (assuming it isn't gender, in which case you only need those four).</li>
-<li>Then, create any new category groups as required. For example, you might want to collapse sexual orientation into two categories, "heterosexual" and "queer". This is slightly complicated so we'll give you example code - you can adapt the code to collapse other categories like the neurodivergent or birth order options. Be very careful with the spelling, it needs to be exact for <code>recode</code> to work.</li>
-<li>If you're doing birth order, be aware that it is currently stored as a factor because we're using it as a category. What this means is that you can't perform any numeric operations on it in its current state (e.g., you can't calculate the mean birth order or use filter to drop participants above or below a certain value). If you need to do anything like this, create a new variable that recodes this data <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>.</li>
-<li>Finally, add <code>drop_na(IV)</code> and <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code> to your code (see below) where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). <code>droplevels</code> removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).</li>
-</ol>
+<p>You may also not need all of these steps, it's going to depend on what choices you made. Welcome to research :)</p>
+<p>This is the most difficult step in this analysis, once you get past step 3, it's all very similar to what you've done before. We have provided two examples of step 3 you can adapt to help you on your way.</p>
+<div id="exclusion-criteria" class="section level3" number="16.3.1">
+<h3>
+<span class="header-section-number">16.3.1</span> Exclusion criteria<a class="anchor" aria-label="anchor" href="#exclusion-criteria"><i class="fas fa-link"></i></a>
+</h3>
+<p>If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.</p>
+<p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></p>
+</div>
+<div id="selecting-columns" class="section level3" number="16.3.2">
+<h3>
+<span class="header-section-number">16.3.2</span> Selecting columns<a class="anchor" aria-label="anchor" href="#selecting-columns"><i class="fas fa-link"></i></a>
+</h3>
+<p>To make the dataset easier to work with, create an object that just has the columns you need. You all need the participant's id, age, gender, team name, but you may need other columns that contain information about your IV.</p>
+<p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p>
+</div>
+<div id="new-categories" class="section level3" number="16.3.3">
+<h3>
+<span class="header-section-number">16.3.3</span> New categories<a class="anchor" aria-label="anchor" href="#new-categories"><i class="fas fa-link"></i></a>
+</h3>
+<p>Some of you decided that you were going to collapse some of the categories, for example, combine all queer people into a single queer category, or look at e.g., people with autism, people with ADHD, people with autism and ADHD. This is slightly complicated so we'll give you two examples of the code you would use to do this which you should be able to adapt to your needs. Be very careful with the spelling, it needs to be exact for <code>recode</code> to work.</p>
+</div>
+<div id="cleaning-up-your-datasets" class="section level3" number="16.3.4">
+<h3>
+<span class="header-section-number">16.3.4</span> Cleaning up your datasets<a class="anchor" aria-label="anchor" href="#cleaning-up-your-datasets"><i class="fas fa-link"></i></a>
+</h3>
+<p>Finally, you need to add <code>drop_na(IV)</code> and <code><a href="https://rdrr.io/r/base/droplevels.html">droplevels()</a></code> to your code where IV is the variable that you're using as your IV. This will get rid of anyone who didn't respond to your IV question (because obviously you can't include them in your analysis). <code>droplevels</code> removes any factors that don't have any data points (if you don't do this your plots will still show the prefer not to say category even if there's no data in this category).</p>
+</div>
+<div id="example-code" class="section level3" number="16.3.5">
+<h3>
+<span class="header-section-number">16.3.5</span> Example code<a class="anchor" aria-label="anchor" href="#example-code"><i class="fas fa-link"></i></a>
+</h3>
+<p>Example 1</p>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">my_demo</span> <span class="op">&lt;-</span> <span class="va">data_from_step1_and_step2</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+<code class="sourceCode R"><span class="va">my_demo</span> <span class="op">&lt;-</span> <span class="va">demographic</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># remove anyone who answered "prefer not to say"</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">sexual_orientation</span> <span class="op">!=</span> <span class="st">"Prefer not to say"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># just select the columns we need</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ResponseId</span>, <span class="va">age</span>, <span class="va">gender</span>, <span class="va">team_name</span>, <span class="va">sexual_orientation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># create a new column "sexual_orientation_recoded" that collapses responses into two categories</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sexual_orientation_recoded <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/recode.html">recode</a></span><span class="op">(</span><span class="va">sexual_orientation</span>, 
                                              <span class="st">"Straight/ Heterosexual"</span> <span class="op">=</span> <span class="st">"Heterosexual"</span>,
                                              <span class="st">"Gay or Lesbian"</span> <span class="op">=</span> <span class="st">"Queer"</span>,
                                              <span class="st">"Bisexual/pansexual"</span> <span class="op">=</span> <span class="st">"Queer"</span>,
                                              <span class="st">"Asexual"</span> <span class="op">=</span> <span class="st">"Queer"</span>,
                                              <span class="st">"Other"</span> <span class="op">=</span> <span class="st">"Queer"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">sexual_orientation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># put your IV variable in here</span>
+  <span class="co"># remove any participants who have missing data for the IV question </span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">sexual_orientation</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># remove any categories we've gotten rid of from the underlying data structure</span>
   <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Example 2</p>
+<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">my_demo</span> <span class="op">&lt;-</span> <span class="va">demographic</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># only keep participants between 18 and 35 years old</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span> <span class="op">&amp;</span> <span class="va">age</span> <span class="op">&lt;=</span> <span class="fl">35</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># just select the columns we need</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ResponseId</span>, <span class="va">age</span>, <span class="va">gender</span>, <span class="va">team_name</span>, <span class="va">Neurotypical</span>, <span class="va">ADHD</span>, <span class="va">Autism_spectrum</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># create a new column "ND_status" </span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>ND_status <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">ADHD</span> <span class="op">==</span> <span class="st">"ADHD"</span> <span class="op">&amp;</span> <span class="va">Autism_spectrum</span> <span class="op">==</span> <span class="st">"No"</span> <span class="op">~</span> <span class="st">"ADHD"</span>,
+                              <span class="va">Autism_spectrum</span> <span class="op">==</span> <span class="st">"Autism_spectrum"</span> <span class="op">&amp;</span> <span class="va">ADHD</span> <span class="op">==</span> <span class="st">"No"</span> <span class="op">~</span> <span class="st">"Autism_spectrum"</span>,
+                              <span class="va">ADHD</span> <span class="op">==</span> <span class="st">"ADHD"</span> <span class="op">&amp;</span> <span class="va">Autism_spectrum</span> <span class="op">==</span> <span class="st">"Autism_spectrum"</span> <span class="op">~</span> <span class="st">"ADHD_ASC"</span>,
+                              <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"Neurotypical"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># remove any participants who have missing data for the IV question </span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/drop_na.html">drop_na</a></span><span class="op">(</span><span class="va">Neurotypical</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="co"># remove any categories we've gotten rid of from the underlying data structure</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/droplevels.html">droplevels</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
 </div>
 <div id="step-4-joining-it-all-together" class="section level2" number="16.4">
 <h2>
 <span class="header-section-number">16.4</span> Step 4: Joining it all together<a class="anchor" aria-label="anchor" href="#step-4-joining-it-all-together"><i class="fas fa-link"></i></a>
 </h2>
 <p>Getting there.</p>
-<p>Now, create a dataset named <code>all_dat</code> that joins together <code>my_demo</code> and <code>trait_scores</code> so that you have a single dataset that contains all the data you need from participants who are present in both datasets.</p>
+<p>The hard bit is done - the rest should be very familiar from the data skills homework and book.</p>
+<p>Now, create a dataset named <code>all_dat</code> that joins together the dataset that has all your demographic information from step 3, and the dataset that has your trait scores so that you have a single dataset that contains all the data you need from participants who are present in both datasets.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code></p>
-<p>Now on to the analysis (the worst part is over).</p>
 </div>
 <div id="step-5-sample-information" class="section level2" number="16.5">
 <h2>
 <span class="header-section-number">16.5</span> Step 5: Sample information<a class="anchor" aria-label="anchor" href="#step-5-sample-information"><i class="fas fa-link"></i></a>
 </h2>
-<p>Count the number of participants in the data set. This is the overall class sample size. You haven't done this very often so we'll give you the code.</p>
-<div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">all_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>Count the number of people of each gender in <code>all_dat</code>. You can also create a column of percentages. You haven't done this before so we'll also give you the code.</p>
+<p>Count the number of participants in the data set. This is the overall sample size. Depending on what exclusion and inclusion criteria you used, you may have a different sample size to other groups (which is why it is so important to report how you conducted your data analysis transparently). You haven't done this very often so we'll give you the code.</p>
 <div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">all_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>For the poster, you need to report the number of participants in each group. You can also create a column of percentages. You haven't done this very often so we'll give you the code.</p>
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">gender</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="co"># replace gender with your grouping variable</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>percent <span class="op">=</span> <span class="va">n</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">*</span><span class="fl">100</span><span class="op">)</span></code></pre></div>
-<p>Calculate the mean age and SD of the full sample. If there is missing data, you may need to use <code>na.rm = TRUE</code>.</p>
+<p>You also need to report the age statistics for the sample. Calculate the mean age and SD. If there is missing data, you may need to use <code>na.rm = TRUE</code>.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
-<p>Count how many participants are in each of your IV groups, e.g., how many first born and late born, or how many neurodivergent and neurotypical. Remember to use the recoded variable if you collapsed the categories. You may also wish to calculate percentages.</p>
 </div>
 <div id="step-6-group-differences-in-scores" class="section level2" number="16.6">
 <h2>
 <span class="header-section-number">16.6</span> Step 6: Group differences in scores<a class="anchor" aria-label="anchor" href="#step-6-group-differences-in-scores"><i class="fas fa-link"></i></a>
 </h2>
 <p>Calculate the mean and SD trait score for each of your groups. If there is missing data, you may need to use <code>na.rm = TRUE</code>.</p>
+<p>The table this produces should have three columns, one with the grouping variable, one with the mean scores for each group, and one with the SD for each group. The number of rows will depend on how many groups are in your variable, e.g., if you were looking at gender, it would have three rows for male, female, and non-binary scores.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> then <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
 </div>
 <div id="step-7-visualisations" class="section level2" number="16.7">
@@ -236,17 +315,17 @@
 <h2>
 <span class="header-section-number">16.8</span> Step 8: Team data<a class="anchor" aria-label="anchor" href="#step-8-team-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>Almost done. Now, create a dataset that just contains the data from your team. Be very careful about the spelling of your team name, there is a space before and after the colon and it must be exactly as it is in the dataset to work including all capital letters. You might want to open up the data file to check the exact spelling. Here's an example.</p>
-<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
+<p>Almost done. Now, create a dataset that just contains the data from your team. To find out which number your team is, open up the "team_name.csv" file (just on your computer, you don't have to do this in R) and find your team name and number.</p>
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_dat</span> <span class="op">&lt;-</span> <span class="va">all_dat</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team_name</span> <span class="op">==</span> <span class="st">"PR01 : Pavlov's Puppies"</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team_name</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span></code></pre></div>
 <p>Then repeat Steps 5 - 7 but use <code>team_dat</code> instead of <code>all_dat</code>. You should be able to reuse all of code, and just plug in the different dataset.</p>
 </div>
 <div id="finished-7" class="section level2" number="16.9">
 <h2>
 <span class="header-section-number">16.9</span> Finished<a class="anchor" aria-label="anchor" href="#finished-7"><i class="fas fa-link"></i></a>
 </h2>
-<p>And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. But no-one ever believe me so I'm going to <a href="https://www.tiktok.com/@mamagum/video/6972749768233684226">leave you with this</a></p>
+<p>And you're done! I wish that I could adequately convey how impressive what you've just done is. I wish that I could show you how amazing your skills are compared to most other psychology undergraduates in the UK and across the world. But no-one ever believe me so I'm going to <a href="https://www.tiktok.com/@chelseaparlettpelleriti/video/7016838746108710149?_r=1&amp;_t=8ZtxKOe3sHe">leave you with this</a></p>
 
 </div>
 </div>
@@ -262,7 +341,15 @@
 <li><a class="nav-link" href="#project-analysis"><span class="header-section-number">16</span> Project analysis</a></li>
 <li><a class="nav-link" href="#step-1-import-and-initial-data-wrangling"><span class="header-section-number">16.1</span> Step 1: Import and initial data wrangling</a></li>
 <li><a class="nav-link" href="#step-2-bfi-2-scores"><span class="header-section-number">16.2</span> Step 2: BFI-2 scores</a></li>
-<li><a class="nav-link" href="#step-3-iv"><span class="header-section-number">16.3</span> Step 3: IV</a></li>
+<li>
+<a class="nav-link" href="#step-3-iv"><span class="header-section-number">16.3</span> Step 3: IV</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#exclusion-criteria"><span class="header-section-number">16.3.1</span> Exclusion criteria</a></li>
+<li><a class="nav-link" href="#selecting-columns"><span class="header-section-number">16.3.2</span> Selecting columns</a></li>
+<li><a class="nav-link" href="#new-categories"><span class="header-section-number">16.3.3</span> New categories</a></li>
+<li><a class="nav-link" href="#cleaning-up-your-datasets"><span class="header-section-number">16.3.4</span> Cleaning up your datasets</a></li>
+<li><a class="nav-link" href="#example-code"><span class="header-section-number">16.3.5</span> Example code</a></li>
+</ul>
+</li>
 <li><a class="nav-link" href="#step-4-joining-it-all-together"><span class="header-section-number">16.4</span> Step 4: Joining it all together</a></li>
 <li><a class="nav-link" href="#step-5-sample-information"><span class="header-section-number">16.5</span> Step 5: Sample information</a></li>
 <li><a class="nav-link" href="#step-6-group-differences-in-scores"><span class="header-section-number">16.6</span> Step 6: Group differences in scores</a></li>
@@ -468,7 +555,7 @@ $( document ).ready(function() {
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2023-02-02.</p>
+    <p>"<strong>Data Skills</strong>: psyTeachR Books" was written by Heather Cleland-Woods and Emily Nordmann. It was last built on 2023-02-23.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">
