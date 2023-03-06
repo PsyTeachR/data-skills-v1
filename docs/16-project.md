@@ -15,8 +15,6 @@ To help get you on your way, we've done a bit of the initial wrangling for you. 
 ```r
 library(tidyverse)
 
-library(tidyverse)
-
 # read in data but skip rows 2 and 3
 col_names <- names(read_csv("big5_data.csv", n_max = 0))
 dat <- read_csv("big5_data.csv", col_names = col_names, skip = 3) %>%
@@ -100,11 +98,11 @@ You may also not need all of these steps, it's going to depend on what choices y
 
 This is the most difficult step in this analysis, once you get past step 3, it's all very similar to what you've done before. We have provided two examples of step 3 you can adapt to help you on your way. 
 
-**Read through this entire section before you start, it will help you decide what to do**
+**Read through this entire section and the examples before you start step 3, it will help you decide what to do**
 
 ### Exclusion criteria
 
-If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, want only women). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.
+If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or want only women). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.
 
 Hint: `filter()`
 
