@@ -100,15 +100,17 @@ You may also not need all of these steps, it's going to depend on what choices y
 
 This is the most difficult step in this analysis, once you get past step 3, it's all very similar to what you've done before. We have provided two examples of step 3 you can adapt to help you on your way. 
 
+**Read through this entire section before you start, it will help you decide what to do**
+
 ### Exclusion criteria
 
-If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.
+If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, want only women). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.
 
 Hint: `filter()`
 
 ### Selecting columns
 
-To make the dataset easier to work with, create an object that just has the columns you need. You all need the participant's id, age, gender, team name, but you may need other columns that contain information about your IV.
+To make the dataset easier to work with, create an object that just has the columns you need. You all need the participant's id, age, and team name, but you will also need other columns that contain information about your IV.
 
 Hint: `select()`
 

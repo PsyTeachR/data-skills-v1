@@ -204,18 +204,19 @@
 <p>Now, let's deal with the demographic information you're using as your IV. We want to wrangle the dataset according to the decisions you made in your registered report. You can save each of the below steps to a different object, or you can use the <code>%&gt;%</code>. However you do it, make the final object named <code>my_demo</code>.</p>
 <p>You may also not need all of these steps, it's going to depend on what choices you made. Welcome to research :)</p>
 <p>This is the most difficult step in this analysis, once you get past step 3, it's all very similar to what you've done before. We have provided two examples of step 3 you can adapt to help you on your way.</p>
+<p><strong>Read through this entire section before you start, it will help you decide what to do</strong></p>
 <div id="exclusion-criteria" class="section level3" number="16.3.1">
 <h3>
 <span class="header-section-number">16.3.1</span> Exclusion criteria<a class="anchor" aria-label="anchor" href="#exclusion-criteria"><i class="fas fa-link"></i></a>
 </h3>
-<p>If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, or only don't want only children). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.</p>
+<p>If you set exclusion criteria, filter out any participants you don't want in your dataset (e.g., if you have an age limit, want only women). You may also choose to remove people who answered "Prefer not to say" for your IV at this point.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code></p>
 </div>
 <div id="selecting-columns" class="section level3" number="16.3.2">
 <h3>
 <span class="header-section-number">16.3.2</span> Selecting columns<a class="anchor" aria-label="anchor" href="#selecting-columns"><i class="fas fa-link"></i></a>
 </h3>
-<p>To make the dataset easier to work with, create an object that just has the columns you need. You all need the participant's id, age, gender, team name, but you may need other columns that contain information about your IV.</p>
+<p>To make the dataset easier to work with, create an object that just has the columns you need. You all need the participant's id, age, and team name, but you will also need other columns that contain information about your IV.</p>
 <p>Hint: <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p>
 </div>
 <div id="new-categories" class="section level3" number="16.3.3">
