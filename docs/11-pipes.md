@@ -111,7 +111,7 @@ mark!).</p></li>
 
 Which of the following is a pipe? <select class='webex-select'><option value='blank'></option><option value=''><-</option><option value='answer'>%>%</option><option value=''>%<%</option></select>
 
-Where do pipes send the result of the function that precedes the pipe? <select class='webex-select'><option value='blank'></option><option value=''>To the third argument of the 18th function.</option><option value='answer'>To the first argument of the next function.</option><option value=''>To the last argument of the next function.</option></select>
+Where do pipes send the result of the function that precedes the pipe? <select class='webex-select'><option value='blank'></option><option value=''>To the third argument of the 18th function.</option><option value=''>To the last argument of the next function.</option><option value='answer'>To the first argument of the next function.</option></select>
 
 ## Activity 2: Set-up
 

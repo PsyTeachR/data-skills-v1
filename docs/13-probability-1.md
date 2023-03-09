@@ -7,7 +7,9 @@ In the Psych 1A Research Methods lectures, we talked a lot about p-values and st
 * Read [Statistical thinking (Noba Project)](https://nobaproject.com/modules/statistical-thinking#content)
 * Watch [Normal Distribution - Explained Simply](https://www.youtube.com/watch?v=tDLcBrLzBos) (10 mins) 
 * Watch [Probability explained](https://www.youtube.com/watch?v=uzkc-qNVoOk&list=PLC58778F28211FA19) (8 mins)
-* Watch [Binomial distribution](https://www.youtube.com/watch?v=WWv0RUxDfbs) (12 minutes)
+* Watch [Binomial distribution](Our next LGBTQ+ Psychology Network seminar will be on Tues 14th March 4pm (hybrid) where @stevenwmcnair will present his research on LGBTQ+ students' experiences of online learning during Covid-19. 
+
+Register for free via Eventbrite https://www.eventbrite.co.uk/e/lgbtq-students-experiences-of-online-learning-during-covid-19-tickets-579113352627) (12 minutes)
 
 ## What is probability? 
 
@@ -47,10 +49,10 @@ How you tackle probability depends on the type of data/variables you are working
 
 What types of data are the below measurements?
 
-* Time taken to run a marathon (in seconds): <select class='webex-select'><option value='blank'></option><option value=''>interval</option><option value=''>categorical</option><option value=''>ordinal</option><option value='answer'>ratio</option></select>
-* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='webex-select'><option value='blank'></option><option value=''>interval</option><option value='answer'>ordinal</option><option value=''>categorical</option><option value=''>ratio</option></select>
-* Which Sesame Street character a runner was dressed as: <select class='webex-select'><option value='blank'></option><option value=''>ratio</option><option value='answer'>categorical</option><option value=''>ordinal</option><option value=''>interval</option></select>
-* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='webex-select'><option value='blank'></option><option value=''>categorical</option><option value=''>ratio</option><option value='answer'>interval</option><option value=''>ordinal</option></select>
+* Time taken to run a marathon (in seconds): <select class='webex-select'><option value='blank'></option><option value='answer'>ratio</option><option value=''>ordinal</option><option value=''>categorical</option><option value=''>interval</option></select>
+* Finishing position in marathon (e.g. 1st, 2nd, 3rd): <select class='webex-select'><option value='blank'></option><option value='answer'>ordinal</option><option value=''>interval</option><option value=''>categorical</option><option value=''>ratio</option></select>
+* Which Sesame Street character a runner was dressed as: <select class='webex-select'><option value='blank'></option><option value=''>interval</option><option value='answer'>categorical</option><option value=''>ratio</option><option value=''>ordinal</option></select>
+* Temperature of a runner dressed in a cookie monster outfit (in degrees Celsius): <select class='webex-select'><option value='blank'></option><option value=''>categorical</option><option value='answer'>interval</option><option value=''>ratio</option><option value=''>ordinal</option></select>
 
 ## Probability distributions
 
@@ -131,9 +133,9 @@ As with any probabilities, real-world data will come close to the normal distrib
 
 Complete the sentences so that they are correct.
 
-* In a normal distribution, the mean, median, and mode <select class='webex-select'><option value='blank'></option><option value='answer'>are all equal</option><option value=''>are always different</option><option value=''>sum to zero</option></select>.
-* In a normal distribution, the further away from the mean an observation is <select class='webex-select'><option value='blank'></option><option value=''>the higher its probability of occuring</option><option value='answer'>the lower its probability of occuring</option></select>.
-* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='webex-select'><option value='blank'></option><option value=''>is a categorical variable</option><option value='answer'>is a continuous variable</option><option value=''>has three possible values</option></select>.
+* In a normal distribution, the mean, median, and mode <select class='webex-select'><option value='blank'></option><option value=''>sum to zero</option><option value=''>are always different</option><option value='answer'>are all equal</option></select>.
+* In a normal distribution, the further away from the mean an observation is <select class='webex-select'><option value='blank'></option><option value='answer'>the lower its probability of occuring</option><option value=''>the higher its probability of occuring</option></select>.
+* Whereas the binomial distribution is based on situations in which there are two possible outcomes, the normal distribution is based on situations in which the data <select class='webex-select'><option value='blank'></option><option value=''>has three possible values</option><option value='answer'>is a continuous variable</option><option value=''>is a categorical variable</option></select>.
 
 ## Activity 4: Distribution test
 
