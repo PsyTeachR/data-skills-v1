@@ -247,7 +247,7 @@ Replace the NULLs in the above code to calculate how tall a 16-24 y.o. Scottish 
 
 **Visualise it!**
 
-Have a go at playing around with different distributions in our `dnorm()` and `pnorm()` app - [access it here](http://shiny.psy.gla.ac.uk/jackt/ShinyPsyTeachR/ug1/normal-distributions/)
+Have a go at playing around with different distributions with these [binomial](https://shiny.abdn.ac.uk/Stats/apps/app_binomial/) and [normal](https://shiny.abdn.ac.uk/Stats/apps/app_normal/) distribution apps.
 
 ******
 

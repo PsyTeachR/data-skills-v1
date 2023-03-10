@@ -7,9 +7,7 @@ In the Psych 1A Research Methods lectures, we talked a lot about p-values and st
 * Read [Statistical thinking (Noba Project)](https://nobaproject.com/modules/statistical-thinking#content)
 * Watch [Normal Distribution - Explained Simply](https://www.youtube.com/watch?v=tDLcBrLzBos) (10 mins) 
 * Watch [Probability explained](https://www.youtube.com/watch?v=uzkc-qNVoOk&list=PLC58778F28211FA19) (8 mins)
-* Watch [Binomial distribution](Our next LGBTQ+ Psychology Network seminar will be on Tues 14th March 4pm (hybrid) where @stevenwmcnair will present his research on LGBTQ+ students' experiences of online learning during Covid-19. 
-
-Register for free via Eventbrite https://www.eventbrite.co.uk/e/lgbtq-students-experiences-of-online-learning-during-covid-19-tickets-579113352627) (12 minutes)
+* Watch [Binomial distribution](https://youtu.be/8idr1WZ1A7Q) (12 minutes)
 
 ## What is probability? 
 
